@@ -1,0 +1,435 @@
+{
+  "home": {
+    "meta": {
+      "title": "DelTran - Global Payment Infrastructure",
+      "description": "One rail. Infinite reach. Next-generation cross-border payment rails."
+    },
+    "cta": {
+      "title": "Ready to transform your payments?",
+      "subtitle": "Join institutions building on DelTran",
+      "primaryButton": "Request Demo",
+      "secondaryButton": "Read Documentation",
+      "button": "Request Demo",
+      "stats": [
+        "No setup fees",
+        "Fast onboarding",
+        "24/7 support"
+      ]
+    },
+    "hero": {
+      "badge": "Infrastructure for global money movement",
+      "title": "One rail.",
+      "titleAccent": "Infinite reach.",
+      "subtitle": "Liquidity routing, compliance automation, and real-time settlement across corridors.",
+      "primaryCta": "Explore Platform",
+      "secondaryCta": "Contact Sales"
+    },
+    "trust": {
+      "title": "Trusted by leaders",
+      "adgm": "ADGM/DIFC ecosystem",
+      "bank": "Leading UAE bank pilot",
+      "security": "Bank-grade security",
+      "availability": "24/7 availability"
+    },
+    "features": {
+      "title": "Why DelTran",
+      "instant": {
+        "title": "Instant Settlement",
+        "description": "Funds available in seconds, not days. 24/7/365."
+      },
+      "compliant": {
+        "title": "Compliance Built-in",
+        "description": "AI-assisted KYC, AML, and sanctions checks embedded in flows."
+      },
+      "global": {
+        "title": "Global Reach",
+        "description": "One rail for multiple corridors with expanding coverage."
+      },
+      "transparent": {
+        "title": "Transparent Pricing",
+        "description": "Predictable models with no hidden fees."
+      }
+    },
+    "comparison": {
+      "title": "The DelTran difference",
+      "before": {
+        "title": "Traditional Rails",
+        "items": [
+          "High fees via multiple intermediaries",
+          "1–5 business days with cut-off times and holidays",
+          "Manual reporting and fragmented compliance",
+          "Limited visibility and tracking",
+          "Complex integration and maintenance"
+        ]
+      },
+      "after": {
+        "title": "DelTran Rails",
+        "items": [
+          "Optimized routing with predictable fees",
+          "Instant-feel settlement",
+          "Embedded compliance and real-time reporting",
+          "Full transparency and tracking",
+          "Modern APIs and webhooks"
+        ]
+      }
+    },
+    "segments": {
+      "title": "Built for everyone",
+      "banks": {
+        "title": "Banks",
+        "description": "Modernize rails, reduce correspondent overhead, and scale beyond banking hours",
+        "benefits": [
+          "Instant crediting via API",
+          "Lower operational costs",
+          "Regulatory alignment"
+        ]
+      },
+      "business": {
+        "title": "Businesses",
+        "description": "Pay globally, instantly",
+        "benefits": [
+          "Faster cross-border payouts",
+          "Predictable costs",
+          "Real-time tracking"
+        ]
+      },
+      "fintech": {
+        "title": "Fintechs",
+        "description": "Embed global payments without building rails",
+        "benefits": [
+          "White-label ready",
+          "Compliance as a service",
+          "Developer-friendly APIs"
+        ]
+      },
+      "people": {
+        "title": "Individuals",
+        "description": "Send money home with lower costs and instant delivery",
+        "benefits": [
+          "Low fees",
+          "Fast transfers",
+          "Transparent pricing"
+        ]
+      }
+    },
+    "stats": {
+      "title": "By the numbers",
+      "availability": {
+        "value": "99.99%",
+        "label": "Uptime posture"
+      },
+      "settlement": {
+        "value": "< 10s",
+        "label": "Settlement time"
+      },
+      "corridors": {
+        "value": "50+",
+        "label": "Corridors (roadmap)"
+      },
+      "volume": {
+        "value": "$1B+",
+        "label": "Monthly run-rate (target)"
+      }
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "subtitle": "Get started in minutes",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Integrate",
+          "description": "Connect via REST API and webhooks"
+        },
+        {
+          "number": "2",
+          "title": "Configure",
+          "description": "Set corridors, limits, and policies"
+        },
+        {
+          "number": "3",
+          "title": "Transact",
+          "description": "Route liquidity and settle with an instant feel"
+        }
+      ]
+    },
+    "geography": {
+      "title": "Global coverage roadmap",
+      "subtitle": "Pilot launch in the UAE and MENA region, followed by a strategic global scale-up to Europe, Israel, the Americas, the CIS, and Africa."
+    },
+    "security": {
+      "title": "Enterprise-grade security",
+      "subtitle": "Your trust is our foundation",
+      "features": [
+        {
+          "icon": "🔐",
+          "title": "End-to-end encryption",
+          "description": "Strong encryption at rest and in transit"
+        },
+        {
+          "icon": "🛡️",
+          "title": "Compliance ready",
+          "description": "Built to align with international standards"
+        },
+        {
+          "icon": "🔍",
+          "title": "Real-time monitoring",
+          "description": "AI-powered anomaly detection"
+        },
+        {
+          "icon": "📊",
+          "title": "Audit trails",
+          "description": "Complete transaction history and reporting"
+        }
+      ]
+    }
+  },
+  "platform": {
+    "meta": {
+      "title": "Platform - DelTran",
+      "description": "A unified platform for banks, fintechs, businesses, and individuals to move money globally with speed, trust, and compliance."
+    },
+    "hero": {
+      "title": "One platform for all",
+      "subtitle": "Built for banks, fintechs, businesses, and individuals — enabling fast, secure, and compliant money movement worldwide.",
+      "primaryCta": "Request Platform Access"
+    },
+    "overview": {
+      "title": "A platform that connects every player in the financial ecosystem",
+      "description": "DelTran is designed to serve the needs of banks seeking efficiency, fintechs aiming for innovation, businesses managing global operations, and individuals sending money across borders. Through one unified rail, it delivers instant-feel transfers, embedded compliance, and 24/7 availability."
+    },
+    "keyFeatures": {
+      "title": "Key Advantages by Audience",
+      "items": [
+        {
+          "title": "For Banks",
+          "description": "Expand reach and reduce operational costs with a modern rail that works alongside existing infrastructure."
+        },
+        {
+          "title": "For Fintechs",
+          "description": "Accelerate time-to-market with easy API integration and global corridor access."
+        },
+        {
+          "title": "For Businesses",
+          "description": "Speed up cross-border B2B payments, payroll, and supplier settlements while controlling costs."
+        },
+        {
+          "title": "For Individuals",
+          "description": "Send money instantly, affordably, and with full transparency — anytime, anywhere."
+        },
+        {
+          "title": "Always-On Operations",
+          "description": "24/7 availability across time zones, matching the pace of the global economy."
+        },
+        {
+          "title": "Compliance Built-In",
+          "description": "Adaptable to both local and global regulatory requirements from day one."
+        }
+      ]
+    },
+    "features": {
+      "title": "Platform Capabilities",
+      "liquidity": {
+        "title": "Intelligent Liquidity Management",
+        "description": "Optimize routes for cost, speed, and reliability across corridors."
+      },
+      "compliance": {
+        "title": "Integrated Compliance",
+        "description": "Seamlessly align with jurisdiction-specific requirements without slowing transactions."
+      },
+      "settlement": {
+        "title": "Reliable Settlement",
+        "description": "Achieve consistent finality regardless of banking hours or holidays."
+      },
+      "developer": {
+        "title": "Developer-Friendly",
+        "description": "Straightforward integration process with responsive support."
+      }
+    },
+    "integration": {
+      "title": "Integration Process",
+      "subtitle": "From access request to live transactions in four steps",
+      "steps": [
+        "Request platform access",
+        "Set up corridors and compliance preferences",
+        "Run test transactions in a safe environment",
+        "Go live and start processing real payments"
+      ]
+    },
+    "useCases": {
+      "title": "Who benefits from DelTran",
+      "banks": {
+        "title": "Banks",
+        "description": "Extend your reach, cut correspondent costs, and scale beyond traditional hours."
+      },
+      "fintechs": {
+        "title": "Fintechs",
+        "description": "Offer global payments and remittances without building infrastructure from scratch."
+      },
+      "businesses": {
+        "title": "Businesses",
+        "description": "Streamline B2B payments, payroll, and supplier payouts worldwide."
+      },
+      "individuals": {
+        "title": "Individuals",
+        "description": "Send and receive money instantly and cost-effectively across borders."
+      }
+    },
+    "pricing": {
+      "title": "Transparent and Flexible Pricing",
+      "description": "Simple models that adapt to your volume and needs — no hidden fees."
+    },
+    "cta": {
+      "title": "Ready to explore DelTran?",
+      "subtitle": "Learn how our platform can transform payments for banks, fintechs, businesses, and individuals.",
+      "primaryButton": "Request Platform Access"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "platform": "Platform",
+    "investors": "Investors",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "investors": {
+    "meta": {
+      "title": "Investors - DelTran",
+      "description": "Be part of building the next-generation global payment rail."
+    },
+    "hero": {
+      "title": "For Investors",
+      "subtitle": "Join us in shaping the future of global money movement.",
+      "primaryCta": "Request Investor Brief",
+      "secondaryCta": "Schedule Call"
+    },
+    "overview": {
+      "title": "Investment Opportunity",
+      "lead": "DelTran is creating a single global rail for instant and trusted money movement — a foundation that aligns with regulatory standards while offering unmatched speed and accessibility to users worldwide.",
+      "highlights": [
+        { "label": "Mission", "value": "One Rail. Infinite Reach. Financial access everywhere, 24/7." },
+        { "label": "Vision", "value": "A connected world where money moves as easily as information." },
+        { "label": "Why Now", "value": "Global demand for instant and secure payments is accelerating — and the market is ready for transformation." }
+      ]
+    },
+    "metrics": {
+      "title": "Key Indicators",
+      "subtitle": "Performance and growth potential",
+      "items": [
+        { "metric": "Time-to-credit", "current": "< 10 seconds", "description": "From initiation to completion, across supported corridors." },
+        { "metric": "Cost efficiency", "current": "Significant reduction vs. traditional channels", "description": "Lowering barriers for individuals, businesses, and institutions." },
+        { "metric": "Availability", "current": "99.99%", "description": "Always-on infrastructure to meet the demands of a global economy." }
+      ]
+    },
+    "targetSegments": {
+      "title": "Target Segments",
+      "segments": [
+        { "name": "International Remittances", "volume": "$860B annually (2024)", "description": "Serving migrant worker flows from high-labor-export countries with instant transfers and minimal fees." },
+        { "name": "B2B International Settlements", "volume": "$1.4T in 2023 → $3.5T by 2033", "description": "Reducing costs and settlement times for SMEs and corporates." },
+        { "name": "Cross-border E-commerce & Marketplaces", "volume": "$3.3T in 2024", "description": "Enabling localised processing to reduce conversion losses and improve checkout UX." },
+        { "name": "Local P2P & B2C Transfers", "volume": "Tens of trillions in transactions (lower total value than FX)", "description": "Faster, cheaper domestic payments in markets where bank rails are slow or expensive." },
+        { "name": "Currency Imbalance Corridors", "description": "Optimising liquidity in one-way-heavy corridors to reduce FX exchange requirements." }
+      ]
+    },
+    "growth": {
+      "title": "Global Growth Potential",
+      "description": "Every new participant strengthens the network, expands reach, and increases value for all stakeholders."
+    },
+    "market": {
+      "title": "Market Opportunity",
+      "tam": { "title": "TAM", "value": "$5.6T+", "description": "Combined annual volume across cross-border remittances (~$860B), B2B international settlements (~$1.4T), e-commerce & marketplace payments (~$3.3T), and other cross-border flows." },
+      "sam": { "title": "SAM", "value": "$2.26T", "description": "Targetable high-value segments in initial focus: remittances in MENA–Asia corridors, SME B2B settlements, and cross-border e-commerce." },
+      "som": { "title": "SOM", "value": "$50B+", "description": "Achievable within 5 years through phased rollout starting with UAE & MENA, then scaling to Europe, Israel, the Americas, CIS, and Africa." },
+      "growth": { "title": "CAGR", "value": "7.5%", "description": "Projected combined market growth across target segments." }
+    },
+    "traction": {
+      "title": "Traction & Milestones",
+      "achieved": {
+        "title": "Achieved",
+        "items": [
+          "Pilot program with a leading bank in the UAE",
+          "Core platform live in initial corridors",
+          "Early institutional partnerships established"
+        ]
+      },
+      "upcoming": {
+        "title": "Next 12 Months",
+        "items": [
+          "Expansion to priority regions",
+          "Onboarding of additional enterprise clients",
+          "Strategic funding round for accelerated scaling"
+        ]
+      }
+    },
+    "team": {
+      "title": "Leadership Team",
+      "members": [
+        { "name": "Ruslan Oksman", "role": "CEO & Founder", "bio": "Seasoned entrepreneur with over a decade in global payments and financial innovation." }
+      ]
+    },
+    "roadmap": {
+      "title": "Strategic Roadmap",
+      "phases": [
+        { "quarter": "Phase 1", "title": "Pilot Launch", "items": ["UAE and MENA as pilot region", "Foundation for compliance and operational frameworks"] },
+        { "quarter": "Phase 2", "title": "Regional Expansion", "items": ["Scale to Europe, Israel, the Americas, CIS, and Africa", "Partnerships with financial institutions and ecosystems"] },
+        { "quarter": "Phase 3", "title": "Global Expansion", "items": ["Unified coverage across major corridors", "Sustainable growth with diversified market presence"] }
+      ]
+    },
+    "round": {
+      "title": "Investment Terms",
+      "details": { "stage": "Pre-seed Round", "target": "$500,000", "lead": "In discussions", "close": "Q1 2025" }
+    },
+    "risks": {
+      "title": "Considerations & Mitigation",
+      "items": [
+        { "risk": "Regulatory timelines", "mitigation": "Multi-region licensing strategy and early engagement with authorities." },
+        { "risk": "Competitive landscape", "mitigation": "Strong brand positioning, network effects, and strategic partnerships." },
+        { "risk": "Market adoption pace", "mitigation": "Phased rollout ensuring value creation from day one." }
+      ]
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "subtitle": "Explore how you can be part of the DelTran journey",
+      "email": "investors@deltran.io",
+      "calendar": "Schedule a call"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact - DelTran",
+      "description": "Get in touch with DelTran for partnerships, inquiries, and support."
+    },
+    "hero": {
+      "title": "Let's Connect",
+      "subtitle": "Ready to transform global payments? We're here to help."
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "company": "Company",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Thank you for your message. We'll be in touch soon.",
+      "error": "Something went wrong. Please try again."
+    },
+    "info": {
+      "title": "Get in Touch",
+      "email": { "label": "Email", "value": "hello@deltran.ai" },
+      "sales": { "label": "Sales", "value": "sales@deltran.ai" },
+      "support": { "label": "Support", "value": "support@deltran.ai" }
+    }
+  },
+  "footer": {
+    "copyright": "© {year} DelTran — One rail. Infinite reach.",
+    "allRightsReserved": "All rights reserved.",
+    "links": {
+      "platform": "Platform",
+      "investors": "Investors",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+  }
+}
+  
