@@ -5,6 +5,7 @@ import { locales, type Locale } from '@/i18n/request';
 import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { ThemeProvider } from '@/app/components/ThemeProvider';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/app/globals.css';
@@ -58,6 +59,7 @@ export default async function LocaleLayout({
             </div>
           </NextIntlClientProvider>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
