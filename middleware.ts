@@ -7,16 +7,15 @@ export default createMiddleware({
 
   // Used when no locale matches
   defaultLocale: 'en',
-  
+
   // Always use locale prefix in the URL
-  localePrefix: 'always'
+  localePrefix: 'always',
+
+  // Locale detection
+  localeDetection: true
 });
 
 export const config = {
-  // Match all pathnames except for
-  // - API routes
-  // - _next (Next.js internals)
-  // - Static files (e.g., .ico, .png, .jpg, etc.)
-  // - favicon and other static assets
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)).*)]']
+  // Match only internationalized pathnames
+  matcher: ['/', '/(en|ar|he)/:path*']
 };
