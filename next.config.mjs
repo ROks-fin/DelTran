@@ -6,14 +6,17 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['deltran.ai'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'deltran.ai',
+      },
+    ],
   },
   // Essential performance optimizations
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react'],
   },
-  // Enable SWC minification
-  swcMinify: true,
   // Optimize bundle size
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

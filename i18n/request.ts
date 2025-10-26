@@ -1,19 +1,20 @@
 import {notFound} from 'next/navigation';
 import {getRequestConfig} from 'next-intl/server';
-import { messages } from './messages';
 
 // Can be imported from a shared config
 export const locales = ['en', 'ar', 'he'] as const;
 export type Locale = (typeof locales)[number];
 
-export default getRequestConfig(async ({requestLocale}) => {
-  // requestLocale is provided by next-intl 3.22 in the context
-  const resolvedLocale = (await requestLocale) ?? 'en';
+export default getRequestConfig(async ({locale}) => {
+  // Validate that the incoming locale parameter is valid
+  if (!locale || !locales.includes(locale as Locale)) {
+    notFound();
+  }
 
-  if (!locales.includes(resolvedLocale as Locale)) notFound();
+  // Dynamic import to avoid edge runtime issues
+  const messages = (await import(`../messages/${locale}.json`)).default;
 
   return {
-    locale: resolvedLocale,
-    messages: messages[resolvedLocale as keyof typeof messages] as any
+    messages
   };
 });

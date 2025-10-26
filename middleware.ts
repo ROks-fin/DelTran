@@ -17,5 +17,6 @@ export const config = {
   // - API routes
   // - _next (Next.js internals)
   // - Static files (e.g., .ico, .png, .jpg, etc.)
-  matcher: ['/((?!api|_next|.*\\..*).*)']
+  // - favicon and other static assets
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)).*)]']
 };
