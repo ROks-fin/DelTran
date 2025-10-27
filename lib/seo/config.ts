@@ -22,7 +22,7 @@ export const SITE_CONFIG = {
     'payment gateway',
     'fintech solution',
     'real-time payments'
-  ],
+  ] as string[],
   authors: [
     {
       name: 'DelTran',
@@ -38,31 +38,31 @@ export const SITE_CONFIG = {
   contact: {
     email: 'contact@deltran.ai',
   },
-} as const;
+};
 
 export const LOCALES = {
   en: {
-    locale: 'en',
+    locale: 'en' as const,
     name: 'English',
-    dir: 'ltr',
+    dir: 'ltr' as const,
     title: 'DelTran - Global Payment Infrastructure',
     description: 'One rail. Infinite reach. Next-generation cross-border payment rails with instant settlements.',
   },
   ar: {
-    locale: 'ar',
+    locale: 'ar' as const,
     name: 'العربية',
-    dir: 'rtl',
+    dir: 'rtl' as const,
     title: 'DelTran - البنية التحتية العالمية للدفع',
     description: 'سكة واحدة. وصول لا حدود له. قضبان الدفع عبر الحدود من الجيل التالي مع التسويات الفورية.',
   },
   he: {
-    locale: 'he',
+    locale: 'he' as const,
     name: 'עברית',
-    dir: 'rtl',
+    dir: 'rtl' as const,
     title: 'DelTran - תשתית תשלומים גלובלית',
     description: 'מסילה אחת. טווח אינסופי. מסילות תשלום חוצות גבולות מהדור הבא עם סליקה מיידית.',
   },
-} as const;
+};
 
 export type LocaleKey = keyof typeof LOCALES;
 
@@ -157,7 +157,6 @@ export function generatePageMetadata({
     verification: {
       google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
       yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
-      bing: process.env.NEXT_PUBLIC_BING_VERIFICATION,
     },
     category: 'finance',
   };

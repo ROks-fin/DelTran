@@ -323,6 +323,7 @@ export function generateLocalBusinessSchema(): SchemaOrgBase {
 
 /**
  * Утилита для вставки JSON-LD в страницу
+ * Server Component для использования в layout
  */
 export function SchemaScript({ schema }: { schema: SchemaOrgBase | SchemaOrgBase[] }) {
   const schemaData = Array.isArray(schema) ? schema : [schema];
@@ -336,6 +337,7 @@ export function SchemaScript({ schema }: { schema: SchemaOrgBase | SchemaOrgBase
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(data, null, 0),
           }}
+          suppressHydrationWarning
         />
       ))}
     </>

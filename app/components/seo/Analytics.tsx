@@ -6,27 +6,24 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 
 export function GoogleAnalytics({ measurementId }: { measurementId?: string }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   const GA_ID = measurementId || process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
   useEffect(() => {
     if (!GA_ID) return;
 
-    const url = pathname + searchParams.toString();
-
     // Отслеживание просмотра страницы при изменении URL
     if (typeof window !== 'undefined' && 'gtag' in window) {
       (window as any).gtag('config', GA_ID, {
-        page_path: url,
+        page_path: pathname,
       });
     }
-  }, [pathname, searchParams, GA_ID]);
+  }, [pathname, GA_ID]);
 
   if (!GA_ID) {
     return null;
@@ -90,6 +87,7 @@ export function YandexMetrika({ counterId }: { counterId?: string }) {
       />
       <noscript>
         <div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`https://mc.yandex.ru/watch/${YANDEX_ID}`}
             style={{ position: 'absolute', left: '-9999px' }}
