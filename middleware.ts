@@ -1,5 +1,6 @@
 import createMiddleware from 'next-intl/middleware';
-import { locales } from './i18n/request';
+
+const locales = ['en', 'ar', 'he'] as const;
 
 export default createMiddleware({
   // A list of all locales that are supported
@@ -9,13 +10,10 @@ export default createMiddleware({
   defaultLocale: 'en',
 
   // Always use locale prefix in the URL
-  localePrefix: 'always',
-
-  // Locale detection
-  localeDetection: true
+  localePrefix: 'always'
 });
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ['/', '/(en|ar|he)/:path*']
+  // Matcher ignoring `/_next/` and `/api/`
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
 };

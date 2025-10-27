@@ -14,8 +14,20 @@ export default getRequestConfig(async ({requestLocale}) => {
     locale = 'en';
   }
 
+  // Use static imports for Edge Runtime compatibility
+  const messages = await (async () => {
+    switch (locale) {
+      case 'ar':
+        return (await import('../messages/ar.json')).default;
+      case 'he':
+        return (await import('../messages/he.json')).default;
+      default:
+        return (await import('../messages/en.json')).default;
+    }
+  })();
+
   return {
     locale,
-    messages: (await import(`../messages/${locale}.json`)).default
-  };
+    messages
+  } as any;
 });
