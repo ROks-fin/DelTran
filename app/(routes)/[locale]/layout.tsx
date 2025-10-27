@@ -10,18 +10,33 @@ import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/app/globals.css';
+import { generatePageMetadata, LocaleKey } from '@/lib/seo/config';
+import {
+  SchemaScript,
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+  generateServiceSchema
+} from '@/lib/seo/schemas';
+import { WebVitals } from '@/app/components/seo/WebVitals';
+import { AllAnalytics } from '@/app/components/seo/Analytics';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-inter',
+});
 
-export const metadata: Metadata = {
-  title: 'DelTran - Global Payment Infrastructure',
-  description: 'One rail. Infinite reach. Next-generation cross-border payment rails.',
-  icons: {
-    icon: '/icon.png',
-    shortcut: '/favicon.ico',
-    apple: '/icon.png',
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generatePageMetadata({
+    locale: locale as LocaleKey,
+  });
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -50,6 +65,15 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={locale === 'ar' || locale === 'he' ? 'rtl' : 'ltr'}>
+      <head>
+        <SchemaScript
+          schema={[
+            generateOrganizationSchema(),
+            generateWebSiteSchema(locale as LocaleKey),
+            generateServiceSchema(locale as LocaleKey),
+          ]}
+        />
+      </head>
       <body className={inter.className}>
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
@@ -60,6 +84,8 @@ export default async function LocaleLayout({
             </div>
           </NextIntlClientProvider>
         </ThemeProvider>
+        <WebVitals />
+        <AllAnalytics />
         <SpeedInsights />
         <Analytics />
       </body>
