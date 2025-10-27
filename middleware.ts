@@ -1,10 +1,9 @@
 import createMiddleware from 'next-intl/middleware';
-
-const locales = ['en', 'ar', 'he'] as const;
+import {locales} from './i18n/request';
 
 export default createMiddleware({
   // A list of all locales that are supported
-  locales,
+  locales: locales as any,
 
   // Used when no locale matches
   defaultLocale: 'en',
