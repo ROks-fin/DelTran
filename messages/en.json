@@ -1,423 +1,502 @@
 {
   "home": {
     "meta": {
-      "title": "DelTran - Global Payment Infrastructure",
-      "description": "One rail. Infinite reach. Next-generation cross-border payment rails."
+      "title": "DelTran - Enterprise Settlement Infrastructure for Banks",
+      "description": "One rail. Infinite reach. Free 75-80% of frozen correspondent banking capital with 85% netting efficiency."
     },
     "cta": {
-      "title": "Ready to transform your payments?",
-      "subtitle": "Join institutions building on DelTran",
-      "primaryButton": "Request Demo",
-      "secondaryButton": "Read Documentation",
-      "button": "Request Demo",
-      "stats": [
-        "No setup fees",
-        "Fast onboarding",
-        "24/7 support"
-      ]
+      "title": "Ready to Transform Your Settlement Infrastructure?",
+      "subtitle": "Contact us to discuss how DelTran can optimize your bank's operations",
+      "button": "Let's Talk"
     },
     "hero": {
-      "badge": "Infrastructure for global money movement",
+      "badge": "Pre-Production MVP Ready",
       "title": "One rail.",
       "titleAccent": "Infinite reach.",
-      "subtitle": "Liquidity routing, compliance automation, and real-time settlement across corridors.",
-      "primaryCta": "Explore Platform",
-      "secondaryCta": "Contact Sales"
+      "subtitle": "The Future of Banking Settlement Infrastructure",
+      "description": "Transform how your bank moves money. 6-second finality. 85% capital efficiency. Byzantine Fault Tolerant consensus.",
+      "cta": "Let's Talk"
     },
-    "trust": {
-      "title": "Trusted by leaders",
-      "adgm": "ADGM/DIFC ecosystem",
-      "bank": "Leading UAE bank pilot",
-      "security": "Bank-grade security",
-      "availability": "24/7 availability"
+    "problem": {
+      "title": "Every Day, Billions Sit Frozen",
+      "subtitle": "While your bank waits 2-5 days for settlements",
+      "description": "Billions locked in correspondent banking accounts. Not earning. Not working. Just waiting. Your bank deserves better."
     },
-    "features": {
-      "title": "Why DelTran",
+    "solution": {
+      "title": "The Solution: Instant Settlement with 85% Capital Release",
+      "subtitle": "Byzantine Fault Tolerant infrastructure built for banks",
+      "description": "DelTran doesn't replace your systems. It makes them faster, cheaper, and more efficient."
+    },
+    "valueProps": {
+      "title": "Transform Your Bank's Settlement Operations",
       "instant": {
-        "title": "Instant Settlement",
-        "description": "Funds available in seconds, not days. 24/7/365."
+        "title": "6-Second Finality",
+        "description": "From 2-5 days to 6 seconds with cryptographic certainty",
+        "impact": "Transform liquidity management overnight"
       },
-      "compliant": {
-        "title": "Compliance Built-in",
-        "description": "AI-assisted KYC, AML, and sanctions checks embedded in flows."
+      "capital": {
+        "title": "85% Capital Release",
+        "description": "Multilateral netting frees billions in frozen correspondent accounts",
+        "impact": "Immediate ROI for your institution"
       },
-      "global": {
-        "title": "Global Reach",
-        "description": "One rail for multiple corridors with expanding coverage."
-      },
-      "transparent": {
-        "title": "Transparent Pricing",
-        "description": "Predictable models with no hidden fees."
-      }
-    },
-    "comparison": {
-      "title": "The DelTran difference",
-      "before": {
-        "title": "Traditional Rails",
-        "items": [
-          "High fees via multiple intermediaries",
-          "1–5 business days with cut-off times and holidays",
-          "Manual reporting and fragmented compliance",
-          "Limited visibility and tracking",
-          "Complex integration and maintenance"
-        ]
-      },
-      "after": {
-        "title": "DelTran Rails",
-        "items": [
-          "Optimized routing with predictable fees",
-          "Instant-feel settlement",
-          "Embedded compliance and real-time reporting",
-          "Full transparency and tracking",
-          "Modern APIs and webhooks"
-        ]
-      }
-    },
-    "segments": {
-      "title": "Built for everyone",
-      "banks": {
-        "title": "Banks",
-        "description": "Modernize rails, reduce correspondent overhead, and scale beyond banking hours",
-        "benefits": [
-          "Instant crediting via API",
-          "Lower operational costs",
-          "Regulatory alignment"
-        ]
-      },
-      "business": {
-        "title": "Businesses",
-        "description": "Pay globally, instantly",
-        "benefits": [
-          "Faster cross-border payouts",
-          "Predictable costs",
-          "Real-time tracking"
-        ]
-      },
-      "fintech": {
-        "title": "Fintechs",
-        "description": "Embed global payments without building rails",
-        "benefits": [
-          "White-label ready",
-          "Compliance as a service",
-          "Developer-friendly APIs"
-        ]
-      },
-      "people": {
-        "title": "Individuals",
-        "description": "Send money home with lower costs and instant delivery",
-        "benefits": [
-          "Low fees",
-          "Fast transfers",
-          "Transparent pricing"
-        ]
-      }
-    },
-    "stats": {
-      "title": "By the numbers",
-      "availability": {
-        "value": "99.99%",
-        "label": "Uptime posture"
-      },
-      "settlement": {
-        "value": "< 10s",
-        "label": "Settlement time"
-      },
-      "corridors": {
-        "value": "50+",
-        "label": "Corridors (roadmap)"
-      },
-      "volume": {
-        "value": "$1B+",
-        "label": "Monthly run-rate (target)"
+      "compliance": {
+        "title": "Big 4 Level Compliance Reporting",
+        "description": "One-click export of comprehensive audit reports. Built-in AML/CFT, sanctions screening, ISO 20022 compliance.",
+        "impact": "Download audit-ready reports from your dashboard - Big 4 quality, zero manual work"
       }
     },
     "howItWorks": {
-      "title": "How it works",
-      "subtitle": "Get started in minutes",
-      "steps": [
+      "title": "How It Works",
+      "subtitle": "Four steps to transform your settlement infrastructure",
+      "step1": {
+        "title": "Connect via API",
+        "description": "REST/gRPC integration with your existing systems. No replacement needed."
+      },
+      "step2": {
+        "title": "Process in Real-Time",
+        "description": "3,000+ TPS capacity handles your transaction volume with 75ms latency"
+      },
+      "step3": {
+        "title": "Multilateral Netting",
+        "description": "85% netting efficiency optimizes settlements every cycle"
+      },
+      "step4": {
+        "title": "Instant Finality",
+        "description": "6-second Byzantine Fault Tolerant consensus releases capital immediately"
+      }
+    },
+    "metrics": {
+      "title": "Pre-Production MVP: Tested & Validated",
+      "subtitle": "Performance metrics proven in testing",
+      "tps": {
+        "value": "3,000+",
+        "unit": "TPS",
+        "label": "Tested Capacity",
+        "detail": "Transaction throughput"
+      },
+      "latency": {
+        "value": "75",
+        "unit": "ms",
+        "label": "Processing Speed",
+        "detail": "Average latency (p95)"
+      },
+      "netting": {
+        "value": "85",
+        "unit": "%",
+        "label": "Capital Efficiency",
+        "detail": "Multilateral netting"
+      },
+      "finality": {
+        "value": "6",
+        "unit": "seconds",
+        "label": "Settlement Time",
+        "detail": "BFT consensus finality"
+      }
+    },
+    "why": {
+      "title": "Why Banks Choose DelTran",
+      "reasons": [
         {
-          "number": "1",
-          "title": "Integrate",
-          "description": "Connect via REST API and webhooks"
+          "title": "No Replacement Risk",
+          "description": "API-first integration works alongside your existing infrastructure. Adopt incrementally, corridor by corridor."
         },
         {
-          "number": "2",
-          "title": "Configure",
-          "description": "Set corridors, limits, and policies"
+          "title": "Proven Technology",
+          "description": "Pre-Production MVP tested and ready. Byzantine Fault Tolerant consensus battle-tested in production."
         },
         {
-          "number": "3",
-          "title": "Transact",
-          "description": "Route liquidity and settle with an instant feel"
+          "title": "Immediate ROI",
+          "description": "Free 75-80% of frozen capital through multilateral netting. Reduce operational costs through automation."
+        },
+        {
+          "title": "Big 4 Quality Compliance",
+          "description": "One-click dashboard export for any audit report. Big 4 accounting firm quality. AML/CFT, ISO 20022, sanctions screening - all automated and ready for regulators."
         }
       ]
     },
-    "geography": {
-      "title": "Global coverage roadmap",
-      "subtitle": "Pilot launch in the UAE and MENA region, followed by a strategic global scale-up to Europe, Israel, the Americas, the CIS, and Africa."
-    },
-    "security": {
-      "title": "Enterprise-grade security",
-      "subtitle": "Your trust is our foundation",
-      "features": [
-        {
-          "icon": "🔐",
-          "title": "End-to-end encryption",
-          "description": "Strong encryption at rest and in transit"
-        },
-        {
-          "icon": "🛡️",
-          "title": "Compliance ready",
-          "description": "Built to align with international standards"
-        },
-        {
-          "icon": "🔍",
-          "title": "Real-time monitoring",
-          "description": "AI-powered anomaly detection"
-        },
-        {
-          "icon": "📊",
-          "title": "Audit trails",
-          "description": "Complete transaction history and reporting"
-        }
-      ]
+    "contact": {
+      "title": "Ready to Free Billions in Frozen Capital?",
+      "subtitle": "Join us in transforming correspondent banking infrastructure",
+      "form": {
+        "name": "Full Name",
+        "title": "Title",
+        "company": "Bank / Institution",
+        "email": "Email Address",
+        "message": "How can we help?",
+        "submit": "Send Message"
+      },
+      "directContact": "Or contact us directly:",
+      "email": "contact@deltran.ai"
     }
   },
   "platform": {
     "meta": {
       "title": "Platform - DelTran",
-      "description": "A unified platform for banks, fintechs, businesses, and individuals to move money globally with speed, trust, and compliance."
+      "description": "Byzantine Fault Tolerant settlement infrastructure with Big 4 quality compliance reporting."
     },
     "hero": {
-      "title": "One platform for all",
-      "subtitle": "Built for banks, fintechs, businesses, and individuals — enabling fast, secure, and compliant money movement worldwide.",
-      "primaryCta": "Request Platform Access"
+      "badge": "Pre-Production MVP Ready",
+      "title": "Settlement Infrastructure That Works With Your Systems",
+      "subtitle": "6-second finality. 85% capital efficiency. Big 4 quality compliance.",
+      "cta": "Let's Talk"
     },
-    "overview": {
-      "title": "A platform that connects every player in the financial ecosystem",
-      "description": "DelTran is designed to serve the needs of banks seeking efficiency, fintechs aiming for innovation, businesses managing global operations, and individuals sending money across borders. Through one unified rail, it delivers instant-feel transfers, embedded compliance, and 24/7 availability."
+    "mission": {
+      "title": "Our Mission & Vision",
+      "mission": "Enable instant, efficient settlements for global banking",
+      "vision": "A world where international payments are as fast as local ones",
+      "values": "Security, Efficiency, Innovation"
     },
-    "keyFeatures": {
-      "title": "Key Advantages by Audience",
+    "capabilities": {
+      "title": "Platform Capabilities",
+      "subtitle": "Enterprise-grade infrastructure tested and ready",
+      "settlement": {
+        "title": "Instant Settlement",
+        "description": "From days to seconds with cryptographic certainty",
+        "items": [
+          "3,000+ TPS tested capacity",
+          "75ms processing latency (p95)",
+          "6-second Byzantine Fault Tolerant finality",
+          "85% multilateral netting efficiency"
+        ]
+      },
+      "compliance": {
+        "title": "Big 4 Quality Compliance",
+        "description": "One-click export. Audit-ready. Zero manual work.",
+        "items": [
+          "Download comprehensive audit reports from dashboard",
+          "Big 4 accounting firm quality standards",
+          "Automated AML/CFT and sanctions screening",
+          "ISO 20022 regulatory reporting",
+          "Tamper-proof cryptographic audit trails"
+        ]
+      },
+      "capital": {
+        "title": "Capital Efficiency",
+        "description": "Free billions in frozen correspondent accounts",
+        "items": [
+          "85% multilateral netting frees frozen capital",
+          "Reduce nostro/vostro requirements by 75-80%",
+          "Real-time liquidity management",
+          "Immediate ROI for participating banks"
+        ]
+      },
+      "integration": {
+        "title": "Zero Replacement Risk",
+        "description": "Works alongside your existing infrastructure",
+        "items": [
+          "REST and gRPC APIs",
+          "No core system changes required",
+          "Real-time webhooks for events",
+          "Monitoring dashboard included",
+          "Adopt incrementally, corridor by corridor"
+        ]
+      }
+    },
+    "architecture": {
+      "title": "Battle-Tested Technology Stack",
+      "subtitle": "Built for performance, security, and scale",
       "items": [
         {
-          "title": "For Banks",
-          "description": "Expand reach and reduce operational costs with a modern rail that works alongside existing infrastructure."
+          "title": "Rust Core",
+          "description": "Memory-safe, high-performance transaction processing"
         },
         {
-          "title": "For Fintechs",
-          "description": "Accelerate time-to-market with easy API integration and global corridor access."
+          "title": "Go API Gateway",
+          "description": "3,000+ TPS tested capacity with 75ms latency"
         },
         {
-          "title": "For Businesses",
-          "description": "Speed up cross-border B2B payments, payroll, and supplier settlements while controlling costs."
+          "title": "CometBFT Consensus",
+          "description": "Byzantine Fault Tolerant finality in 6 seconds"
         },
         {
-          "title": "For Individuals",
-          "description": "Send money instantly, affordably, and with full transparency — anytime, anywhere."
-        },
-        {
-          "title": "Always-On Operations",
-          "description": "24/7 availability across time zones, matching the pace of the global economy."
-        },
-        {
-          "title": "Compliance Built-In",
-          "description": "Adaptable to both local and global regulatory requirements from day one."
+          "title": "Event Sourcing",
+          "description": "RocksDB for complete audit trail and replay capability"
         }
       ]
     },
-    "features": {
-      "title": "Platform Capabilities",
-      "liquidity": {
-        "title": "Intelligent Liquidity Management",
-        "description": "Optimize routes for cost, speed, and reliability across corridors."
+    "cta": {
+      "title": "Ready to Transform Your Settlement Infrastructure?",
+      "subtitle": "Join us in freeing billions in frozen capital with Big 4 quality compliance",
+      "button": "Let's Talk"
+    }
+  },
+  "banks": {
+    "meta": {
+      "title": "For Banks - DelTran",
+      "description": "Free billions in frozen capital. 6-second settlements. Big 4 quality compliance."
+    },
+    "hero": {
+      "badge": "Regulated in ADGM - Global Financial Hub",
+      "title": "Free Billions in Frozen Capital",
+      "subtitle": "6-second Byzantine Fault Tolerant settlements with 85% netting efficiency",
+      "description": "Built for banks. Planned registration in Abu Dhabi Global Market (ADGM) - the fintech-friendly international financial hub with world-class reputation.",
+      "cta": "Let's Talk"
+    },
+    "adgm": {
+      "title": "Why ADGM Registration Matters",
+      "subtitle": "World-class regulatory framework for banking innovation",
+      "benefits": [
+        {
+          "title": "Fintech-Friendly Regulation",
+          "description": "ADGM's progressive regulatory framework designed specifically for financial technology innovation"
+        },
+        {
+          "title": "International Financial Hub",
+          "description": "Global reputation and recognition as a leading financial center connecting East and West"
+        },
+        {
+          "title": "Banking Trust",
+          "description": "Regulatory oversight that banks trust - meeting international standards for financial services"
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Department-Specific Benefits",
+      "cfo": {
+        "title": "For CFO",
+        "description": "Capital Efficiency & Cost Reduction",
+        "items": [
+          "Free 75-80% of frozen correspondent capital",
+          "Reduce operational costs through automation",
+          "Improve liquidity management",
+          "Optimize FX operations"
+        ]
       },
-      "compliance": {
-        "title": "Integrated Compliance",
-        "description": "Seamlessly align with jurisdiction-specific requirements without slowing transactions."
+      "cto": {
+        "title": "For CTO",
+        "description": "Modern API-First Architecture",
+        "items": [
+          "REST/gRPC integration",
+          "No core system replacement needed",
+          "Cloud-native design",
+          "Horizontal scalability"
+        ]
       },
-      "settlement": {
-        "title": "Reliable Settlement",
-        "description": "Achieve consistent finality regardless of banking hours or holidays."
+      "cro": {
+        "title": "For CRO",
+        "description": "Reduced Operational Risks",
+        "items": [
+          "Automated settlement reconciliation",
+          "Real-time risk scoring",
+          "Cryptographic audit trail",
+          "Byzantine Fault Tolerant consensus"
+        ]
       },
-      "developer": {
-        "title": "Developer-Friendly",
-        "description": "Straightforward integration process with responsive support."
+      "cco": {
+        "title": "For CCO",
+        "description": "Automated Compliance",
+        "items": [
+          "Built-in AML/CFT monitoring",
+          "Automatic regulatory reporting",
+          "ISO 20022 compliance",
+          "Tamper-proof logging"
+        ]
+      }
+    },
+    "useCases": {
+      "title": "Use Cases",
+      "international": {
+        "title": "International Settlements",
+        "description": "Process cross-border transactions in 6 seconds instead of 2-5 days"
+      },
+      "multicurrency": {
+        "title": "Multi-Currency Operations",
+        "description": "Optimize FX operations and reduce conversion costs"
+      },
+      "correspondent": {
+        "title": "Correspondent Banking Optimization",
+        "description": "Reduce nostro/vostro requirements by 75-80% through multilateral netting"
       }
     },
     "integration": {
-      "title": "Integration Process",
-      "subtitle": "From access request to live transactions in four steps",
-      "steps": [
-        "Request platform access",
-        "Set up corridors and compliance preferences",
-        "Run test transactions in a safe environment",
-        "Go live and start processing real payments"
+      "title": "DelTran Complements Your Infrastructure",
+      "description": "Seamlessly integrates with your existing banking systems - no replacement needed",
+      "items": [
+        "API-first integration",
+        "No core system changes",
+        "Compatible with existing workflows",
+        "Gradual adoption possible"
       ]
     },
-    "useCases": {
-      "title": "Who benefits from DelTran",
-      "banks": {
-        "title": "Banks",
-        "description": "Extend your reach, cut correspondent costs, and scale beyond traditional hours."
-      },
-      "fintechs": {
-        "title": "Fintechs",
-        "description": "Offer global payments and remittances without building infrastructure from scratch."
-      },
-      "businesses": {
-        "title": "Businesses",
-        "description": "Streamline B2B payments, payroll, and supplier payouts worldwide."
-      },
-      "individuals": {
-        "title": "Individuals",
-        "description": "Send and receive money instantly and cost-effectively across borders."
-      }
-    },
-    "pricing": {
-      "title": "Transparent and Flexible Pricing",
-      "description": "Simple models that adapt to your volume and needs — no hidden fees."
-    },
     "cta": {
-      "title": "Ready to explore DelTran?",
-      "subtitle": "Learn how our platform can transform payments for banks, fintechs, businesses, and individuals.",
-      "primaryButton": "Request Platform Access"
+      "title": "Ready to Transform Your Settlement Operations?",
+      "subtitle": "Contact us to discuss pilot deployment",
+      "button": "Let's Talk"
     }
   },
   "navigation": {
     "home": "Home",
+    "banks": "For Banks",
     "platform": "Platform",
     "investors": "Investors",
     "contact": "Contact",
-    "getStarted": "Get Started"
+    "getStarted": "Let's Talk"
   },
   "investors": {
     "meta": {
-      "title": "Investors - DelTran",
-      "description": "Be part of building the next-generation global payment rail."
+      "title": "For Investors - DelTran",
+      "description": "Invest in the future of global finance. Pre-Production MVP transforming $3 trillion correspondent banking market."
     },
     "hero": {
-      "title": "For Investors",
-      "subtitle": "Join us in shaping the future of global money movement.",
-      "primaryCta": "Request Investor Brief",
-      "secondaryCta": "Schedule Call"
+      "title": "Unlocking $3 Trillion in Global Banking Infrastructure",
+      "subtitle": "The once-in-a-generation opportunity to transform how money moves between banks",
+      "badge": "Pre-Production MVP Ready",
+      "cta": "investors@deltran.ai"
     },
-    "overview": {
-      "title": "Investment Opportunity",
-      "lead": "DelTran is creating a single global rail for instant and trusted money movement — a foundation that aligns with regulatory standards while offering unmatched speed and accessibility to users worldwide.",
-      "highlights": [
-        { "label": "Mission", "value": "One Rail. Infinite Reach. Financial access everywhere, 24/7." },
-        { "label": "Vision", "value": "A connected world where money moves as easily as information." },
-        { "label": "Why Now", "value": "Global demand for instant and secure payments is accelerating — and the market is ready for transformation." }
+    "vision": {
+      "title": "The Vision",
+      "tagline": "Imagine a world where international payments move as fast as your thoughts",
+      "description": "Every day, $3 trillion sits frozen in correspondent banking accounts worldwide. Not earning. Not working. Just waiting. DelTran changes everything.",
+      "highlight": "We're not building another payment app. We're rebuilding the rails that move money between every bank on Earth."
+    },
+    "problem": {
+      "title": "The $3 Trillion Problem Nobody Sees",
+      "subtitle": "While fintechs fight over consumer payments, the real giant sleeps untouched",
+      "stats": [
+        { "value": "$3T", "label": "Frozen Capital", "description": "Locked in correspondent banking accounts globally" },
+        { "value": "2-5 days", "label": "Settlement Time", "description": "For international bank-to-bank transfers" },
+        { "value": "75-80%", "label": "Capital Waste", "description": "Of nostro/vostro balances could be freed" },
+        { "value": "$150B+", "label": "Annual Opportunity", "description": "In operational costs and capital efficiency" }
+      ],
+      "insight": "Banks don't have a payments problem. They have a settlement problem. And it's costing them billions."
+    },
+    "solution": {
+      "title": "One Rail. Infinite Reach.",
+      "subtitle": "The world's first Byzantine Fault Tolerant settlement infrastructure for banks",
+      "features": [
+        { "title": "85% Capital Release", "description": "Multilateral netting frees billions in frozen correspondent accounts", "impact": "Immediate ROI for every participating bank" },
+        { "title": "6-Second Finality", "description": "From days to seconds. Instant settlement with cryptographic certainty", "impact": "Transform liquidity management overnight" },
+        { "title": "3,000+ TPS Capacity", "description": "Built for global scale from day one. Tested and proven", "impact": "Handle entire banking corridors in real-time" },
+        { "title": "Zero Replacement Risk", "description": "API-first integration. Works alongside existing systems", "impact": "Banks can adopt incrementally, corridor by corridor" }
       ]
-    },
-    "metrics": {
-      "title": "Key Indicators",
-      "subtitle": "Performance and growth potential",
-      "items": [
-        { "metric": "Time-to-credit", "current": "< 10 seconds", "description": "From initiation to completion, across supported corridors." },
-        { "metric": "Cost efficiency", "current": "Significant reduction vs. traditional channels", "description": "Lowering barriers for individuals, businesses, and institutions." },
-        { "metric": "Availability", "current": "99.99%", "description": "Always-on infrastructure to meet the demands of a global economy." }
-      ]
-    },
-    "targetSegments": {
-      "title": "Target Segments",
-      "segments": [
-        { "name": "International Remittances", "volume": "$860B annually (2024)", "description": "Serving migrant worker flows from high-labor-export countries with instant transfers and minimal fees." },
-        { "name": "B2B International Settlements", "volume": "$1.4T in 2023 → $3.5T by 2033", "description": "Reducing costs and settlement times for SMEs and corporates." },
-        { "name": "Cross-border E-commerce & Marketplaces", "volume": "$3.3T in 2024", "description": "Enabling localised processing to reduce conversion losses and improve checkout UX." },
-        { "name": "Local P2P & B2C Transfers", "volume": "Tens of trillions in transactions (lower total value than FX)", "description": "Faster, cheaper domestic payments in markets where bank rails are slow or expensive." },
-        { "name": "Currency Imbalance Corridors", "description": "Optimising liquidity in one-way-heavy corridors to reduce FX exchange requirements." }
-      ]
-    },
-    "growth": {
-      "title": "Global Growth Potential",
-      "description": "Every new participant strengthens the network, expands reach, and increases value for all stakeholders."
-    },
-    "market": {
-      "title": "Market Opportunity",
-      "tam": { "title": "TAM", "value": "$5.6T+", "description": "Combined annual volume across cross-border remittances (~$860B), B2B international settlements (~$1.4T), e-commerce & marketplace payments (~$3.3T), and other cross-border flows." },
-      "sam": { "title": "SAM", "value": "$2.26T", "description": "Targetable high-value segments in initial focus: remittances in MENA–Asia corridors, SME B2B settlements, and cross-border e-commerce." },
-      "som": { "title": "SOM", "value": "$50B+", "description": "Achievable within 5 years through phased rollout starting with UAE & MENA, then scaling to Europe, Israel, the Americas, CIS, and Africa." },
-      "growth": { "title": "CAGR", "value": "7.5%", "description": "Projected combined market growth across target segments." }
     },
     "traction": {
-      "title": "Traction & Milestones",
-      "achieved": {
-        "title": "Achieved",
-        "items": [
-          "Pilot program with a leading bank in the UAE",
-          "Core platform live in initial corridors",
-          "Early institutional partnerships established"
+      "title": "Built. Tested. Ready.",
+      "subtitle": "This isn't vaporware. The infrastructure is live.",
+      "metrics": [
+        { "metric": "System Performance", "value": "3,000+ TPS", "detail": "Tested transaction throughput capacity", "status": "Validated" },
+        { "metric": "Processing Speed", "value": "75ms", "detail": "Average latency (p95)", "status": "Validated" },
+        { "metric": "Capital Efficiency", "value": "85%", "detail": "Multilateral netting achieved in testing", "status": "Validated" },
+        { "metric": "Settlement Time", "value": "6 seconds", "detail": "Byzantine Fault Tolerant finality", "status": "Validated" }
+      ],
+      "status": "Pre-Production MVP",
+      "readiness": "Ready for pilot banking partnerships and production deployment"
+    },
+    "market": {
+      "title": "The Market Opportunity",
+      "subtitle": "We're not chasing a market. We're creating one.",
+      "overview": "While consumer fintech battles for basis points, correspondent banking infrastructure remains a $5.6 trillion opportunity virtually untouched by modern technology.",
+      "segments": [
+        {
+          "name": "Correspondent Banking Infrastructure",
+          "size": "$3T+ frozen capital",
+          "growth": "Core market",
+          "why": "Every international bank needs this. No alternatives exist. Network effects are exponential."
+        },
+        {
+          "name": "International Remittances",
+          "size": "$860B annually",
+          "growth": "8-10% YoY",
+          "why": "Instant settlement enables real-time remittances at fraction of current costs"
+        },
+        {
+          "name": "B2B Cross-Border Settlements",
+          "size": "$1.4T → $3.5T by 2033",
+          "growth": "150% over 10 years",
+          "why": "SMEs and corporates desperate for faster, cheaper international payments"
+        },
+        {
+          "name": "Cross-Border E-commerce",
+          "size": "$3.3T in 2024",
+          "growth": "Double-digit annually",
+          "why": "Real-time settlement unlocks better FX rates and checkout experiences"
+        }
+      ],
+      "tam": { "value": "$5.6T+", "description": "Total addressable market across all banking settlement flows" },
+      "approach": "Start with correspondent banking optimization. Expand to remittances and B2B. Scale to e-commerce settlement."
+    },
+    "why": {
+      "title": "Why Now? Why Us?",
+      "timing": {
+        "title": "The Perfect Storm",
+        "reasons": [
+          "Central banks worldwide exploring settlement infrastructure modernization",
+          "Basel III capital requirements making correspondent banking increasingly expensive",
+          "Banks seeking cost reduction without system replacement risk",
+          "Byzantine Fault Tolerant consensus now mature and battle-tested",
+          "Regulatory acceptance of distributed settlement infrastructure growing"
         ]
       },
-      "upcoming": {
-        "title": "Next 12 Months",
-        "items": [
-          "Expansion to priority regions",
-          "Onboarding of additional enterprise clients",
-          "Strategic funding round for accelerated scaling"
+      "moat": {
+        "title": "The Unfair Advantages",
+        "advantages": [
+          { "title": "Network Effects", "description": "Every bank that joins makes the network more valuable for everyone. Exponential value creation." },
+          { "title": "Technical Barrier", "description": "Building Byzantine Fault Tolerant consensus for financial settlement requires years. We're already there." },
+          { "title": "Regulatory Positioning", "description": "Designed for compliance from day one. Built-in AML/CFT, ISO 20022, audit trails." },
+          { "title": "First-Mover in Infrastructure", "description": "Consumer fintech is crowded. Banking infrastructure is wide open. We're first." }
         ]
       }
     },
-    "team": {
-      "title": "Leadership Team",
-      "members": [
-        { "name": "Ruslan Oksman", "role": "CEO & Founder", "bio": "Seasoned entrepreneur with over a decade in global payments and financial innovation." }
-      ]
+    "business": {
+      "title": "The Business Model",
+      "subtitle": "Revenue grows with every transaction, every bank, every corridor",
+      "model": [
+        { "stream": "Transaction Fees", "description": "Basis points on settlement volume", "scale": "Billions in transaction volume = millions in recurring revenue" },
+        { "stream": "Network Membership", "description": "Annual fees for participating banks", "scale": "Each bank unlocks billions in capital efficiency" },
+        { "stream": "Corridor Activation", "description": "Setup fees for new banking corridors", "scale": "Thousands of potential corridors globally" },
+        { "stream": "Premium Services", "description": "Advanced analytics, liquidity optimization, FX services", "scale": "High-margin add-ons for established clients" }
+      ],
+      "unit_economics": "Once infrastructure is deployed, marginal costs near zero. Each new transaction is almost pure profit."
     },
     "roadmap": {
-      "title": "Strategic Roadmap",
+      "title": "The Path Forward",
+      "subtitle": "From MVP to global infrastructure in 24 months",
       "phases": [
-        { "quarter": "Phase 1", "title": "Pilot Launch", "items": ["UAE and MENA as pilot region", "Foundation for compliance and operational frameworks"] },
-        { "quarter": "Phase 2", "title": "Regional Expansion", "items": ["Scale to Europe, Israel, the Americas, CIS, and Africa", "Partnerships with financial institutions and ecosystems"] },
-        { "quarter": "Phase 3", "title": "Global Expansion", "items": ["Unified coverage across major corridors", "Sustainable growth with diversified market presence"] }
+        { "phase": "Now", "title": "Pre-Production MVP", "description": "Infrastructure tested and validated. Ready for pilots." },
+        { "phase": "6 months", "title": "First Banking Partnerships", "description": "Launch pilot corridors with 3-5 banks. Prove real-world value." },
+        { "phase": "12 months", "title": "Network Expansion", "description": "Scale to 20+ banks. Multiple corridors. Billions in settlement volume." },
+        { "phase": "24 months", "title": "Market Leadership", "description": "Dominant position in correspondent banking settlement. Expansion to adjacent markets." }
       ]
     },
-    "round": {
-      "title": "Investment Terms",
-      "details": { "stage": "Pre-seed Round", "target": "$500,000", "lead": "In discussions", "close": "Q1 2025" }
+    "team": {
+      "title": "Built by Experts Who Understand Both Worlds",
+      "subtitle": "Deep banking domain expertise meets world-class distributed systems engineering",
+      "note": "Full team details available to serious investors"
     },
-    "risks": {
-      "title": "Considerations & Mitigation",
-      "items": [
-        { "risk": "Regulatory timelines", "mitigation": "Multi-region licensing strategy and early engagement with authorities." },
-        { "risk": "Competitive landscape", "mitigation": "Strong brand positioning, network effects, and strategic partnerships." },
-        { "risk": "Market adoption pace", "mitigation": "Phased rollout ensuring value creation from day one." }
-      ]
+    "ask": {
+      "title": "Join Us in Building the Future of Banking",
+      "subtitle": "This is more than an investment. It's a once-in-a-generation opportunity to rebuild global financial infrastructure.",
+      "opportunity": "We're not asking you to bet on a product. We're inviting you to own a piece of the rails that will move trillions.",
+      "cta_title": "Ready to Learn More?",
+      "cta_subtitle": "Let's discuss how you can be part of this transformation"
     },
     "contact": {
-      "title": "Get in Touch",
-      "subtitle": "Explore how you can be part of the DelTran journey",
-      "email": "investors@deltran.io",
-      "calendar": "Schedule a call"
+      "email": "investors@deltran.ai"
     }
   },
   "contact": {
     "meta": {
       "title": "Contact - DelTran",
-      "description": "Get in touch with DelTran for partnerships, inquiries, and support."
+      "description": "Get in touch with DelTran for partnerships and inquiries."
     },
     "hero": {
       "title": "Let's Connect",
-      "subtitle": "Ready to transform global payments? We're here to help."
+      "subtitle": "Ready to optimize your settlement infrastructure? We're here to help."
+    },
+    "info": {
+      "title": "Get in Touch",
+      "email": "contact@deltran.ai"
     },
     "form": {
       "name": "Full Name",
+      "title": "Title",
+      "company": "Bank / Institution",
       "email": "Email Address",
-      "company": "Company",
-      "subject": "Subject",
-      "message": "Message",
+      "message": "How can we help?",
       "submit": "Send Message",
       "submitting": "Sending...",
       "success": "Thank you for your message. We'll be in touch soon.",
       "error": "Something went wrong. Please try again."
-    },
-    "info": {
-      "title": "Get in Touch",
-      "email": { "label": "Email", "value": "hello@deltran.ai" },
-      "sales": { "label": "Sales", "value": "sales@deltran.ai" },
-      "support": { "label": "Support", "value": "support@deltran.ai" }
     }
   },
   "footer": {

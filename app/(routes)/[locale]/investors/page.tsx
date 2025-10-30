@@ -1,370 +1,188 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { 
-  ArrowRight, 
-  TrendingUp, 
-  Globe, 
-  Users, 
-  Target, 
-  Calendar, 
-  Mail, 
-  ChevronRight,
-  Shield,
+import { motion } from 'framer-motion';
+import {
+  TrendingUp,
   Zap,
-  Award,
-  BarChart3,
-  Building2,
-  Rocket,
+  Shield,
+  Globe,
+  ArrowRight,
   CheckCircle2,
-  AlertCircle,
-  DollarSign,
+  Mail,
+  Sparkles,
+  Target,
+  Rocket,
   Clock,
-  Network,
-  Briefcase
+  DollarSign
 } from 'lucide-react';
 import { Card } from '@/app/components/Card';
 import { SectionHeading } from '@/app/components/SectionHeading';
-import { useRef } from 'react';
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
 
 export default function InvestorsPage() {
   const t = useTranslations('investors');
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-  
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
 
   return (
-    <div className="relative overflow-hidden bg-black">
-      {/* Animated Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-midnight via-black to-black" />
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)'
-          }}
-        />
-      </div>
+    <div className="relative overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-midnight to-black" />
 
-      {/* Hero Section with Parallax */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center">
-        <motion.div 
-          animate={{ 
-            opacity: heroOpacity.get(), 
-            scale: heroScale.get() 
-          }}
-          className="relative container mx-auto px-6 py-32 text-center z-10"
-        >
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold/5 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold/5 rounded-full blur-3xl animate-pulse delay-1000" />
+        </div>
+
+        <div className="relative container mx-auto px-6 py-32 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            {/* Animated Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center px-4 py-2 rounded-full bg-gold/10 border border-gold/30 backdrop-blur-xl"
-            >
-              <Rocket className="w-4 h-4 text-gold mr-2" />
-              <span className="text-sm font-medium text-gold">Investment Opportunity</span>
-            </motion.div>
+            <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-gold/20 to-gold-light/20 border border-gold/40 backdrop-blur-sm">
+              <Sparkles className="w-5 h-5 text-gold mr-2" />
+              <span className="text-gold font-semibold text-sm uppercase tracking-wider">
+                {t('hero.badge')}
+              </span>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold"
-            >
-              <span className="text-white">Build the Future of</span>
-              <br />
-              <span className="text-gradient">Global Payments</span>
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto leading-relaxed"
-            >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold">
+              <span className="block text-white mb-4">{t('hero.title')}</span>
+            </h1>
+
+            <p className="text-2xl md:text-3xl text-white/70 max-w-4xl mx-auto font-light leading-relaxed">
               {t('hero.subtitle')}
-            </motion.p>
+            </p>
 
-            {/* CTA Buttons with Hover Effects */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center pt-8"
-            >
-              <motion.a
-                href="mailto:investors@deltran.io"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-semibold text-lg hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] transition-all duration-300"
+            <div className="pt-8">
+              <a
+                href={`mailto:${t('hero.cta')}`}
+                className="inline-flex items-center px-10 py-5 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-bold text-lg hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all duration-300 transform hover:scale-105"
               >
-                {t('hero.primaryCta')}
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-              <motion.a
-                href="https://calendly.com/deltran"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group inline-flex items-center px-8 py-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white font-semibold text-lg hover:bg-white/20 transition-all duration-300"
-              >
-                {t('hero.secondaryCta')}
-                <Calendar className="ml-2 w-5 h-5 group-hover:rotate-12 transition-transform" />
-              </motion.a>
-            </motion.div>
-
-            {/* Quick Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-12"
-            >
-              {[
-                { label: 'Market Size', value: '$5.6T+', icon: Globe },
-                { label: 'Growth Rate', value: '7.5% CAGR', icon: TrendingUp },
-                { label: 'Target Raise', value: '$500K', icon: Target }
-              ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <stat.icon className="w-6 h-6 text-gold mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white">{stat.value}</div>
-                  <div className="text-sm text-white/50">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
+                <Mail className="mr-3 w-6 h-6" />
+                {t('hero.cta')}
+                <ArrowRight className="ml-3 w-6 h-6" />
+              </a>
+            </div>
           </motion.div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center"
-          >
-            <div className="w-1 h-3 bg-white/50 rounded-full mt-2" />
-          </motion.div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* Investment Overview with Enhanced Design */}
+      {/* Vision Section */}
       <section className="py-32 relative">
         <div className="container mx-auto px-6">
-          <SectionHeading
-            title={t('overview.title')}
-            className="mb-16"
-          />
-          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-5xl mx-auto"
           >
-            <Card className="p-10 md:p-16 bg-gradient-to-br from-gold/10 via-gold/5 to-transparent border-gold/30 relative overflow-hidden">
-              {/* Decorative Elements */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-              
-              <div className="relative z-10">
-                <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-12">
-                  {t('overview.lead')}
-                </p>
-                
-                <div className="grid md:grid-cols-3 gap-8">
-                  {(t.raw('overview.highlights') as Array<{label: string; value: string}>).map((highlight, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10"
-                    >
-                      <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4">
-                        {index === 0 && <Target className="w-6 h-6 text-gold" />}
-                        {index === 1 && <Globe className="w-6 h-6 text-gold" />}
-                        {index === 2 && <Clock className="w-6 h-6 text-gold" />}
-                      </div>
-                      <h3 className="text-gold font-semibold mb-2">{highlight.label}</h3>
-                      <p className="text-white/70 text-sm">{highlight.value}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+            <div className="text-center mb-12">
+              <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                {t('vision.title')}
+              </h2>
+              <p className="text-2xl md:text-3xl text-gold font-light italic mb-8">
+                {t('vision.tagline')}
+              </p>
+            </div>
+
+            <Card gradient className="p-12 md:p-16 text-center">
+              <p className="text-xl md:text-2xl text-white/80 leading-relaxed mb-8">
+                {t('vision.description')}
+              </p>
+              <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent my-8" />
+              <p className="text-xl md:text-2xl text-white font-semibold">
+                {t('vision.highlight')}
+              </p>
             </Card>
           </motion.div>
         </div>
       </section>
 
-      {/* Market Opportunity with Interactive Cards */}
-      <section className="py-32 relative">
+      {/* Problem Section */}
+      <section className="py-32 relative bg-gradient-to-b from-black to-midnight">
         <div className="container mx-auto px-6">
           <SectionHeading
-            title={t('market.title')}
+            title={t('problem.title')}
+            subtitle={t('problem.subtitle')}
             className="mb-20"
           />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { key: 'tam', icon: Globe, color: 'from-blue-500 to-purple-500' },
-              { key: 'sam', icon: Target, color: 'from-green-500 to-teal-500' },
-              { key: 'som', icon: TrendingUp, color: 'from-orange-500 to-red-500' },
-              { key: 'growth', icon: BarChart3, color: 'from-purple-500 to-pink-500' },
-            ].map((item, index) => (
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {(t.raw('problem.stats') as Array<{value: string, label: string, description: string}>).map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="group"
               >
-                <Card gradient className="p-8 h-full relative overflow-hidden">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                  
-                  <div className="relative z-10">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold/20 to-gold/10 flex items-center justify-center mb-6">
-                      <item.icon className="w-7 h-7 text-gold" />
-                    </div>
-                    
-                    <h3 className="text-sm font-semibold text-white/60 uppercase tracking-wider mb-3">
-                      {t(`market.${item.key}.title`)}
-                    </h3>
-                    <div className="text-4xl font-bold text-gradient mb-3">
-                      {t(`market.${item.key}.value`)}
-                    </div>
-                    <p className="text-white/60 text-sm leading-relaxed">
-                      {t(`market.${item.key}.description`)}
-                    </p>
+                <Card className="p-8 text-center h-full bg-gradient-to-br from-gold/10 to-transparent border-gold/30">
+                  <div className="text-5xl md:text-6xl font-bold text-gradient mb-4">
+                    {stat.value}
                   </div>
+                  <div className="text-gold text-sm uppercase tracking-wider mb-3 font-semibold">
+                    {stat.label}
+                  </div>
+                  <p className="text-white/60 text-sm">
+                    {stat.description}
+                  </p>
                 </Card>
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <Card className="p-12 bg-gradient-to-br from-midnight to-black border-gold/40">
+              <p className="text-2xl md:text-3xl text-white text-center font-light italic">
+                &ldquo;{t('problem.insight')}&rdquo;
+              </p>
+            </Card>
+          </motion.div>
         </div>
       </section>
 
-      {/* Target Segments with Visual Hierarchy */}
+      {/* Solution Section */}
       <section className="py-32 relative">
         <div className="container mx-auto px-6">
           <SectionHeading
-            title={t('targetSegments.title')}
+            title={t('solution.title')}
+            subtitle={t('solution.subtitle')}
             className="mb-20"
           />
-          
-          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {(t.raw('targetSegments.segments') as Array<{name: string; volume?: string; description: string}>).map((segment, index) => (
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {(t.raw('solution.features') as Array<{title: string, description: string, impact: string}>).map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group"
               >
-                <Card className="p-8 h-full hover:border-gold/50 transition-all duration-300">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold/20 to-gold/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                      {index === 0 && <Users className="w-6 h-6 text-gold" />}
-                      {index === 1 && <Building2 className="w-6 h-6 text-gold" />}
-                      {index === 2 && <Globe className="w-6 h-6 text-gold" />}
-                      {index === 3 && <Network className="w-6 h-6 text-gold" />}
-                      {index === 4 && <DollarSign className="w-6 h-6 text-gold" />}
+                <Card gradient className="p-10 h-full hover:shadow-[0_0_40px_rgba(212,175,55,0.3)] transition-all duration-300">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center flex-shrink-0">
+                      <Zap className="w-6 h-6 text-gold" />
                     </div>
-                    
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-white mb-2">
-                        {segment.name}
-                      </h3>
-                      {segment.volume && (
-                        <div className="text-gold font-semibold mb-3">
-                          {segment.volume}
-                        </div>
-                      )}
-                      <p className="text-white/60 leading-relaxed">
-                        {segment.description}
-                      </p>
-                    </div>
+                    <h3 className="text-2xl font-bold text-white pt-2">
+                      {feature.title}
+                    </h3>
                   </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Key Metrics Dashboard */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6">
-          <SectionHeading
-            title={t('metrics.title')}
-            subtitle={t('metrics.subtitle')}
-            className="mb-20"
-          />
-          
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {(t.raw('metrics.items') as Array<{metric: string; current: string; description: string}>).map((metric, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group"
-              >
-                <Card gradient className="p-10 text-center relative overflow-hidden">
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  />
-                  
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center mx-auto mb-6">
-                      {index === 0 && <Zap className="w-8 h-8 text-gold" />}
-                      {index === 1 && <Shield className="w-8 h-8 text-gold" />}
-                      {index === 2 && <Award className="w-8 h-8 text-gold" />}
-                    </div>
-                    
-                    <div className="text-sm font-semibold text-white/60 uppercase tracking-wider mb-3">
-                      {metric.metric}
-                    </div>
-                    <div className="text-3xl md:text-4xl font-bold text-gradient mb-4">
-                      {metric.current}
-                    </div>
-                    <p className="text-white/60 text-sm leading-relaxed">
-                      {metric.description}
+                  <p className="text-white/70 text-lg mb-4 leading-relaxed">
+                    {feature.description}
+                  </p>
+                  <div className="flex items-start gap-2 pt-4 border-t border-white/10">
+                    <ArrowRight className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
+                    <p className="text-gold font-medium">
+                      {feature.impact}
                     </p>
                   </div>
                 </Card>
@@ -374,270 +192,270 @@ export default function InvestorsPage() {
         </div>
       </section>
 
-      {/* Traction & Milestones Timeline */}
+      {/* Traction Section */}
+      <section className="py-32 relative bg-gradient-to-b from-midnight to-black">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <SectionHeading
+              title={t('traction.title')}
+              subtitle={t('traction.subtitle')}
+              className="mb-20"
+            />
+
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              {(t.raw('traction.metrics') as Array<{metric: string, value: string, detail: string, status: string}>).map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Card className="p-8 bg-gradient-to-br from-gold/5 to-transparent border-gold/30 h-full">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="text-sm text-gold uppercase tracking-wider font-semibold">
+                        {item.metric}
+                      </div>
+                      <div className="px-3 py-1 rounded-full bg-green-500/20 border border-green-500/40">
+                        <span className="text-green-400 text-xs font-semibold">{item.status}</span>
+                      </div>
+                    </div>
+                    <div className="text-5xl font-bold text-white mb-3">
+                      {item.value}
+                    </div>
+                    <p className="text-white/60">
+                      {item.detail}
+                    </p>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            <Card className="p-10 text-center bg-gradient-to-br from-gold/10 to-gold/5 border-gold/40">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/20 mb-6">
+                <CheckCircle2 className="w-8 h-8 text-gold" />
+              </div>
+              <div className="text-2xl font-bold text-white mb-2">{t('traction.status')}</div>
+              <p className="text-white/70 text-lg">{t('traction.readiness')}</p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Market Section */}
       <section className="py-32 relative">
         <div className="container mx-auto px-6">
           <SectionHeading
-            title={t('traction.title')}
-            className="mb-20"
+            title={t('market.title')}
+            subtitle={t('market.subtitle')}
+            className="mb-12"
           />
-          
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* Achieved */}
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto mb-16"
+          >
+            <p className="text-xl text-white/70 text-center leading-relaxed">
+              {t('market.overview')}
+            </p>
+          </motion.div>
+
+          <div className="space-y-6 max-w-5xl mx-auto mb-16">
+            {(t.raw('market.segments') as Array<{name: string, size: string, growth: string, why: string}>).map((segment, index) => (
               <motion.div
+                key={index}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
               >
-                <Card className="p-10 h-full bg-gradient-to-br from-green-500/10 to-transparent border-green-500/30">
-                  <div className="flex items-center mb-8">
-                    <CheckCircle2 className="w-8 h-8 text-green-500 mr-3" />
-                    <h3 className="text-2xl font-semibold text-white">
-                      {t('traction.achieved.title')}
-                    </h3>
-                  </div>
-                  <ul className="space-y-4">
-                    {(t.raw('traction.achieved.items') as string[]).map((item, i) => (
-                      <motion.li 
-                        key={i} 
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex items-start group"
-                      >
-                        <div className="w-2 h-2 rounded-full bg-green-500 mt-2 mr-4 flex-shrink-0 group-hover:scale-150 transition-transform" />
-                        <span className="text-white/80 leading-relaxed">{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </Card>
-              </motion.div>
-
-              {/* Upcoming */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <Card className="p-10 h-full bg-gradient-to-br from-blue-500/10 to-transparent border-blue-500/30">
-                  <div className="flex items-center mb-8">
-                    <Rocket className="w-8 h-8 text-blue-500 mr-3" />
-                    <h3 className="text-2xl font-semibold text-white">
-                      {t('traction.upcoming.title')}
-                    </h3>
-                  </div>
-                  <ul className="space-y-4">
-                    {(t.raw('traction.upcoming.items') as string[]).map((item, i) => (
-                      <motion.li 
-                        key={i}
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex items-start group"
-                      >
-                        <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 mr-4 flex-shrink-0 group-hover:scale-150 transition-transform" />
-                        <span className="text-white/80 leading-relaxed">{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </Card>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Strategic Roadmap */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6">
-          <SectionHeading
-            title={t('roadmap.title')}
-            className="mb-20"
-          />
-          
-          <div className="max-w-5xl mx-auto">
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-gold/50 via-gold/30 to-transparent" />
-              
-              <div className="space-y-16">
-                {(t.raw('roadmap.phases') as Array<{quarter: string; title: string; items: string[]}>).map((phase, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 }}
-                    className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                  >
+                <Card className="p-8 hover:border-gold/40 transition-all duration-300">
+                  <div className="flex items-start gap-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold to-gold-light flex items-center justify-center flex-shrink-0">
+                      <Target className="w-6 h-6 text-black" />
+                    </div>
                     <div className="flex-1">
-                      <Card className="p-8 bg-gradient-to-br from-gold/10 to-transparent border-gold/30">
-                        <div className="flex items-center mb-4">
-                          <div className="px-4 py-2 rounded-full bg-gold/20 border border-gold/40">
-                            <span className="text-gold font-semibold">{phase.quarter}</span>
-                          </div>
+                      <h3 className="text-2xl font-bold text-white mb-3">{segment.name}</h3>
+                      <div className="flex flex-wrap gap-4 mb-4">
+                        <div className="flex items-center gap-2">
+                          <DollarSign className="w-4 h-4 text-gold" />
+                          <span className="text-gold font-semibold">{segment.size}</span>
                         </div>
-                        <h3 className="text-2xl font-semibold text-white mb-4">{phase.title}</h3>
-                        <ul className="space-y-2">
-                          {phase.items.map((item: string, i: number) => (
-                            <li key={i} className="flex items-start">
-                              <ChevronRight className="w-4 h-4 text-gold mt-1 mr-2 flex-shrink-0" />
-                              <span className="text-white/70">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </Card>
+                        <div className="flex items-center gap-2">
+                          <TrendingUp className="w-4 h-4 text-green-400" />
+                          <span className="text-green-400 font-semibold">{segment.growth}</span>
+                        </div>
+                      </div>
+                      <p className="text-white/70 leading-relaxed">{segment.why}</p>
                     </div>
-                    
-                    {/* Timeline Node */}
-                    <div className="px-8 flex justify-center">
-                      <motion.div
-                        whileHover={{ scale: 1.2 }}
-                        className="w-6 h-6 rounded-full bg-gold border-4 border-black relative z-10"
-                      >
-                        <div className="absolute inset-0 rounded-full bg-gold animate-ping" />
-                      </motion.div>
-                    </div>
-                    
-                    <div className="flex-1" />
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Leadership Team */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6">
-          <SectionHeading
-            title={t('team.title')}
-            className="mb-20"
-          />
-          
-          <div className="max-w-3xl mx-auto">
-            {(t.raw('team.members') as Array<{name: string; role: string; bio: string}>).map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="group"
-              >
-                <Card gradient className="p-12 text-center relative overflow-hidden">
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  />
-                  
-                  <div className="relative z-10">
-                    <motion.div 
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
-                      className="w-32 h-32 rounded-full bg-gradient-to-br from-gold/30 to-gold/10 mx-auto mb-6 flex items-center justify-center border-2 border-gold/30"
-                    >
-                      <span className="text-4xl font-bold text-gold">
-                        {member.name.split(' ').map((n: string) => n[0]).join('')}
-                      </span>
-                    </motion.div>
-                    
-                    <h3 className="text-3xl font-semibold text-white mb-2">
-                      {member.name}
-                    </h3>
-                    <p className="text-gold text-lg mb-6">{member.role}</p>
-                    <p className="text-white/70 leading-relaxed max-w-2xl mx-auto">
-                      {member.bio}
-                    </p>
                   </div>
                 </Card>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Investment Terms */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6">
-          <SectionHeading
-            title={t('round.title')}
-            className="mb-20"
-          />
-          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <Card className="p-12 bg-gradient-to-br from-gold/20 to-gold/5 border-gold/30 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
-              
-              <div className="relative z-10 grid md:grid-cols-2 gap-8">
-                {Object.entries(t.raw('round.details') as Record<string, string>).map(([key, value], index) => (
-                  <motion.div 
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4">
-                      {index === 0 && <Briefcase className="w-6 h-6 text-gold" />}
-                      {index === 1 && <DollarSign className="w-6 h-6 text-gold" />}
-                      {index === 2 && <Users className="w-6 h-6 text-gold" />}
-                      {index === 3 && <Calendar className="w-6 h-6 text-gold" />}
-                    </div>
-                    <div className="text-sm font-semibold text-white/60 uppercase tracking-wider mb-2">
-                      {key.replace(/([A-Z])/g, ' $1').trim()}
-                    </div>
-                    <div className="text-2xl font-semibold text-white">
-                      {value}
-                    </div>
-                  </motion.div>
-                ))}
+            <Card className="p-12 text-center bg-gradient-to-br from-gold/20 to-gold/5 border-gold/40">
+              <div className="text-sm text-gold uppercase tracking-wider mb-3 font-semibold">Total Addressable Market</div>
+              <div className="text-6xl md:text-7xl font-bold text-gradient mb-4">
+                {(t.raw('market.tam') as {value: string}).value}
               </div>
+              <p className="text-white/70 text-lg mb-8">
+                {(t.raw('market.tam') as {description: string}).description}
+              </p>
+              <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent my-8" />
+              <p className="text-white/80 italic text-lg">
+                {t('market.approach')}
+              </p>
             </Card>
           </motion.div>
         </div>
       </section>
 
-      {/* Risk Mitigation */}
+      {/* Why Now Section */}
+      <section className="py-32 relative bg-gradient-to-b from-black to-midnight">
+        <div className="container mx-auto px-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-white text-center mb-20">
+            {t('why.title')}
+          </h2>
+
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Timing */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <Card gradient className="p-10 h-full">
+                <div className="flex items-center gap-3 mb-8">
+                  <Clock className="w-8 h-8 text-gold" />
+                  <h3 className="text-3xl font-bold text-white">{t('why.timing.title')}</h3>
+                </div>
+                <ul className="space-y-4">
+                  {(t.raw('why.timing.reasons') as string[]).map((reason, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-6 h-6 text-gold flex-shrink-0 mt-1" />
+                      <span className="text-white/80 text-lg leading-relaxed">{reason}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            </motion.div>
+
+            {/* Moat */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <Card gradient className="p-10 h-full">
+                <div className="flex items-center gap-3 mb-8">
+                  <Shield className="w-8 h-8 text-gold" />
+                  <h3 className="text-3xl font-bold text-white">{t('why.moat.title')}</h3>
+                </div>
+                <div className="space-y-6">
+                  {(t.raw('why.moat.advantages') as Array<{title: string, description: string}>).map((advantage, index) => (
+                    <div key={index}>
+                      <h4 className="text-xl font-semibold text-gold mb-2">{advantage.title}</h4>
+                      <p className="text-white/70 leading-relaxed">{advantage.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Business Model */}
       <section className="py-32 relative">
         <div className="container mx-auto px-6">
           <SectionHeading
-            title={t('risks.title')}
+            title={t('business.title')}
+            subtitle={t('business.subtitle')}
             className="mb-20"
           />
-          
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-6">
-              {(t.raw('risks.items') as Array<{risk: string; mitigation: string}>).map((item, index) => (
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-12">
+            {(t.raw('business.model') as Array<{stream: string, description: string, scale: string}>).map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="p-8 h-full border-gold/20 hover:border-gold/40 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
+                      <DollarSign className="w-5 h-5 text-gold" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white">{item.stream}</h3>
+                  </div>
+                  <p className="text-white/70 mb-4">{item.description}</p>
+                  <div className="pt-4 border-t border-white/10">
+                    <p className="text-gold text-sm font-medium">{item.scale}</p>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <Card className="p-10 text-center bg-gradient-to-br from-green-500/10 to-transparent border-green-500/30">
+              <p className="text-xl md:text-2xl text-white font-semibold">
+                {t('business.unit_economics')}
+              </p>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Roadmap */}
+      <section className="py-32 relative bg-gradient-to-b from-midnight to-black">
+        <div className="container mx-auto px-6">
+          <SectionHeading
+            title={t('roadmap.title')}
+            subtitle={t('roadmap.subtitle')}
+            className="mb-20"
+          />
+
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-6">
+              {(t.raw('roadmap.phases') as Array<{phase: string, title: string, description: string}>).map((phase, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="group"
                 >
-                  <Card className="p-8 h-full hover:border-gold/50 transition-all duration-300">
-                    <div className="flex items-center mb-4">
-                      <AlertCircle className="w-6 h-6 text-amber-500 mr-3" />
-                      <h3 className="text-lg font-semibold text-white">{item.risk}</h3>
-                    </div>
-                    <div className="pl-9">
-                      <div className="flex items-center mb-2">
-                        <Shield className="w-4 h-4 text-green-500 mr-2" />
-                        <span className="text-sm font-medium text-green-500">Mitigation</span>
+                  <Card className="p-8 border-gold/30 hover:border-gold/50 transition-all duration-300">
+                    <div className="flex items-start gap-6">
+                      <div className="flex-shrink-0">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center">
+                          <span className="text-black font-bold text-lg">{index + 1}</span>
+                        </div>
                       </div>
-                      <p className="text-white/60 text-sm leading-relaxed">
-                        {item.mitigation}
-                      </p>
+                      <div className="flex-1">
+                        <div className="text-sm text-gold uppercase tracking-wider mb-2 font-semibold">
+                          {phase.phase}
+                        </div>
+                        <h3 className="text-2xl font-bold text-white mb-3">{phase.title}</h3>
+                        <p className="text-white/70 text-lg leading-relaxed">{phase.description}</p>
+                      </div>
                     </div>
                   </Card>
                 </motion.div>
@@ -647,80 +465,70 @@ export default function InvestorsPage() {
         </div>
       </section>
 
-      {/* Final CTA Section */}
+      {/* Team */}
       <section className="py-32 relative">
         <div className="container mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative"
+            className="max-w-4xl mx-auto text-center"
           >
-            <Card className="p-16 md:p-24 text-center bg-gradient-to-br from-gold/20 via-gold/10 to-gold/5 border-gold/30 relative overflow-hidden">
-              {/* Animated Background Elements */}
-              <div className="absolute inset-0">
-                <motion.div
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.3, 0.5, 0.3],
-                  }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="absolute top-0 left-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl"
-                />
-                <motion.div
-                  animate={{
-                    scale: [1, 1.3, 1],
-                    opacity: [0.2, 0.4, 0.2],
-                  }}
-                  transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-                  className="absolute bottom-0 right-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl"
-                />
+            <Card gradient className="p-16">
+              <Globe className="w-16 h-16 text-gold mx-auto mb-6" />
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                {t('team.title')}
+              </h2>
+              <p className="text-xl text-white/70 mb-8">
+                {t('team.subtitle')}
+              </p>
+              <p className="text-gold italic">
+                {t('team.note')}
+              </p>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-32 relative bg-gradient-to-b from-black via-midnight to-black">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-5xl mx-auto"
+          >
+            <Card className="p-16 md:p-24 text-center bg-gradient-to-br from-gold/20 via-gold/10 to-gold/5 border-gold/50">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-gold to-gold-light mb-8">
+                <Rocket className="w-10 h-10 text-black" />
               </div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="relative z-10 space-y-8"
-              >
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="w-20 h-20 rounded-full bg-gradient-to-br from-gold to-gold-light mx-auto mb-8 flex items-center justify-center"
+
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                {t('ask.title')}
+              </h2>
+
+              <p className="text-2xl text-white/80 mb-8 font-light">
+                {t('ask.subtitle')}
+              </p>
+
+              <p className="text-xl text-white/70 mb-12 max-w-3xl mx-auto leading-relaxed">
+                {t('ask.opportunity')}
+              </p>
+
+              <div className="mb-12">
+                <h3 className="text-2xl font-semibold text-white mb-4">{t('ask.cta_title')}</h3>
+                <p className="text-white/60 mb-8">{t('ask.cta_subtitle')}</p>
+
+                <a
+                  href={`mailto:${t('contact.email')}`}
+                  className="inline-flex items-center px-12 py-6 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-bold text-xl hover:shadow-[0_0_60px_rgba(212,175,55,0.7)] transition-all duration-300 transform hover:scale-105"
                 >
-                  <Rocket className="w-10 h-10 text-black" />
-                </motion.div>
-                
-                <h2 className="text-4xl md:text-6xl font-bold text-white">
-                  {t('contact.title')}
-                </h2>
-                <p className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto leading-relaxed">
-                  {t('contact.subtitle')}
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
-                  <motion.a
-                    href="mailto:investors@deltran.io"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group inline-flex items-center px-10 py-5 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-semibold text-xl hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] transition-all duration-300"
-                  >
-                    <Mail className="mr-3 w-6 h-6 group-hover:rotate-12 transition-transform" />
-                    {t('contact.email')}
-                  </motion.a>
-                  <motion.a
-                    href="https://calendly.com/deltran"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group inline-flex items-center px-10 py-5 rounded-full bg-white/10 backdrop-blur-xl border-2 border-white/20 text-white font-semibold text-xl hover:bg-white/20 hover:border-white/40 transition-all duration-300"
-                  >
-                    <Calendar className="mr-3 w-6 h-6 group-hover:rotate-12 transition-transform" />
-                    {t('contact.calendar')}
-                  </motion.a>
-                </div>
-              </motion.div>
+                  <Mail className="mr-3 w-7 h-7" />
+                  {t('contact.email')}
+                  <ArrowRight className="ml-3 w-7 h-7" />
+                </a>
+              </div>
             </Card>
           </motion.div>
         </div>

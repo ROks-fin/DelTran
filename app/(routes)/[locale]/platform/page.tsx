@@ -2,24 +2,10 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { ArrowRight, Cpu, Shield, Globe, Code, CheckCircle, TrendingUp, Users, Building, Briefcase } from 'lucide-react';
+import { Zap, Shield, TrendingUp, Code, CheckCircle2, ArrowRight, Sparkles, Download, FileCheck } from 'lucide-react';
 import { Card } from '@/app/components/Card';
 import { SectionHeading } from '@/app/components/SectionHeading';
-import { Diagram } from '@/app/components/Diagram';
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
+import Link from 'next/link';
 
 export default function PlatformPage() {
   const t = useTranslations('platform');
@@ -27,171 +13,149 @@ export default function PlatformPage() {
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center">
+      <section className="relative min-h-screen flex items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-midnight to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold/5 via-transparent to-transparent" />
-        
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/10 via-transparent to-transparent" />
+
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold/5 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold/5 rounded-full blur-3xl animate-pulse delay-1000" />
+        </div>
+
         <div className="relative container mx-auto px-6 py-32 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-            className="space-y-6"
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
           >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient"
-            >
-              {t('hero.title')}
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl md:text-2xl text-white/60 max-w-4xl mx-auto"
+              className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-gold/20 to-gold-light/20 border border-gold/40 backdrop-blur-sm"
             >
-              {t('hero.subtitle')}
-            </motion.p>
+              <Sparkles className="w-5 h-5 text-gold mr-2" />
+              <span className="text-gold text-sm font-semibold uppercase tracking-wider">
+                {t('hero.badge')}
+              </span>
+            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <motion.a
-                href="https://deltran.ai"
-                target="_blank"
-                rel="noopener noreferrer"
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
+              {t('hero.title')}
+            </h1>
+            <p className="text-2xl md:text-3xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+              {t('hero.subtitle')}
+            </p>
+
+            <Link href="/contact">
+              <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-semibold text-lg hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] transition-all duration-300"
+                className="inline-flex items-center px-12 py-6 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-bold text-xl hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all duration-300"
               >
-                {t('hero.primaryCta')}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </motion.a>
-            </motion.div>
+                {t('hero.cta')}
+                <ArrowRight className="ml-3 w-6 h-6" />
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Overview Section */}
-      <section className="py-24 relative">
+      {/* Mission & Vision */}
+      <section className="py-32 relative bg-gradient-to-b from-black to-midnight">
         <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
-          >
-            <Card className="p-8 md:p-12 bg-gradient-to-br from-white/10 to-white/5 border-gold/20">
-              <h2 className="text-3xl font-bold text-white mb-6">
-                {t('overview.title')}
+          <Card className="p-12 md:p-16 max-w-5xl mx-auto bg-gradient-to-br from-gold/10 to-gold/5 border-gold/30">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-16">
+                {t('mission.title')}
               </h2>
-              <p className="text-white/70 text-lg leading-relaxed">
-                {t('overview.description')}
-              </p>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Key Features Grid */}
-      <section className="py-24 relative">
-        <div className="container mx-auto px-6">
-          <SectionHeading
-            title={t('keyFeatures.title')}
-            className="mb-16"
-          />
-          
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {(t.raw('keyFeatures.items') as Array<{title: string; description: string; icon: string}>).map((item, index) => (
-              <motion.div key={index} variants={fadeInUp}>
-                <Card gradient className="h-full p-8">
-                  <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center mb-4">
-                    {index === 0 && <Building className="w-6 h-6 text-gold" />}
-                    {index === 1 && <TrendingUp className="w-6 h-6 text-gold" />}
-                    {index === 2 && <Briefcase className="w-6 h-6 text-gold" />}
-                    {index === 3 && <Users className="w-6 h-6 text-gold" />}
-                    {index === 4 && <Globe className="w-6 h-6 text-gold" />}
-                    {index === 5 && <Shield className="w-6 h-6 text-gold" />}
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">
-                    {item.title}
+              <div className="grid md:grid-cols-3 gap-12">
+                <div>
+                  <h3 className="text-gold text-sm uppercase tracking-wider mb-4 font-bold">
+                    Mission
                   </h3>
-                  <p className="text-white/60">
-                    {item.description}
+                  <p className="text-white/80 text-lg leading-relaxed">
+                    {t('mission.mission')}
                   </p>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+                </div>
 
-      {/* Platform Architecture Diagram */}
-      <section className="py-24 relative">
-        <div className="container mx-auto px-6">
-          <SectionHeading
-            title="Platform Architecture"
-            subtitle="Intelligent routing and instant settlement across global corridors"
-            className="mb-16"
-          />
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="max-w-6xl mx-auto"
-          >
-            <Diagram />
-          </motion.div>
+                <div>
+                  <h3 className="text-gold text-sm uppercase tracking-wider mb-4 font-bold">
+                    Vision
+                  </h3>
+                  <p className="text-white/80 text-lg leading-relaxed">
+                    {t('mission.vision')}
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-gold text-sm uppercase tracking-wider mb-4 font-bold">
+                    Values
+                  </h3>
+                  <p className="text-white/80 text-lg leading-relaxed">
+                    {t('mission.values')}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </Card>
         </div>
       </section>
 
       {/* Platform Capabilities */}
-      <section className="py-24 relative">
+      <section className="py-32 relative">
         <div className="container mx-auto px-6">
           <SectionHeading
-            title={t('features.title')}
-            className="mb-16"
+            title={t('capabilities.title')}
+            subtitle={t('capabilities.subtitle')}
+            className="mb-20"
           />
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {[
-              { icon: Cpu, key: 'liquidity' },
-              { icon: Shield, key: 'compliance' },
-              { icon: Globe, key: 'settlement' },
-              { icon: Code, key: 'developer' },
-            ].map((feature, index) => (
+              { key: 'settlement', icon: Zap },
+              { key: 'compliance', icon: FileCheck },
+              { key: 'capital', icon: TrendingUp },
+              { key: 'integration', icon: Code }
+            ].map((capability, index) => (
               <motion.div
-                key={index}
+                key={capability.key}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="p-8 h-full">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="w-6 h-6 text-gold" />
+                <Card gradient className="p-10 h-full hover:shadow-[0_0_40px_rgba(212,175,55,0.3)] transition-all duration-300">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-14 h-14 rounded-xl bg-gold/20 flex items-center justify-center flex-shrink-0">
+                      <capability.icon className="w-7 h-7 text-gold" />
                     </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-white mb-2">
-                        {t(`features.${feature.key}.title`)}
-                      </h3>
-                      <p className="text-white/60">
-                        {t(`features.${feature.key}.description`)}
-                      </p>
-                    </div>
+                    <h3 className="text-2xl font-bold text-white">
+                      {t(`capabilities.${capability.key}.title`)}
+                    </h3>
                   </div>
+
+                  <p className="text-white/70 text-lg mb-6 leading-relaxed">
+                    {t(`capabilities.${capability.key}.description`)}
+                  </p>
+
+                  <ul className="space-y-3">
+                    {(t.raw(`capabilities.${capability.key}.items`) as string[]).map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                        <span className="text-white/80 leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </Card>
               </motion.div>
             ))}
@@ -199,77 +163,76 @@ export default function PlatformPage() {
         </div>
       </section>
 
-      {/* Integration Process */}
-      <section className="py-24 relative">
+      {/* Big 4 Compliance Feature Highlight */}
+      <section className="py-32 relative bg-gradient-to-b from-midnight to-black">
         <div className="container mx-auto px-6">
-          <SectionHeading
-            title={t('integration.title')}
-            subtitle={t('integration.subtitle')}
-            className="mb-16"
-          />
-          
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
+            className="max-w-5xl mx-auto"
           >
-            <div className="space-y-4">
-              {(t.raw('integration.steps') as string[]).map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Card className="p-6">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                        <span className="text-gold font-bold">{index + 1}</span>
-                      </div>
-                      <div className="flex items-center justify-between flex-1">
-                        <p className="text-white/80">{step}</p>
-                        <CheckCircle className="w-5 h-5 text-gold opacity-60" />
-                      </div>
-                    </div>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
+            <Card className="p-16 md:p-20 text-center bg-gradient-to-br from-green-500/10 via-gold/10 to-gold/5 border-gold/40">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gold/20 mb-8">
+                <Download className="w-10 h-10 text-gold" />
+              </div>
+
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Big 4 Quality Compliance Reporting
+              </h2>
+
+              <p className="text-2xl text-white/80 mb-8 leading-relaxed">
+                One button in your dashboard. Any audit report. Big 4 accounting firm quality.
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-6 mt-12">
+                <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                  <h3 className="text-gold font-semibold mb-2">Zero Manual Work</h3>
+                  <p className="text-white/70 text-sm">All compliance reporting automated</p>
+                </div>
+                <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                  <h3 className="text-gold font-semibold mb-2">Audit-Ready</h3>
+                  <p className="text-white/70 text-sm">Big 4 quality standards built-in</p>
+                </div>
+                <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                  <h3 className="text-gold font-semibold mb-2">One-Click Export</h3>
+                  <p className="text-white/70 text-sm">Download any report instantly</p>
+                </div>
+              </div>
+            </Card>
           </motion.div>
         </div>
       </section>
 
-      {/* Use Cases */}
-      <section className="py-24 relative">
+      {/* Architecture */}
+      <section className="py-32 relative">
         <div className="container mx-auto px-6">
           <SectionHeading
-            title={t('useCases.title')}
-            className="mb-16"
+            title={t('architecture.title')}
+            subtitle={t('architecture.subtitle')}
+            className="mb-20"
           />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: Building, key: 'banks' },
-              { icon: TrendingUp, key: 'fintechs' },
-              { icon: Briefcase, key: 'businesses' },
-              { icon: Users, key: 'individuals' },
-            ].map((useCase, index) => (
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {(t.raw('architecture.items') as Array<{title: string, description: string}>).map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card gradient className="p-6 h-full text-center">
-                  <useCase.icon className="w-12 h-12 text-gold mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-white mb-2">
-                    {t(`useCases.${useCase.key}.title`)}
-                  </h3>
-                  <p className="text-white/60 text-sm">
-                    {t(`useCases.${useCase.key}.description`)}
+                <Card className="p-10 h-full border-gold/30 hover:border-gold/50 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
+                      <Shield className="w-5 h-5 text-gold" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <p className="text-white/70 text-lg leading-relaxed">
+                    {item.description}
                   </p>
                 </Card>
               </motion.div>
@@ -279,33 +242,32 @@ export default function PlatformPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 relative">
+      <section className="py-32 relative bg-gradient-to-b from-black via-midnight to-black">
         <div className="container mx-auto px-6">
-          <Card className="p-12 md:p-16 text-center bg-gradient-to-br from-gold/20 to-gold/5 border-gold/30">
+          <Card className="p-16 md:p-24 text-center bg-gradient-to-br from-gold/20 via-gold/10 to-gold/5 border-gold/50">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-8"
             >
-              <h2 className="text-3xl md:text-5xl font-bold text-white">
+              <h2 className="text-4xl md:text-6xl font-bold text-white">
                 {t('cta.title')}
               </h2>
-              <p className="text-xl text-white/60 max-w-2xl mx-auto">
+              <p className="text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
                 {t('cta.subtitle')}
               </p>
-              
-              <motion.a
-                href="https://deltran.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-semibold text-lg hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] transition-all duration-300"
-              >
-                {t('cta.primaryButton')}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </motion.a>
+
+              <Link href="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center px-12 py-6 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-bold text-xl hover:shadow-[0_0_60px_rgba(212,175,55,0.7)] transition-all duration-300"
+                >
+                  {t('cta.button')}
+                  <ArrowRight className="ml-3 w-6 h-6" />
+                </motion.button>
+              </Link>
             </motion.div>
           </Card>
         </div>

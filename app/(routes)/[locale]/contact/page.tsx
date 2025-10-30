@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Mail, MessageSquare, Building, Send } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
 import { Card } from '@/app/components/Card';
-import { SectionHeading } from '@/app/components/SectionHeading';
 
 export default function ContactPage() {
   const t = useTranslations('contact');
@@ -13,7 +12,7 @@ export default function ContactPage() {
     name: '',
     email: '',
     company: '',
-    subject: '',
+    title: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,7 +21,7 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -31,10 +30,10 @@ export default function ContactPage() {
         name: '',
         email: '',
         company: '',
-        subject: '',
+        title: '',
         message: ''
       });
-      
+
       // Reset status after 5 seconds
       setTimeout(() => setSubmitStatus('idle'), 5000);
     }, 2000);
@@ -52,8 +51,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="relative min-h-[40vh] flex items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-midnight to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold/5 via-transparent to-transparent" />
-        
+
         <div className="relative container mx-auto px-6 py-24 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -64,11 +62,11 @@ export default function ContactPage() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient"
+              className="text-4xl md:text-6xl font-bold text-white"
             >
               {t('hero.title')}
             </motion.h1>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -110,16 +108,15 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-2">
-                        {t('form.email')}
+                      <label htmlFor="title" className="block text-sm font-medium text-white/80 mb-2">
+                        {t('form.title')}
                       </label>
                       <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
+                        type="text"
+                        id="title"
+                        name="title"
+                        value={formData.title}
                         onChange={handleChange}
-                        required
                         className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/40 focus:border-gold/50 focus:bg-white/10 transition-all duration-300"
                       />
                     </div>
@@ -140,14 +137,14 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-white/80 mb-2">
-                        {t('form.subject')}
+                      <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-2">
+                        {t('form.email')}
                       </label>
                       <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/40 focus:border-gold/50 focus:bg-white/10 transition-all duration-300"
@@ -213,7 +210,7 @@ export default function ContactPage() {
               </Card>
             </motion.div>
 
-            {/* Contact Information */}
+            {/* Contact Information - Only one email */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -224,72 +221,32 @@ export default function ContactPage() {
                 <h3 className="text-xl font-semibold text-white mb-6">
                   {t('info.title')}
                 </h3>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <Mail className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
-                    <div>
-                      <div className="text-sm text-white/60 mb-1">
-                        {t('info.email.label')}
-                      </div>
-                      <a
-                        href="mailto:hello@deltran.ai"
-                        className="text-white hover:text-gold transition-colors"
-                      >
-                        {t('info.email.value')}
-                      </a>
-                    </div>
-                  </div>
 
-                  <div className="flex items-start space-x-4">
-                    <Building className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
-                    <div>
-                      <div className="text-sm text-white/60 mb-1">
-                        {t('info.sales.label')}
-                      </div>
-                      <a
-                        href="mailto:sales@deltran.ai"
-                        className="text-white hover:text-gold transition-colors"
-                      >
-                        {t('info.sales.value')}
-                      </a>
-                    </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-gold" />
                   </div>
-
-                  <div className="flex items-start space-x-4">
-                    <MessageSquare className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
-                    <div>
-                      <div className="text-sm text-white/60 mb-1">
-                        {t('info.support.label')}
-                      </div>
-                      <a
-                        href="mailto:support@deltran.ai"
-                        className="text-white hover:text-gold transition-colors"
-                      >
-                        {t('info.support.value')}
-                      </a>
+                  <div>
+                    <div className="text-sm text-white/60 mb-2">
+                      Email
                     </div>
+                    <a
+                      href={`mailto:${t('info.email')}`}
+                      className="text-white text-lg hover:text-gold transition-colors font-medium"
+                    >
+                      {t('info.email')}
+                    </a>
                   </div>
                 </div>
               </Card>
 
               <Card className="p-8 bg-gradient-to-br from-gold/20 to-gold/5 border-gold/30">
                 <h3 className="text-lg font-semibold text-white mb-3">
-                  Ready to get started?
+                  Pre-Production MVP Ready
                 </h3>
                 <p className="text-white/70 text-sm mb-4">
-                  Join leading institutions building on DelTran&apos;s infrastructure.
+                  3,000+ TPS capacity tested with 85% netting efficiency. Ready for pilot deployments.
                 </p>
-                <motion.a
-                  href="https://deltran.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-semibold text-sm hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all duration-300"
-                >
-                  Visit deltran.ai
-                </motion.a>
               </Card>
             </motion.div>
           </div>

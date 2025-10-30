@@ -2,105 +2,32 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { ArrowRight, Shield, Zap, Globe, Eye, Check, TrendingUp, Users, Building, Briefcase } from 'lucide-react';
+import { Shield, Zap, TrendingUp, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
 import { Card } from '@/app/components/Card';
 import { SectionHeading } from '@/app/components/SectionHeading';
-import { useMemo } from 'react';
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
+import Link from 'next/link';
 
 export default function HomePage() {
   const t = useTranslations('home');
-  
-  // Optimize particle generation - reduce from 20 to 8 for better performance
-  const particles = useMemo(() => 
-    Array.from({ length: 8 }, (_, i) => ({
-      id: i,
-      x: `${Math.random() * 100}vw`,
-      y: `${Math.random() * 100}vh`
-    })), []
-  );
-
-  const safeT = (key: string, fallbackKey?: string): string => {
-    try {
-      return (t as any)(key);
-    } catch {
-      return fallbackKey ? (t as any)(fallbackKey) : '';
-    }
-  };
-
-  // Safely read comparison items to avoid runtime translation errors
-  const comparisonBeforeItems = useMemo(() => {
-    try {
-      const rawBefore = (t as any).raw('comparison.before.items');
-      return Array.isArray(rawBefore) ? rawBefore as string[] : [];
-    } catch {
-      return [];
-    }
-  }, [t]);
-
-  const comparisonAfterItems = useMemo(() => {
-    try {
-      const rawAfter = (t as any).raw('comparison.after.items');
-      return Array.isArray(rawAfter) ? rawAfter as string[] : [];
-    } catch {
-      return [];
-    }
-  }, [t]);
 
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
-        {/* Background effects */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-midnight to-black" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/10 via-transparent to-transparent" />
-        
-        {/* Optimized animated particles - reduced count and simplified animations */}
-        <div className="absolute inset-0">
-          {particles.map((particle) => (
-                         <motion.div
-               key={particle.id}
-               className="absolute w-1 h-1 bg-gold/30 rounded-full"
-               style={{
-                 left: particle.x,
-                 top: particle.y
-               } as React.CSSProperties}
-               initial={{ 
-                 x: 0,
-                 y: 0
-               }}
-               animate={{
-                 x: [`${Math.random() * 100}vw`, `${Math.random() * 100}vw`],
-                 y: [`${Math.random() * 100}vh`, `${Math.random() * 100}vh`],
-               }}
-               transition={{
-                 duration: 15 + (particle.id * 2), // Simplified timing
-                 repeat: Infinity,
-                 repeatType: "reverse",
-                 ease: "linear" // Use linear easing for better performance
-               }}
-             />
-          ))}
+
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold/5 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold/5 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
 
         <div className="relative container mx-auto px-6 py-32 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.8 }}
             className="space-y-8"
           >
             {/* Badge */}
@@ -108,9 +35,10 @@ export default function HomePage() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center px-4 py-2 rounded-full bg-gold/10 border border-gold/30 backdrop-blur-xl"
+              className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-gold/20 to-gold-light/20 border border-gold/40 backdrop-blur-sm"
             >
-              <span className="text-gold text-sm font-medium">
+              <Sparkles className="w-5 h-5 text-gold mr-2" />
+              <span className="text-gold text-sm font-semibold uppercase tracking-wider">
                 {t('hero.badge')}
               </span>
             </motion.div>
@@ -131,116 +59,102 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto"
+              className="text-2xl md:text-3xl text-white/90 font-semibold max-w-4xl mx-auto"
             >
               {t('hero.subtitle')}
             </motion.p>
 
-            {/* CTAs */}
-            <motion.div
+            {/* Description */}
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed"
             >
-              <motion.a
-                href="https://deltran.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-semibold text-lg hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] transition-all duration-300 flex items-center"
-              >
-                {t('hero.primaryCta')}
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-              <motion.a
-                href="https://deltran.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white font-semibold text-lg hover:bg-white/20 transition-all duration-300"
-              >
-                {t('hero.secondaryCta')}
-              </motion.a>
+              {t('hero.description')}
+            </motion.p>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex justify-center pt-4"
+            >
+              <Link href="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group px-12 py-6 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-bold text-xl hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all duration-300 flex items-center"
+                >
+                  {t('hero.cta')}
+                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2"
-          >
-            <div className="w-1 h-2 bg-white/60 rounded-full" />
-          </motion.div>
-        </motion.div>
       </section>
 
-      {/* Trust Indicators */}
-      <section className="py-20 relative">
+      {/* Problem Statement */}
+      <section className="py-32 relative bg-gradient-to-b from-black to-midnight">
         <div className="container mx-auto px-6">
           <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center max-w-4xl mx-auto"
           >
-            <h2 className="text-2xl font-semibold text-white/60">
-              {t('trust.title')}
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              {t('problem.title')}
             </h2>
+            <p className="text-2xl text-gold font-light italic mb-8">
+              {t('problem.subtitle')}
+            </p>
+            <p className="text-xl md:text-2xl text-white/70 leading-relaxed">
+              {t('problem.description')}
+            </p>
           </motion.div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { key: 'adgm', icon: Shield },
-              { key: 'bank', icon: Building },
-              { key: 'security', icon: Eye },
-              { key: 'availability', icon: Zap }
-            ].map((item, index) => (
-              <motion.div
-                key={item.key}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mx-auto mb-3">
-                  <item.icon className="w-6 h-6 text-gold" />
-                </div>
-                <p className="text-white/60 text-sm">
-                  {t(`trust.${item.key}`)}
-                </p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-24 relative">
+      {/* Solution */}
+      <section className="py-32 relative">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-5xl mx-auto"
+          >
+            <Card gradient className="p-12 md:p-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                {t('solution.title')}
+              </h2>
+              <p className="text-xl text-gold mb-6 font-semibold">
+                {t('solution.subtitle')}
+              </p>
+              <p className="text-xl text-white/70 leading-relaxed">
+                {t('solution.description')}
+              </p>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Value Propositions */}
+      <section className="py-32 relative bg-gradient-to-b from-midnight to-black">
         <div className="container mx-auto px-6">
           <SectionHeading
-            title={t('features.title')}
-            className="mb-16"
+            title={t('valueProps.title')}
+            className="mb-20"
           />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               { key: 'instant', icon: Zap },
-              { key: 'compliant', icon: Shield },
-              { key: 'global', icon: Globe },
-              { key: 'transparent', icon: Eye }
+              { key: 'capital', icon: TrendingUp },
+              { key: 'compliance', icon: Shield }
             ].map((feature, index) => (
               <motion.div
                 key={feature.key}
@@ -249,15 +163,107 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card gradient className="p-6 h-full">
-                  <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-gold" />
+                <Card gradient className="p-10 h-full hover:shadow-[0_0_40px_rgba(212,175,55,0.3)] transition-all duration-300">
+                  <div className="w-16 h-16 rounded-2xl bg-gold/20 flex items-center justify-center mx-auto mb-6">
+                    <feature.icon className="w-8 h-8 text-gold" />
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {t(`features.${feature.key}.title`)}
+                  <h3 className="text-2xl font-bold text-white mb-4 text-center">
+                    {t(`valueProps.${feature.key}.title`)}
                   </h3>
-                  <p className="text-white/60">
-                    {t(`features.${feature.key}.description`)}
+                  <p className="text-white/70 text-lg mb-6 text-center leading-relaxed">
+                    {t(`valueProps.${feature.key}.description`)}
+                  </p>
+                  <div className="pt-4 border-t border-white/10 text-center">
+                    <div className="flex items-center justify-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-gold flex-shrink-0" />
+                      <p className="text-gold font-medium">
+                        {t(`valueProps.${feature.key}.impact`)}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-32 relative">
+        <div className="container mx-auto px-6">
+          <SectionHeading
+            title={t('howItWorks.title')}
+            subtitle={t('howItWorks.subtitle')}
+            className="mb-20"
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {['step1', 'step2', 'step3', 'step4'].map((step, index) => (
+              <motion.div
+                key={step}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="relative"
+              >
+                <Card className="p-8 h-full border-gold/30 hover:border-gold/50 transition-all duration-300">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center text-black font-bold text-2xl mb-6">
+                    {index + 1}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    {t(`howItWorks.${step}.title`)}
+                  </h3>
+                  <p className="text-white/70 leading-relaxed">
+                    {t(`howItWorks.${step}.description`)}
+                  </p>
+                </Card>
+                {index < 3 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gold/30" />
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Metrics */}
+      <section className="py-32 relative bg-gradient-to-b from-midnight to-black">
+        <div className="container mx-auto px-6">
+          <SectionHeading
+            title={t('metrics.title')}
+            subtitle={t('metrics.subtitle')}
+            className="mb-20"
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {[
+              { key: 'tps' },
+              { key: 'latency' },
+              { key: 'netting' },
+              { key: 'finality' }
+            ].map((metric, index) => (
+              <motion.div
+                key={metric.key}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="p-6 md:p-8 h-full bg-gradient-to-br from-gold/5 to-transparent border-gold/30">
+                  <div className="text-xs md:text-sm text-gold uppercase tracking-wider mb-2 md:mb-3 font-semibold text-center">
+                    {t(`metrics.${metric.key}.label`)}
+                  </div>
+                  <div className="mb-2 md:mb-3 flex items-baseline justify-center gap-1 md:gap-2">
+                    <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient">
+                      {t(`metrics.${metric.key}.value`)}
+                    </span>
+                    <span className="text-xl sm:text-2xl md:text-3xl font-bold text-gradient">
+                      {t(`metrics.${metric.key}.unit`)}
+                    </span>
+                  </div>
+                  <p className="text-white/60 text-xs md:text-sm text-center">
+                    {t(`metrics.${metric.key}.detail`)}
                   </p>
                 </Card>
               </motion.div>
@@ -266,120 +272,83 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Comparison */}
-      <section className="py-24 relative">
+      {/* Why Banks Choose DelTran */}
+      <section className="py-32 relative">
         <div className="container mx-auto px-6">
           <SectionHeading
-            title={safeT('comparison.title')}
-            className="mb-16"
+            title={t('why.title')}
+            className="mb-20"
           />
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Before */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <Card className="p-8 h-full border-red-500/20 bg-red-500/5">
-                <h3 className="text-2xl font-semibold text-white mb-6">
-                  {safeT('comparison.before.title')}
-                </h3>
-                <ul className="space-y-4">
-                  {comparisonBeforeItems.map((item, i) => (
-                    <li key={i} className="flex items-start">
-                      <div className="w-5 h-5 rounded-full bg-red-500/20 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                        <div className="w-2 h-2 bg-red-500 rounded-full" />
-                      </div>
-                      <span className="text-white/60">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </motion.div>
 
-            {/* After */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <Card className="p-8 h-full border-green-500/20 bg-green-500/5">
-                <h3 className="text-2xl font-semibold text-white mb-6">
-                  {safeT('comparison.after.title')}
-                </h3>
-                <ul className="space-y-4">
-                  {comparisonAfterItems.map((item, i) => (
-                    <li key={i} className="flex items-start">
-                      <Check className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                      <span className="text-white/60">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Network Stats */}
-      <section className="py-24 relative">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {[
-              { icon: TrendingUp, value: '10 seconds', label: 'Settlement time' },
-              { icon: Users, value: '99.99%', label: 'Uptime SLA' },
-              { icon: Briefcase, value: '24/7/365', label: 'Always available' }
-            ].map((stat, index) => (
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {(t.raw('why.reasons') as Array<{title: string, description: string}>).map((reason, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center"
               >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/20 to-gold/10 flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-8 h-8 text-gold" />
-                </div>
-                <div className="text-3xl font-bold text-gradient mb-2">
-                  {stat.value}
-                </div>
-                <p className="text-white/60">{stat.label}</p>
+                <Card className="p-10 h-full border-gold/20 hover:border-gold/40 transition-all duration-300">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="w-6 h-6 text-gold" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white pt-1">
+                      {reason.title}
+                    </h3>
+                  </div>
+                  <p className="text-white/70 text-lg leading-relaxed pl-14">
+                    {reason.description}
+                  </p>
+                </Card>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 relative">
+      {/* Contact CTA Section */}
+      <section className="py-32 relative bg-gradient-to-b from-black via-midnight to-black">
         <div className="container mx-auto px-6">
-          <Card className="p-12 md:p-16 text-center bg-gradient-to-br from-gold/20 to-gold/5 border-gold/30">
+          <Card className="p-16 md:p-24 text-center bg-gradient-to-br from-gold/20 via-gold/10 to-gold/5 border-gold/50">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-8"
             >
-              <h2 className="text-3xl md:text-5xl font-bold text-white">
-                {t('cta.title')}
+              <h2 className="text-4xl md:text-6xl font-bold text-white">
+                {t('contact.title')}
               </h2>
-              <p className="text-xl text-white/60 max-w-2xl mx-auto">
-                {t('cta.subtitle')}
+              <p className="text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+                {t('contact.subtitle')}
               </p>
-              
-              <motion.a
-                href="https://deltran.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-semibold text-lg hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] transition-all duration-300"
-              >
-                {safeT('cta.button', 'cta.primaryButton')}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </motion.a>
+
+              <div className="flex flex-col items-center gap-6 pt-6">
+                <Link href="/contact">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center px-12 py-6 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-bold text-xl hover:shadow-[0_0_60px_rgba(212,175,55,0.7)] transition-all duration-300"
+                  >
+                    {t('cta.button')}
+                    <ArrowRight className="ml-3 w-6 h-6" />
+                  </motion.button>
+                </Link>
+
+                <div className="text-center pt-4">
+                  <p className="text-white/50 text-sm mb-3 uppercase tracking-wider">
+                    {t('contact.directContact')}
+                  </p>
+                  <a
+                    href="mailto:contact@deltran.ai"
+                    className="text-gold hover:text-gold-light transition-colors text-2xl font-semibold"
+                  >
+                    {t('contact.email')}
+                  </a>
+                </div>
+              </div>
             </motion.div>
           </Card>
         </div>

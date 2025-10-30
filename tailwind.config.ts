@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import { tailwindBreakpoints } from './app/lib/responsive/breakpoints'
 
 const config: Config = {
   darkMode: ['class'],
@@ -9,6 +10,8 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // Ultra-premium responsive breakpoints
+      screens: tailwindBreakpoints.screens,
       colors: {
         // Luxury color palette
         midnight: '#0a0a0a',

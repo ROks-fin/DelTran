@@ -1,0 +1,333 @@
+# Deltran.ai Robots.txt
+# Optimized for AI Search Engines and Traditional Crawlers
+# Last Updated: 2024-01-20
+
+# ========================================
+# ALLOW ALL LEGITIMATE CRAWLERS
+# ========================================
+User-agent: *
+Allow: /
+Disallow: /api/private/
+Disallow: /admin/
+Disallow: /_next/static/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*?*utm_source=
+Disallow: /*?*sessionid=
+
+# ========================================
+# AI SEARCH ENGINES - FULL ACCESS
+# ========================================
+
+# OpenAI (ChatGPT, GPT-4)
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 1
+
+# Anthropic (Claude)
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 1
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 1
+
+# Google AI (Bard, Gemini)
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 1
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /
+Crawl-delay: 1
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+Crawl-delay: 1
+
+# AI2 Bot (Allen Institute for AI)
+User-agent: ai2-crawler
+Allow: /
+Crawl-delay: 1
+
+# ========================================
+# TRADITIONAL SEARCH ENGINES
+# ========================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Video
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-News
+Allow: /
+Crawl-delay: 0
+
+User-agent: Storebot-Google
+Allow: /
+Crawl-delay: 0
+
+User-agent: AdsBot-Google
+Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: BingPreview
+Allow: /
+Crawl-delay: 1
+
+User-agent: msnbot
+Allow: /
+Crawl-delay: 1
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexImages
+Allow: /
+Crawl-delay: 2
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: Baiduspider-image
+Allow: /
+Crawl-delay: 2
+
+# Naver (Korean)
+User-agent: Yeti
+Allow: /
+Crawl-delay: 1
+
+# Sogou (Chinese)
+User-agent: Sogou web spider
+Allow: /
+Crawl-delay: 2
+
+# ========================================
+# SOCIAL MEDIA CRAWLERS
+# ========================================
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 0
+
+User-agent: Facebot
+Allow: /
+Crawl-delay: 0
+
+# Twitter
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 0
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+Crawl-delay: 1
+
+# Pinterest
+User-agent: Pinterestbot
+Allow: /
+Crawl-delay: 1
+
+# Instagram
+User-agent: Instagram
+Allow: /
+Crawl-delay: 1
+
+# Telegram
+User-agent: TelegramBot
+Allow: /
+Crawl-delay: 1
+
+# WhatsApp
+User-agent: WhatsApp
+Allow: /
+Crawl-delay: 0
+
+# Slack
+User-agent: Slackbot
+Allow: /
+Crawl-delay: 0
+
+# Discord
+User-agent: Discordbot
+Allow: /
+Crawl-delay: 0
+
+# ========================================
+# SEO & ANALYTICS TOOLS (Limited Access)
+# ========================================
+
+# Ahrefs - Allow but with delay
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 10
+
+# SEMrush - Allow but with delay
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 10
+
+# Moz
+User-agent: rogerbot
+Allow: /
+Crawl-delay: 10
+
+User-agent: dotbot
+Allow: /
+Crawl-delay: 10
+
+# Majestic
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 10
+
+# ========================================
+# ARCHIVE & RESEARCH BOTS
+# ========================================
+
+# Internet Archive
+User-agent: ia_archiver
+Allow: /
+Crawl-delay: 5
+
+# Archive.org
+User-agent: archive.org_bot
+Allow: /
+Crawl-delay: 5
+
+# ========================================
+# MONITORING & UPTIME BOTS
+# ========================================
+
+User-agent: UptimeRobot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Pingdom
+Allow: /
+Crawl-delay: 0
+
+User-agent: StatusCake
+Allow: /
+Crawl-delay: 0
+
+# ========================================
+# BLOCK MALICIOUS & SPAM BOTS
+# ========================================
+
+# Known scrapers and bad bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: MegaIndex
+Disallow: /
+
+User-agent: AspiegelBot
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+User-agent: ExtLinksBot
+Disallow: /
+
+User-agent: SeznamBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: SeekportBot
+Disallow: /
+
+# ========================================
+# SITEMAPS
+# ========================================
+
+# Main sitemap
+Sitemap: https://deltran.ai/sitemap.xml
+
+# Specialized sitemaps
+Sitemap: https://deltran.ai/sitemap-en.xml
+Sitemap: https://deltran.ai/sitemap-he.xml
+Sitemap: https://deltran.ai/sitemap-ar.xml
+
+# Content-specific sitemaps
+Sitemap: https://deltran.ai/sitemap-blog.xml
+Sitemap: https://deltran.ai/sitemap-images.xml
+Sitemap: https://deltran.ai/sitemap-videos.xml
+Sitemap: https://deltran.ai/sitemap-api-docs.xml
+
+# ========================================
+# ADDITIONAL RULES
+# ========================================
+
+# Crawl delay for aggressive crawlers
+User-agent: *
+Crawl-delay: 5
+
+# Block parameter-based duplicate content
+Disallow: /*?page=
+Disallow: /*?sort=
+Disallow: /*?filter=
+Disallow: /*&

@@ -5,6 +5,7 @@ import { locales, type Locale } from '@/i18n/request';
 import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { ThemeProvider } from '@/app/components/ThemeProvider';
+import { ResponsiveProvider } from '@/app/lib/contexts/ResponsiveContext';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
@@ -75,15 +76,17 @@ export default async function LocaleLayout({
         />
       </head>
       <body className={inter.className}>
-        <ThemeProvider>
-          <NextIntlClientProvider messages={messages}>
-            <div className="min-h-screen bg-black text-white">
-              <Header />
-              <main>{children}</main>
-              <Footer />
-            </div>
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <ResponsiveProvider>
+          <ThemeProvider>
+            <NextIntlClientProvider messages={messages}>
+              <div className="min-h-screen bg-black text-white">
+                <Header />
+                <main>{children}</main>
+                <Footer />
+              </div>
+            </NextIntlClientProvider>
+          </ThemeProvider>
+        </ResponsiveProvider>
         <WebVitals />
         <AllAnalytics />
         <SpeedInsights />
