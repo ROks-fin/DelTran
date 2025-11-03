@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
     // Отправка email через Resend
     const data = await resend.emails.send({
-      from: 'DelTran Contact Form <onboarding@resend.dev>',
+      from: 'DelTran Contact Form <noreply@deltran.ai>',
       to: ['contact@deltran.ai'],
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
