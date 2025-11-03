@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { LocaleSwitcher } from './LocaleSwitcher';
+import { Logo } from './Logo';
 import { cn } from '@/lib/utils';
 
 const navigation = [
@@ -83,9 +84,16 @@ export function Header() {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative"
+                className="relative flex items-center gap-3"
               >
-                {/* Logo with premium treatment */}
+                {/* Runic Logo Icon */}
+                <div className="relative">
+                  <Logo size={40} className="transition-all duration-300" />
+                  {/* Glow effect on hover */}
+                  <div className="absolute inset-0 bg-gold/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+
+                {/* DelTran Text */}
                 <div className="relative">
                   <span className="text-2xl font-black tracking-tight">
                     <span className="bg-gradient-to-r from-white via-white to-gold/80 bg-clip-text text-transparent">
