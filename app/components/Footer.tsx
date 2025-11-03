@@ -96,17 +96,16 @@ export function Footer() {
             <p className="text-white/60 text-sm">
               Ready to transform your payment infrastructure?
             </p>
-            <motion.a
-              href="https://deltran.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-6 py-2 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-semibold text-sm hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all duration-300"
-            >
-              Request Demo
-              <ArrowUpRight className="w-4 h-4 ml-2" />
-            </motion.a>
+            <Link href={`/${locale}/contact`}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center px-6 py-2 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-semibold text-sm hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all duration-300 cursor-pointer"
+              >
+                Request Demo
+                <ArrowUpRight className="w-4 h-4 ml-2" />
+              </motion.div>
+            </Link>
           </div>
         </div>
 
