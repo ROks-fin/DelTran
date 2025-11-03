@@ -201,38 +201,37 @@ export function Header() {
 
             {/* CTA Button - Premium Design */}
             <div className="hidden lg:block">
-              <motion.a
-                href="https://deltran.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative group block"
-              >
-                {/* Button container */}
-                <div className="relative px-7 py-3 rounded-2xl bg-gradient-to-r from-gold via-gold-light to-gold overflow-hidden">
-                  {/* Animated gradient background */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-gold via-white/20 to-gold-light bg-[size:200%_100%] animate-shimmer" />
-                  
-                  {/* Glass effect overlay */}
-                  <div className="absolute inset-0 bg-black/10" />
-                  
-                  {/* Top shine */}
-                  <div className="absolute inset-x-0 top-0 h-px bg-white/40" />
-                  
-                  {/* Content */}
-                  <span className="relative flex items-center space-x-2 text-black font-bold text-sm">
-                    <span>{t('getStarted')}</span>
-                    <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
-                </div>
-                
-                {/* Glow effect */}
-                <div className="absolute inset-0 -z-10 blur-xl bg-gold/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </motion.a>
+              <Link href={`/${locale}/contact`}>
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative group block cursor-pointer"
+                >
+                  {/* Button container */}
+                  <div className="relative px-7 py-3 rounded-2xl bg-gradient-to-r from-gold via-gold-light to-gold overflow-hidden">
+                    {/* Animated gradient background */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-gold via-white/20 to-gold-light bg-[size:200%_100%] animate-shimmer" />
+
+                    {/* Glass effect overlay */}
+                    <div className="absolute inset-0 bg-black/10" />
+
+                    {/* Top shine */}
+                    <div className="absolute inset-x-0 top-0 h-px bg-white/40" />
+
+                    {/* Content */}
+                    <span className="relative flex items-center space-x-2 text-black font-bold text-sm">
+                      <span>{t('getStarted')}</span>
+                      <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </span>
+                  </div>
+
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 -z-10 blur-xl bg-gold/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </motion.div>
+              </Link>
             </div>
 
             {/* Mobile menu button - Premium */}
@@ -332,15 +331,14 @@ export function Header() {
                       closed: { x: -20, opacity: 0 }
                     }}
                   >
-                    <a
-                      href="https://deltran.ai"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      href={`/${locale}/contact`}
+                      onClick={() => setIsMobileMenuOpen(false)}
                       className="block mx-4 mt-4 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-gold to-gold-light text-black font-bold text-center relative overflow-hidden group"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-active:translate-x-full transition-transform duration-700" />
                       <span className="relative">{t('getStarted')}</span>
-                    </a>
+                    </Link>
                   </motion.div>
                 </motion.div>
               </div>

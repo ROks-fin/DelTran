@@ -60,23 +60,29 @@ export function LocaleSwitcher() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="absolute right-0 mt-2 w-48 rounded-xl bg-white/10 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-white/10 overflow-hidden"
+          className="absolute right-0 mt-2 w-48 rounded-xl bg-black/90 dark:bg-black/90 backdrop-blur-xl border border-white/20 dark:border-white/20 overflow-hidden shadow-2xl z-[100]"
+          style={{ pointerEvents: 'auto' }}
         >
           {languages.map((lang) => (
             <button
               key={lang.code}
-              onClick={() => handleLanguageChange(lang.code)}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleLanguageChange(lang.code);
+              }}
               aria-label={`Switch to ${lang.name}`}
               aria-current={lang.code === locale ? 'true' : 'false'}
-              className={`w-full px-4 py-3 text-left hover:bg-gold/20 transition-colors duration-200 ${
-                lang.code === locale ? 'bg-gold/10' : ''
+              className={`w-full px-4 py-3 text-left hover:bg-gold/30 transition-colors duration-200 cursor-pointer ${
+                lang.code === locale ? 'bg-gold/20' : ''
               }`}
               dir={lang.dir}
+              style={{ pointerEvents: 'auto' }}
             >
-              <span className="block text-sm font-medium text-white/90">
+              <span className="block text-sm font-medium text-white">
                 {lang.nativeName}
               </span>
-              <span className="block text-xs text-white/60 mt-0.5">
+              <span className="block text-xs text-white/70 mt-0.5">
                 {lang.name}
               </span>
             </button>
