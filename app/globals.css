@@ -455,4 +455,253 @@
       gap: 1rem;
     }
   }
+
+  /* === ULTRA-PREMIUM ANIMATIONS === */
+
+  /* Magnetic button effect */
+  .magnetic-button {
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* 3D Card Tilt Effect */
+  .card-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .card-3d:hover {
+    transform: rotateX(2deg) rotateY(-3deg) translateZ(10px);
+  }
+
+  /* Parallax layers */
+  .parallax-layer {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Smooth reveal animations */
+  @keyframes revealUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes revealScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes revealBlur {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  .animate-reveal-up {
+    animation: revealUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .animate-reveal-scale {
+    animation: revealScale 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .animate-reveal-blur {
+    animation: revealBlur 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Premium glow pulse */
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3),
+                  0 0 40px rgba(212, 175, 55, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.6),
+                  0 0 80px rgba(212, 175, 55, 0.3);
+    }
+  }
+
+  .animate-glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  /* Shimmer overlay for premium buttons */
+  @keyframes shimmerSlide {
+    0% {
+      transform: translateX(-100%) translateY(-100%);
+    }
+    100% {
+      transform: translateX(100%) translateY(100%);
+    }
+  }
+
+  .shimmer-overlay::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 70%
+    );
+    animation: shimmerSlide 3s ease-in-out infinite;
+  }
+
+  /* Floating animation for decorative elements */
+  @keyframes floatGentle {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(-10px) translateX(5px);
+    }
+    50% {
+      transform: translateY(-5px) translateX(-5px);
+    }
+    75% {
+      transform: translateY(-15px) translateX(3px);
+    }
+  }
+
+  .animate-float-gentle {
+    animation: floatGentle 8s ease-in-out infinite;
+  }
+
+  /* Rotate continuous for loading spinners */
+  @keyframes rotateContinuous {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-rotate {
+    animation: rotateContinuous 2s linear infinite;
+  }
+
+  /* === RESPONSIVE OPTIMIZATIONS === */
+
+  /* Optimize for mobile devices */
+  @media (max-width: 768px) {
+    /* Reduce animation complexity on mobile for better performance */
+    .reduce-motion-mobile {
+      animation-duration: 0.3s !important;
+      transition-duration: 0.3s !important;
+    }
+
+    /* Increase touch target sizes */
+    button, a, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Optimize typography for mobile readability */
+    body {
+      font-size: clamp(14px, 4vw, 16px);
+      line-height: 1.6;
+    }
+
+    /* Adjust spacing for mobile */
+    .container {
+      padding-left: clamp(1rem, 5vw, 2rem);
+      padding-right: clamp(1rem, 5vw, 2rem);
+    }
+  }
+
+  /* Optimize for tablets */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    /* Balanced animations for tablets */
+    .card-3d:hover {
+      transform: rotateX(1deg) rotateY(-2deg) translateZ(8px);
+    }
+  }
+
+  /* Optimize for large screens */
+  @media (min-width: 1920px) {
+    /* Enhanced effects on large displays */
+    .card-3d:hover {
+      transform: rotateX(3deg) rotateY(-5deg) translateZ(15px);
+    }
+  }
+
+  /* Optimize for ultra-wide screens (4K+) */
+  @media (min-width: 3840px) {
+    /* Scale up content proportionally */
+    html {
+      font-size: 20px;
+    }
+
+    .container {
+      max-width: 2560px;
+    }
+  }
+
+  /* Optimize for 8K displays */
+  @media (min-width: 7680px) {
+    html {
+      font-size: 24px;
+    }
+
+    .container {
+      max-width: 3840px;
+    }
+  }
+
+  /* Performance optimizations */
+  @media (prefers-reduced-motion: no-preference) {
+    /* Enable hardware acceleration for smooth animations */
+    .gpu-layer {
+      transform: translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+
+    /* Smooth scroll for modern browsers */
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Dark mode optimizations */
+  @media (prefers-color-scheme: dark) {
+    /* Enhance contrast in dark mode */
+    .text-gradient {
+      background: linear-gradient(135deg, #f0d97b 0%, #d4af37 50%, #b89730 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+
+  /* High refresh rate display optimization */
+  @media (min-resolution: 120dpi) {
+    /* Smoother animations for high refresh rate displays */
+    * {
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
 }

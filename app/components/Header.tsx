@@ -10,10 +10,9 @@ import { Logo } from './Logo';
 import { cn } from '@/lib/utils';
 
 const navigation = [
-  { name: 'home', href: '' },
-  { name: 'banks', href: '/banks' },
   { name: 'platform', href: '/platform' },
-  { name: 'investors', href: '/investors' },
+  { name: 'network', href: '/network' },
+  { name: 'company', href: '/company' },
   { name: 'contact', href: '/contact' },
 ];
 

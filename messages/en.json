@@ -131,8 +131,8 @@
   },
   "platform": {
     "meta": {
-      "title": "Platform - DelTran",
-      "description": "Byzantine Fault Tolerant settlement infrastructure with Big 4 quality compliance reporting."
+      "title": "Platform - DelTran | BFT Settlement Infrastructure",
+      "description": "Settlement infrastructure working alongside your systems. 6-second finality, 85% capital efficiency, Big 4 compliance reporting. REST/gRPC API integration."
     },
     "hero": {
       "badge": "Pre-Production MVP Ready",
@@ -141,6 +141,11 @@
       "cta": "Let's Talk"
     },
     "mission": {
+      "sectionTitle": "Our Mission & Vision",
+      "sectionSubtitle": "Why we're building the future of banking infrastructure",
+      "missionLabel": "Mission",
+      "visionLabel": "Vision",
+      "valuesLabel": "Values",
       "title": "Our Mission & Vision",
       "mission": "Enable instant, efficient settlements for global banking",
       "vision": "A world where international payments are as fast as local ones",
@@ -192,6 +197,24 @@
         ]
       }
     },
+    "compliance": {
+      "title": "Big 4 Quality Compliance Reporting",
+      "subtitle": "One button in your dashboard. Any audit report. Big 4 accounting firm quality.",
+      "features": {
+        "automation": {
+          "title": "Zero Manual Work",
+          "description": "All compliance reporting automated"
+        },
+        "auditReady": {
+          "title": "Audit-Ready",
+          "description": "Big 4 quality standards built-in"
+        },
+        "export": {
+          "title": "One-Click Export",
+          "description": "Download any report instantly"
+        }
+      }
+    },
     "architecture": {
       "title": "Battle-Tested Technology Stack",
       "subtitle": "Built for performance, security, and scale",
@@ -222,8 +245,8 @@
   },
   "banks": {
     "meta": {
-      "title": "For Banks - DelTran",
-      "description": "Free billions in frozen capital. 6-second settlements. Big 4 quality compliance."
+      "title": "For Banks - DelTran | ADGM Regulated Settlement Platform",
+      "description": "Free billions in frozen capital. 6-second BFT settlements, 85% netting efficiency. ADGM regulatory sandbox. Benefits for CFO, CTO, CRO, CCO."
     },
     "hero": {
       "badge": "Regulated in ADGM - Global Financial Hub",
@@ -324,13 +347,394 @@
       "button": "Let's Talk"
     }
   },
+  "network": {
+    "meta": {
+      "title": "Network - DelTran | Global Settlement Network",
+      "description": "Building the world's largest financial settlement network. Exponential value through network effects. Parallel multi-market expansion: ADGM, EU, US, Singapore."
+    },
+    "hero": {
+      "badge": "Global Network Architecture",
+      "title": "Building the World's",
+      "titleAccent": "Financial Settlement Network",
+      "subtitle": "Every bank that joins makes the network more valuable for everyone. Exponential value through network effects and global expansion."
+    },
+    "networkEffect": {
+      "title": "The Power of Network Effect",
+      "subtitle": "Value grows exponentially, not linearly",
+      "stage1": {
+        "number": "5",
+        "title": "First Banks",
+        "description": "Limited network, direct bilateral connections"
+      },
+      "stage2": {
+        "number": "20",
+        "title": "Regional Network",
+        "description": "Multilateral netting begins, capital efficiency grows exponentially"
+      },
+      "stage3": {
+        "number": "100+",
+        "title": "Global Infrastructure",
+        "description": "Maximum netting efficiency, true instant global settlement"
+      },
+      "exponential": {
+        "title": "Exponential Value Growth",
+        "description": "Each new bank doesn't just add linear value — it creates new connections with every existing member. Network value grows as n(n-1)/2."
+      },
+      "netting": {
+        "title": "Better Netting Efficiency",
+        "description": "More participants = more offsetting flows = higher capital release. Our 85% efficiency improves as the network grows."
+      },
+      "exponentialValue": {
+        "title": "Exponential Value Growth",
+        "description": "Each new bank doesn't just add linear value — it creates new connections with every existing member. Network value grows as n(n-1)/2."
+      },
+      "nettingEfficiency": {
+        "title": "Better Netting Efficiency",
+        "description": "More participants = more offsetting flows = higher capital release. Our 85% efficiency improves as the network grows."
+      },
+      "cta": "Early adopters gain maximum competitive advantage as they benefit from every subsequent member joining the network.",
+      "button": "Join the Network Early"
+    },
+    "expansion": {
+      "title": "Global Institutional Expansion",
+      "subtitle": "Building the world's financial settlement infrastructure, market by market",
+      "description": "We're not waiting. Multiple markets, multiple teams, simultaneous launches. Our strategy: enter key financial hubs in parallel, building regional networks that connect into one global settlement infrastructure.",
+      "labels": {
+        "target": "Target:",
+        "markets": "Markets:"
+      },
+      "parallel": {
+        "title": "Parallel Market Expansion",
+        "description": "We're not waiting. Multiple markets, multiple teams, simultaneous launches. Our strategy: enter key financial hubs in parallel, building regional networks that connect into one global settlement infrastructure."
+      },
+      "mena": {
+        "number": "1",
+        "title": "MENA Hub",
+        "target": "ADGM (2025)",
+        "markets": "UAE, Saudi, Qatar, Bahrain",
+        "status": "Regulatory pilot preparation",
+        "description": "Initial expansion in Dubai International Financial Centre with focus on Gulf markets."
+      },
+      "europe": {
+        "number": "2",
+        "title": "European Corridor",
+        "target": "UK (FCA), EU (MiCA)",
+        "focus": "London, Frankfurt, Paris",
+        "timeline": "2026",
+        "markets": "UK, EU",
+        "description": "European expansion through Electronic Money Institution licensing with SEPA connectivity."
+      },
+      "asia": {
+        "number": "3",
+        "title": "Asia-Pacific",
+        "target": "Singapore (MAS), Hong Kong (HKMA)",
+        "focus": "Cross-border Asia trade flows",
+        "timeline": "2026-2027",
+        "markets": "Singapore, Hong Kong, Japan",
+        "description": "Entry into Asian markets through Singapore's financial hub."
+      },
+      "future": {
+        "phase4": {
+          "label": "Phase 4:",
+          "description": "North America (2027) — US FinCEN, Canadian FINTRAC"
+        },
+        "phase5": {
+          "label": "Phase 5:",
+          "description": "Latin America (2027-2028) — Brazil, Mexico"
+        },
+        "phase6": {
+          "label": "Phase 6:",
+          "description": "Africa (2028+) — South Africa, Nigeria, Kenya"
+        },
+        "phase7": {
+          "label": "Phase 7:",
+          "description": "Emerging Markets — India, Southeast Asia, LATAM corridors"
+        }
+      },
+      "phase4": "Phase 4: North America (2027) — US FinCEN, Canadian FINTRAC",
+      "phase5": "Phase 5: Latin America (2027-2028) — Brazil, Mexico",
+      "phase6": "Phase 6: Africa (2028+) — South Africa, Nigeria, Kenya",
+      "phase7": "Phase 7: Emerging Markets — India, Southeast Asia, LATAM corridors",
+      "regulatoryFirst": {
+        "title": "Regulatory-First Expansion",
+        "description": "We don't \"move fast and break things.\" Each market expansion begins with regulatory engagement, ensuring we meet local compliance requirements before launch."
+      },
+      "partnerships": {
+        "title": "Strategic Partnership Model",
+        "description": "We partner with Tier 2 and Tier 3 banks who are hungry for growth and new clients. Unlike Tier 1 banks, they see immediate value in capital efficiency and competitive advantage through early adoption."
+      }
+    },
+    "regulatory": {
+      "title": "Building for Regulatory Excellence",
+      "subtitle": "Parallel multi-market licensing strategy",
+      "description": "DelTran is pursuing multiple regulatory licenses simultaneously across key financial hubs. Our approach focuses on parallel market entry rather than sequential expansion, enabling faster global reach.",
+      "intro": "DelTran is pursuing multiple regulatory licenses simultaneously across key financial hubs. Our approach focuses on parallel market entry rather than sequential expansion, enabling faster global reach.",
+      "approach": {
+        "title": "Parallel Licensing Strategy",
+        "description": "We're not waiting for one license to complete before starting the next. Multiple teams are working simultaneously across different jurisdictions to accelerate our global expansion."
+      },
+      "licenses": [
+        {
+          "region": "ADGM (UAE)",
+          "license": "FSRA RegBox + Providing Money Services + FRT",
+          "coverage": "20+ countries through MENA and partner banks (UAE, Saudi Arabia, Bahrain, Qatar, Kuwait, Egypt, Jordan, Morocco, Turkey, and more)",
+          "priority": "Launch Foundation",
+          "timeline": "2025 (Regulatory Sandbox)",
+          "details": "Starting with ADGM RegBox regulatory sandbox to validate technology and compliance frameworks in a supervised environment"
+        },
+        {
+          "region": "CBUAE / VARA (Mainland UAE)",
+          "license": "RPSCS / SVF / VA",
+          "coverage": "Full UAE domestic settlement coverage and corridors with Asia, India, Africa",
+          "priority": "UAE Expansion",
+          "timeline": "2025-2026",
+          "details": "Comprehensive UAE mainland licensing for domestic and cross-border operations"
+        },
+        {
+          "region": "European Union",
+          "license": "EMI + MiCA (EU passporting)",
+          "coverage": "30 countries (all EU states + Iceland, Norway, Liechtenstein)",
+          "priority": "Parallel Track",
+          "timeline": "2026",
+          "details": "Electronic Money Institution license with MiCA compliance enables passporting across entire EEA"
+        },
+        {
+          "region": "United Kingdom",
+          "license": "FCA (EMR + PSR)",
+          "coverage": "UK and dependent territories (Gibraltar, Jersey, Isle of Man, partial BVI through partnerships)",
+          "priority": "Parallel Track",
+          "timeline": "2026",
+          "details": "FCA Electronic Money Regulations and Payment Services Regulations authorization"
+        },
+        {
+          "region": "United States",
+          "license": "FinCEN + MTL + BitLicense",
+          "coverage": "50 US states + dependent territories (Guam, Puerto Rico)",
+          "priority": "Parallel Track",
+          "timeline": "2026-2027",
+          "details": "Federal FinCEN registration plus state-level Money Transmitter Licenses"
+        },
+        {
+          "region": "Singapore",
+          "license": "MAS MPI",
+          "coverage": "Southeast Asia — Singapore, Indonesia, Malaysia, Philippines, Thailand, Vietnam, Cambodia (through correspondents)",
+          "priority": "Asia Entry",
+          "timeline": "2026-2027",
+          "details": "Major Payment Institution license for regional expansion"
+        },
+        {
+          "region": "Hong Kong",
+          "license": "HKMA SVF + Stablecoin Issuer",
+          "coverage": "Hong Kong + China (through UnionPay/Alipay corridor), Taiwan",
+          "priority": "Asia Entry",
+          "timeline": "2026-2027",
+          "details": "Stored Value Facility and Stablecoin Issuer licenses for Greater China access"
+        },
+        {
+          "region": "GCC (Saudi, Bahrain, Qatar)",
+          "license": "SAMA PSP/PSO + CBB PSP + QCB",
+          "coverage": "All GCC countries (Saudi Arabia, Bahrain, Qatar, Oman, Kuwait, UAE)",
+          "priority": "MENA Expansion",
+          "timeline": "2026-2027",
+          "details": "Payment Service Provider licenses across Gulf Cooperation Council states"
+        },
+        {
+          "region": "Latin America",
+          "license": "Brazil PI + Mexico IFPE",
+          "coverage": "~20 countries (Brazil, Mexico, Chile, Peru, Colombia, Argentina through local corridors)",
+          "priority": "LatAm Entry",
+          "timeline": "2027-2028",
+          "details": "Payment Institution and IFPE licenses for Latin American expansion"
+        }
+      ],
+      "phase1": {
+        "year": "2025",
+        "title": "Foundation: ADGM RegBox Launch",
+        "description": "Starting with ADGM regulatory sandbox as our foundation, while preparing applications for other jurisdictions in parallel.",
+        "items": [
+          "Launch ADGM RegBox supervised pilot",
+          "Prepare EU EMI/MiCA application documentation",
+          "Engage UK FCA for PSR/EMR licensing pathway",
+          "Begin US FinCEN registration and state MTL process",
+          "Initiate discussions with MAS Singapore"
+        ]
+      },
+      "phase2": {
+        "year": "2025-2026",
+        "title": "Parallel Multi-Market Expansion",
+        "description": "Simultaneous licensing applications across multiple jurisdictions with dedicated regional teams.",
+        "items": [
+          "UAE mainland CBUAE/VARA licensing",
+          "EU EMI license application (covers 30 countries)",
+          "UK FCA authorization process",
+          "US state-by-state MTL rollout",
+          "Singapore MAS MPI application"
+        ]
+      },
+      "phase3": {
+        "year": "2026-2027",
+        "title": "Global Network Activation",
+        "description": "Activating licenses across major financial hubs and expanding partner bank network.",
+        "items": [
+          "Hong Kong SVF + Stablecoin licenses",
+          "GCC multi-country PSP licensing (SAMA, CBB, QCB)",
+          "Full US coverage (50 states)",
+          "Southeast Asia correspondent network",
+          "Launch live corridors in each region"
+        ]
+      },
+      "phase4": {
+        "year": "2027+",
+        "title": "Emerging Markets & Network Effects",
+        "description": "Expanding into high-growth emerging markets as network effects compound.",
+        "items": [
+          "Latin America (Brazil, Mexico)",
+          "Africa (South Africa, Nigeria, Kenya)",
+          "India and South Asia",
+          "Additional Southeast Asian markets",
+          "Central bank partnerships for settlement connectivity"
+        ]
+      },
+      "disclaimer": "Important: DelTran is currently in pre-launch phase. We are not yet licensed as an Electronic Money Institution or Payment Service Provider in any jurisdiction. Our technology is designed to meet regulatory standards, and we are preparing to apply for necessary licenses. Timelines are subject to regulatory approvals and may vary by jurisdiction.",
+      "disclaimerCard": {
+        "title": "Important Regulatory Disclosure",
+        "content": "DelTran is currently in pre-launch phase. We are not yet licensed as an Electronic Money Institution or Payment Service Provider in any jurisdiction. Our technology is designed to meet regulatory standards, and we are preparing to apply for necessary licenses. The timeline presented represents our strategic roadmap and is subject to regulatory approvals, which may vary by jurisdiction. All dates are estimates and may be adjusted based on regulatory requirements and approval timelines."
+      },
+      "timeline": {
+        "badge": "Regulatory Roadmap",
+        "title": "Building for",
+        "titleAccent": "Regulatory Excellence",
+        "subtitle": "Parallel multi-market licensing strategy across 9 jurisdictions, enabling global reach from day one",
+        "inProgress": "IN PROGRESS",
+        "jurisdiction": "Jurisdiction",
+        "jurisdictions": "Jurisdictions",
+        "countries": "countries",
+        "showDetails": "Show Details",
+        "showLess": "Show Less",
+        "phases": {
+          "2025": {
+            "title": "Foundation Phase",
+            "description": "ADGM RegBox launch and parallel preparation for global expansion"
+          },
+          "2026": {
+            "title": "Parallel Multi-Market Expansion",
+            "description": "Simultaneous licensing across Europe, UK, and Asia-Pacific"
+          },
+          "2027": {
+            "title": "Global Network Activation",
+            "description": "US coverage completion and emerging market entry"
+          },
+          "2028": {
+            "title": "Network Effects & Scale",
+            "description": "Latin America expansion and network density optimization"
+          }
+        },
+        "summary": {
+          "title": "Parallel Licensing Strategy",
+          "description": "We're not waiting for one license to complete before starting the next. Multiple teams are working simultaneously across different jurisdictions to accelerate our global expansion and create immediate value for early banking partners.",
+          "stats": {
+            "jurisdictions": "Jurisdictions",
+            "countries": "Countries",
+            "years": "Years",
+            "compliant": "Compliant"
+          }
+        }
+      }
+    },
+    "cta": {
+      "title": "Join the Global Network",
+      "subtitle": "Early participants gain maximum advantage. Be part of building the world's financial settlement infrastructure.",
+      "description": "Early participants gain maximum advantage. Be part of building the world's financial settlement infrastructure.",
+      "button": "Get in Touch"
+    }
+  },
+  "company": {
+    "meta": {
+      "title": "Company - DelTran",
+      "description": "Learn about DelTran's mission to transform global settlement infrastructure through innovative technology and regulatory excellence."
+    },
+    "hero": {
+      "title": "Building the Future",
+      "titleAccent": "of Banking Infrastructure",
+      "subtitle": "DelTran is on a mission to transform global settlement infrastructure through innovative technology and regulatory excellence."
+    },
+    "mission": {
+      "title": "Mission",
+      "content": "Enable instant, efficient, and compliant settlement infrastructure for banks worldwide, freeing billions in locked capital and transforming how financial institutions move money."
+    },
+    "vision": {
+      "title": "Vision",
+      "content": "A world where international payments move as fast as local ones, where settlement happens in seconds not days, and where every bank has access to global liquidity instantly."
+    },
+    "story": {
+      "title": "Our Story",
+      "subtitle": "Why we're building DelTran",
+      "content": "Every day, billions sit frozen in correspondent banking accounts worldwide. Banks wait 2-5 days for settlements. Capital that could be working sits idle. And the technology to fix this already exists."
+    },
+    "values": {
+      "title": "Our Values",
+      "subtitle": "The principles that guide everything we do",
+      "security": {
+        "title": "Security First",
+        "description": "Byzantine Fault Tolerant consensus, cryptographic audit trails, and compliance-first design ensure bank-grade security."
+      },
+      "efficiency": {
+        "title": "Relentless Efficiency",
+        "description": "85% capital release through multilateral netting. 6-second finality. Zero manual work for compliance reporting."
+      },
+      "transparency": {
+        "title": "Radical Transparency",
+        "description": "We're honest about our status, our roadmap, and our challenges. Trust is earned through transparency, not marketing hype."
+      },
+      "innovation": {
+        "title": "Responsible Innovation",
+        "description": "We don't move fast and break things. We build for regulatory excellence and institutional trust from day one."
+      }
+    },
+    "careers": {
+      "title": "Join Us in Building the Future",
+      "subtitle": "We're looking for exceptional engineers, product leaders, and compliance experts who want to rebuild global financial infrastructure.",
+      "description": "If you're passionate about distributed systems, financial infrastructure, and doing things the right way, we want to hear from you."
+    },
+    "cta": {
+      "title": "Want to Learn More?",
+      "subtitle": "Discover how DelTran can transform your banking operations",
+      "button": "Contact Us",
+      "email": "contact@deltran.ai",
+      "emailLabel": "Email us:"
+    }
+  },
   "navigation": {
-    "home": "Home",
-    "banks": "For Banks",
     "platform": "Platform",
-    "investors": "Investors",
+    "network": "Network",
+    "company": "Company",
     "contact": "Contact",
-    "getStarted": "Let's Talk"
+    "getStarted": "Get Started"
+  },
+  "footer": {
+    "description": "Building the world's financial settlement infrastructure.",
+    "product": {
+      "title": "Product",
+      "platform": "Platform",
+      "network": "Network",
+      "banks": "For Banks",
+      "investors": "For Investors"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "social": {
+      "title": "Connect"
+    },
+    "copyright": "© 2025 DelTran. All rights reserved.",
+    "tagline": "Building the future of global settlement infrastructure"
   },
   "investors": {
     "meta": {
@@ -476,8 +880,8 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact - DelTran",
-      "description": "Get in touch with DelTran for partnerships and inquiries."
+      "title": "Contact - DelTran | Get in Touch",
+      "description": "Ready to transform your settlement infrastructure? Contact DelTran for partnerships, pilot deployments, and inquiries. Pre-production MVP ready for testing."
     },
     "hero": {
       "title": "Let's Connect",
@@ -485,7 +889,12 @@
     },
     "info": {
       "title": "Get in Touch",
+      "emailLabel": "Email",
       "email": "contact@deltran.ai"
+    },
+    "sidebar": {
+      "mvpStatus": "Pre-Production MVP Ready",
+      "mvpDetails": "3,000+ TPS capacity tested with 85% netting efficiency. Ready for pilot deployments."
     },
     "form": {
       "name": "Full Name",
@@ -500,12 +909,25 @@
     }
   },
   "footer": {
+    "description": "Building the world's financial settlement infrastructure.",
     "copyright": "© {year} DelTran — One rail. Infinite reach.",
     "allRightsReserved": "All rights reserved.",
+    "disclaimer": {
+      "important": "Important:",
+      "text": "DelTran is currently in pre-launch phase. We are not yet licensed as an Electronic Money Institution or Clearing & Settlement facility. Our technology is designed to meet regulatory standards, and we are preparing to apply for necessary licenses. Services shown are planned capabilities subject to regulatory approval."
+    },
+    "cta": {
+      "title": "Get Started",
+      "description": "Join the global network",
+      "button": "Contact Us"
+    },
     "links": {
       "platform": "Platform",
-      "investors": "Investors",
+      "network": "Network",
+      "company": "Company",
       "contact": "Contact",
+      "investors": "For Investors",
+      "banks": "For Banks",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service"
     }

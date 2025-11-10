@@ -2,13 +2,15 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Zap, Shield, TrendingUp, Code, CheckCircle2, ArrowRight, Sparkles, Download, FileCheck } from 'lucide-react';
+import { Zap, Shield, TrendingUp, Code, CheckCircle2, ArrowRight, ArrowLeft, Sparkles, Download, FileCheck, Target } from 'lucide-react';
 import { Card } from '@/app/components/Card';
 import { SectionHeading } from '@/app/components/SectionHeading';
 import Link from 'next/link';
+import { useTextDirection } from '@/app/lib/hooks/useTextDirection';
 
 export default function PlatformPage() {
   const t = useTranslations('platform');
+  const { isRTL } = useTextDirection();
 
   return (
     <div className="relative overflow-hidden">
@@ -57,7 +59,11 @@ export default function PlatformPage() {
                 className="inline-flex items-center px-12 py-6 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-bold text-xl hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all duration-300"
               >
                 {t('hero.cta')}
-                <ArrowRight className="ml-3 w-6 h-6" />
+{isRTL ? (
+                  <ArrowLeft className="mr-3 w-6 h-6" />
+                ) : (
+                  <ArrowRight className="ml-3 w-6 h-6" />
+                )}
               </motion.button>
             </Link>
           </motion.div>
@@ -67,47 +73,109 @@ export default function PlatformPage() {
       {/* Mission & Vision */}
       <section className="py-32 relative bg-gradient-to-b from-black to-midnight">
         <div className="container mx-auto px-6">
-          <Card className="p-12 md:p-16 max-w-5xl mx-auto bg-gradient-to-br from-gold/10 to-gold/5 border-gold/30">
+          <SectionHeading
+            title={t('mission.sectionTitle')}
+            subtitle={t('mission.sectionSubtitle')}
+            className="mb-20"
+          />
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {/* Mission */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center"
+              transition={{ delay: 0.1 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-16">
-                {t('mission.title')}
-              </h2>
+              <Card className="p-10 h-full bg-gradient-to-br from-gold/20 via-gold/10 to-transparent border-gold/40 hover:border-gold/60 transition-all duration-500 relative overflow-hidden group">
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/0 via-gold/5 to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="grid md:grid-cols-3 gap-12">
-                <div>
-                  <h3 className="text-gold text-sm uppercase tracking-wider mb-4 font-bold">
-                    Mission
+                <div className="relative">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center mb-6 backdrop-blur-sm">
+                    <Target className="w-8 h-8 text-gold" />
+                  </div>
+
+                  <h3 className="text-gold text-sm uppercase tracking-widest mb-3 font-bold">
+                    {t('mission.missionLabel')}
                   </h3>
-                  <p className="text-white/80 text-lg leading-relaxed">
+
+                  <p className="text-white/90 text-xl leading-relaxed font-light">
                     {t('mission.mission')}
                   </p>
                 </div>
 
-                <div>
-                  <h3 className="text-gold text-sm uppercase tracking-wider mb-4 font-bold">
-                    Vision
+                {/* Shine effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Vision */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <Card className="p-10 h-full bg-gradient-to-br from-gold/20 via-gold/10 to-transparent border-gold/40 hover:border-gold/60 transition-all duration-500 relative overflow-hidden group">
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/0 via-gold/5 to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="relative">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center mb-6 backdrop-blur-sm">
+                    <Sparkles className="w-8 h-8 text-gold" />
+                  </div>
+
+                  <h3 className="text-gold text-sm uppercase tracking-widest mb-3 font-bold">
+                    {t('mission.visionLabel')}
                   </h3>
-                  <p className="text-white/80 text-lg leading-relaxed">
+
+                  <p className="text-white/90 text-xl leading-relaxed font-light">
                     {t('mission.vision')}
                   </p>
                 </div>
 
-                <div>
-                  <h3 className="text-gold text-sm uppercase tracking-wider mb-4 font-bold">
-                    Values
+                {/* Shine effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Values */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              <Card className="p-10 h-full bg-gradient-to-br from-gold/20 via-gold/10 to-transparent border-gold/40 hover:border-gold/60 transition-all duration-500 relative overflow-hidden group">
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/0 via-gold/5 to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="relative">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center mb-6 backdrop-blur-sm">
+                    <Shield className="w-8 h-8 text-gold" />
+                  </div>
+
+                  <h3 className="text-gold text-sm uppercase tracking-widest mb-3 font-bold">
+                    {t('mission.valuesLabel')}
                   </h3>
-                  <p className="text-white/80 text-lg leading-relaxed">
+
+                  <p className="text-white/90 text-xl leading-relaxed font-light">
                     {t('mission.values')}
                   </p>
                 </div>
-              </div>
+
+                {/* Shine effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                </div>
+              </Card>
             </motion.div>
-          </Card>
+          </div>
         </div>
       </section>
 
@@ -178,25 +246,25 @@ export default function PlatformPage() {
               </div>
 
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Big 4 Quality Compliance Reporting
+                {t('compliance.title')}
               </h2>
 
               <p className="text-2xl text-white/80 mb-8 leading-relaxed">
-                One button in your dashboard. Any audit report. Big 4 accounting firm quality.
+                {t('compliance.subtitle')}
               </p>
 
               <div className="grid md:grid-cols-3 gap-6 mt-12">
                 <div className="p-6 bg-white/5 rounded-xl border border-white/10">
-                  <h3 className="text-gold font-semibold mb-2">Zero Manual Work</h3>
-                  <p className="text-white/70 text-sm">All compliance reporting automated</p>
+                  <h3 className="text-gold font-semibold mb-2">{t('compliance.features.automation.title')}</h3>
+                  <p className="text-white/70 text-sm">{t('compliance.features.automation.description')}</p>
                 </div>
                 <div className="p-6 bg-white/5 rounded-xl border border-white/10">
-                  <h3 className="text-gold font-semibold mb-2">Audit-Ready</h3>
-                  <p className="text-white/70 text-sm">Big 4 quality standards built-in</p>
+                  <h3 className="text-gold font-semibold mb-2">{t('compliance.features.auditReady.title')}</h3>
+                  <p className="text-white/70 text-sm">{t('compliance.features.auditReady.description')}</p>
                 </div>
                 <div className="p-6 bg-white/5 rounded-xl border border-white/10">
-                  <h3 className="text-gold font-semibold mb-2">One-Click Export</h3>
-                  <p className="text-white/70 text-sm">Download any report instantly</p>
+                  <h3 className="text-gold font-semibold mb-2">{t('compliance.features.export.title')}</h3>
+                  <p className="text-white/70 text-sm">{t('compliance.features.export.description')}</p>
                 </div>
               </div>
             </Card>
@@ -265,7 +333,11 @@ export default function PlatformPage() {
                   className="inline-flex items-center px-12 py-6 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-bold text-xl hover:shadow-[0_0_60px_rgba(212,175,55,0.7)] transition-all duration-300"
                 >
                   {t('cta.button')}
+  {isRTL ? (
+                  <ArrowLeft className="mr-3 w-6 h-6" />
+                ) : (
                   <ArrowRight className="ml-3 w-6 h-6" />
+                )}
                 </motion.button>
               </Link>
             </motion.div>

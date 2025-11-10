@@ -19,7 +19,15 @@
       "Bash(vercel whoami:*)",
       "Read(//c/Users/User/Desktop/**)",
       "Bash(npm run dev:*)",
-      "Bash(awk:*)"
+      "Bash(awk:*)",
+      "Bash(cp:*)",
+      "Bash(node:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(python:*)",
+      "Bash(nul)",
+      "Bash(rm:*)",
+      "Bash(del nul 2)"
     ],
     "deny": [],
     "ask": []

@@ -246,7 +246,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="text-sm text-white/60 mb-2">
-                      Email
+                      {t('info.emailLabel')}
                     </div>
                     <a
                       href={`mailto:${t('info.email')}`}
@@ -260,10 +260,10 @@ export default function ContactPage() {
 
               <Card className="p-8 bg-gradient-to-br from-gold/20 to-gold/5 border-gold/30">
                 <h3 className="text-lg font-semibold text-white mb-3">
-                  Pre-Production MVP Ready
+                  {t('sidebar.mvpStatus')}
                 </h3>
                 <p className="text-white/70 text-sm mb-4">
-                  3,000+ TPS capacity tested with 85% netting efficiency. Ready for pilot deployments.
+                  {t('sidebar.mvpDetails')}
                 </p>
               </Card>
             </motion.div>

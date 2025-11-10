@@ -8,6 +8,7 @@ import {
   Shield,
   Globe,
   ArrowRight,
+  ArrowLeft,
   CheckCircle2,
   Mail,
   Sparkles,
@@ -18,9 +19,11 @@ import {
 } from 'lucide-react';
 import { Card } from '@/app/components/Card';
 import { SectionHeading } from '@/app/components/SectionHeading';
+import { useTextDirection } from '@/app/lib/hooks/useTextDirection';
 
 export default function InvestorsPage() {
   const t = useTranslations('investors');
+  const { isRTL } = useTextDirection();
 
   return (
     <div className="relative overflow-hidden">
@@ -61,9 +64,13 @@ export default function InvestorsPage() {
                 href={`mailto:${t('hero.cta')}`}
                 className="inline-flex items-center px-10 py-5 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-bold text-lg hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all duration-300 transform hover:scale-105"
               >
-                <Mail className="mr-3 w-6 h-6" />
+                {isRTL ? <Mail className="ml-3 w-6 h-6" /> : <Mail className="mr-3 w-6 h-6" />}
                 {t('hero.cta')}
-                <ArrowRight className="ml-3 w-6 h-6" />
+                {isRTL ? (
+                  <ArrowLeft className="mr-3 w-6 h-6" />
+                ) : (
+                  <ArrowRight className="ml-3 w-6 h-6" />
+                )}
               </a>
             </div>
           </motion.div>
@@ -180,7 +187,11 @@ export default function InvestorsPage() {
                     {feature.description}
                   </p>
                   <div className="flex items-start gap-2 pt-4 border-t border-white/10">
-                    <ArrowRight className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
+                    {isRTL ? (
+                      <ArrowLeft className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
+                    ) : (
+                      <ArrowRight className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
+                    )}
                     <p className="text-gold font-medium">
                       {feature.impact}
                     </p>
@@ -524,9 +535,13 @@ export default function InvestorsPage() {
                   href={`mailto:${t('contact.email')}`}
                   className="inline-flex items-center px-12 py-6 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-bold text-xl hover:shadow-[0_0_60px_rgba(212,175,55,0.7)] transition-all duration-300 transform hover:scale-105"
                 >
-                  <Mail className="mr-3 w-7 h-7" />
+                  {isRTL ? <Mail className="ml-3 w-7 h-7" /> : <Mail className="mr-3 w-7 h-7" />}
                   {t('contact.email')}
-                  <ArrowRight className="ml-3 w-7 h-7" />
+                  {isRTL ? (
+                    <ArrowLeft className="mr-3 w-7 h-7" />
+                  ) : (
+                    <ArrowRight className="ml-3 w-7 h-7" />
+                  )}
                 </a>
               </div>
             </Card>
