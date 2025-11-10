@@ -13,9 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
     '', // главная страница
     '/platform',
-    '/investors',
+    '/network',
+    '/company',
     '/contact',
-    '/banks',
   ];
 
   const sitemap: MetadataRoute.Sitemap = [];
@@ -23,11 +23,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Генерируем URL для каждой языковой версии каждой страницы
   for (const locale of locales) {
     for (const page of pages) {
+      // Определяем приоритет и частоту обновления для каждой страницы
+      let priority = 0.8;
+      let changeFrequency: 'daily' | 'weekly' | 'monthly' = 'weekly';
+
+      if (page === '') {
+        priority = 1.0;
+        changeFrequency = 'daily';
+      } else if (page === '/platform' || page === '/network') {
+        priority = 0.9;
+        changeFrequency = 'weekly';
+      } else if (page === '/company') {
+        priority = 0.7;
+        changeFrequency = 'monthly';
+      }
+
       sitemap.push({
         url: `${SITE_CONFIG.url}/${locale}${page}`,
         lastModified: new Date(),
-        changeFrequency: page === '' ? 'daily' : 'weekly',
-        priority: page === '' ? 1.0 : 0.8,
+        changeFrequency,
+        priority,
         alternates: {
           languages: Object.fromEntries(
             locales.map((loc) => [loc, `${SITE_CONFIG.url}/${loc}${page}`])

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home Page - English -->
+  <url>
+    <loc>https://deltran.ai/en</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar"/>
+  </url>
+
+  <!-- Home Page - Hebrew -->
+  <url>
+    <loc>https://deltran.ai/he</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar"/>
+  </url>
+
+  <!-- Home Page - Arabic -->
+  <url>
+    <loc>https://deltran.ai/ar</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar"/>
+  </url>
+
+  <!-- Platform - English -->
+  <url>
+    <loc>https://deltran.ai/en/platform</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/platform"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/platform"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/platform"/>
+  </url>
+
+  <!-- Platform - Hebrew -->
+  <url>
+    <loc>https://deltran.ai/he/platform</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/platform"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/platform"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/platform"/>
+  </url>
+
+  <!-- Platform - Arabic -->
+  <url>
+    <loc>https://deltran.ai/ar/platform</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/platform"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/platform"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/platform"/>
+  </url>
+
+  <!-- Network - English -->
+  <url>
+    <loc>https://deltran.ai/en/network</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/network"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/network"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/network"/>
+  </url>
+
+  <!-- Network - Hebrew -->
+  <url>
+    <loc>https://deltran.ai/he/network</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/network"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/network"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/network"/>
+  </url>
+
+  <!-- Network - Arabic -->
+  <url>
+    <loc>https://deltran.ai/ar/network</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/network"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/network"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/network"/>
+  </url>
+
+  <!-- Company - English -->
+  <url>
+    <loc>https://deltran.ai/en/company</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/company"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/company"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/company"/>
+  </url>
+
+  <!-- Company - Hebrew -->
+  <url>
+    <loc>https://deltran.ai/he/company</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/company"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/company"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/company"/>
+  </url>
+
+  <!-- Company - Arabic -->
+  <url>
+    <loc>https://deltran.ai/ar/company</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/company"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/company"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/company"/>
+  </url>
+
+  <!-- Contact - English -->
+  <url>
+    <loc>https://deltran.ai/en/contact</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/contact"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/contact"/>
+  </url>
+
+  <!-- Contact - Hebrew -->
+  <url>
+    <loc>https://deltran.ai/he/contact</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/contact"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/contact"/>
+  </url>
+
+  <!-- Contact - Arabic -->
+  <url>
+    <loc>https://deltran.ai/ar/contact</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deltran.ai/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://deltran.ai/he/contact"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://deltran.ai/ar/contact"/>
+  </url>
+
+</urlset>

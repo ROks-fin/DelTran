@@ -27,7 +27,8 @@
       "Bash(python:*)",
       "Bash(nul)",
       "Bash(rm:*)",
-      "Bash(del nul 2)"
+      "Bash(del nul 2)",
+      "Bash(dir /b \"c:\\Users\\User\\Desktop\\deltran 3 — копия — копия\\app\\(routes)\\[locale]\")"
     ],
     "deny": [],
     "ask": []
