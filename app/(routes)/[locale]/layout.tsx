@@ -65,7 +65,11 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={locale === 'ar' || locale === 'he' ? 'rtl' : 'ltr'}>
+    <html
+      lang={locale}
+      dir={locale === 'ar' || locale === 'he' ? 'rtl' : 'ltr'}
+      suppressHydrationWarning
+    >
       <head>
         <SchemaScript
           schema={[
@@ -75,7 +79,7 @@ export default async function LocaleLayout({
           ]}
         />
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <ResponsiveProvider>
           <ThemeProvider>
             <NextIntlClientProvider messages={messages}>

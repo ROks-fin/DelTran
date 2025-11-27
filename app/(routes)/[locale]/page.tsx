@@ -14,9 +14,17 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { Card } from '@/app/components/Card';
 import Link from 'next/link';
 import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
 
-// Client component for animations - lazy loaded
-import { AnimatedSections } from './components/AnimatedSections';
+// Client component for animations - lazy loaded with dynamic import
+// Это разбивает бандл и загружает AnimatedSections только когда нужно
+const AnimatedSections = dynamic(
+  () => import('./components/AnimatedSections').then(mod => mod.AnimatedSections),
+  {
+    loading: () => null, // Skeleton рендерится через Suspense fallback
+    ssr: false, // Отключаем SSR для анимаций - они не нужны для SEO
+  }
+);
 
 export default async function HomePage() {
   const t = await getTranslations('home');

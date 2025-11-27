@@ -17,12 +17,23 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 31536000, // 1 год для immutable assets
   },
 
-  // Essential performance optimizations
+  // Essential performance optimizations - расширенный список библиотек
   experimental: {
-    optimizePackageImports: ['framer-motion', 'lucide-react', '@headlessui/react'],
+    optimizePackageImports: [
+      'framer-motion',
+      'lucide-react',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-dropdown-menu',
+      '@radix-ui/react-label',
+      '@radix-ui/react-select',
+      '@radix-ui/react-slot',
+      'class-variance-authority',
+      'clsx',
+      'tailwind-merge',
+    ],
   },
 
   // Modularize imports for better tree-shaking
@@ -40,7 +51,7 @@ const nextConfig = {
   // Сжатие для лучшей производительности
   compress: true,
 
-  // SEO и Security headers
+  // SEO и Security headers с улучшенным кэшированием
   async headers() {
     return [
       {
@@ -75,6 +86,36 @@ const nextConfig = {
           },
         ],
       },
+      // Кэширование для статических ресурсов
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Кэширование для изображений
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=604800',
+          },
+        ],
+      },
+      // Кэширование для шрифтов
+      {
+        source: '/fonts/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
     ];
   },
 
@@ -82,11 +123,6 @@ const nextConfig = {
   async redirects() {
     return [
       // Добавьте здесь 301 редиректы если нужно
-      // {
-      //   source: '/old-page',
-      //   destination: '/new-page',
-      //   permanent: true,
-      // },
     ];
   },
 
@@ -97,39 +133,9 @@ const nextConfig = {
     ];
   },
 
-  // Webpack оптимизации
-  webpack: (config, { isServer }) => {
-    // Оптимизация для production
-    if (!isServer) {
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: {
-          chunks: 'all',
-          cacheGroups: {
-            default: false,
-            vendors: false,
-            // Vendor chunk для библиотек
-            vendor: {
-              name: 'vendor',
-              chunks: 'all',
-              test: /node_modules/,
-              priority: 20,
-            },
-            // Common chunk для общего кода
-            common: {
-              name: 'common',
-              minChunks: 2,
-              chunks: 'all',
-              priority: 10,
-              reuseExistingChunk: true,
-              enforce: true,
-            },
-          },
-        },
-      };
-    }
-    return config;
-  },
+  // ВАЖНО: НЕ переопределяем webpack splitChunks!
+  // Next.js 14 имеет оптимизированную стратегию разбиения чанков.
+  // Кастомный splitChunks создавал один огромный vendor.js (3.3MB).
 
   // Отключение x-powered-by header
   poweredByHeader: false,
@@ -137,7 +143,7 @@ const nextConfig = {
   // Генерация ETags
   generateEtags: true,
 
-  // Production Source Maps (отключено для безопасности)
+  // Production Source Maps (отключено для безопасности и размера)
   productionBrowserSourceMaps: false,
 };
 
