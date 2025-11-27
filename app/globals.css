@@ -589,6 +589,111 @@
     animation: floatGentle 8s ease-in-out infinite;
   }
 
+  /* CSS-only floating orbs (replaces heavy Framer Motion) */
+  @keyframes floatSlow {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-30px) translateX(10px);
+    }
+  }
+
+  @keyframes floatMedium {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-20px) translateX(-15px);
+    }
+  }
+
+  @keyframes pulseSlow {
+    0%, 100% {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+  }
+
+  .animate-float-slow {
+    animation: floatSlow 8s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .animate-float-medium {
+    animation: floatMedium 6s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .animate-pulse-slow {
+    animation: pulseSlow 4s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  /* Reduce animations on mobile for performance */
+  @media (max-width: 768px) {
+    .animate-float-slow,
+    .animate-float-medium {
+      animation-duration: 12s;
+    }
+
+    .animate-pulse-slow {
+      animation: none;
+      opacity: 0.6;
+    }
+  }
+
+  /* Fade in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  /* Slow bounce for scroll indicator */
+  @keyframes bounceSlow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+
+  .animate-bounce-slow {
+    animation: bounceSlow 2s ease-in-out infinite;
+  }
+
+  /* Disable animations for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float-slow,
+    .animate-float-medium,
+    .animate-pulse-slow,
+    .animate-float-gentle,
+    .animate-fade-in,
+    .animate-bounce-slow {
+      animation: none;
+    }
+
+    .animate-fade-in {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   /* Rotate continuous for loading spinners */
   @keyframes rotateContinuous {
     from {

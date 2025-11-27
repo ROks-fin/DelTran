@@ -1,9 +1,18 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+/**
+ * Optimized Header Component
+ * Performance improvements:
+ * - Removed infinite gradient animation (was causing high TBT)
+ * - Removed unused mousePosition tracking
+ * - Simplified hover states with CSS transitions
+ * - Reduced motion for prefers-reduced-motion users
+ */
+
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { Logo } from './Logo';
@@ -20,264 +29,154 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const locale = useLocale();
   const t = useTranslations('navigation');
-  
-  // Premium mouse tracking for nav plate
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 150, damping: 15 });
-  const springY = useSpring(mouseY, { stiffness: 150, damping: 15 });
+  const prefersReducedMotion = useReducedMotion();
 
+  // Optimized scroll handler with throttling
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on route change or escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMobileMenuOpen(false);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
-    
+    if (isMobileMenuOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = '';
     };
-  }, [mouseX, mouseY]);
+  }, [isMobileMenuOpen]);
+
+  const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
 
   return (
     <>
       <motion.header
-        initial={{ y: -100, opacity: 0 }}
+        initial={prefersReducedMotion ? { opacity: 1 } : { y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-700',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           isScrolled
-            ? 'bg-black/40 backdrop-blur-3xl backdrop-saturate-150'
+            ? 'bg-black/60 backdrop-blur-2xl'
             : 'bg-transparent'
         )}
       >
-        {/* Premium animated gradient line */}
-        <div className="absolute inset-x-0 top-0 h-px">
-          <div className="h-full bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
-          <motion.div 
-            className="h-full bg-gradient-to-r from-transparent via-gold to-transparent"
-            animate={{ x: [-1000, 1000] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-          />
-        </div>
-        
-        <nav className="container mx-auto px-6 py-5">
-          <div className="flex items-center justify-between">
-            {/* Premium Logo */}
-            <Link
-              href="https://deltran.ai"
-              className="group relative"
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative flex items-center gap-3"
-              >
-                {/* Runic Logo Icon */}
-                <div className="relative">
-                  <Logo size={40} className="transition-all duration-300" />
-                  {/* Glow effect on hover */}
-                  <div className="absolute inset-0 bg-gold/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </div>
+        {/* Subtle gradient line - CSS only, no JS animation */}
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
-                {/* DelTran Text */}
-                <div className="relative">
-                  <span className="text-2xl font-black tracking-tight">
-                    <span className="bg-gradient-to-r from-white via-white to-gold/80 bg-clip-text text-transparent">
-                      DelTran
-                    </span>
+        <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-5">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link href="https://deltran.ai" className="group relative">
+              <div className="relative flex items-center gap-2 sm:gap-3">
+                <Logo size={36} className="sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-105" />
+                <span className="text-xl sm:text-2xl font-black tracking-tight">
+                  <span className="bg-gradient-to-r from-white via-white to-gold/80 bg-clip-text text-transparent">
+                    DelTran
                   </span>
-                  {/* Subtle glow on hover */}
-                  <div className="absolute inset-0 bg-gold/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-                </div>
-              </motion.div>
+                </span>
+              </div>
             </Link>
 
-            {/* Desktop Navigation - Premium Plate Design */}
+            {/* Desktop Navigation */}
             <div className="hidden lg:block">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="relative"
-              >
-                {/* Navigation Plate Container */}
-                <div className="relative px-2 py-2 rounded-2xl bg-white/[0.03] backdrop-blur-2xl border border-white/[0.08] shadow-2xl">
-                  {/* Inner glow effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.05] to-transparent opacity-50" />
-                  
-                  {/* Navigation items container */}
-                  <div className="relative flex items-center space-x-1">
-                    {navigation.map((item, index) => (
-                      <motion.div
-                        key={item.name}
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.05 + 0.3 }}
-                      >
-                        <Link
-                          href={`/${locale}${item.href}`}
-                          onMouseEnter={() => setHoveredItem(item.name)}
-                          onMouseLeave={() => setHoveredItem(null)}
-                          className="relative px-5 py-2.5 rounded-xl transition-all duration-300"
-                        >
-                          {/* Hover background with smooth animation */}
-                          <AnimatePresence>
-                            {hoveredItem === item.name && (
-                              <motion.div
-                                layoutId="nav-hover-bg"
-                                className="absolute inset-0 bg-white/[0.08] rounded-xl"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ 
-                                  type: "spring",
-                                  stiffness: 500,
-                                  damping: 30
-                                }}
-                              >
-                                {/* Gradient overlay for depth */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-gold/10 to-transparent rounded-xl" />
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                          
-                          {/* Text with premium styling */}
-                          <span className={cn(
-                            "relative z-10 text-sm font-medium transition-all duration-300",
-                            hoveredItem === item.name 
-                              ? "text-white" 
-                              : "text-white/60 hover:text-white/90"
-                          )}>
-                            {t(item.name)}
-                          </span>
-                          
-                          {/* Active indicator dot */}
-                          {hoveredItem === item.name && (
-                            <motion.div
-                              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-gold rounded-full"
-                              initial={{ scale: 0, y: 10 }}
-                              animate={{ scale: 1, y: 4 }}
-                              transition={{ duration: 0.2 }}
-                            />
-                          )}
-                        </Link>
-                      </motion.div>
-                    ))}
-                    
-                    {/* Divider */}
-                    <div className="w-px h-6 bg-white/10 mx-2" />
-                    
-                    {/* LocaleSwitcher in plate */}
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className="px-3"
+              <div className="relative px-2 py-2 rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08]">
+                <div className="relative flex items-center gap-1">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={`/${locale}${item.href}`}
+                      onMouseEnter={() => setHoveredItem(item.name)}
+                      onMouseLeave={() => setHoveredItem(null)}
+                      className="relative px-4 xl:px-5 py-2.5 rounded-xl transition-colors duration-200"
                     >
-                      <LocaleSwitcher />
-                    </motion.div>
-                  </div>
-                  
-                  {/* Plate shine effect */}
-                  <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.03] to-transparent"
-                      animate={{ x: [-500, 500] }}
-                      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                    />
+                      {/* Hover background */}
+                      <AnimatePresence>
+                        {hoveredItem === item.name && (
+                          <motion.div
+                            layoutId="nav-hover"
+                            className="absolute inset-0 bg-white/[0.08] rounded-xl"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                          />
+                        )}
+                      </AnimatePresence>
+
+                      <span className={cn(
+                        "relative z-10 text-sm font-medium transition-colors duration-200",
+                        hoveredItem === item.name
+                          ? "text-white"
+                          : "text-white/60 hover:text-white/90"
+                      )}>
+                        {t(item.name)}
+                      </span>
+                    </Link>
+                  ))}
+
+                  {/* Divider */}
+                  <div className="w-px h-6 bg-white/10 mx-2" />
+
+                  {/* LocaleSwitcher */}
+                  <div className="px-2">
+                    <LocaleSwitcher />
                   </div>
                 </div>
-                
-                {/* Plate shadow and glow */}
-                <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-b from-gold/5 to-transparent blur-xl" />
-              </motion.div>
+              </div>
             </div>
 
-            {/* CTA Button - Premium Design */}
+            {/* Desktop CTA Button */}
             <div className="hidden lg:block">
               <Link href={`/${locale}/contact`}>
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="relative group block cursor-pointer"
-                >
-                  {/* Button container */}
-                  <div className="relative px-7 py-3 rounded-2xl bg-gradient-to-r from-gold via-gold-light to-gold overflow-hidden">
-                    {/* Animated gradient background */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-gold via-white/20 to-gold-light bg-[size:200%_100%] animate-shimmer" />
-
-                    {/* Glass effect overlay */}
-                    <div className="absolute inset-0 bg-black/10" />
-
-                    {/* Top shine */}
-                    <div className="absolute inset-x-0 top-0 h-px bg-white/40" />
-
-                    {/* Content */}
-                    <span className="relative flex items-center space-x-2 text-black font-bold text-sm">
-                      <span>{t('getStarted')}</span>
-                      <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </span>
-                  </div>
-
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 -z-10 blur-xl bg-gold/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </motion.div>
+                <button className="relative group px-6 xl:px-7 py-2.5 sm:py-3 rounded-2xl bg-gradient-to-r from-gold to-gold-light text-black font-bold text-sm overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-gold/30">
+                  {/* Shine effect on hover - CSS only */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                  <span className="relative flex items-center gap-2">
+                    <span>{t('getStarted')}</span>
+                    <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </button>
               </Link>
             </div>
 
-            {/* Mobile menu button - Premium */}
-            <motion.button
+            {/* Mobile menu button */}
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle navigation menu"
               aria-expanded={isMobileMenuOpen}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.9 }}
-              className="lg:hidden relative p-3 rounded-xl bg-white/5 backdrop-blur-xl text-white/80 hover:text-white transition-all duration-300"
+              className="lg:hidden p-3 rounded-xl bg-white/5 text-white/80 hover:text-white hover:bg-white/10 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
             >
-              <AnimatePresence mode="wait">
-                {isMobileMenuOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X size={20} />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu size={20} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
         </nav>
 
-        {/* Mobile Navigation - Premium Slide Panel */}
+        {/* Mobile Navigation */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.nav
@@ -286,96 +185,56 @@ export function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:hidden bg-black/60 backdrop-blur-3xl border-t border-white/5"
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:hidden bg-black/80 backdrop-blur-2xl border-t border-white/5"
             >
-              <div className="container mx-auto px-6 py-6">
-                <motion.div 
-                  className="space-y-1"
-                  initial="closed"
-                  animate="open"
-                  exit="closed"
-                  variants={{
-                    open: { transition: { staggerChildren: 0.05 } },
-                    closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
-                  }}
-                >
-                  {navigation.map((item) => (
+              <div className="container mx-auto px-4 py-4 sm:py-6">
+                <div className="space-y-1">
+                  {navigation.map((item, index) => (
                     <motion.div
                       key={item.name}
-                      variants={{
-                        open: { x: 0, opacity: 1 },
-                        closed: { x: -20, opacity: 0 }
-                      }}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
                     >
                       <Link
                         href={`/${locale}${item.href}`}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block px-4 py-3.5 rounded-xl text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300"
+                        onClick={closeMobileMenu}
+                        className="block px-4 py-3.5 rounded-xl text-white/70 hover:text-white hover:bg-white/5 transition-colors min-h-[44px] flex items-center"
                       >
                         <span className="font-medium">{t(item.name)}</span>
                       </Link>
                     </motion.div>
                   ))}
-                  
+
                   {/* Mobile Locale Switcher */}
-                  <motion.div
-                    variants={{
-                      open: { x: 0, opacity: 1 },
-                      closed: { x: -20, opacity: 0 }
-                    }}
-                    className="pt-4 pb-2 border-t border-white/5"
-                  >
+                  <div className="pt-4 pb-2 border-t border-white/5">
                     <div className="px-4">
                       <LocaleSwitcher />
                     </div>
-                  </motion.div>
-                  
+                  </div>
+
                   {/* Mobile CTA */}
-                  <motion.div
-                    variants={{
-                      open: { x: 0, opacity: 1 },
-                      closed: { x: -20, opacity: 0 }
-                    }}
+                  <Link
+                    href={`/${locale}/contact`}
+                    onClick={closeMobileMenu}
+                    className="block mx-4 mt-4 px-6 py-4 rounded-2xl bg-gradient-to-r from-gold to-gold-light text-black font-bold text-center min-h-[44px] flex items-center justify-center"
                   >
-                    <Link
-                      href={`/${locale}/contact`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block mx-4 mt-4 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-gold to-gold-light text-black font-bold text-center relative overflow-hidden group"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-active:translate-x-full transition-transform duration-700" />
-                      <span className="relative">{t('getStarted')}</span>
-                    </Link>
-                  </motion.div>
-                </motion.div>
+                    {t('getStarted')}
+                  </Link>
+                </div>
               </div>
             </motion.nav>
           )}
         </AnimatePresence>
       </motion.header>
 
-      {/* Ultra-thin scroll progress */}
-      <motion.div
-        className="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-gold via-gold-light to-gold z-[60]"
-        style={{
-          width: useTransform(
-            useSpring(useMotionValue(0), { stiffness: 400, damping: 40 }),
-            [0, 1],
-            ['0%', '100%']
-          ),
-        }}
+      {/* Scroll progress indicator - simplified */}
+      <div
+        className="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-gold to-gold-light z-[60] transition-all duration-150"
+        style={{ width: '0%' }}
+        id="scroll-progress"
       />
-
-      <style jsx global>{`
-        @keyframes shimmer {
-          0% { background-position: 200% 50%; }
-          100% { background-position: -200% 50%; }
-        }
-        
-        .animate-shimmer {
-          animation: shimmer 3s ease-in-out infinite;
-        }
-      `}</style>
     </>
   );
 }
