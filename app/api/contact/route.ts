@@ -1,7 +1,19 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy initialization to avoid build-time errors
+let resendClient: Resend | null = null;
+
+function getResendClient() {
+  if (!resendClient) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      throw new Error('RESEND_API_KEY is not configured');
+    }
+    resendClient = new Resend(apiKey);
+  }
+  return resendClient;
+}
 
 export async function POST(request: Request) {
   try {
@@ -17,6 +29,7 @@ export async function POST(request: Request) {
     }
 
     // Отправка email через Resend
+    const resend = getResendClient();
     const data = await resend.emails.send({
       from: 'DelTran Contact Form <noreply@deltran.ai>',
       to: ['contact@deltran.ai'],
