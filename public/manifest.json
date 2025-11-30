@@ -1,33 +1,40 @@
 {
-  "name": "DelTran - Global Payment Infrastructure",
+  "name": "DelTran",
   "short_name": "DelTran",
-  "description": "One rail. Infinite reach. Next-generation cross-border payment rails with instant settlements, bank-grade security, and global reach.",
-  "start_url": "/",
-  "display": "standalone",
+  "description": "Next-gen Settlement Rail",
+  "theme_color": "#000000",
   "background_color": "#000000",
-  "theme_color": "#D4AF37",
-  "orientation": "portrait-primary",
+  "display": "standalone",
+  "start_url": "/",
   "scope": "/",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "type": "image/png"
     },
     {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "/maskable-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "categories": ["finance", "business"],
-  "screenshots": [],
-  "prefer_related_applications": false
+  "categories": ["finance", "business"]
 }

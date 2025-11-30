@@ -13,17 +13,52 @@ const config: Config = {
       // Ultra-premium responsive breakpoints
       screens: tailwindBreakpoints.screens,
       colors: {
-        // Luxury color palette
+        // Ultra-Premium Luxury Color Palette
         midnight: '#0a0a0a',
         charcoal: '#1a1a1a',
         obsidian: '#0f0f0f',
         platinum: '#e5e5e7',
+        pearl: '#f8f8f8',
+        // Refined Gold Spectrum
         gold: {
           DEFAULT: '#d4af37',
+          50: '#fefbf0',
+          100: '#fcf5d8',
+          200: '#f8e8a8',
+          300: '#f2d56c',
+          400: '#e6c757',
+          500: '#d4af37',
+          600: '#b89730',
+          700: '#9a7b28',
+          800: '#7c6020',
+          900: '#5e4818',
           light: '#e6c757',
           dark: '#b89730',
         },
-        pearl: '#f8f8f8',
+        // Luxury Champagne
+        champagne: {
+          DEFAULT: '#f7e7ce',
+          light: '#faf4e8',
+          dark: '#e6d4b5',
+        },
+        // Rich Bronze
+        bronze: {
+          DEFAULT: '#cd7f32',
+          light: '#daa060',
+          dark: '#a66628',
+        },
+        // Elegant Silver
+        silver: {
+          DEFAULT: '#c0c0c0',
+          light: '#e8e8e8',
+          dark: '#a0a0a0',
+        },
+        // Deep Royal
+        royal: {
+          DEFAULT: '#1a1a2e',
+          light: '#2d2d44',
+          dark: '#0f0f1a',
+        },
         // Semantic colors
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -60,14 +95,40 @@ const config: Config = {
         ring: 'hsl(var(--ring))',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Inter', 'system-ui', 'sans-serif'],
-        hebrew: ['Noto Sans Hebrew', 'system-ui', 'sans-serif'],
-        arabic: ['Noto Sans Arabic', 'system-ui', 'sans-serif'],
+        // Inter - body text and UI elements
+        sans: ['var(--font-body)', 'Inter', 'system-ui', 'sans-serif'],
+        // DM Serif Display - headings (28px+)
+        serif: ['var(--font-display)', 'DM Serif Display', 'Georgia', 'serif'],
+        display: ['var(--font-display)', 'DM Serif Display', 'Georgia', 'serif'],
+        // Mono uses Inter for consistency
+        mono: ['var(--font-body)', 'Inter', 'monospace'],
+        // RTL language support
+        hebrew: ['Noto Sans Hebrew', 'var(--font-body)', 'Inter', 'sans-serif'],
+        arabic: ['Noto Sans Arabic', 'var(--font-body)', 'Inter', 'sans-serif'],
       },
       fontSize: {
         '2xs': ['0.625rem', { lineHeight: '0.875rem' }],
         '3xs': ['0.5rem', { lineHeight: '0.75rem' }],
+        // Premium typography scale with optimal line heights and letter spacing
+        'display-2xl': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-xl': ['3.75rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-lg': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '600' }],
+        'display-md': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'display-sm': ['1.875rem', { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'display-xs': ['1.5rem', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '500' }],
+        // Body text with optimal readability
+        'body-xl': ['1.25rem', { lineHeight: '1.75', letterSpacing: '0' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.75', letterSpacing: '0' }],
+        'body-md': ['1rem', { lineHeight: '1.625', letterSpacing: '0' }],
+        'body-sm': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0.01em' }],
+        'body-xs': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0.02em' }],
+      },
+      letterSpacing: {
+        'ultra-tight': '-0.05em',
+        'premium': '-0.025em',
+        'elegant': '0.05em',
+        'luxury': '0.15em',
+        'display': '0.25em',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

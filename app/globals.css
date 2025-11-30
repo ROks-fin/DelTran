@@ -1,10 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================
+   SUPER PREMIUM TYPOGRAPHY SYSTEM
+   ============================================ */
+
+@layer base {
+  /* DM Serif Display - единственный шрифт */
+  :root {
+    /* Все шрифты используют DM Serif Display */
+    --font-main: var(--font-main), 'DM Serif Display', Georgia, serif;
+    --font-display: var(--font-main), 'DM Serif Display', Georgia, serif;
+    --font-body: var(--font-main), 'DM Serif Display', Georgia, serif;
+    --font-accent: var(--font-main), 'DM Serif Display', Georgia, serif;
+
+    /* ============================================
+       FLUID TYPOGRAPHY SCALE (clamp-based)
+       Smoothly scales between mobile and desktop
+       ============================================ */
+
+    /* Hero/Display sizes - ultra smooth scaling */
+    --text-hero: clamp(2.5rem, 5vw + 1rem, 5.5rem);
+    --text-display-2xl: clamp(2.25rem, 4vw + 0.75rem, 4.5rem);
+    --text-display-xl: clamp(2rem, 3.5vw + 0.5rem, 4rem);
+    --text-display-lg: clamp(1.75rem, 3vw + 0.5rem, 3rem);
+    --text-display-md: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
+    --text-display-sm: clamp(1.25rem, 2vw + 0.5rem, 1.75rem);
+
+    /* Body text - readable at all sizes */
+    --text-body-xl: clamp(1.125rem, 1vw + 0.5rem, 1.5rem);
+    --text-body-lg: clamp(1rem, 0.75vw + 0.5rem, 1.25rem);
+    --text-body-md: clamp(0.9375rem, 0.5vw + 0.5rem, 1.125rem);
+    --text-body-sm: clamp(0.875rem, 0.25vw + 0.5rem, 1rem);
+
+    /* Labels/Captions - subtle scaling */
+    --text-label: clamp(0.6875rem, 0.25vw + 0.375rem, 0.8125rem);
+    --text-caption: clamp(0.75rem, 0.25vw + 0.5rem, 0.875rem);
+
+    /* Spacing scale - fluid */
+    --space-section: clamp(4rem, 8vw, 9rem);
+    --space-content: clamp(2rem, 4vw, 5rem);
+    --space-element: clamp(1rem, 2vw, 2rem);
+
+    /* Optical sizing for headings */
+    --heading-letter-spacing: -0.025em;
+    --body-letter-spacing: 0.01em;
+    --accent-letter-spacing: 0.05em;
+  }
+}
 
 @layer base {
   :root {
@@ -60,9 +104,62 @@
   
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: var(--font-body);
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1, "cv01" 1;
+    font-optical-sizing: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    letter-spacing: var(--body-letter-spacing);
+  }
+
+  /* Premium Heading Styles */
+  h1, h2, h3, h4, h5, h6,
+  .heading {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: var(--heading-letter-spacing);
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: var(--text-display-xl);
+    font-weight: 700;
+    line-height: 1.15;
+    padding-bottom: 0.05em; /* Space for descenders (g, y, p, q) */
+  }
+
+  h2 {
+    font-size: var(--text-display-lg);
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-size: var(--text-display-md);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: var(--text-display-sm);
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  /* Premium paragraph styling */
+  p {
+    text-wrap: pretty;
+    line-height: 1.7;
+  }
+
+  /* Accent text (numbers, tech elements) */
+  .font-accent,
+  code,
+  .mono {
+    font-family: var(--font-accent);
+    letter-spacing: var(--accent-letter-spacing);
+    font-feature-settings: "tnum" 1, "ss01" 1;
   }
 
   html {
@@ -97,9 +194,497 @@
   *:focus-visible {
     @apply outline-none ring-2 ring-gold/50 ring-offset-2 ring-offset-background;
   }
+
+  /* ============================================
+     RADICAL FIX: Gradient text descender clipping
+     Solution: padding + negative margin trick
+     Source: https://stackoverflow.com/questions/14804698
+     ============================================ */
+  .bg-clip-text,
+  [class*="bg-clip-text"] {
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    /* The padding + negative margin trick:
+       Expands bounding box for descenders (g, y, p, q, j)
+       then negates to maintain original position */
+    padding-bottom: 0.15em;
+    margin-bottom: -0.15em;
+    display: inline-block;
+  }
+
+  /* Ensure text-transparent works properly with webkit */
+  .text-transparent {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 @layer components {
+  /* ============================================
+     PREMIUM TYPOGRAPHY COMPONENTS
+     ============================================ */
+
+  /* Super Premium Display Heading */
+  .heading-premium {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  /* Elegant Subtitle */
+  .subtitle-elegant {
+    font-family: var(--font-body);
+    font-weight: 300;
+    letter-spacing: 0.015em;
+    line-height: 1.65;
+  }
+
+  /* Luxury Label Text */
+  .label-luxury {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* Classic Italic - Elegant serif italic for quotes and accents */
+  .text-classic-italic {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .text-classic-italic-medium {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .text-classic-italic-semibold {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+  }
+
+  .text-classic-italic-bold {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  /* ============================================
+     FLUID TYPOGRAPHY UTILITIES
+     Seamlessly scale text across all devices
+     ============================================ */
+
+  /* Hero Text - Largest, most impactful */
+  .text-fluid-hero {
+    font-size: var(--text-hero);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+
+  /* Display sizes - Section headings */
+  .text-fluid-2xl {
+    font-size: var(--text-display-2xl);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .text-fluid-xl {
+    font-size: var(--text-display-xl);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .text-fluid-lg {
+    font-size: var(--text-display-lg);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  .text-fluid-md {
+    font-size: var(--text-display-md);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .text-fluid-sm {
+    font-size: var(--text-display-sm);
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+  }
+
+  /* Body text - Readable paragraphs */
+  .text-fluid-body-xl {
+    font-size: var(--text-body-xl);
+    line-height: 1.6;
+  }
+
+  .text-fluid-body-lg {
+    font-size: var(--text-body-lg);
+    line-height: 1.65;
+  }
+
+  .text-fluid-body {
+    font-size: var(--text-body-md);
+    line-height: 1.7;
+  }
+
+  .text-fluid-body-sm {
+    font-size: var(--text-body-sm);
+    line-height: 1.7;
+  }
+
+  /* Labels and captions */
+  .text-fluid-label {
+    font-size: var(--text-label);
+    line-height: 1.4;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .text-fluid-caption {
+    font-size: var(--text-caption);
+    line-height: 1.5;
+  }
+
+  /* ============================================
+     FINTECH-GRADE SECTION SYSTEM
+     Smooth transitions between sections
+     ============================================ */
+
+  /* Premium Section with consistent vertical rhythm */
+  .section-premium {
+    @apply py-20 sm:py-28 lg:py-36;
+    position: relative;
+  }
+
+  /* Smooth fade edges for seamless section transitions */
+  .section-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .section-premium::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* No fade for first section (hero) */
+  .section-premium:first-of-type::before,
+  .section-no-fade::before,
+  .section-no-fade::after {
+    display: none;
+  }
+
+  .section-premium-sm {
+    @apply py-12 sm:py-16 lg:py-20;
+    position: relative;
+  }
+
+  .section-premium-lg {
+    @apply py-24 sm:py-32 lg:py-44;
+    position: relative;
+  }
+
+  /* Smooth section divider - soft gradient line */
+  .section-divider {
+    @apply relative;
+  }
+
+  .section-divider::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 600px;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0.2) 20%,
+      rgba(212, 175, 55, 0.3) 50%,
+      rgba(212, 175, 55, 0.2) 80%,
+      transparent 100%
+    );
+  }
+
+  /* Soft background transition between sections */
+  .bg-transition-soft {
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(5, 5, 5, 0.5) 20%,
+      rgba(5, 5, 5, 1) 50%,
+      rgba(5, 5, 5, 0.5) 80%,
+      transparent 100%
+    );
+  }
+
+  /* Premium Container with refined max-width */
+  .container-premium {
+    @apply container mx-auto px-5 sm:px-6 lg:px-8;
+    max-width: 1280px;
+  }
+
+  .container-narrow {
+    @apply container mx-auto px-5 sm:px-6 lg:px-8;
+    max-width: 960px;
+  }
+
+  .container-wide {
+    @apply container mx-auto px-5 sm:px-6 lg:px-8;
+    max-width: 1440px;
+  }
+
+  /* ============================================
+     PREMIUM SPACING UTILITIES
+     ============================================ */
+
+  /* Section header spacing */
+  .section-header {
+    @apply mb-12 sm:mb-16 lg:mb-20;
+  }
+
+  .section-header-sm {
+    @apply mb-8 sm:mb-10 lg:mb-12;
+  }
+
+  /* Content gap utilities */
+  .content-gap {
+    @apply space-y-6 sm:space-y-8;
+  }
+
+  .content-gap-lg {
+    @apply space-y-8 sm:space-y-10 lg:space-y-12;
+  }
+
+  /* ============================================
+     PREMIUM CARD SYSTEM
+     Soft edges, smooth shadows, no harsh borders
+     ============================================ */
+
+  /* Fintech-grade card base - softened */
+  .card-fintech {
+    @apply relative overflow-hidden;
+    border-radius: 24px;  /* Softer corners */
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+      0 4px 24px -4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .card-fintech:hover {
+    border-color: rgba(212, 175, 55, 0.15);
+    box-shadow:
+      0 8px 40px -8px rgba(0, 0, 0, 0.3),
+      0 0 60px -20px rgba(212, 175, 55, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+  }
+
+  /* Card with soft inner glow */
+  .card-soft-glow {
+    @apply card-fintech;
+    box-shadow:
+      0 4px 24px -4px rgba(0, 0, 0, 0.2),
+      inset 0 0 80px rgba(212, 175, 55, 0.02);
+  }
+
+  .card-soft-glow:hover {
+    box-shadow:
+      0 8px 40px -8px rgba(0, 0, 0, 0.3),
+      inset 0 0 100px rgba(212, 175, 55, 0.05);
+  }
+
+  /* Card with gradient accent */
+  .card-gradient {
+    @apply card-fintech;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+  }
+
+  .card-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(212, 175, 55, 0.08) 0%,
+      transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .card-gradient:hover::before {
+    opacity: 1;
+  }
+
+  /* Card padding variants */
+  .card-padding {
+    @apply p-6 sm:p-8;
+  }
+
+  .card-padding-lg {
+    @apply p-8 sm:p-10 lg:p-12;
+  }
+
+  .card-padding-xl {
+    @apply p-10 sm:p-14 lg:p-20;
+  }
+
+  /* ============================================
+     PREMIUM BUTTON SYSTEM
+     ============================================ */
+
+  /* Primary CTA button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-8 py-4 rounded-full;
+    @apply font-semibold text-base;
+    @apply transition-all duration-300 ease-out;
+    background: linear-gradient(135deg, #d4af37 0%, #e6c757 100%);
+    color: #000;
+    box-shadow: 0 4px 24px -4px rgba(212, 175, 55, 0.4);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 8px 32px -4px rgba(212, 175, 55, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-8 py-4 rounded-full;
+    @apply font-medium text-base;
+    @apply border-2 border-white/20 text-white;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:border-gold/40 hover:bg-white/5;
+  }
+
+  /* Button size variants */
+  .btn-sm {
+    @apply px-5 py-2.5 text-sm;
+  }
+
+  .btn-lg {
+    @apply px-10 py-5 text-lg;
+  }
+
+  /* Premium Number Display */
+  .number-display {
+    font-family: var(--font-accent);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-feature-settings: "tnum" 1;
+  }
+
+  /* Elegant Quote */
+  .quote-elegant {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+  }
+
+  /* Premium CTA Text */
+  .cta-premium {
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+  }
+
+  /* Gradient Text - Premium Gold */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #f0d97b 0%, #d4af37 40%, #b89730 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Gradient Text - Platinum */
+  .text-gradient-platinum {
+    background: linear-gradient(135deg, #ffffff 0%, #e5e5e7 50%, #c0c0c0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Gradient Text - Royal */
+  .text-gradient-royal {
+    background: linear-gradient(135deg, #d4af37 0%, #ffffff 50%, #d4af37 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Text Shimmer Effect */
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      #d4af37 0%,
+      #f0d97b 25%,
+      #ffffff 50%,
+      #f0d97b 75%,
+      #d4af37 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShimmer 3s linear infinite;
+  }
+
+  @keyframes textShimmer {
+    to {
+      background-position: 200% center;
+    }
+  }
+
   /* Glass morphism effect */
   .glass {
     @apply bg-white/5 backdrop-blur-xl border border-white/10;
@@ -214,13 +799,90 @@
 }
 
 @layer utilities {
-  /* RTL support for Arabic */
+  /* ============================================
+     PREMIUM TYPOGRAPHY UTILITIES
+     ============================================ */
+
+  /* RTL support - using CSS variables from next/font */
   [dir="rtl"] {
-    font-family: 'Noto Sans Arabic', system-ui, sans-serif;
+    font-family: var(--font-arabic, var(--font-main)), 'DM Serif Display', serif;
   }
 
   [lang="he"] {
-    font-family: 'Noto Sans Hebrew', system-ui, sans-serif;
+    font-family: var(--font-hebrew, var(--font-main)), 'DM Serif Display', serif;
+  }
+
+  /* Font family utilities */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .font-accent {
+    font-family: var(--font-accent);
+  }
+
+  /* Premium letter spacing utilities */
+  .tracking-display {
+    letter-spacing: -0.03em;
+  }
+
+  .tracking-heading {
+    letter-spacing: -0.02em;
+  }
+
+  .tracking-body {
+    letter-spacing: 0.01em;
+  }
+
+  .tracking-luxury {
+    letter-spacing: 0.15em;
+  }
+
+  .tracking-ultra {
+    letter-spacing: 0.25em;
+  }
+
+  /* Premium font weight utilities */
+  .font-hairline {
+    font-weight: 100;
+  }
+
+  .font-ultra-light {
+    font-weight: 200;
+  }
+
+  /* Text rendering optimization */
+  .text-crisp {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  .text-geometric {
+    -webkit-font-smoothing: auto;
+    text-rendering: geometricPrecision;
+  }
+
+  /* Premium text shadows */
+  .text-shadow-gold {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5),
+                 0 0 40px rgba(212, 175, 55, 0.3),
+                 0 0 60px rgba(212, 175, 55, 0.1);
+  }
+
+  .text-shadow-soft {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .text-shadow-luxury {
+    text-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.1),
+      0 -1px 0 rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(212, 175, 55, 0.2);
   }
 
   /* Smooth transitions */
@@ -457,6 +1119,35 @@
   }
 
   /* === ULTRA-PREMIUM ANIMATIONS === */
+
+  /* Animation delay utilities for staggered effects */
+  .animation-delay-0 {
+    animation-delay: 0ms;
+  }
+
+  .animation-delay-75 {
+    animation-delay: 75ms;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-150 {
+    animation-delay: 150ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
 
   /* Magnetic button effect */
   .magnetic-button {
@@ -706,6 +1397,49 @@
 
   .animate-rotate {
     animation: rotateContinuous 2s linear infinite;
+  }
+
+  /* Flow dot animation for IsoFlow diagram */
+  @keyframes flowDot {
+    0% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  [dir="rtl"] .animate-flow-dot {
+    animation: flowDotRTL 2s ease-in-out infinite;
+  }
+
+  @keyframes flowDotRTL {
+    0% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-flow-dot {
+    animation: flowDot 2s ease-in-out infinite;
   }
 
   /* === RESPONSIVE OPTIMIZATIONS === */

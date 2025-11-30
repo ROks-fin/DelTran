@@ -2,7 +2,7 @@
 
 /**
  * Contact Form Client Component
- * Handles form state and submission
+ * Soft edges, smooth transitions
  * Loaded dynamically to reduce initial bundle
  */
 
@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Mail, Send } from 'lucide-react';
 import { Card } from '@/app/components/Card';
+import { cn } from '@/lib/utils';
 
 export function ContactForm() {
   const t = useTranslations('contact');
@@ -69,17 +70,33 @@ export function ContactForm() {
     }));
   };
 
+  // Soft input styles
+  const inputStyles = cn(
+    "w-full px-5 py-4 rounded-2xl",
+    "bg-white/[0.02] backdrop-blur-sm",
+    "border border-white/[0.06]",
+    "text-white text-base placeholder-white/25",
+    "focus:border-gold/25 focus:bg-white/[0.04]",
+    "focus:outline-none focus:ring-2 focus:ring-gold/10",
+    "transition-all duration-500 ease-out"
+  );
+
+  const labelStyles = cn(
+    "block text-sm sm:text-base font-medium",
+    "text-white/60 mb-2.5"
+  );
+
   return (
-    <section className="py-24 relative">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+    <section className="section-premium section-no-fade relative">
+      <div className="container-premium">
+        <div className="grid lg:grid-cols-3 gap-8 sm:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
           <div className="lg:col-span-2 animate-fade-in">
-            <Card className="p-8 md:p-12">
+            <Card variant="soft" size="xl">
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+                <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm sm:text-base font-medium text-white/80 mb-2">
+                    <label htmlFor="name" className={labelStyles}>
                       {t('form.name')}
                     </label>
                     <input
@@ -89,11 +106,11 @@ export function ContactForm() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 sm:py-3.5 rounded-lg bg-white/5 border border-white/10 text-white text-base placeholder-white/40 focus:border-gold/50 focus:bg-white/10 transition-all duration-300"
+                      className={inputStyles}
                     />
                   </div>
                   <div>
-                    <label htmlFor="title" className="block text-sm sm:text-base font-medium text-white/80 mb-2">
+                    <label htmlFor="title" className={labelStyles}>
                       {t('form.title')}
                     </label>
                     <input
@@ -102,14 +119,14 @@ export function ContactForm() {
                       name="title"
                       value={formData.title}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 sm:py-3.5 rounded-lg bg-white/5 border border-white/10 text-white text-base placeholder-white/40 focus:border-gold/50 focus:bg-white/10 transition-all duration-300"
+                      className={inputStyles}
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+                <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
                   <div>
-                    <label htmlFor="company" className="block text-sm sm:text-base font-medium text-white/80 mb-2">
+                    <label htmlFor="company" className={labelStyles}>
                       {t('form.company')}
                     </label>
                     <input
@@ -118,11 +135,11 @@ export function ContactForm() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 sm:py-3.5 rounded-lg bg-white/5 border border-white/10 text-white text-base placeholder-white/40 focus:border-gold/50 focus:bg-white/10 transition-all duration-300"
+                      className={inputStyles}
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm sm:text-base font-medium text-white/80 mb-2">
+                    <label htmlFor="email" className={labelStyles}>
                       {t('form.email')}
                     </label>
                     <input
@@ -132,13 +149,13 @@ export function ContactForm() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 sm:py-3.5 rounded-lg bg-white/5 border border-white/10 text-white text-base placeholder-white/40 focus:border-gold/50 focus:bg-white/10 transition-all duration-300"
+                      className={inputStyles}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm sm:text-base font-medium text-white/80 mb-2">
+                  <label htmlFor="message" className={labelStyles}>
                     {t('form.message')}
                   </label>
                   <textarea
@@ -148,18 +165,26 @@ export function ContactForm() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 sm:py-3.5 rounded-lg bg-white/5 border border-white/10 text-white text-base placeholder-white/40 focus:border-gold/50 focus:bg-white/10 transition-all duration-300 resize-none"
+                    className={cn(inputStyles, "resize-none")}
                   />
                 </div>
 
                 {submitStatus === 'success' && (
-                  <div className="p-4 rounded-lg bg-green-500/20 border border-green-500/30 text-green-400 animate-fade-in">
+                  <div className={cn(
+                    "p-5 rounded-2xl animate-fade-in",
+                    "bg-green-500/[0.08] border border-green-500/[0.15]",
+                    "text-green-400/90 text-sm sm:text-base"
+                  )}>
                     {t('form.success')}
                   </div>
                 )}
 
                 {submitStatus === 'error' && (
-                  <div className="p-4 rounded-lg bg-red-500/20 border border-red-500/30 text-red-400 animate-fade-in">
+                  <div className={cn(
+                    "p-5 rounded-2xl animate-fade-in",
+                    "bg-red-500/[0.08] border border-red-500/[0.15]",
+                    "text-red-400/90 text-sm sm:text-base"
+                  )}>
                     {t('form.error')}
                   </div>
                 )}
@@ -167,16 +192,27 @@ export function ContactForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-8 py-4 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-semibold text-lg hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  className={cn(
+                    "w-full inline-flex items-center justify-center gap-2.5",
+                    "px-8 py-5 rounded-full",
+                    "bg-gradient-to-r from-gold/95 to-gold-light/95 text-black",
+                    "font-semibold text-base sm:text-lg",
+                    // Soft shadow
+                    "shadow-[0_4px_24px_-4px_rgba(212,175,55,0.3)]",
+                    "hover:shadow-[0_8px_36px_-6px_rgba(212,175,55,0.4)]",
+                    "hover:scale-[1.01] active:scale-[0.99]",
+                    "transition-all duration-500 ease-out",
+                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-[0_4px_24px_-4px_rgba(212,175,55,0.3)]"
+                  )}
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin mr-2" />
+                      <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
                       {t('form.submitting')}
                     </>
                   ) : (
                     <>
-                      <Send className="mr-2 w-5 h-5" />
+                      <Send className="w-5 h-5" />
                       {t('form.submit')}
                     </>
                   )}
@@ -185,24 +221,36 @@ export function ContactForm() {
             </Card>
           </div>
 
-          {/* Contact Information - Only one email */}
+          {/* Contact Information */}
           <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            <Card gradient className="p-6 sm:p-8">
-              <h3 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">
+            <Card variant="soft" size="lg">
+              <h3 className={cn(
+                "font-display font-semibold text-white",
+                "text-lg sm:text-xl",
+                "mb-5 sm:mb-6"
+              )}>
                 {t('info.title')}
               </h3>
 
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-gold" />
+              <div className="flex items-start gap-4">
+                <div className={cn(
+                  "w-12 h-12 rounded-xl flex-shrink-0",
+                  "bg-gradient-to-br from-gold/15 to-gold/5",
+                  "border border-gold/10",
+                  "flex items-center justify-center"
+                )}>
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
                 </div>
                 <div>
-                  <div className="text-sm sm:text-base text-white/60 mb-2">
+                  <div className="text-sm text-white/45 mb-1.5">
                     {t('info.emailLabel')}
                   </div>
                   <a
                     href={`mailto:${t('info.email')}`}
-                    className="text-white text-base sm:text-lg hover:text-gold transition-colors font-medium"
+                    className={cn(
+                      "text-white text-base sm:text-lg font-medium",
+                      "hover:text-gold/80 transition-colors duration-300"
+                    )}
                   >
                     {t('info.email')}
                   </a>
@@ -210,11 +258,15 @@ export function ContactForm() {
               </div>
             </Card>
 
-            <Card className="p-6 sm:p-8 bg-gradient-to-br from-gold/20 to-gold/5 border-gold/30">
-              <h3 className="text-base sm:text-lg font-semibold text-white mb-3">
+            <Card variant="soft" size="lg" className="!border-gold/[0.1]">
+              <h3 className={cn(
+                "font-display font-semibold text-white",
+                "text-base sm:text-lg",
+                "mb-3"
+              )}>
                 {t('sidebar.mvpStatus')}
               </h3>
-              <p className="text-white/70 text-sm sm:text-base mb-4 leading-relaxed">
+              <p className="text-white/50 text-sm sm:text-base leading-relaxed">
                 {t('sidebar.mvpDetails')}
               </p>
             </Card>

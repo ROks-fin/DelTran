@@ -7,92 +7,206 @@
  * 3. CSS animations replace JS animations where possible
  * 4. Lazy loading for below-the-fold content
  * 5. Reduced motion support
+ * 6. ISR with 1-hour revalidation for caching
  */
 
+// ISR: Revalidate every hour (3600 seconds)
+export const revalidate = 3600;
+
 import { getTranslations } from 'next-intl/server';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { unstable_setRequestLocale } from 'next-intl/server';
+import { ArrowRight, ArrowLeft, Sparkles, Play } from 'lucide-react';
 import { Card } from '@/app/components/Card';
+import { TrustBar } from '@/app/components/TrustBar';
+import { KeyOutcomes } from './components/KeyOutcomes';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
+import { cn } from '@/lib/utils';
 
 // Client component for animations - lazy loaded with dynamic import
-// Это разбивает бандл и загружает AnimatedSections только когда нужно
 const AnimatedSections = dynamic(
   () => import('./components/AnimatedSections').then(mod => mod.AnimatedSections),
   {
-    loading: () => null, // Skeleton рендерится через Suspense fallback
-    ssr: false, // Отключаем SSR для анимаций - они не нужны для SEO
+    loading: () => null,
   }
 );
 
-export default async function HomePage() {
+
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params;
+  unstable_setRequestLocale(locale);
+
   const t = await getTranslations('home');
+  const isRTL = locale === 'ar' || locale === 'he';
+  const Arrow = isRTL ? ArrowLeft : ArrowRight;
 
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section - Server rendered for instant LCP */}
       <section className="relative min-h-[100svh] flex items-center justify-center">
         {/* Static background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#d4af37]/10 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-[#050505] to-black" />
+
+        {/* Radial gradient overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212,175,55,0.08) 0%, transparent 60%)'
+          }}
+        />
 
         {/* CSS-only animated background orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-[#d4af37]/5 rounded-full blur-3xl animate-float-slow" />
-          <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-[#d4af37]/5 rounded-full blur-3xl animate-float-medium" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-[#d4af37]/3 rounded-full blur-3xl animate-pulse-slow" />
+          <div className="absolute top-1/4 left-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-gold/[0.04] rounded-full blur-3xl animate-float-slow" />
+          <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-gold/[0.04] rounded-full blur-3xl animate-float-medium" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-gold/[0.02] rounded-full blur-3xl animate-pulse-slow" />
         </div>
 
-        {/* Hero Content - Immediately visible */}
-        <div className="relative container mx-auto px-4 sm:px-6 py-20 sm:py-32 text-center">
-          <div className="space-y-6 sm:space-y-8 animate-fade-in">
+        {/* Subtle grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)`,
+            backgroundSize: '64px 64px'
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Hero Content */}
+        <div className="relative container-premium py-24 sm:py-32 lg:py-40 text-center">
+          <div className="space-y-6 sm:space-y-8 animate-fade-in max-w-5xl mx-auto">
             {/* Premium Badge */}
-            <div className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-[#d4af37]/20 to-[#d4af37]/10 border border-[#d4af37]/40 backdrop-blur-sm">
-              <Sparkles className="w-4 sm:w-5 h-4 sm:h-5 text-[#d4af37] mr-2" />
-              <span className="text-[#d4af37] text-xs sm:text-sm font-semibold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gold/[0.08] border border-gold/20 backdrop-blur-sm">
+              <Sparkles className="w-4 h-4 text-gold" />
+              <span className={cn(
+                "text-gold font-medium",
+                "text-[11px] sm:text-xs",
+                "uppercase tracking-[0.15em]"
+              )}>
                 {t('hero.badge')}
               </span>
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold">
-              <span className="block text-white">{t('hero.title')}</span>
-              <span className="block bg-gradient-to-r from-[#d4af37] via-[#e6c757] to-[#d4af37] bg-clip-text text-transparent mt-2">
+            <h1 className="font-display font-bold text-fluid-hero">
+              <span className={cn(
+                "block",
+                "bg-gradient-to-r from-white via-white/95 to-white/85",
+                "bg-clip-text text-transparent"
+              )}>
+                {t('hero.title')}
+              </span>
+              <span className={cn(
+                "block mt-2 sm:mt-3",
+                "bg-gradient-to-r from-gold via-gold-light to-gold",
+                "bg-clip-text text-transparent"
+              )}>
                 {t('hero.titleAccent')}
               </span>
             </h1>
 
+            {/* Tagline - Three Key Effects Mantra */}
+            <p className={cn(
+              "text-[10px] sm:text-xs",
+              "uppercase tracking-[0.2em] sm:tracking-[0.25em]",
+              "text-gold/60",
+              "font-medium"
+            )}>
+              {t('hero.tagline')}
+            </p>
+
             {/* Subtitle */}
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 font-semibold max-w-4xl mx-auto text-balance">
+            <p className={cn(
+              "font-sans font-medium text-fluid-lg text-balance",
+              "text-white/85",
+              "max-w-4xl mx-auto"
+            )}>
               {t('hero.subtitle')}
             </p>
 
             {/* Description */}
-            <p className="text-base md:text-xl lg:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed text-balance">
+            <p className={cn(
+              "text-white/75 text-fluid-body-lg leading-relaxed text-balance",
+              "max-w-3xl mx-auto"
+            )}>
               {t('hero.description')}
             </p>
 
-            {/* CTA Button */}
-            <div className="flex justify-center pt-4">
+            {/* Dual CTA Buttons */}
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5 pt-4 sm:pt-6">
+              {/* Primary CTA */}
               <Link
                 href="/contact"
-                className="group px-8 sm:px-12 py-4 sm:py-6 rounded-full bg-gradient-to-r from-[#d4af37] to-[#e6c757] text-black font-bold text-base sm:text-xl shadow-lg shadow-[#d4af37]/25 hover:shadow-xl hover:shadow-[#d4af37]/40 transition-all duration-300 flex items-center gap-2 sm:gap-3 hover:scale-[1.02] active:scale-[0.98]"
+                className={cn(
+                  "group inline-flex items-center gap-3",
+                  "px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6",
+                  "rounded-full",
+                  "bg-gradient-to-r from-gold to-gold-light text-black",
+                  "font-semibold text-base sm:text-lg lg:text-xl",
+                  "shadow-[0_8px_32px_-8px_rgba(212,175,55,0.4)]",
+                  "hover:shadow-[0_12px_40px_-8px_rgba(212,175,55,0.5)]",
+                  "hover:scale-[1.02] active:scale-[0.98]",
+                  "transition-all duration-300"
+                )}
               >
                 <span>{t('hero.cta')}</span>
-                <ArrowRight className="w-5 sm:w-6 h-5 sm:h-6 group-hover:translate-x-1 transition-transform" />
+                <Arrow className={cn(
+                  "w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200",
+                  isRTL ? "group-hover:-translate-x-1" : "group-hover:translate-x-1"
+                )} />
+              </Link>
+
+              {/* Secondary CTA */}
+              <Link
+                href="/platform"
+                className={cn(
+                  "group inline-flex items-center gap-3",
+                  "px-7 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6",
+                  "rounded-full",
+                  "border border-white/15 hover:border-gold/40",
+                  "text-white/80 hover:text-white",
+                  "font-medium text-base sm:text-lg",
+                  "hover:bg-white/[0.03]",
+                  "transition-all duration-300"
+                )}
+              >
+                <Play className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
+                <span>{t('hero.ctaSecondary')}</span>
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator - CSS only */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <div className="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center pt-2 animate-bounce-slow">
-            <div className="w-1 h-2 bg-[#d4af37] rounded-full" />
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2">
+          <div className={cn(
+            "w-6 h-10 rounded-full",
+            "border border-white/15",
+            "flex justify-center pt-2",
+            "animate-bounce-slow"
+          )}>
+            <div className="w-1 h-2 bg-gold/60 rounded-full" />
           </div>
         </div>
       </section>
+
+      {/* Key Outcomes - Three core value propositions */}
+      <KeyOutcomes />
+
+      {/* Trust Bar */}
+      <TrustBar
+        translations={{
+          designed: t('trustBar.designed'),
+          iso: t('trustBar.iso'),
+          aml: t('trustBar.aml'),
+          enterprise: t('trustBar.enterprise'),
+        }}
+      />
 
       {/* Lazy-loaded animated sections */}
       <Suspense fallback={<SectionsSkeleton t={t} />}>
@@ -160,21 +274,27 @@ export default async function HomePage() {
   );
 }
 
-// Skeleton for loading state
-function SectionsSkeleton({ t }: { t: any }) {
+// Skeleton for loading state - matches new design system
+function SectionsSkeleton({ t }: { t: (key: string) => string }) {
   return (
     <>
       {/* Problem Statement */}
-      <section className="py-16 sm:py-24 lg:py-32 relative bg-gradient-to-b from-black to-[#0a0a0a]">
-        <div className="container mx-auto px-4 sm:px-6">
+      <section className="section-premium relative bg-gradient-to-b from-black to-[#050505]">
+        <div className="container-premium">
           <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 text-balance">
+            <h2 className={cn(
+              "font-display font-bold tracking-tight text-balance",
+              "text-3xl sm:text-4xl lg:text-5xl xl:text-6xl",
+              "bg-gradient-to-r from-white via-white/95 to-white/80",
+              "bg-clip-text text-transparent",
+              "mb-5 sm:mb-6"
+            )}>
               {t('problem.title')}
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-[#d4af37] font-light italic mb-6 sm:mb-8">
+            <p className="text-gold font-light italic text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8">
               {t('problem.subtitle')}
             </p>
-            <p className="text-base md:text-xl lg:text-2xl text-white/70 leading-relaxed text-balance">
+            <p className="text-white/80 leading-relaxed text-balance text-base sm:text-lg lg:text-xl">
               {t('problem.description')}
             </p>
           </div>
@@ -182,16 +302,22 @@ function SectionsSkeleton({ t }: { t: any }) {
       </section>
 
       {/* Solution */}
-      <section className="py-16 sm:py-24 lg:py-32 relative">
-        <div className="container mx-auto px-4 sm:px-6">
-          <Card gradient className="p-8 sm:p-12 md:p-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 text-balance">
+      <section className="section-premium relative">
+        <div className="container-premium">
+          <Card variant="gradient" size="xl" className="max-w-5xl mx-auto">
+            <h2 className={cn(
+              "font-display font-bold tracking-tight text-balance",
+              "text-2xl sm:text-3xl lg:text-4xl xl:text-5xl",
+              "bg-gradient-to-r from-white via-white/95 to-white/80",
+              "bg-clip-text text-transparent",
+              "mb-4 sm:mb-5"
+            )}>
               {t('solution.title')}
             </h2>
-            <p className="text-lg md:text-xl text-[#d4af37] mb-4 sm:mb-6 font-semibold">
+            <p className="text-gold text-lg sm:text-xl font-medium mb-4 sm:mb-5">
               {t('solution.subtitle')}
             </p>
-            <p className="text-base md:text-xl text-white/70 leading-relaxed text-balance">
+            <p className="text-white/80 text-base sm:text-lg lg:text-xl leading-relaxed text-balance">
               {t('solution.description')}
             </p>
           </Card>

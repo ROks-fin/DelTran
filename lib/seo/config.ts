@@ -7,21 +7,23 @@ import { Metadata } from 'next';
 
 export const SITE_CONFIG = {
   name: 'DelTran',
-  title: 'DelTran - Global Payment Infrastructure | Cross-Border Payments',
-  description: 'One rail. Infinite reach. Next-generation cross-border payment rails. Instant settlements, bank-grade security, and global reach.',
+  title: 'DelTran - Enterprise Settlement Infrastructure for Banks',
+  description: 'Banking-grade settlement infrastructure. On-demand settlement, multilateral netting and automated compliance for regulated financial institutions.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://deltran.ai',
   ogImage: '/og-image.png',
   keywords: [
-    'cross-border payments',
-    'global payment infrastructure',
-    'instant settlement',
+    'settlement infrastructure',
+    'bank settlement',
+    'multilateral netting',
+    'correspondent banking',
+    'on-demand settlement',
+    'trapped capital',
+    'nostro vostro',
+    'ISO 20022',
+    'AML CFT compliance',
+    'regulated institutions',
     'payment rails',
-    'ADGM regulated',
-    'bank-grade security',
-    'international money transfer',
-    'payment gateway',
-    'fintech solution',
-    'real-time payments'
+    'cross-border settlement'
   ] as string[],
   authors: [
     {
@@ -45,22 +47,22 @@ export const LOCALES = {
     locale: 'en' as const,
     name: 'English',
     dir: 'ltr' as const,
-    title: 'DelTran - Global Payment Infrastructure',
-    description: 'One rail. Infinite reach. Next-generation cross-border payment rails with instant settlements.',
+    title: 'DelTran - Enterprise Settlement Infrastructure for Banks',
+    description: 'One rail. Infinite reach. On-demand settlement, multilateral netting and automated compliance for regulated financial institutions.',
   },
   ar: {
     locale: 'ar' as const,
     name: 'العربية',
     dir: 'rtl' as const,
-    title: 'DelTran - البنية التحتية العالمية للدفع',
-    description: 'سكة واحدة. وصول لا حدود له. قضبان الدفع عبر الحدود من الجيل التالي مع التسويات الفورية.',
+    title: 'DelTran - بنية تحتية للتسوية المصرفية',
+    description: 'طريق واحد. فرص لا محدودة. تسوية عند الطلب وتسوية ذكية متعددة الأطراف للمؤسسات المالية المنظمة.',
   },
   he: {
     locale: 'he' as const,
     name: 'עברית',
     dir: 'rtl' as const,
-    title: 'DelTran - תשתית תשלומים גלובלית',
-    description: 'מסילה אחת. טווח אינסופי. מסילות תשלום חוצות גבולות מהדור הבא עם סליקה מיידית.',
+    title: 'DelTran - תשתית סליקה לבנקים',
+    description: 'מסלול אחד. אפשרויות אינסופיות. סליקה על-פי-דרישה, נטינג רב-צדדי וציות אוטומטי למוסדות פיננסיים מפוקחים.',
   },
 };
 
@@ -161,18 +163,14 @@ export function generatePageMetadata({
     category: 'finance',
     icons: {
       icon: [
-        { url: '/favicon.svg', type: 'image/svg+xml' },
-        { url: '/favicon.ico', sizes: '48x48' },
-        { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-        { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+        { url: '/icon.svg', type: 'image/svg+xml' },
+        { url: '/favicon.ico', sizes: 'any' },
       ],
       apple: [
-        { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
-      ],
-      other: [
-        { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+        { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
       ],
     },
+    manifest: '/manifest.json',
   };
 }
 
@@ -190,6 +188,7 @@ export function generateAdditionalMetaTags(locale: LocaleKey = 'en') {
     'msapplication-TileColor': '#000000',
     'msapplication-tap-highlight': 'no',
     'theme-color': '#000000',
+    'og:image': '/og-image.png',
     'lang': locale,
     'dir': LOCALES[locale].dir,
   };

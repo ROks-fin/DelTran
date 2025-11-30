@@ -2,144 +2,272 @@
 
 /**
  * Network Page Client Component
- * Contains all animated/interactive elements
- * Loaded dynamically to reduce initial bundle size
+ * Redesigned for clarity and reduced cognitive load
+ *
+ * Structure:
+ * 1. Early Benefits - Quick value snapshot (reusing existing keys)
+ * 2. Network Effect - Visual stages with collapsible details
+ * 3. Global Expansion - Clean phase cards
+ * 4. Regulatory Timeline - Collapsible deep-dive
+ * 5. Final CTA
  */
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import { Globe, Network, TrendingUp, Zap, ArrowRight, ArrowLeft, Building2, Users, MapPin, Shield } from 'lucide-react';
+import { useState } from 'react';
+import {
+  Network, TrendingUp, Zap, ArrowRight, ArrowLeft,
+  Building2, Users, MapPin, Shield, ChevronDown, Coins,
+  Globe, FileCheck
+} from 'lucide-react';
 import { Card } from '@/app/components/Card';
 import { SectionHeading } from '@/app/components/SectionHeading';
 import Link from 'next/link';
 import { useTextDirection } from '@/app/lib/hooks/useTextDirection';
 import { RegulatoryTimeline } from '@/app/components/network/RegulatoryTimeline';
+import { cn } from '@/lib/utils';
 
 export function NetworkPageClient() {
   const t = useTranslations('network');
   const { isRTL } = useTextDirection();
-
-  const DirectionalArrow = ({ className }: { className?: string }) =>
-    isRTL ? <ArrowLeft className={className} /> : <ArrowRight className={className} />;
+  const [showTimeline, setShowTimeline] = useState(false);
+  const [expandedDetails, setExpandedDetails] = useState<string | null>(null);
 
   return (
     <>
-      {/* The Network Effect Section */}
-      <section className="py-32 relative bg-gradient-to-b from-midnight to-black">
-        <div className="container mx-auto px-6">
+      {/* ========================================
+          SECTION 1: EARLY BENEFITS
+          Quick value snapshot for banks joining early
+          ======================================== */}
+      <section className="section-premium relative">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,175,55,0.04) 0%, transparent 60%)'
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="container-premium relative">
           <SectionHeading
             title={t('networkEffect.title')}
             subtitle={t('networkEffect.subtitle')}
-            className="mb-20"
+            size="lg"
+            className="mb-12 sm:mb-16"
           />
 
+          {/* 4 Benefit Cards - reusing existing translation keys */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 max-w-7xl mx-auto">
+            {/* Capital Efficiency */}
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              <Card variant="gradient" size="md" className="h-full group">
+                <div className={cn(
+                  "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
+                  "bg-gold/10 border border-gold/20",
+                  "flex items-center justify-center",
+                  "group-hover:bg-gold/15 transition-colors duration-300"
+                )}>
+                  <Coins className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-display font-semibold text-white mb-2">
+                  {t('networkEffect.exponential.title')}
+                </h3>
+                <p className="text-white/50 text-sm sm:text-base leading-relaxed">
+                  {t('networkEffect.exponential.description')}
+                </p>
+              </Card>
+            </div>
+
+            {/* Netting Benefits */}
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
+              <Card variant="gradient" size="md" className="h-full group">
+                <div className={cn(
+                  "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
+                  "bg-gold/10 border border-gold/20",
+                  "flex items-center justify-center",
+                  "group-hover:bg-gold/15 transition-colors duration-300"
+                )}>
+                  <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-display font-semibold text-white mb-2">
+                  {t('networkEffect.netting.title')}
+                </h3>
+                <p className="text-white/50 text-sm sm:text-base leading-relaxed">
+                  {t('networkEffect.netting.description')}
+                </p>
+              </Card>
+            </div>
+
+            {/* Regulatory First */}
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              <Card variant="gradient" size="md" className="h-full group">
+                <div className={cn(
+                  "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
+                  "bg-gold/10 border border-gold/20",
+                  "flex items-center justify-center",
+                  "group-hover:bg-gold/15 transition-colors duration-300"
+                )}>
+                  <Shield className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-display font-semibold text-white mb-2">
+                  {t('expansion.regulatoryFirst.title')}
+                </h3>
+                <p className="text-white/50 text-sm sm:text-base leading-relaxed">
+                  {t('expansion.regulatoryFirst.description')}
+                </p>
+              </Card>
+            </div>
+
+            {/* Partnership Network */}
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
+              <Card variant="gradient" size="md" className="h-full group">
+                <div className={cn(
+                  "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
+                  "bg-gold/10 border border-gold/20",
+                  "flex items-center justify-center",
+                  "group-hover:bg-gold/15 transition-colors duration-300"
+                )}>
+                  <Users className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-display font-semibold text-white mb-2">
+                  {t('expansion.partnerships.title')}
+                </h3>
+                <p className="text-white/50 text-sm sm:text-base leading-relaxed">
+                  {t('expansion.partnerships.description')}
+                </p>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================
+          SECTION 2: NETWORK EFFECT VISUALIZATION
+          3 stages showing growth from 5 → 20 → 100+ banks
+          ======================================== */}
+      <section className="section-premium relative bg-gradient-to-b from-black to-[#050505]">
+        <div className="container-premium">
+          {/* Visual Network Growth */}
           <div className="max-w-5xl mx-auto">
-            {/* Visual Representation */}
-            <div className="mb-16 relative">
-              <Card className="p-12 bg-gradient-to-br from-gold/10 via-transparent to-gold/5 border-gold/30">
-                <div className="grid md:grid-cols-3 gap-8 text-center">
-                  {/* Stage 1 */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                  >
-                    <div className="relative mb-6">
-                      <div className="w-24 h-24 mx-auto rounded-full bg-gold/20 flex items-center justify-center border-2 border-gold/40">
-                        <span className="text-4xl font-bold text-gold">{t('networkEffect.stage1.number')}</span>
-                      </div>
-                      <Network className="absolute top-0 right-1/4 w-6 h-6 text-gold/60" />
+            <Card
+              variant="bordered"
+              size="lg"
+              className="relative overflow-visible"
+            >
+              {/* 3 Stages Grid */}
+              <div className={cn(
+                "grid md:grid-cols-3 gap-6 sm:gap-8 text-center",
+                isRTL && "md:flex-row-reverse"
+              )}>
+                {/* Stage 1 */}
+                <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                  <div className="relative mb-5">
+                    <div className={cn(
+                      "w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full",
+                      "bg-gold/20 border-2 border-gold/40",
+                      "flex items-center justify-center",
+                      "transition-all duration-300 hover:scale-105"
+                    )}>
+                      <span className="text-3xl sm:text-4xl font-bold text-gold">
+                        {t('networkEffect.stage1.number')}
+                      </span>
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-2">{t('networkEffect.stage1.title')}</h4>
-                    <p className="text-white/60">{t('networkEffect.stage1.description')}</p>
-                  </motion.div>
+                    <Network className="absolute top-0 right-1/4 w-5 h-5 text-gold/50" />
+                  </div>
+                  <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
+                    {t('networkEffect.stage1.title')}
+                  </h4>
+                  <p className="text-white/60 text-sm sm:text-base leading-relaxed">
+                    {t('networkEffect.stage1.description')}
+                  </p>
+                </div>
 
-                  {/* Stage 2 */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    <div className="relative mb-6">
-                      <div className="w-24 h-24 mx-auto rounded-full bg-gold/30 flex items-center justify-center border-2 border-gold/50">
-                        <span className="text-4xl font-bold text-gold">{t('networkEffect.stage2.number')}</span>
-                      </div>
-                      <Network className="absolute top-0 right-1/4 w-8 h-8 text-gold/70 animate-pulse" />
-                      <Network className="absolute bottom-0 left-1/4 w-8 h-8 text-gold/70 animate-pulse" />
+                {/* Stage 2 */}
+                <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                  <div className="relative mb-5">
+                    <div className={cn(
+                      "w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full",
+                      "bg-gold/30 border-2 border-gold/50",
+                      "flex items-center justify-center",
+                      "transition-all duration-300 hover:scale-105"
+                    )}>
+                      <span className="text-3xl sm:text-4xl font-bold text-gold">
+                        {t('networkEffect.stage2.number')}
+                      </span>
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-2">{t('networkEffect.stage2.title')}</h4>
-                    <p className="text-white/60">{t('networkEffect.stage2.description')}</p>
-                  </motion.div>
+                    <Network className="absolute top-0 right-1/4 w-6 h-6 text-gold/60 animate-pulse" />
+                    <Network className="absolute bottom-0 left-1/4 w-6 h-6 text-gold/60 animate-pulse" />
+                  </div>
+                  <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
+                    {t('networkEffect.stage2.title')}
+                  </h4>
+                  <p className="text-white/60 text-sm sm:text-base leading-relaxed">
+                    {t('networkEffect.stage2.description')}
+                  </p>
+                </div>
 
-                  {/* Stage 3 */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    <div className="relative mb-6">
-                      <div className="w-24 h-24 mx-auto rounded-full bg-gold/40 flex items-center justify-center border-2 border-gold animate-glow">
-                        <span className="text-4xl font-bold text-gold">{t('networkEffect.stage3.number')}</span>
-                      </div>
-                      <Network className="absolute top-0 right-1/4 w-10 h-10 text-gold animate-pulse" />
-                      <Network className="absolute bottom-0 left-1/4 w-10 h-10 text-gold animate-pulse" />
-                      <Network className="absolute top-1/2 left-0 w-10 h-10 text-gold animate-pulse" />
+                {/* Stage 3 */}
+                <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                  <div className="relative mb-5">
+                    <div className={cn(
+                      "w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full",
+                      "bg-gold/40 border-2 border-gold",
+                      "flex items-center justify-center",
+                      "shadow-[0_0_40px_-10px_rgba(212,175,55,0.4)]",
+                      "transition-all duration-300 hover:scale-105"
+                    )}>
+                      <span className="text-3xl sm:text-4xl font-bold text-gold">
+                        {t('networkEffect.stage3.number')}
+                      </span>
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-2">{t('networkEffect.stage3.title')}</h4>
-                    <p className="text-white/60">{t('networkEffect.stage3.description')}</p>
-                  </motion.div>
-                </div>
-
-                {/* Arrow showing progression */}
-                <div className="hidden md:flex absolute top-1/3 left-0 right-0 items-center justify-center pointer-events-none">
-                  <DirectionalArrow className="w-12 h-12 text-gold/30 mx-4" />
-                  <DirectionalArrow className="w-12 h-12 text-gold/30 mx-4" />
-                </div>
-              </Card>
-            </div>
-
-            {/* Network Mechanics */}
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <Card className="p-8 border-gold/20">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center flex-shrink-0">
-                    <TrendingUp className="w-6 h-6 text-gold" />
+                    <Network className="absolute top-0 right-1/4 w-7 h-7 text-gold animate-pulse" />
+                    <Network className="absolute bottom-0 left-1/4 w-7 h-7 text-gold animate-pulse" />
+                    <Network className="absolute top-1/2 left-0 w-7 h-7 text-gold animate-pulse" />
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">{t('networkEffect.exponential.title')}</h4>
-                    <p className="text-white/70 leading-relaxed">
-                      {t('networkEffect.exponential.description')}
-                    </p>
-                  </div>
+                  <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
+                    {t('networkEffect.stage3.title')}
+                  </h4>
+                  <p className="text-white/60 text-sm sm:text-base leading-relaxed">
+                    {t('networkEffect.stage3.description')}
+                  </p>
                 </div>
-              </Card>
+              </div>
 
-              <Card className="p-8 border-gold/20">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center flex-shrink-0">
-                    <Zap className="w-6 h-6 text-gold" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">{t('networkEffect.netting.title')}</h4>
-                    <p className="text-white/70 leading-relaxed">
-                      {t('networkEffect.netting.description')}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </div>
+              {/* Connecting arrows (desktop only) */}
+              <div className="hidden md:flex absolute top-1/3 left-0 right-0 items-center justify-center pointer-events-none -z-10">
+                {isRTL ? (
+                  <>
+                    <ArrowLeft className="w-10 h-10 text-gold/20 mx-8" />
+                    <ArrowLeft className="w-10 h-10 text-gold/20 mx-8" />
+                  </>
+                ) : (
+                  <>
+                    <ArrowRight className="w-10 h-10 text-gold/20 mx-8" />
+                    <ArrowRight className="w-10 h-10 text-gold/20 mx-8" />
+                  </>
+                )}
+              </div>
+            </Card>
 
-            {/* Call to action */}
-            <div className="text-center">
-              <p className="text-xl text-white/80 mb-6">
+            {/* Secondary CTA */}
+            <div className="text-center mt-10 sm:mt-12">
+              <p className="text-white/70 text-base sm:text-lg mb-5">
                 {t('networkEffect.cta')}
               </p>
               <Link href="/contact">
-                <button className="px-8 py-4 rounded-xl bg-gold/10 border-2 border-gold/50 text-gold font-semibold hover:bg-gold/20 hover:scale-105 transition-all">
+                <button className={cn(
+                  "inline-flex items-center gap-2",
+                  "px-6 py-3 rounded-full",
+                  "bg-white/5 border border-gold/30 text-gold",
+                  "font-medium text-sm sm:text-base",
+                  "hover:bg-gold/10 hover:border-gold/50",
+                  "transition-all duration-300"
+                )}>
                   {t('networkEffect.button')}
+                  {isRTL ? (
+                    <ArrowLeft className="w-4 h-4" />
+                  ) : (
+                    <ArrowRight className="w-4 h-4" />
+                  )}
                 </button>
               </Link>
             </div>
@@ -147,155 +275,241 @@ export function NetworkPageClient() {
         </div>
       </section>
 
-      {/* Global Expansion Roadmap */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6">
+      {/* ========================================
+          SECTION 3: GLOBAL EXPANSION
+          Clean phase cards with future markets collapsed
+          ======================================== */}
+      <section className="section-premium relative">
+        <div className="container-premium">
           <SectionHeading
             title={t('expansion.title')}
             subtitle={t('expansion.subtitle')}
-            className="mb-20"
+            size="lg"
+            className="mb-12 sm:mb-16"
           />
 
-          <div className="max-w-6xl mx-auto mb-16">
-            <Card className="p-12 bg-gradient-to-br from-gold/5 to-transparent border-gold/20">
-              <div className="text-center mb-12">
-                <Globe className="w-16 h-16 text-gold mx-auto mb-4" />
-                <h3 className="text-3xl font-bold text-white mb-4">
+          <div className="max-w-6xl mx-auto">
+            {/* Parallel Expansion Intro */}
+            <div className="text-center mb-10 sm:mb-12">
+              <div className={cn(
+                "inline-flex items-center gap-3 px-5 py-3",
+                "rounded-full bg-gold/10 border border-gold/20"
+              )}>
+                <Globe className="w-5 h-5 text-gold" />
+                <span className="text-gold font-medium text-sm sm:text-base">
                   {t('expansion.parallel.title')}
-                </h3>
-                <p className="text-xl text-white/70 max-w-3xl mx-auto">
-                  {t('expansion.description')}
-                </p>
+                </span>
+              </div>
+              <p className="text-white/60 text-base sm:text-lg max-w-3xl mx-auto mt-4">
+                {t('expansion.description')}
+              </p>
+            </div>
+
+            {/* 3 Main Phases */}
+            <div className="grid md:grid-cols-3 gap-5 sm:gap-6 mb-8">
+              {/* Phase 1: MENA */}
+              <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                <Card
+                  variant="bordered"
+                  size="md"
+                  className="h-full border-gold/30 bg-gradient-to-br from-gold/10 to-transparent"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={cn(
+                      "w-10 h-10 sm:w-12 sm:h-12 rounded-full",
+                      "bg-gold flex items-center justify-center",
+                      "text-black font-bold text-lg"
+                    )}>
+                      {t('expansion.mena.number')}
+                    </div>
+                    <h4 className="text-lg sm:text-xl font-bold text-white">
+                      {t('expansion.mena.title')}
+                    </h4>
+                  </div>
+                  <div className="space-y-2 text-sm sm:text-base text-white/70">
+                    <p>
+                      <span className="text-white font-medium">{t('expansion.labels.target')}</span>{' '}
+                      {t('expansion.mena.target')}
+                    </p>
+                    <p>
+                      <span className="text-white font-medium">{t('expansion.labels.markets')}</span>{' '}
+                      {t('expansion.mena.markets')}
+                    </p>
+                    <p className="pt-2 text-white/50">{t('expansion.mena.description')}</p>
+                  </div>
+                </Card>
               </div>
 
-              {/* Regional Expansion Phases */}
-              <div className="grid md:grid-cols-3 gap-6">
-                {/* Phase 1: MENA */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  <div className="p-6 sm:p-8 rounded-xl bg-gold/10 border border-gold/30">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gold flex items-center justify-center text-black font-bold text-lg">
-                        {t('expansion.mena.number')}
-                      </div>
-                      <h4 className="text-lg sm:text-xl font-bold text-white">{t('expansion.mena.title')}</h4>
+              {/* Phase 2: Europe */}
+              <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                <Card variant="gradient" size="md" className="h-full">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={cn(
+                      "w-10 h-10 sm:w-12 sm:h-12 rounded-full",
+                      "bg-white/20 flex items-center justify-center",
+                      "text-white font-bold text-lg"
+                    )}>
+                      {t('expansion.europe.number')}
                     </div>
-                    <div className="space-y-2 text-sm sm:text-base text-white/70 leading-relaxed">
-                      <p><strong className="text-white">{t('expansion.labels.target')}</strong> {t('expansion.mena.target')}</p>
-                      <p><strong className="text-white">{t('expansion.labels.markets')}</strong> {t('expansion.mena.markets')}</p>
-                      <p>{t('expansion.mena.description')}</p>
-                    </div>
+                    <h4 className="text-lg sm:text-xl font-bold text-white">
+                      {t('expansion.europe.title')}
+                    </h4>
                   </div>
-                </motion.div>
-
-                {/* Phase 2: Europe */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                  className="relative"
-                >
-                  <div className="p-6 sm:p-8 rounded-xl bg-white/5 border border-white/10">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-lg">
-                        {t('expansion.europe.number')}
-                      </div>
-                      <h4 className="text-lg sm:text-xl font-bold text-white">{t('expansion.europe.title')}</h4>
-                    </div>
-                    <div className="space-y-2 text-sm sm:text-base text-white/70 leading-relaxed">
-                      <p><strong className="text-white">{t('expansion.labels.target')}</strong> {t('expansion.europe.target')}</p>
-                      <p><strong className="text-white">{t('expansion.labels.markets')}</strong> {t('expansion.europe.markets')}</p>
-                      <p>{t('expansion.europe.description')}</p>
-                    </div>
+                  <div className="space-y-2 text-sm sm:text-base text-white/70">
+                    <p>
+                      <span className="text-white font-medium">{t('expansion.labels.target')}</span>{' '}
+                      {t('expansion.europe.target')}
+                    </p>
+                    <p>
+                      <span className="text-white font-medium">{t('expansion.labels.markets')}</span>{' '}
+                      {t('expansion.europe.markets')}
+                    </p>
+                    <p className="pt-2 text-white/50">{t('expansion.europe.description')}</p>
                   </div>
-                </motion.div>
-
-                {/* Phase 3: Asia */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="relative"
-                >
-                  <div className="p-6 sm:p-8 rounded-xl bg-white/5 border border-white/10">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-lg">
-                        {t('expansion.asia.number')}
-                      </div>
-                      <h4 className="text-lg sm:text-xl font-bold text-white">{t('expansion.asia.title')}</h4>
-                    </div>
-                    <div className="space-y-2 text-sm sm:text-base text-white/70 leading-relaxed">
-                      <p><strong className="text-white">{t('expansion.labels.target')}</strong> {t('expansion.asia.target')}</p>
-                      <p><strong className="text-white">{t('expansion.labels.markets')}</strong> {t('expansion.asia.markets')}</p>
-                      <p>{t('expansion.asia.description')}</p>
-                    </div>
-                  </div>
-                </motion.div>
+                </Card>
               </div>
 
-              {/* Additional phases */}
-              <div className="mt-8 pt-8 border-t border-white/10">
-                <div className="grid md:grid-cols-2 gap-4 text-sm sm:text-base">
-                  <div className="flex items-center gap-3 text-white/70">
-                    <MapPin className="w-5 h-5 text-gold flex-shrink-0" />
-                    <span><strong className="text-white">{t('expansion.future.phase4.label')}</strong> {t('expansion.future.phase4.description')}</span>
+              {/* Phase 3: Asia */}
+              <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                <Card variant="gradient" size="md" className="h-full">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={cn(
+                      "w-10 h-10 sm:w-12 sm:h-12 rounded-full",
+                      "bg-white/20 flex items-center justify-center",
+                      "text-white font-bold text-lg"
+                    )}>
+                      {t('expansion.asia.number')}
+                    </div>
+                    <h4 className="text-lg sm:text-xl font-bold text-white">
+                      {t('expansion.asia.title')}
+                    </h4>
                   </div>
-                  <div className="flex items-center gap-3 text-white/70">
-                    <MapPin className="w-5 h-5 text-gold flex-shrink-0" />
-                    <span><strong className="text-white">{t('expansion.future.phase5.label')}</strong> {t('expansion.future.phase5.description')}</span>
+                  <div className="space-y-2 text-sm sm:text-base text-white/70">
+                    <p>
+                      <span className="text-white font-medium">{t('expansion.labels.target')}</span>{' '}
+                      {t('expansion.asia.target')}
+                    </p>
+                    <p>
+                      <span className="text-white font-medium">{t('expansion.labels.markets')}</span>{' '}
+                      {t('expansion.asia.markets')}
+                    </p>
+                    <p className="pt-2 text-white/50">{t('expansion.asia.description')}</p>
                   </div>
-                  <div className="flex items-center gap-3 text-white/70">
-                    <MapPin className="w-5 h-5 text-gold flex-shrink-0" />
-                    <span><strong className="text-white">{t('expansion.future.phase6.label')}</strong> {t('expansion.future.phase6.description')}</span>
+                </Card>
+              </div>
+            </div>
+
+            {/* Future Phases - Collapsible */}
+            <Card variant="soft" size="md" className="mb-8">
+              <button
+                onClick={() => setExpandedDetails(expandedDetails === 'future' ? null : 'future')}
+                className="w-full flex items-center justify-between text-left"
+              >
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-5 h-5 text-gold" />
+                  <span className="text-white font-medium">
+                    {/* TODO: t('network.futureMarkets.title') */}
+                    Phase 4–7: Future Markets
+                  </span>
+                </div>
+                <ChevronDown className={cn(
+                  "w-5 h-5 text-white/50 transition-transform duration-300",
+                  expandedDetails === 'future' && "rotate-180"
+                )} />
+              </button>
+
+              <div className={cn(
+                "overflow-hidden transition-all duration-500",
+                expandedDetails === 'future' ? "max-h-96 opacity-100 mt-6" : "max-h-0 opacity-0"
+              )}>
+                <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-white/10">
+                  <div className="flex items-center gap-3 text-white/70 text-sm">
+                    <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
+                    <span>
+                      <strong className="text-white">{t('expansion.future.phase4.label')}</strong>{' '}
+                      {t('expansion.future.phase4.description')}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-3 text-white/70">
-                    <MapPin className="w-5 h-5 text-gold flex-shrink-0" />
-                    <span><strong className="text-white">{t('expansion.future.phase7.label')}</strong> {t('expansion.future.phase7.description')}</span>
+                  <div className="flex items-center gap-3 text-white/70 text-sm">
+                    <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
+                    <span>
+                      <strong className="text-white">{t('expansion.future.phase5.label')}</strong>{' '}
+                      {t('expansion.future.phase5.description')}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 text-white/70 text-sm">
+                    <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
+                    <span>
+                      <strong className="text-white">{t('expansion.future.phase6.label')}</strong>{' '}
+                      {t('expansion.future.phase6.description')}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 text-white/70 text-sm">
+                    <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
+                    <span>
+                      <strong className="text-white">{t('expansion.future.phase7.label')}</strong>{' '}
+                      {t('expansion.future.phase7.description')}
+                    </span>
                   </div>
                 </div>
               </div>
             </Card>
-          </div>
 
-          {/* Why This Approach Works */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <Card className="p-8 border-gold/20">
-              <Building2 className="w-12 h-12 text-gold mb-4" />
-              <h4 className="text-xl font-bold text-white mb-3">{t('expansion.regulatoryFirst.title')}</h4>
-              <p className="text-white/70 leading-relaxed">
-                {t('expansion.regulatoryFirst.description')}
-              </p>
-            </Card>
+            {/* Regulatory First + Partnerships - Side by Side */}
+            <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
+              <Card variant="gradient" size="md" className="group">
+                <div className={cn(
+                  "w-12 h-12 rounded-xl mb-4",
+                  "bg-gold/10 border border-gold/20",
+                  "flex items-center justify-center",
+                  "group-hover:bg-gold/15 transition-colors"
+                )}>
+                  <Building2 className="w-6 h-6 text-gold" />
+                </div>
+                <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
+                  {t('expansion.regulatoryFirst.title')}
+                </h4>
+                <p className="text-white/60 text-sm sm:text-base leading-relaxed">
+                  {t('expansion.regulatoryFirst.description')}
+                </p>
+              </Card>
 
-            <Card className="p-8 border-gold/20">
-              <Users className="w-12 h-12 text-gold mb-4" />
-              <h4 className="text-xl font-bold text-white mb-3">{t('expansion.partnerships.title')}</h4>
-              <p className="text-white/70 leading-relaxed">
-                {t('expansion.partnerships.description')}
-              </p>
-            </Card>
+              <Card variant="gradient" size="md" className="group">
+                <div className={cn(
+                  "w-12 h-12 rounded-xl mb-4",
+                  "bg-gold/10 border border-gold/20",
+                  "flex items-center justify-center",
+                  "group-hover:bg-gold/15 transition-colors"
+                )}>
+                  <Users className="w-6 h-6 text-gold" />
+                </div>
+                <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
+                  {t('expansion.partnerships.title')}
+                </h4>
+                <p className="text-white/60 text-sm sm:text-base leading-relaxed">
+                  {t('expansion.partnerships.description')}
+                </p>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Regulatory Timeline Section */}
-      <section className="py-32 relative bg-gradient-to-b from-midnight to-black">
-        <div className="container mx-auto px-6">
-          <RegulatoryTimeline />
-
-          {/* Important Disclosure */}
-          <div className="mt-16 max-w-4xl mx-auto">
-            <Card className="p-6 sm:p-8 bg-white/5 border border-white/10">
+      {/* ========================================
+          SECTION 4: REGULATORY TIMELINE
+          Collapsible deep-dive with disclaimer visible
+          ======================================== */}
+      <section className="section-premium relative bg-gradient-to-b from-[#050505] to-black">
+        <div className="container-premium">
+          {/* Disclaimer Card - Always visible */}
+          <div className="max-w-4xl mx-auto mb-10">
+            <Card variant="soft" size="md">
               <div className="flex items-start gap-4">
-                <Shield className="w-6 h-6 text-gold flex-shrink-0 mt-1" />
+                <Shield className="w-6 h-6 text-gold flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-base sm:text-lg font-bold text-white mb-2">{t('regulatory.disclaimerCard.title')}</h4>
+                  <h4 className="text-base sm:text-lg font-bold text-white mb-2">
+                    {t('regulatory.disclaimerCard.title')}
+                  </h4>
                   <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                     {t('regulatory.disclaimerCard.content')}
                   </p>
@@ -303,39 +517,117 @@ export function NetworkPageClient() {
               </div>
             </Card>
           </div>
+
+          {/* Timeline Toggle */}
+          <div className="max-w-6xl mx-auto">
+            <button
+              onClick={() => setShowTimeline(!showTimeline)}
+              className={cn(
+                "w-full flex items-center justify-center gap-3",
+                "px-6 py-4 rounded-2xl",
+                "bg-gradient-to-r from-gold/10 to-gold/5",
+                "border border-gold/20",
+                "text-gold font-medium",
+                "hover:border-gold/40 transition-all duration-300",
+                "mb-8"
+              )}
+            >
+              <FileCheck className="w-5 h-5" />
+              <span>
+                {/* TODO: t('network.regulatory.toggleButton') */}
+                {showTimeline
+                  ? 'Hide Regulatory Roadmap'
+                  : 'View Detailed Regulatory Roadmap'
+                }
+              </span>
+              <ChevronDown className={cn(
+                "w-5 h-5 transition-transform duration-300",
+                showTimeline && "rotate-180"
+              )} />
+            </button>
+
+            {/* Collapsible Timeline */}
+            <div className={cn(
+              "overflow-hidden transition-all duration-700 ease-in-out",
+              showTimeline ? "max-h-[5000px] opacity-100" : "max-h-0 opacity-0"
+            )}>
+              <RegulatoryTimeline />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6">
-          <Card className="p-16 md:p-24 text-center bg-gradient-to-br from-gold/20 via-gold/10 to-gold/5 border-gold/50">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              <h2 className="text-4xl md:text-6xl font-bold text-white">
+      {/* ========================================
+          SECTION 5: FINAL CTA
+          Strong, clear call-to-action
+          ======================================== */}
+      <section className="section-premium relative">
+        <div className="container-premium">
+          <Card
+            variant="bordered"
+            size="xl"
+            className={cn(
+              "text-center",
+              "bg-gradient-to-br from-gold/15 via-gold/8 to-gold/3",
+              "border-gold/30"
+            )}
+          >
+            {/* Decorative glow */}
+            <div
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse at center, rgba(212,175,55,0.15) 0%, transparent 70%)'
+              }}
+              aria-hidden="true"
+            />
+
+            <div className="relative space-y-6 sm:space-y-8 animate-fade-in">
+              <h2 className={cn(
+                "font-display font-bold text-balance",
+                "text-3xl sm:text-4xl md:text-5xl",
+                "text-white"
+              )}>
                 {t('cta.title')}
               </h2>
-              <p className="text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+
+              <p className={cn(
+                "text-white/60 text-lg sm:text-xl leading-relaxed text-balance",
+                "max-w-3xl mx-auto"
+              )}>
                 {t('cta.description')}
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
+              <div className="pt-4 sm:pt-6">
                 <Link href="/contact">
-                  <button className="inline-flex items-center px-12 py-6 rounded-full bg-gradient-to-r from-gold to-gold-light text-black font-bold text-xl hover:shadow-[0_0_60px_rgba(212,175,55,0.7)] hover:scale-105 active:scale-95 transition-all duration-300">
-                    {t('cta.button')}
+                  <button
+                    className={cn(
+                      "group relative inline-flex items-center gap-3",
+                      "px-10 sm:px-12 lg:px-14 py-5 sm:py-6 lg:py-7",
+                      "rounded-full",
+                      "bg-gradient-to-r from-gold via-gold-light to-gold text-black",
+                      "font-semibold text-base sm:text-lg lg:text-xl",
+                      "shadow-[0_8px_40px_-8px_rgba(212,175,55,0.5)]",
+                      "hover:shadow-[0_16px_60px_-8px_rgba(212,175,55,0.6)]",
+                      "hover:scale-[1.03] active:scale-[0.98]",
+                      "transition-all duration-500",
+                      "overflow-hidden"
+                    )}
+                  >
+                    {/* Shine effect */}
+                    <span
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                      aria-hidden="true"
+                    />
+                    <span className="relative">{t('cta.button')}</span>
                     {isRTL ? (
-                      <ArrowLeft className="mr-3 w-6 h-6" />
+                      <ArrowLeft className="relative w-5 h-5 sm:w-6 sm:h-6 group-hover:-translate-x-1 transition-transform duration-300" />
                     ) : (
-                      <ArrowRight className="ml-3 w-6 h-6" />
+                      <ArrowRight className="relative w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300" />
                     )}
                   </button>
                 </Link>
               </div>
-            </motion.div>
+            </div>
           </Card>
         </div>
       </section>
