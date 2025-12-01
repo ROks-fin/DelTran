@@ -57,84 +57,100 @@ export function NetworkPageClient() {
           />
 
           {/* 4 Benefit Cards - reusing existing translation keys */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 max-w-7xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 max-w-7xl mx-auto">
             {/* Capital Efficiency */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              <Card variant="gradient" size="md" className="h-full group">
-                <div className={cn(
-                  "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
-                  "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors duration-300"
-                )}>
-                  <Coins className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
+            <div>
+              <Card variant="gradient" size="md" className="h-full">
+                <div className="flex items-start gap-4 sm:block">
+                  <div className={cn(
+                    "w-11 h-11 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex-shrink-0",
+                    "rounded-xl sm:mb-5",
+                    "bg-gold/10 border border-gold/20",
+                    "flex items-center justify-center"
+                  )}>
+                    <Coins className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-gold" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-display font-semibold text-white mb-1 sm:mb-2">
+                      {t('networkEffect.exponential.title')}
+                    </h3>
+                    <p className="hidden sm:block text-white/50 text-sm lg:text-base leading-relaxed">
+                      {t('networkEffect.exponential.description')}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-display font-semibold text-white mb-2">
-                  {t('networkEffect.exponential.title')}
-                </h3>
-                <p className="text-white/50 text-sm sm:text-base leading-relaxed">
-                  {t('networkEffect.exponential.description')}
-                </p>
               </Card>
             </div>
 
             {/* Netting Benefits */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
-              <Card variant="gradient" size="md" className="h-full group">
-                <div className={cn(
-                  "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
-                  "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors duration-300"
-                )}>
-                  <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
+            <div>
+              <Card variant="gradient" size="md" className="h-full">
+                <div className="flex items-start gap-4 sm:block">
+                  <div className={cn(
+                    "w-11 h-11 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex-shrink-0",
+                    "rounded-xl sm:mb-5",
+                    "bg-gold/10 border border-gold/20",
+                    "flex items-center justify-center"
+                  )}>
+                    <Zap className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-gold" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-display font-semibold text-white mb-1 sm:mb-2">
+                      {t('networkEffect.netting.title')}
+                    </h3>
+                    <p className="hidden sm:block text-white/50 text-sm lg:text-base leading-relaxed">
+                      {t('networkEffect.netting.description')}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-display font-semibold text-white mb-2">
-                  {t('networkEffect.netting.title')}
-                </h3>
-                <p className="text-white/50 text-sm sm:text-base leading-relaxed">
-                  {t('networkEffect.netting.description')}
-                </p>
               </Card>
             </div>
 
             {/* Regulatory First */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <Card variant="gradient" size="md" className="h-full group">
-                <div className={cn(
-                  "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
-                  "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors duration-300"
-                )}>
-                  <Shield className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
+            <div>
+              <Card variant="gradient" size="md" className="h-full">
+                <div className="flex items-start gap-4 sm:block">
+                  <div className={cn(
+                    "w-11 h-11 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex-shrink-0",
+                    "rounded-xl sm:mb-5",
+                    "bg-gold/10 border border-gold/20",
+                    "flex items-center justify-center"
+                  )}>
+                    <Shield className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-gold" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-display font-semibold text-white mb-1 sm:mb-2">
+                      {t('expansion.regulatoryFirst.title')}
+                    </h3>
+                    <p className="hidden sm:block text-white/50 text-sm lg:text-base leading-relaxed">
+                      {t('expansion.regulatoryFirst.description')}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-display font-semibold text-white mb-2">
-                  {t('expansion.regulatoryFirst.title')}
-                </h3>
-                <p className="text-white/50 text-sm sm:text-base leading-relaxed">
-                  {t('expansion.regulatoryFirst.description')}
-                </p>
               </Card>
             </div>
 
             {/* Partnership Network */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
-              <Card variant="gradient" size="md" className="h-full group">
-                <div className={cn(
-                  "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
-                  "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors duration-300"
-                )}>
-                  <Users className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
+            <div>
+              <Card variant="gradient" size="md" className="h-full">
+                <div className="flex items-start gap-4 sm:block">
+                  <div className={cn(
+                    "w-11 h-11 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex-shrink-0",
+                    "rounded-xl sm:mb-5",
+                    "bg-gold/10 border border-gold/20",
+                    "flex items-center justify-center"
+                  )}>
+                    <Users className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-gold" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-display font-semibold text-white mb-1 sm:mb-2">
+                      {t('expansion.partnerships.title')}
+                    </h3>
+                    <p className="hidden sm:block text-white/50 text-sm lg:text-base leading-relaxed">
+                      {t('expansion.partnerships.description')}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-display font-semibold text-white mb-2">
-                  {t('expansion.partnerships.title')}
-                </h3>
-                <p className="text-white/50 text-sm sm:text-base leading-relaxed">
-                  {t('expansion.partnerships.description')}
-                </p>
               </Card>
             </div>
           </div>
@@ -160,13 +176,12 @@ export function NetworkPageClient() {
                 isRTL && "md:flex-row-reverse"
               )}>
                 {/* Stage 1 */}
-                <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                <div>
                   <div className="relative mb-5">
                     <div className={cn(
                       "w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full",
                       "bg-gold/20 border-2 border-gold/40",
-                      "flex items-center justify-center",
-                      "transition-all duration-300 hover:scale-105"
+                      "flex items-center justify-center"
                     )}>
                       <span className="text-3xl sm:text-4xl font-bold text-gold">
                         {t('networkEffect.stage1.number')}
@@ -183,20 +198,19 @@ export function NetworkPageClient() {
                 </div>
 
                 {/* Stage 2 */}
-                <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                <div>
                   <div className="relative mb-5">
                     <div className={cn(
                       "w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full",
                       "bg-gold/30 border-2 border-gold/50",
-                      "flex items-center justify-center",
-                      "transition-all duration-300 hover:scale-105"
+                      "flex items-center justify-center"
                     )}>
                       <span className="text-3xl sm:text-4xl font-bold text-gold">
                         {t('networkEffect.stage2.number')}
                       </span>
                     </div>
-                    <Network className="absolute top-0 right-1/4 w-6 h-6 text-gold/60 animate-pulse" />
-                    <Network className="absolute bottom-0 left-1/4 w-6 h-6 text-gold/60 animate-pulse" />
+                    <Network className="absolute top-0 right-1/4 w-6 h-6 text-gold/60" />
+                    <Network className="absolute bottom-0 left-1/4 w-6 h-6 text-gold/60" />
                   </div>
                   <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
                     {t('networkEffect.stage2.title')}
@@ -207,22 +221,21 @@ export function NetworkPageClient() {
                 </div>
 
                 {/* Stage 3 */}
-                <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                <div>
                   <div className="relative mb-5">
                     <div className={cn(
                       "w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full",
                       "bg-gold/40 border-2 border-gold",
                       "flex items-center justify-center",
-                      "shadow-[0_0_40px_-10px_rgba(212,175,55,0.4)]",
-                      "transition-all duration-300 hover:scale-105"
+                      "shadow-[0_0_40px_-10px_rgba(212,175,55,0.4)]"
                     )}>
                       <span className="text-3xl sm:text-4xl font-bold text-gold">
                         {t('networkEffect.stage3.number')}
                       </span>
                     </div>
-                    <Network className="absolute top-0 right-1/4 w-7 h-7 text-gold animate-pulse" />
-                    <Network className="absolute bottom-0 left-1/4 w-7 h-7 text-gold animate-pulse" />
-                    <Network className="absolute top-1/2 left-0 w-7 h-7 text-gold animate-pulse" />
+                    <Network className="absolute top-0 right-1/4 w-7 h-7 text-gold" />
+                    <Network className="absolute bottom-0 left-1/4 w-7 h-7 text-gold" />
+                    <Network className="absolute top-1/2 left-0 w-7 h-7 text-gold" />
                   </div>
                   <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
                     {t('networkEffect.stage3.title')}
@@ -259,9 +272,7 @@ export function NetworkPageClient() {
                   "inline-flex items-center gap-2",
                   "px-6 py-3 rounded-full",
                   "bg-white/5 border border-gold/30 text-gold",
-                  "font-medium text-sm sm:text-base",
-                  "hover:bg-gold/10 hover:border-gold/50",
-                  "transition-all duration-300"
+                  "font-medium text-sm sm:text-base"
                 )}>
                   {t('networkEffect.button')}
                   {isRTL ? (
@@ -309,7 +320,7 @@ export function NetworkPageClient() {
             {/* 3 Main Phases */}
             <div className="grid md:grid-cols-3 gap-5 sm:gap-6 mb-8">
               {/* Phase 1: MENA */}
-              <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              <div>
                 <Card
                   variant="bordered"
                   size="md"
@@ -342,7 +353,7 @@ export function NetworkPageClient() {
               </div>
 
               {/* Phase 2: Europe */}
-              <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              <div>
                 <Card variant="gradient" size="md" className="h-full">
                   <div className="flex items-center gap-3 mb-4">
                     <div className={cn(
@@ -371,7 +382,7 @@ export function NetworkPageClient() {
               </div>
 
               {/* Phase 3: Asia */}
-              <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+              <div>
                 <Card variant="gradient" size="md" className="h-full">
                   <div className="flex items-center gap-3 mb-4">
                     <div className={cn(
@@ -414,13 +425,13 @@ export function NetworkPageClient() {
                   </span>
                 </div>
                 <ChevronDown className={cn(
-                  "w-5 h-5 text-white/50 transition-transform duration-300",
+                  "w-5 h-5 text-white/50",
                   expandedDetails === 'future' && "rotate-180"
                 )} />
               </button>
 
               <div className={cn(
-                "overflow-hidden transition-all duration-500",
+                "overflow-hidden",
                 expandedDetails === 'future' ? "max-h-96 opacity-100 mt-6" : "max-h-0 opacity-0"
               )}>
                 <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-white/10">
@@ -462,8 +473,7 @@ export function NetworkPageClient() {
                 <div className={cn(
                   "w-12 h-12 rounded-xl mb-4",
                   "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors"
+                  "flex items-center justify-center"
                 )}>
                   <Building2 className="w-6 h-6 text-gold" />
                 </div>
@@ -479,8 +489,7 @@ export function NetworkPageClient() {
                 <div className={cn(
                   "w-12 h-12 rounded-xl mb-4",
                   "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors"
+                  "flex items-center justify-center"
                 )}>
                   <Users className="w-6 h-6 text-gold" />
                 </div>
@@ -529,7 +538,6 @@ export function NetworkPageClient() {
                 "bg-gradient-to-r from-gold/10 to-gold/5",
                 "border border-gold/20",
                 "text-gold font-medium",
-                "hover:border-gold/40 transition-all duration-300",
                 "mb-8"
               )}
             >
@@ -542,14 +550,14 @@ export function NetworkPageClient() {
                 }
               </span>
               <ChevronDown className={cn(
-                "w-5 h-5 transition-transform duration-300",
+                "w-5 h-5",
                 showTimeline && "rotate-180"
               )} />
             </button>
 
             {/* Collapsible Timeline */}
             <div className={cn(
-              "overflow-hidden transition-all duration-700 ease-in-out",
+              "overflow-hidden",
               showTimeline ? "max-h-[5000px] opacity-100" : "max-h-0 opacity-0"
             )}>
               <RegulatoryTimeline />
@@ -582,7 +590,7 @@ export function NetworkPageClient() {
               aria-hidden="true"
             />
 
-            <div className="relative space-y-6 sm:space-y-8 animate-fade-in">
+            <div className="relative space-y-6 sm:space-y-8">
               <h2 className={cn(
                 "font-display font-bold text-balance",
                 "text-3xl sm:text-4xl md:text-5xl",
@@ -608,22 +616,14 @@ export function NetworkPageClient() {
                       "bg-gradient-to-r from-gold via-gold-light to-gold text-black",
                       "font-semibold text-base sm:text-lg lg:text-xl",
                       "shadow-[0_8px_40px_-8px_rgba(212,175,55,0.5)]",
-                      "hover:shadow-[0_16px_60px_-8px_rgba(212,175,55,0.6)]",
-                      "hover:scale-[1.03] active:scale-[0.98]",
-                      "transition-all duration-500",
                       "overflow-hidden"
                     )}
                   >
-                    {/* Shine effect */}
-                    <span
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-                      aria-hidden="true"
-                    />
                     <span className="relative">{t('cta.button')}</span>
                     {isRTL ? (
-                      <ArrowLeft className="relative w-5 h-5 sm:w-6 sm:h-6 group-hover:-translate-x-1 transition-transform duration-300" />
+                      <ArrowLeft className="relative w-5 h-5 sm:w-6 sm:h-6" />
                     ) : (
-                      <ArrowRight className="relative w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                      <ArrowRight className="relative w-5 h-5 sm:w-6 sm:h-6" />
                     )}
                   </button>
                 </Link>

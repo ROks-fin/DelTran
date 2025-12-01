@@ -72,7 +72,7 @@ export function Card({
   className,
   variant = 'default',
   size = 'md',
-  glowOnHover = true,
+  glowOnHover = false, // Disabled by default
   gradient = false, // Backwards compatibility
   as: Component = 'div',
 }: CardProps) {
@@ -88,39 +88,9 @@ export function Card({
         sizeStyles[size],
         // Variant
         variantStyles[resolvedVariant],
-        // Smooth transition
-        'transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]',
-        // Hover states - more subtle
-        glowOnHover && [
-          'hover:border-white/[0.1]',
-          'hover:shadow-[0_8px_48px_-8px_rgba(0,0,0,0.35),0_0_80px_-30px_rgba(212,175,55,0.12),inset_0_1px_0_rgba(255,255,255,0.06)]',
-          'hover:-translate-y-1',
-        ],
         className
       )}
     >
-      {/* Soft gradient overlay for gradient variant */}
-      {resolvedVariant === 'gradient' && (
-        <div
-          className={cn(
-            'absolute inset-0 pointer-events-none',
-            'bg-gradient-to-br from-gold/[0.05] via-transparent to-transparent',
-            'opacity-0 transition-opacity duration-700',
-            'group-hover:opacity-100'
-          )}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Soft inner glow effect */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-700"
-        style={{
-          background: 'radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.04) 0%, transparent 70%)'
-        }}
-        aria-hidden="true"
-      />
-
       {/* Content */}
       <div className="relative z-10">
         {children}
@@ -162,7 +132,7 @@ export function CardTitle({
     <Component
       className={cn(
         'font-display font-semibold text-white',
-        'text-lg sm:text-xl lg:text-2xl',
+        'fluid-text-2xl',
         'tracking-tight',
         className
       )}
@@ -185,7 +155,7 @@ export function CardDescription({
   return (
     <p
       className={cn(
-        'text-white/80 text-sm sm:text-base',
+        'text-white/80 fluid-text-base',
         'leading-relaxed mt-2',
         className
       )}

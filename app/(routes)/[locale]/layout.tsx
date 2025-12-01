@@ -2,10 +2,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
-import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { ThemeProvider } from '@/app/components/ThemeProvider';
-import { ResponsiveProvider } from '@/app/lib/contexts/ResponsiveContext';
 import type { Metadata } from 'next';
 import { DM_Serif_Display, Inter, Noto_Sans_Hebrew, Noto_Sans_Arabic } from 'next/font/google';
 import '@/app/globals.css';
@@ -20,8 +18,9 @@ import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import { PreloadResources } from '@/app/components/PreloadResources';
 
-// PERFORMANCE: Lazy load analytics and non-critical components
-// These are loaded after hydration to reduce initial bundle size
+// PERFORMANCE: Dynamic imports reduce initial bundle size
+// Note: ssr:false not allowed in Server Components in Next.js 15
+const Header = dynamic(() => import('@/app/components/Header').then(m => m.Header));
 const WebVitals = dynamic(() => import('@/app/components/seo/WebVitals').then(m => m.WebVitals));
 const AllAnalytics = dynamic(() => import('@/app/components/seo/Analytics').then(m => m.AllAnalytics));
 const SpeedInsights = dynamic(() => import('@vercel/speed-insights/next').then(m => m.SpeedInsights));
@@ -141,17 +140,15 @@ export default async function LocaleLayout({
       >
         {/* PERFORMANCE: Preconnect hints via React 19 APIs */}
         <PreloadResources />
-        <ResponsiveProvider>
-          <ThemeProvider>
-            <NextIntlClientProvider messages={messages}>
-              <div className="min-h-screen bg-black text-white">
-                <Header />
-                <main>{children}</main>
-                <Footer />
-              </div>
-            </NextIntlClientProvider>
-          </ThemeProvider>
-        </ResponsiveProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
+            <div className="min-h-screen bg-black text-white">
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </div>
+          </NextIntlClientProvider>
+        </ThemeProvider>
         {/* PERFORMANCE: Wrap non-critical analytics in Suspense */}
         <Suspense fallback={null}>
           <WebVitals />

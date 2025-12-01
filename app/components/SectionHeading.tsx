@@ -24,17 +24,17 @@ interface SectionHeadingProps {
 
 // Fluid typography sizes - seamless scaling
 const headingSizes: Record<HeadingSize, string> = {
-  sm: 'text-fluid-md',
-  md: 'text-fluid-lg',
-  lg: 'text-fluid-xl',
-  xl: 'text-fluid-2xl',
+  sm: 'fluid-text-2xl',
+  md: 'fluid-text-3xl',
+  lg: 'fluid-text-4xl',
+  xl: 'fluid-text-5xl',
 };
 
 const subtitleSizes: Record<HeadingSize, string> = {
-  sm: 'text-fluid-body',
-  md: 'text-fluid-body-lg',
-  lg: 'text-fluid-body-xl',
-  xl: 'text-fluid-body-xl',
+  sm: 'fluid-text-base',
+  md: 'fluid-text-lg',
+  lg: 'fluid-text-xl',
+  xl: 'fluid-text-xl',
 };
 
 const spacingBetween: Record<HeadingSize, string> = {

@@ -42,7 +42,7 @@ export function TrustBar({ translations }: TrustBarProps) {
           {badges.map((badge, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 sm:gap-3 text-white/60 hover:text-white/80 transition-colors"
+              className="flex items-center gap-2 sm:gap-3 text-white/60 hover:text-white/80"
             >
               <badge.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#d4af37]/70" />
               <span className="text-xs sm:text-sm font-medium whitespace-nowrap">

@@ -17,22 +17,18 @@ const summaryItems = [
   {
     key: 'liquidity',
     icon: Droplets,
-    gradient: 'from-blue-500/10 via-blue-400/5 to-transparent',
   },
   {
     key: 'compliance',
     icon: ShieldCheck,
-    gradient: 'from-emerald-500/10 via-emerald-400/5 to-transparent',
   },
   {
     key: 'finality',
     icon: Zap,
-    gradient: 'from-gold/15 via-gold/5 to-transparent',
   },
   {
     key: 'reporting',
     icon: FileBarChart2,
-    gradient: 'from-purple-500/10 via-purple-400/5 to-transparent',
   },
 ];
 
@@ -58,75 +54,56 @@ export function PlatformSummary() {
           className="mb-12 sm:mb-16 lg:mb-20"
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 max-w-7xl mx-auto">
-          {summaryItems.map((item, index) => (
-            <div
-              key={item.key}
-              className="animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 max-w-7xl mx-auto">
+          {summaryItems.map((item) => (
+            <div key={item.key}>
               <Card
                 variant="gradient"
-                size="lg"
-                className={cn(
-                  "h-full group relative overflow-hidden",
-                  "hover:border-gold/30 transition-colors duration-300"
-                )}
+                size="md"
+                className="h-full"
               >
-                {/* Gradient overlay */}
-                <div
-                  className={cn(
-                    "absolute inset-0 bg-gradient-to-br",
-                    item.gradient,
-                    "opacity-0 group-hover:opacity-100",
-                    "transition-opacity duration-500"
-                  )}
-                  aria-hidden="true"
-                />
-
-                <div className="relative">
+                {/* Mobile: Horizontal compact | Desktop: Vertical */}
+                <div className="flex items-start gap-4 sm:block">
                   {/* Icon */}
                   <div className={cn(
-                    "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5 sm:mb-6",
+                    "w-11 h-11 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex-shrink-0",
+                    "rounded-xl sm:mb-5",
                     "bg-gold/10 border border-gold/20",
-                    "flex items-center justify-center",
-                    "group-hover:bg-gold/15 group-hover:border-gold/30",
-                    "transition-colors duration-300"
+                    "flex items-center justify-center"
                   )}>
-                    <item.icon className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
+                    <item.icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-gold" />
                   </div>
 
-                  {/* Title */}
-                  <h3 className={cn(
-                    "text-lg sm:text-xl font-display font-semibold",
-                    "text-white mb-3"
-                  )}>
-                    {t(`summary.items.${item.key}.title`)}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-white/50 text-sm sm:text-base leading-relaxed mb-4">
-                    {t(`summary.items.${item.key}.description`)}
-                  </p>
-
-                  {/* Impact metric */}
-                  <div className={cn(
-                    "pt-4 border-t border-white/[0.06]",
-                    "group-hover:border-gold/20",
-                    "transition-colors duration-300"
-                  )}>
-                    <p className={cn(
-                      "text-xs uppercase tracking-[0.15em] text-gold/60 mb-1"
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    {/* Title */}
+                    <h3 className={cn(
+                      "text-base sm:text-lg lg:text-xl font-display font-semibold",
+                      "text-white mb-1 sm:mb-3"
                     )}>
-                      {t(`summary.items.${item.key}.impactLabel`)}
+                      {t(`summary.items.${item.key}.title`)}
+                    </h3>
+
+                    {/* Description - hidden on mobile for compactness */}
+                    <p className="hidden sm:block text-white/50 text-sm lg:text-base leading-relaxed mb-4">
+                      {t(`summary.items.${item.key}.description`)}
                     </p>
-                    <p className={cn(
-                      "text-lg sm:text-xl font-display font-semibold",
-                      "bg-gradient-to-r from-gold via-gold-light to-gold",
-                      "bg-clip-text text-transparent"
-                    )}>
-                      {t(`summary.items.${item.key}.impact`)}
-                    </p>
+
+                    {/* Impact metric */}
+                    <div className="sm:pt-4 sm:border-t sm:border-white/[0.06]">
+                      <p className={cn(
+                        "text-[10px] sm:text-xs uppercase tracking-[0.15em] text-gold/60 mb-0.5 sm:mb-1"
+                      )}>
+                        {t(`summary.items.${item.key}.impactLabel`)}
+                      </p>
+                      <p className={cn(
+                        "text-base sm:text-lg lg:text-xl font-display font-semibold",
+                        "bg-gradient-to-r from-gold via-gold-light to-gold",
+                        "bg-clip-text text-transparent"
+                      )}>
+                        {t(`summary.items.${item.key}.impact`)}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </Card>

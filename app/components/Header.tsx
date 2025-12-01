@@ -137,7 +137,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+        'fixed top-0 left-0 right-0 z-50',
         isScrolled
           ? 'bg-black/80 backdrop-blur-2xl border-b border-white/[0.06]'
           : 'bg-transparent'
@@ -146,7 +146,7 @@ export function Header() {
       <nav className="container-premium flex items-center justify-between h-[72px]">
         {/* Logo - Left */}
         <Link href={`/${locale}`} className="group relative flex items-center gap-2.5">
-          <Logo size={32} className="transition-all duration-300 group-hover:scale-105" />
+          <Logo size={32} />
           <span className="text-lg font-display font-semibold tracking-tight text-white">
             DelTran
           </span>
@@ -163,17 +163,14 @@ export function Header() {
                 className={cn(
                   "relative px-4 py-2 rounded-lg",
                   "text-[13px] font-medium tracking-wide uppercase",
-                  "transition-all duration-200",
                   isActive
                     ? "text-gold"
                     : "text-white/60 hover:text-white hover:bg-white/[0.04]",
-                  // Underline effect
                   "after:absolute after:left-4 after:right-4 after:bottom-1",
                   "after:h-[1.5px] after:rounded-full",
-                  "after:transition-all after:duration-300 after:ease-out",
                   isActive
                     ? "after:bg-gold after:opacity-100"
-                    : "after:bg-gold after:opacity-0 after:scale-x-0 hover:after:opacity-100 hover:after:scale-x-100"
+                    : "after:bg-gold after:opacity-0"
                 )}
               >
                 {t(item.name)}
@@ -195,13 +192,12 @@ export function Header() {
                 "group flex items-center gap-1.5 px-3 py-2 rounded-lg",
                 "text-[13px] font-medium tracking-wide",
                 "text-white/60 hover:text-white hover:bg-white/[0.04]",
-                "transition-all duration-200",
                 isLangOpen && "text-white bg-white/[0.04]"
               )}
             >
               <span>{currentLanguage.nativeName}</span>
               <ChevronDown className={cn(
-                "w-3.5 h-3.5 transition-transform duration-200",
+                "w-3.5 h-3.5",
                 isLangOpen && "rotate-180"
               )} />
             </button>
@@ -212,7 +208,7 @@ export function Header() {
                 "absolute right-0 mt-2 w-36 py-1.5 rounded-xl",
                 "bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/[0.08]",
                 "overflow-hidden shadow-2xl z-[100]",
-                "transition-all duration-150 ease-out origin-top-right",
+                "origin-top-right",
                 isLangOpen
                   ? "opacity-100 scale-100 pointer-events-auto"
                   : "opacity-0 scale-95 pointer-events-none"
@@ -226,7 +222,7 @@ export function Header() {
                   aria-current={lang.code === locale ? 'true' : 'false'}
                   dir={lang.dir}
                   className={cn(
-                    "w-full px-4 py-2.5 text-left transition-colors duration-150",
+                    "w-full px-4 py-2.5 text-left",
                     "flex items-center justify-between",
                     lang.code === locale
                       ? "text-gold bg-gold/10"
@@ -250,7 +246,6 @@ export function Header() {
             "md:hidden p-2.5 rounded-lg",
             "text-white/70 hover:text-white",
             "hover:bg-white/[0.05] active:bg-white/[0.08]",
-            "transition-colors duration-150",
             "min-w-[44px] min-h-[44px] flex items-center justify-center"
           )}
         >
@@ -264,7 +259,7 @@ export function Header() {
         aria-label="Mobile navigation"
         className={cn(
           "md:hidden bg-[#0a0a0a]/98 backdrop-blur-2xl border-t border-white/[0.05]",
-          "overflow-hidden transition-all duration-300 ease-out",
+          "overflow-hidden",
           isMobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
         )}
       >
@@ -275,15 +270,12 @@ export function Header() {
               return (
                 <div
                   key={item.name}
-                  className="animate-fade-in-up"
-                  style={{ animationDelay: `${index * 0.04}s` }}
                 >
                   <Link
                     href={`/${locale}${item.href}`}
                     onClick={closeMobileMenu}
                     className={cn(
                       "block px-4 py-3.5 rounded-xl",
-                      "transition-colors duration-150",
                       "min-h-[48px] flex items-center",
                       isActive
                         ? "text-gold bg-gold/10"
@@ -308,7 +300,7 @@ export function Header() {
                     onClick={() => handleLanguageChange(lang.code)}
                     dir={lang.dir}
                     className={cn(
-                      "py-2.5 rounded-lg text-center transition-colors duration-150",
+                      "py-2.5 rounded-lg text-center",
                       lang.code === locale
                         ? "bg-gold/20 text-gold"
                         : "text-white/60 hover:text-white hover:bg-white/[0.04]"

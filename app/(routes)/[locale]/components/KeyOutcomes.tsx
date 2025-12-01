@@ -58,7 +58,7 @@ export async function KeyOutcomes() {
 
       <div className="container-premium relative">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 max-w-5xl mx-auto">
-          {outcomes.map((outcome, index) => {
+          {outcomes.map((outcome) => {
             const Icon = outcome.icon;
 
             return (
@@ -66,48 +66,45 @@ export async function KeyOutcomes() {
                 key={outcome.key}
                 variant="soft"
                 size="sm"
-                className={cn(
-                  "group text-center",
-                  // Staggered animation delay
-                  "animate-fade-in",
-                  index === 0 && "animation-delay-0",
-                  index === 1 && "animation-delay-100",
-                  index === 2 && "animation-delay-200"
-                )}
-                glowOnHover={true}
+                className="md:text-center"
+                glowOnHover={false}
               >
-                {/* Icon */}
-                <div className={cn(
-                  "w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4",
-                  "rounded-xl",
-                  "bg-gradient-to-br from-gold/15 to-gold/5",
-                  "border border-gold/10",
-                  "flex items-center justify-center",
-                  "group-hover:from-gold/20 group-hover:to-gold/10",
-                  "group-hover:border-gold/20",
-                  "transition-all duration-500"
-                )}>
-                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
+                {/* Mobile: Horizontal layout | Desktop: Vertical layout */}
+                <div className="flex items-start gap-4 md:block">
+                  {/* Icon */}
+                  <div className={cn(
+                    "w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0",
+                    "md:mx-auto md:mb-4",
+                    "rounded-xl",
+                    "bg-gradient-to-br from-gold/15 to-gold/5",
+                    "border border-gold/10",
+                    "flex items-center justify-center"
+                  )}>
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
+                  </div>
+
+                  {/* Text content */}
+                  <div className="flex-1 min-w-0">
+                    {/* Title */}
+                    <h3 className={cn(
+                      "fluid-text-base font-semibold",
+                      "text-white",
+                      "mb-1 md:mb-2"
+                    )}>
+                      {t(outcome.titleKey)}
+                    </h3>
+
+                    {/* Description */}
+                    <p className={cn(
+                      "fluid-text-sm",
+                      "text-white/50",
+                      "leading-relaxed",
+                      "line-clamp-2"
+                    )}>
+                      {t(outcome.descriptionKey)}
+                    </p>
+                  </div>
                 </div>
-
-                {/* Title */}
-                <h3 className={cn(
-                  "text-sm sm:text-base font-semibold",
-                  "text-white",
-                  "mb-2"
-                )}>
-                  {t(outcome.titleKey)}
-                </h3>
-
-                {/* Description */}
-                <p className={cn(
-                  "text-xs sm:text-sm",
-                  "text-white/50",
-                  "leading-relaxed",
-                  "line-clamp-2"
-                )}>
-                  {t(outcome.descriptionKey)}
-                </p>
               </Card>
             );
           })}

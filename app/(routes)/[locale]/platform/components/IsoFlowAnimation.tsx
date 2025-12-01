@@ -77,8 +77,9 @@ export function IsoFlowAnimation() {
 
         {/* Flow Diagram */}
         <div className="max-w-5xl mx-auto">
+          {/* Desktop: Horizontal layout */}
           <div className={cn(
-            "flex items-center justify-center gap-4 sm:gap-6 lg:gap-8",
+            "hidden sm:flex items-center justify-center gap-4 sm:gap-6 lg:gap-8",
             isRTL && "flex-row-reverse"
           )}>
             {steps.map((step, index) => (
@@ -86,10 +87,8 @@ export function IsoFlowAnimation() {
                 {/* Step Card */}
                 <div
                   className={cn(
-                    "relative flex-1 max-w-[280px]",
-                    "animate-fade-in-up"
+                    "relative flex-1 max-w-[280px]"
                   )}
-                  style={{ animationDelay: `${index * 0.15}s` }}
                 >
                   <div className={cn(
                     "relative p-6 sm:p-8 rounded-2xl",
@@ -98,8 +97,7 @@ export function IsoFlowAnimation() {
                     "border",
                     step.borderColor,
                     "backdrop-blur-sm",
-                    step.isPrimary && "ring-1 ring-gold/20",
-                    "group hover:scale-[1.02] transition-transform duration-300"
+                    step.isPrimary && "ring-1 ring-gold/20"
                   )}
                   style={{
                     boxShadow: step.isPrimary
@@ -111,8 +109,7 @@ export function IsoFlowAnimation() {
                     <div className={cn(
                       "w-14 h-14 sm:w-16 sm:h-16 rounded-xl mx-auto mb-4 sm:mb-5",
                       "bg-black/40 border border-white/10",
-                      "flex items-center justify-center",
-                      "group-hover:border-white/20 transition-colors duration-300"
+                      "flex items-center justify-center"
                     )}>
                       <step.icon className={cn(
                         "w-7 h-7 sm:w-8 sm:h-8",
@@ -130,24 +127,13 @@ export function IsoFlowAnimation() {
                       {t(`isoFlow.steps.${step.key}.description`)}
                     </p>
 
-                    {/* Pulse animation for primary step */}
-                    {step.isPrimary && (
-                      <div
-                        className="absolute inset-0 rounded-2xl animate-pulse-slow pointer-events-none"
-                        style={{
-                          background: 'radial-gradient(ellipse at center, rgba(212,175,55,0.1) 0%, transparent 70%)'
-                        }}
-                        aria-hidden="true"
-                      />
-                    )}
                   </div>
                 </div>
 
                 {/* Arrow between steps */}
                 {index < steps.length - 1 && (
                   <div
-                    className="hidden sm:flex items-center justify-center animate-fade-in"
-                    style={{ animationDelay: `${(index + 0.5) * 0.15}s` }}
+                    className="hidden sm:flex items-center justify-center"
                   >
                     <div className="relative">
                       {/* Animated arrow line */}
@@ -161,20 +147,6 @@ export function IsoFlowAnimation() {
                         isRTL ? "-left-1" : "-right-1",
                         "w-4 h-4 text-gold/60"
                       )} />
-
-                      {/* Flowing dot animation */}
-                      <div
-                        className={cn(
-                          "absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5",
-                          "bg-gold rounded-full",
-                          "animate-flow-dot"
-                        )}
-                        style={{
-                          left: isRTL ? 'auto' : '0',
-                          right: isRTL ? '0' : 'auto',
-                        }}
-                        aria-hidden="true"
-                      />
                     </div>
                   </div>
                 )}

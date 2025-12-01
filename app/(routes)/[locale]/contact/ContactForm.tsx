@@ -77,8 +77,7 @@ export function ContactForm() {
     "border border-white/[0.06]",
     "text-white text-base placeholder-white/25",
     "focus:border-gold/25 focus:bg-white/[0.04]",
-    "focus:outline-none focus:ring-2 focus:ring-gold/10",
-    "transition-all duration-500 ease-out"
+    "focus:outline-none focus:ring-2 focus:ring-gold/10"
   );
 
   const labelStyles = cn(
@@ -91,7 +90,7 @@ export function ContactForm() {
       <div className="container-premium">
         <div className="grid lg:grid-cols-3 gap-8 sm:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <div className="lg:col-span-2 animate-fade-in">
+          <div className="lg:col-span-2">
             <Card variant="soft" size="xl">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
@@ -171,7 +170,7 @@ export function ContactForm() {
 
                 {submitStatus === 'success' && (
                   <div className={cn(
-                    "p-5 rounded-2xl animate-fade-in",
+                    "p-5 rounded-2xl",
                     "bg-green-500/[0.08] border border-green-500/[0.15]",
                     "text-green-400/90 text-sm sm:text-base"
                   )}>
@@ -181,7 +180,7 @@ export function ContactForm() {
 
                 {submitStatus === 'error' && (
                   <div className={cn(
-                    "p-5 rounded-2xl animate-fade-in",
+                    "p-5 rounded-2xl",
                     "bg-red-500/[0.08] border border-red-500/[0.15]",
                     "text-red-400/90 text-sm sm:text-base"
                   )}>
@@ -197,12 +196,8 @@ export function ContactForm() {
                     "px-8 py-5 rounded-full",
                     "bg-gradient-to-r from-gold/95 to-gold-light/95 text-black",
                     "font-semibold text-base sm:text-lg",
-                    // Soft shadow
                     "shadow-[0_4px_24px_-4px_rgba(212,175,55,0.3)]",
-                    "hover:shadow-[0_8px_36px_-6px_rgba(212,175,55,0.4)]",
-                    "hover:scale-[1.01] active:scale-[0.99]",
-                    "transition-all duration-500 ease-out",
-                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-[0_4px_24px_-4px_rgba(212,175,55,0.3)]"
+                    "disabled:opacity-50 disabled:cursor-not-allowed"
                   )}
                 >
                   {isSubmitting ? (
@@ -222,7 +217,7 @@ export function ContactForm() {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <div className="space-y-6">
             <Card variant="soft" size="lg">
               <h3 className={cn(
                 "font-display font-semibold text-white",
@@ -249,7 +244,7 @@ export function ContactForm() {
                     href={`mailto:${t('info.email')}`}
                     className={cn(
                       "text-white text-base sm:text-lg font-medium",
-                      "hover:text-gold/80 transition-colors duration-300"
+                      "hover:text-gold/80"
                     )}
                   >
                     {t('info.email')}

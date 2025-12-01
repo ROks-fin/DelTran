@@ -76,7 +76,6 @@ export async function Footer() {
             >
               <Logo
                 size={28}
-                className="transition-all duration-300 group-hover:scale-105"
               />
               <span className="text-lg font-display font-semibold tracking-tight text-white">
                 DelTran
@@ -97,8 +96,7 @@ export async function Footer() {
                 className={cn(
                   "p-2 rounded-lg",
                   "text-white/30 hover:text-white",
-                  "hover:bg-white/[0.04]",
-                  "transition-all duration-200"
+                  "hover:bg-white/[0.04]"
                 )}
               >
                 <Linkedin className="w-4 h-4" />
@@ -115,7 +113,7 @@ export async function Footer() {
                   <Link href={`/${locale}${link.href}`} className={linkStyles}>
                     <span>{t(`links.${link.name}`)}</span>
                     <ArrowUpRight
-                      className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover/link:opacity-50 group-hover/link:translate-y-0 group-hover/link:translate-x-0 transition-all duration-200"
+                      className="w-3 h-3 opacity-0"
                     />
                   </Link>
                 </li>
@@ -132,7 +130,7 @@ export async function Footer() {
                   <Link href={`/${locale}${link.href}`} className={linkStyles}>
                     <span>{t(`links.${link.name}`)}</span>
                     <ArrowUpRight
-                      className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover/link:opacity-50 group-hover/link:translate-y-0 group-hover/link:translate-x-0 transition-all duration-200"
+                      className="w-3 h-3 opacity-0"
                     />
                   </Link>
                 </li>
@@ -149,7 +147,7 @@ export async function Footer() {
                   <Link href={`/${locale}${link.href}`} className={linkStyles}>
                     <span>{t(`links.${link.name}`)}</span>
                     <ArrowUpRight
-                      className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover/link:opacity-50 group-hover/link:translate-y-0 group-hover/link:translate-x-0 transition-all duration-200"
+                      className="w-3 h-3 opacity-0"
                     />
                   </Link>
                 </li>
@@ -170,13 +168,11 @@ export async function Footer() {
                 "px-5 py-2.5 rounded-full",
                 "text-[13px] font-semibold",
                 "bg-gradient-to-r from-gold to-gold-light text-black",
-                "hover:shadow-[0_4px_20px_-4px_rgba(212,175,55,0.4)]",
-                "transition-all duration-300",
                 "group/cta"
               )}
             >
               <span>{t('cta.button')}</span>
-              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>

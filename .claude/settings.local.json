@@ -60,7 +60,8 @@
       "Bash(cmd /c \"del /q /f C:\\Users\\User\\AppData\\Local\\Temp\\lighthouse.* 2>nul & echo Cleaned lighthouse temp files\")",
       "Bash(cmd /c \"where chrome 2>nul || dir \"\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\"\" 2>nul || dir \"\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\"\" 2>nul || echo Chrome not found in standard locations\")",
       "Bash(cmd /c \"if exist \"\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\"\" (echo Chrome found) else (echo Chrome NOT found)\")",
-      "Bash(cmd /c \"del /q /f C:\\Users\\User\\AppData\\Local\\Temp\\lighthouse.* 2>nul & echo Cleaned\")"
+      "Bash(cmd /c \"del /q /f C:\\Users\\User\\AppData\\Local\\Temp\\lighthouse.* 2>nul & echo Cleaned\")",
+      "Bash(cmd /c \"taskkill /F /PID 37468 && taskkill /F /PID 46752 && taskkill /F /PID 56476 && taskkill /F /PID 59508 && taskkill /F /PID 43456\")"
     ],
     "deny": [],
     "ask": []

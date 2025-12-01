@@ -24,7 +24,8 @@ import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
 
-// Client component for animations - lazy loaded with dynamic import
+// PERFORMANCE: Client component for animations - lazy loaded
+// Note: ssr:false not allowed in Server Components in Next.js 15
 const AnimatedSections = dynamic(
   () => import('./components/AnimatedSections').then(mod => mod.AnimatedSections),
   {
@@ -60,11 +61,11 @@ export default async function HomePage({
           }}
         />
 
-        {/* CSS-only animated background orbs */}
+        {/* Static background orbs - animations removed for performance */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-gold/[0.04] rounded-full blur-3xl animate-float-slow" />
-          <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-gold/[0.04] rounded-full blur-3xl animate-float-medium" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-gold/[0.02] rounded-full blur-3xl animate-pulse-slow" />
+          <div className="absolute top-1/4 left-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-gold/[0.04] rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-gold/[0.04] rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-gold/[0.02] rounded-full blur-3xl" />
         </div>
 
         {/* Subtle grid pattern */}
@@ -79,13 +80,13 @@ export default async function HomePage({
 
         {/* Hero Content */}
         <div className="relative container-premium py-24 sm:py-32 lg:py-40 text-center">
-          <div className="space-y-6 sm:space-y-8 animate-fade-in max-w-5xl mx-auto">
+          <div className="space-y-6 sm:space-y-8 max-w-5xl mx-auto">
             {/* Premium Badge */}
             <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gold/[0.08] border border-gold/20 backdrop-blur-sm">
               <Sparkles className="w-4 h-4 text-gold" />
               <span className={cn(
                 "text-gold font-medium",
-                "text-[11px] sm:text-xs",
+                "fluid-text-xs",
                 "uppercase tracking-[0.15em]"
               )}>
                 {t('hero.badge')}
@@ -93,7 +94,7 @@ export default async function HomePage({
             </div>
 
             {/* Main Heading */}
-            <h1 className="font-display font-bold text-fluid-hero">
+            <h1 className="font-display font-bold fluid-text-6xl">
               <span className={cn(
                 "block",
                 "bg-gradient-to-r from-white via-white/95 to-white/85",
@@ -112,7 +113,7 @@ export default async function HomePage({
 
             {/* Tagline - Three Key Effects Mantra */}
             <p className={cn(
-              "text-[10px] sm:text-xs",
+              "fluid-text-xs",
               "uppercase tracking-[0.2em] sm:tracking-[0.25em]",
               "text-gold/60",
               "font-medium"
@@ -122,7 +123,7 @@ export default async function HomePage({
 
             {/* Subtitle */}
             <p className={cn(
-              "font-sans font-medium text-fluid-lg text-balance",
+              "font-sans font-medium fluid-text-xl text-balance",
               "text-white/85",
               "max-w-4xl mx-auto"
             )}>
@@ -131,7 +132,7 @@ export default async function HomePage({
 
             {/* Description */}
             <p className={cn(
-              "text-white/75 text-fluid-body-lg leading-relaxed text-balance",
+              "text-white/75 fluid-text-lg leading-relaxed text-balance",
               "max-w-3xl mx-auto"
             )}>
               {t('hero.description')}
@@ -143,36 +144,28 @@ export default async function HomePage({
               <Link
                 href={`/${locale}/contact`}
                 className={cn(
-                  "group inline-flex items-center gap-3",
+                  "inline-flex items-center gap-3",
                   "px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6",
                   "rounded-full",
                   "bg-gradient-to-r from-gold to-gold-light text-black",
-                  "font-semibold text-base sm:text-lg lg:text-xl",
-                  "shadow-[0_8px_32px_-8px_rgba(212,175,55,0.4)]",
-                  "hover:shadow-[0_12px_40px_-8px_rgba(212,175,55,0.5)]",
-                  "hover:scale-[1.02] active:scale-[0.98]",
-                  "transition-all duration-300"
+                  "font-semibold fluid-text-lg",
+                  "shadow-[0_8px_32px_-8px_rgba(212,175,55,0.4)]"
                 )}
               >
                 <span>{t('hero.cta')}</span>
-                <Arrow className={cn(
-                  "w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200",
-                  isRTL ? "group-hover:-translate-x-1" : "group-hover:translate-x-1"
-                )} />
+                <Arrow className="w-5 h-5 sm:w-6 sm:h-6" />
               </Link>
 
               {/* Secondary CTA */}
               <Link
                 href={`/${locale}/platform`}
                 className={cn(
-                  "group inline-flex items-center gap-3",
+                  "inline-flex items-center gap-3",
                   "px-7 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6",
                   "rounded-full",
-                  "border border-white/15 hover:border-gold/40",
-                  "text-white/80 hover:text-white",
-                  "font-medium text-base sm:text-lg",
-                  "hover:bg-white/[0.03]",
-                  "transition-all duration-300"
+                  "border border-white/15",
+                  "text-white/80",
+                  "font-medium fluid-text-base"
                 )}
               >
                 <Play className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
@@ -187,8 +180,7 @@ export default async function HomePage({
           <div className={cn(
             "w-6 h-10 rounded-full",
             "border border-white/15",
-            "flex justify-center pt-2",
-            "animate-bounce-slow"
+            "flex justify-center pt-2"
           )}>
             <div className="w-1 h-2 bg-gold/60 rounded-full" />
           </div>
@@ -284,17 +276,17 @@ function SectionsSkeleton({ t }: { t: (key: string) => string }) {
           <div className="text-center max-w-4xl mx-auto">
             <h2 className={cn(
               "font-display font-bold tracking-tight text-balance",
-              "text-3xl sm:text-4xl lg:text-5xl xl:text-6xl",
+              "fluid-text-4xl",
               "bg-gradient-to-r from-white via-white/95 to-white/80",
               "bg-clip-text text-transparent",
               "mb-5 sm:mb-6"
             )}>
               {t('problem.title')}
             </h2>
-            <p className="text-gold font-light italic text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8">
+            <p className="text-gold font-light italic fluid-text-xl mb-6 sm:mb-8">
               {t('problem.subtitle')}
             </p>
-            <p className="text-white/80 leading-relaxed text-balance text-base sm:text-lg lg:text-xl">
+            <p className="text-white/80 leading-relaxed text-balance fluid-text-lg">
               {t('problem.description')}
             </p>
           </div>
@@ -307,17 +299,17 @@ function SectionsSkeleton({ t }: { t: (key: string) => string }) {
           <Card variant="gradient" size="xl" className="max-w-5xl mx-auto">
             <h2 className={cn(
               "font-display font-bold tracking-tight text-balance",
-              "text-2xl sm:text-3xl lg:text-4xl xl:text-5xl",
+              "fluid-text-3xl",
               "bg-gradient-to-r from-white via-white/95 to-white/80",
               "bg-clip-text text-transparent",
               "mb-4 sm:mb-5"
             )}>
               {t('solution.title')}
             </h2>
-            <p className="text-gold text-lg sm:text-xl font-medium mb-4 sm:mb-5">
+            <p className="text-gold fluid-text-xl font-medium mb-4 sm:mb-5">
               {t('solution.subtitle')}
             </p>
-            <p className="text-white/80 text-base sm:text-lg lg:text-xl leading-relaxed text-balance">
+            <p className="text-white/80 fluid-text-lg leading-relaxed text-balance">
               {t('solution.description')}
             </p>
           </Card>

@@ -13,7 +13,7 @@
  * - Single observer instance per section
  */
 
-import { useRef, useEffect, useState, memo, lazy, Suspense, startTransition } from 'react';
+import { memo } from 'react';
 import { Shield, Zap, TrendingUp, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
@@ -61,84 +61,18 @@ interface AnimatedSectionsProps {
   };
 }
 
-// Hook for intersection observer with reduced motion support
-// PERFORMANCE: Uses startTransition for non-urgent updates
-function useInView(options = {}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Track mount state to avoid hydration mismatch
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-
-    // Check for reduced motion preference
-    const prefersReducedMotion = typeof window !== 'undefined'
-      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      setIsInView(true);
-      return;
-    }
-
-    const element = ref.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // PERFORMANCE: Use startTransition for non-urgent animation triggers
-          startTransition(() => {
-            setIsInView(true);
-          });
-          observer.unobserve(element);
-        }
-      },
-      { threshold: 0.1, rootMargin: '-30px', ...options }
-    );
-
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, [isMounted, options]);
-
-  return { ref, isInView };
-}
-
-// Animated section wrapper with soft transitions
+// Static section wrapper - animations removed for performance
 const AnimatedSection = memo(function AnimatedSection({
   children,
   className = '',
-  delay = 0,
-  direction = 'up'
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   direction?: 'up' | 'down' | 'left' | 'right' | 'none';
 }) {
-  const { ref, isInView } = useInView();
-
-  const transforms = {
-    up: 'translateY(20px)',
-    down: 'translateY(-20px)',
-    left: 'translateX(20px)',
-    right: 'translateX(-20px)',
-    none: 'none'
-  };
-
   return (
-    <div
-      ref={ref}
-      className={cn('will-change-[opacity,transform]', className)}
-      style={{
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? 'none' : transforms[direction],
-        transition: `all 0.9s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
-      }}
-    >
+    <div className={className}>
       {children}
     </div>
   );
@@ -200,7 +134,7 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
           <AnimatedSection>
             <div className="text-center max-w-4xl mx-auto">
               <h2 className={cn(
-                "font-display font-bold text-fluid-2xl text-balance",
+                "font-display font-bold fluid-text-4xl text-balance",
                 "bg-gradient-to-r from-white via-white/95 to-white/80",
                 "bg-clip-text text-transparent",
                 "mb-5 sm:mb-6"
@@ -208,12 +142,12 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                 {t.problem.title}
               </h2>
               <p className={cn(
-                "text-classic-italic text-gold/90 text-fluid-body-xl",
+                "text-classic-italic text-gold/90 fluid-text-xl",
                 "mb-6 sm:mb-8"
               )}>
                 {t.problem.subtitle}
               </p>
-              <p className="text-white/55 text-fluid-body-lg leading-relaxed text-balance">
+              <p className="text-white/55 fluid-text-lg leading-relaxed text-balance">
                 {t.problem.description}
               </p>
             </div>
@@ -229,17 +163,17 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
           <AnimatedSection>
             <Card variant="soft" size="xl" className="max-w-5xl mx-auto">
               <h2 className={cn(
-                "font-display font-bold text-fluid-xl text-balance",
+                "font-display font-bold fluid-text-3xl text-balance",
                 "bg-gradient-to-r from-white via-white/95 to-white/80",
                 "bg-clip-text text-transparent",
                 "mb-4 sm:mb-5"
               )}>
                 {t.solution.title}
               </h2>
-              <p className="text-gold/90 text-fluid-body-xl font-medium mb-4 sm:mb-5">
+              <p className="text-gold/90 fluid-text-xl font-medium mb-4 sm:mb-5">
                 {t.solution.subtitle}
               </p>
-              <p className="text-white/55 text-fluid-body-lg leading-relaxed text-balance">
+              <p className="text-white/55 fluid-text-lg leading-relaxed text-balance">
                 {t.solution.description}
               </p>
             </Card>
@@ -266,25 +200,23 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                 <Card
                   variant="soft"
                   size="lg"
-                  className="h-full group"
+                  className="h-full"
                 >
                   {/* Icon */}
                   <div className={cn(
                     "w-14 h-14 sm:w-16 sm:h-16 rounded-2xl",
                     "bg-gradient-to-br from-gold/15 to-gold/5",
                     "border border-gold/10",
-                    "flex items-center justify-center mx-auto mb-5 sm:mb-6",
-                    "group-hover:from-gold/20 group-hover:to-gold/10 group-hover:border-gold/20",
-                    "transition-all duration-500"
+                    "flex items-center justify-center mx-auto mb-5 sm:mb-6"
                   )}>
                     <feature.icon className="w-7 h-7 sm:w-8 sm:h-8 text-gold" />
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-xl sm:text-2xl font-display font-semibold text-white mb-3 text-center">
+                  <h3 className="fluid-text-2xl font-display font-semibold text-white mb-3 text-center">
                     {feature.title}
                   </h3>
-                  <p className="text-white/50 text-base sm:text-lg mb-5 sm:mb-6 text-center leading-relaxed">
+                  <p className="text-white/50 fluid-text-base mb-5 sm:mb-6 text-center leading-relaxed">
                     {feature.description}
                   </p>
 
@@ -292,7 +224,7 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                   <div className="pt-4 border-t border-white/[0.04]">
                     <div className="flex items-center justify-center gap-2 text-gold/80">
                       <ArrowRight className="w-4 h-4 flex-shrink-0" />
-                      <span className="text-sm font-medium">{feature.impact}</span>
+                      <span className="fluid-text-sm font-medium">{feature.impact}</span>
                     </div>
                   </div>
                 </Card>
@@ -322,7 +254,7 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                 <Card
                   variant="soft"
                   size="md"
-                  className="h-full group"
+                  className="h-full"
                 >
                   {/* Step Number - softer gradient */}
                   <div className={cn(
@@ -330,16 +262,15 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                     "bg-gradient-to-br from-gold/90 to-gold-light/90",
                     "flex items-center justify-center",
                     "text-black font-bold text-xl sm:text-2xl",
-                    "mb-5 sm:mb-6",
-                    "shadow-[0_4px_20px_-4px_rgba(212,175,55,0.3)]"
+                    "mb-5 sm:mb-6"
                   )}>
                     {index + 1}
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-display font-semibold text-white mb-2 sm:mb-3">
+                  <h3 className="fluid-text-xl font-display font-semibold text-white mb-2 sm:mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-white/50 text-sm sm:text-base leading-relaxed">
+                  <p className="text-white/50 fluid-text-sm leading-relaxed">
                     {step.description}
                   </p>
                 </Card>
@@ -370,21 +301,17 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                   variant="soft"
                   size="md"
                   className={cn(
-                    "h-full text-center group/metric",
+                    "h-full text-center",
                     "!p-4 sm:!p-6 lg:!p-8",
                     "!bg-gradient-to-br !from-gold/[0.04] !via-gold/[0.02] !to-transparent",
-                    "!border-gold/[0.1] hover:!border-gold/[0.25]",
-                    "hover:!shadow-[0_8px_40px_-8px_rgba(212,175,55,0.2)]",
-                    "transition-all duration-500"
+                    "!border-gold/[0.1]"
                   )}
                 >
                   {/* Label */}
                   <div className={cn(
-                    "text-[9px] sm:text-[10px] lg:text-xs font-semibold uppercase",
+                    "fluid-text-xs font-semibold uppercase",
                     "tracking-[0.1em] sm:tracking-[0.15em] text-gold/60",
-                    "group-hover/metric:text-gold/80",
                     "mb-2 sm:mb-3 lg:mb-4",
-                    "transition-colors duration-300",
                     "line-clamp-2 min-h-[2em]"
                   )}>
                     {metric.label}
@@ -392,20 +319,19 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
 
                   {/* Value - Enhanced visual weight */}
                   <div className={cn(
-                    "flex items-baseline justify-center gap-0.5 sm:gap-1 mb-1.5 sm:mb-2 lg:mb-3",
-                    "group-hover/metric:scale-[1.03]",
-                    "transition-transform duration-300 ease-out"
+                    "flex flex-col items-center mb-1.5 sm:mb-2 lg:mb-3"
                   )}>
                     <span className={cn(
-                      "text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold",
+                      "fluid-text-5xl font-bold",
                       "bg-gradient-to-r from-gold via-gold-light to-gold",
                       "bg-clip-text text-transparent",
-                      "drop-shadow-[0_0_20px_rgba(212,175,55,0.15)]"
+                      "drop-shadow-[0_0_20px_rgba(212,175,55,0.15)]",
+                      "whitespace-nowrap"
                     )}>
                       {metric.value}
                     </span>
                     <span className={cn(
-                      "text-sm sm:text-xl lg:text-2xl xl:text-3xl font-bold",
+                      "fluid-text-xl font-bold mt-0.5",
                       "bg-gradient-to-r from-gold via-gold-light to-gold",
                       "bg-clip-text text-transparent"
                     )}>
@@ -415,9 +341,7 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
 
                   {/* Detail */}
                   <p className={cn(
-                    "text-white/35 text-[10px] sm:text-[11px] lg:text-xs leading-relaxed",
-                    "group-hover/metric:text-white/50",
-                    "transition-colors duration-300",
+                    "text-white/35 fluid-text-xs leading-relaxed",
                     "line-clamp-3"
                   )}>
                     {metric.detail}
@@ -452,7 +376,7 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                 <Card
                   variant="soft"
                   size="lg"
-                  className="h-full group"
+                  className="h-full"
                 >
                   <div className="flex items-start gap-4">
                     {/* Icon */}
@@ -460,19 +384,17 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                       "w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex-shrink-0",
                       "bg-gradient-to-br from-gold/15 to-gold/5",
                       "border border-gold/10",
-                      "flex items-center justify-center",
-                      "group-hover:from-gold/20 group-hover:to-gold/10 group-hover:border-gold/20",
-                      "transition-all duration-500"
+                      "flex items-center justify-center"
                     )}>
                       <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
                     </div>
 
                     {/* Content */}
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-lg sm:text-xl lg:text-2xl font-display font-semibold text-white mb-2 sm:mb-3">
+                      <h3 className="fluid-text-2xl font-display font-semibold text-white mb-2 sm:mb-3">
                         {reason.title}
                       </h3>
-                      <p className="text-white/50 text-sm sm:text-base lg:text-lg leading-relaxed">
+                      <p className="text-white/50 fluid-text-base leading-relaxed">
                         {reason.description}
                       </p>
                     </div>
@@ -495,15 +417,11 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
               "p-10 sm:p-14 lg:p-20 xl:p-24",
               // Enhanced gradient background
               "bg-gradient-to-br from-gold/[0.10] via-gold/[0.05] to-gold/[0.02]",
-              // Refined border with hover state
+              // Refined border
               "border border-gold/[0.18]",
-              // Enhanced shadow with multi-layer glow
-              "shadow-[0_8px_60px_-12px_rgba(212,175,55,0.2),0_0_100px_-20px_rgba(212,175,55,0.1),inset_0_1px_0_rgba(255,255,255,0.04)]",
-              "text-center",
-              // Subtle hover enhancement
-              "hover:border-gold/[0.25]",
-              "hover:shadow-[0_8px_80px_-12px_rgba(212,175,55,0.25),0_0_120px_-20px_rgba(212,175,55,0.15),inset_0_1px_0_rgba(255,255,255,0.05)]",
-              "transition-all duration-700 ease-out"
+              // Soft shadow
+              "shadow-[0_8px_60px_-12px_rgba(212,175,55,0.15),inset_0_1px_0_rgba(255,255,255,0.04)]",
+              "text-center"
             )}>
               {/* Primary decorative glow - enhanced */}
               <div
@@ -525,21 +443,21 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
 
               <div className="relative space-y-6 sm:space-y-8">
                 <h2 className={cn(
-                  "font-display font-bold text-fluid-2xl text-balance",
+                  "font-display font-bold fluid-text-4xl text-balance",
                   "text-white"
                 )}>
                   {t.contact.title}
                 </h2>
 
                 <p className={cn(
-                  "text-white/55 text-fluid-body-xl leading-relaxed text-balance",
+                  "text-white/55 fluid-text-xl leading-relaxed text-balance",
                   "max-w-3xl mx-auto"
                 )}>
                   {t.contact.subtitle}
                 </p>
 
                 <div className="flex flex-col items-center gap-6 sm:gap-8 pt-4 sm:pt-6">
-                  {/* Primary CTA - Softer styling */}
+                  {/* Primary CTA */}
                   <Link
                     href={`/${locale}/contact`}
                     className={cn(
@@ -547,23 +465,18 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                       "px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6",
                       "rounded-full",
                       "bg-gradient-to-r from-gold/95 to-gold-light/95 text-black",
-                      "font-semibold text-base sm:text-lg lg:text-xl",
-                      // Softer shadow
-                      "shadow-[0_4px_24px_-4px_rgba(212,175,55,0.35)]",
-                      "hover:shadow-[0_8px_36px_-6px_rgba(212,175,55,0.45)]",
-                      "hover:scale-[1.02] active:scale-[0.98]",
-                      "transition-all duration-500 ease-out",
-                      "group/btn"
+                      "font-semibold fluid-text-lg",
+                      "shadow-[0_4px_24px_-4px_rgba(212,175,55,0.35)]"
                     )}
                   >
                     <span>{t.cta.button}</span>
-                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
                   </Link>
 
                   {/* Direct Contact */}
                   <div className="text-center space-y-2">
                     <p className={cn(
-                      "text-white/35 text-[10px] sm:text-xs",
+                      "text-white/35 fluid-text-xs",
                       "uppercase tracking-[0.2em] font-medium"
                     )}>
                       {t.contact.directContact}
@@ -571,9 +484,8 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                     <a
                       href="mailto:contact@deltran.ai"
                       className={cn(
-                        "text-gold/80 hover:text-gold",
-                        "text-lg sm:text-xl lg:text-2xl font-semibold",
-                        "transition-colors duration-300"
+                        "text-gold/80",
+                        "fluid-text-2xl font-semibold"
                       )}
                     >
                       {t.contact.email}

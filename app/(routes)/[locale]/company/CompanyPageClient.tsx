@@ -48,7 +48,7 @@ export function CompanyPageClient() {
         <div className="container-premium relative">
           <div className="max-w-4xl mx-auto">
             {/* Status chips row */}
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 animate-fade-in-up">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
               {/* MVP Ready */}
               <div className={cn(
                 "inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3",
@@ -113,13 +113,12 @@ export function CompanyPageClient() {
 
           <div className="grid md:grid-cols-2 gap-5 sm:gap-6 max-w-5xl mx-auto">
             {/* Mission */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <div>
               <Card variant="gradient" size="lg" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
                   "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors duration-300"
+                  "flex items-center justify-center"
                 )}>
                   <Target className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
                 </div>
@@ -137,13 +136,12 @@ export function CompanyPageClient() {
             </div>
 
             {/* Vision */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
+            <div>
               <Card variant="gradient" size="lg" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
                   "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors duration-300"
+                  "flex items-center justify-center"
                 )}>
                   <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
                 </div>
@@ -170,7 +168,7 @@ export function CompanyPageClient() {
       <section className="section-premium relative bg-gradient-to-b from-black to-[#050505]">
         <div className="container-premium">
           <div className="max-w-3xl mx-auto">
-            <div className="animate-fade-in-up">
+            <div>
               <Card variant="bordered" size="lg" className="border-gold/20">
                 {/* Story Header */}
                 <div className="flex items-center gap-3 mb-6">
@@ -225,13 +223,12 @@ export function CompanyPageClient() {
 
           <div className="grid sm:grid-cols-2 gap-5 sm:gap-6 max-w-5xl mx-auto">
             {/* Security / Compliance First */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <div>
               <Card variant="gradient" size="md" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
                   "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors duration-300"
+                  "flex items-center justify-center"
                 )}>
                   <Shield className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
                 </div>
@@ -249,13 +246,12 @@ export function CompanyPageClient() {
             </div>
 
             {/* Efficiency */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
+            <div>
               <Card variant="gradient" size="md" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
                   "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors duration-300"
+                  "flex items-center justify-center"
                 )}>
                   <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
                 </div>
@@ -273,13 +269,12 @@ export function CompanyPageClient() {
             </div>
 
             {/* Transparency */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <div>
               <Card variant="gradient" size="md" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
                   "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors duration-300"
+                  "flex items-center justify-center"
                 )}>
                   <Heart className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
                 </div>
@@ -297,13 +292,12 @@ export function CompanyPageClient() {
             </div>
 
             {/* Innovation - 4th value */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
+            <div>
               <Card variant="gradient" size="md" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
                   "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center",
-                  "group-hover:bg-gold/15 transition-colors duration-300"
+                  "flex items-center justify-center"
                 )}>
                   <Lightbulb className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
                 </div>
@@ -330,7 +324,7 @@ export function CompanyPageClient() {
       <section className="py-20 sm:py-24 lg:py-28 relative bg-gradient-to-b from-[#050505] to-black">
         <div className="container-premium">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="animate-fade-in-up">
+            <div>
               <Card variant="soft" size="xl">
                 <div className={cn(
                   "w-14 h-14 sm:w-16 sm:h-16 rounded-2xl",
@@ -361,7 +355,6 @@ export function CompanyPageClient() {
                     className={cn(
                       "inline-flex items-center gap-2",
                       "text-gold/80 hover:text-gold",
-                      "transition-colors duration-300",
                       "font-semibold text-base sm:text-lg"
                     )}
                   >
@@ -426,22 +419,14 @@ export function CompanyPageClient() {
                       "bg-gradient-to-r from-gold via-gold-light to-gold text-black",
                       "font-semibold text-base sm:text-lg",
                       "shadow-[0_8px_40px_-8px_rgba(212,175,55,0.5)]",
-                      "hover:shadow-[0_16px_60px_-8px_rgba(212,175,55,0.6)]",
-                      "hover:scale-[1.03] active:scale-[0.98]",
-                      "transition-all duration-500",
                       "overflow-hidden"
                     )}
                   >
-                    {/* Shine effect */}
-                    <span
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-                      aria-hidden="true"
-                    />
                     <span className="relative">{t('cta.button')}</span>
                     {isRTL ? (
-                      <ArrowLeft className="relative w-5 h-5 sm:w-6 sm:h-6 group-hover:-translate-x-1 transition-transform duration-300" />
+                      <ArrowLeft className="relative w-5 h-5 sm:w-6 sm:h-6" />
                     ) : (
-                      <ArrowRight className="relative w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                      <ArrowRight className="relative w-5 h-5 sm:w-6 sm:h-6" />
                     )}
                   </button>
                 </Link>
@@ -453,7 +438,7 @@ export function CompanyPageClient() {
                 </p>
                 <a
                   href={`mailto:${t('cta.email')}`}
-                  className="text-white/50 hover:text-gold/80 transition-colors duration-300 text-sm sm:text-base"
+                  className="text-white/50 hover:text-gold/80 text-sm sm:text-base"
                 >
                   {t('cta.email')}
                 </a>

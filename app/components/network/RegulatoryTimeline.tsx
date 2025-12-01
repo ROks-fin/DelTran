@@ -56,7 +56,7 @@ export const RegulatoryTimeline = () => {
         return <CheckCircle2 className="w-6 h-6 text-green-500" />;
       case 'current':
         return (
-          <div className="w-6 h-6 rounded-full bg-gold flex items-center justify-center animate-pulse">
+          <div className="w-6 h-6 rounded-full bg-gold flex items-center justify-center">
             <div className="w-3 h-3 rounded-full bg-black" />
           </div>
         );
@@ -84,7 +84,7 @@ export const RegulatoryTimeline = () => {
     <div className="space-y-8">
       {/* Timeline Header */}
       <div className="text-center mb-12">
-        <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-gold/20 to-gold-light/20 border border-gold/40 backdrop-blur-sm mb-6 animate-fade-in">
+        <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-gold/20 to-gold-light/20 border border-gold/40 backdrop-blur-sm mb-6">
           <Shield className="w-5 h-5 text-gold mr-2" />
           <span className="text-gold text-sm font-semibold uppercase tracking-wider">
             {t('badge')}
@@ -114,10 +114,9 @@ export const RegulatoryTimeline = () => {
               <div
                 key={phase.year}
                 className={cn(
-                  "relative md:flex items-center gap-8 animate-fade-in-up",
+                  "relative md:flex items-center gap-8",
                   isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
                 )}
-                style={{ animationDelay: `${index * 0.15}s` }}
               >
                 {/* Timeline node */}
                 <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-midnight border-4 border-gold/40 flex items-center justify-center z-10">
@@ -128,7 +127,7 @@ export const RegulatoryTimeline = () => {
                 <div className={`md:w-1/2 ml-20 md:ml-0 ${isLeft ? 'md:pr-16' : 'md:pl-16'}`}>
                   <Card
                     className={cn(
-                      "p-8 bg-gradient-to-br transition-all duration-300",
+                      "p-8 bg-gradient-to-br",
                       getPhaseColor(phase.status),
                       isExpanded && 'ring-2 ring-gold/50'
                     )}
@@ -142,7 +141,7 @@ export const RegulatoryTimeline = () => {
                           {phase.year}
                         </span>
                         {phase.status === 'current' && (
-                          <span className="px-3 py-1 rounded-full bg-gold text-black text-xs font-bold animate-pulse">
+                          <span className="px-3 py-1 rounded-full bg-gold text-black text-xs font-bold">
                             {t('inProgress')}
                           </span>
                         )}
@@ -170,14 +169,14 @@ export const RegulatoryTimeline = () => {
                     <div
                       className={cn(
                         "space-y-3 mt-6 pt-6 border-t border-white/10",
-                        "overflow-hidden transition-all duration-300",
+                        "overflow-hidden",
                         isExpanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0 pt-0 mt-0 border-t-0"
                       )}
                     >
                       {phase.licenses.map(license => (
                         <div
                           key={license.id}
-                          className="p-4 rounded-lg bg-black/20 border border-white/10 hover:border-gold/30 transition-colors"
+                          className="p-4 rounded-lg bg-black/20 border border-white/10 hover:border-gold/30"
                         >
                           <div className="flex items-start justify-between mb-2">
                             <div>
@@ -195,7 +194,7 @@ export const RegulatoryTimeline = () => {
 
                     {/* Expand button */}
                     <button
-                      className="mt-4 text-sm text-gold hover:text-gold-light transition-colors flex items-center gap-2"
+                      className="mt-4 text-sm text-gold hover:text-gold-light flex items-center gap-2"
                       onClick={(e) => {
                         e.stopPropagation();
                         setExpandedPhase(isExpanded ? null : phase.year);
@@ -203,7 +202,7 @@ export const RegulatoryTimeline = () => {
                     >
                       {isExpanded ? t('showLess') : t('showDetails')}
                       <ArrowRight className={cn(
-                        "w-4 h-4 transition-transform duration-200",
+                        "w-4 h-4",
                         isExpanded && 'rotate-90'
                       )} />
                     </button>

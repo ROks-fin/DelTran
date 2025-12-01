@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
-import { tailwindBreakpoints } from './app/lib/responsive/breakpoints'
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const fluidType = require('tailwindcss-fluid-type')
 
 const config: Config = {
   darkMode: ['class'],
@@ -10,8 +11,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // Ultra-premium responsive breakpoints
-      screens: tailwindBreakpoints.screens,
+      // Ultra-premium responsive breakpoints (inlined for simplicity)
+      screens: {
+        'xs': '375px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+        '3xl': '1920px',
+        '4xl': '2560px',
+      },
       colors: {
         // Ultra-Premium Luxury Color Palette
         midnight: '#0a0a0a',
@@ -130,66 +140,8 @@ const config: Config = {
         'luxury': '0.15em',
         'display': '0.25em',
       },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'fade-up': 'fadeUp 0.5s ease-out',
-        'fade-down': 'fadeDown 0.5s ease-out',
-        'slide-in': 'slideIn 0.3s ease-out',
-        'slide-up': 'slideUp 0.3s ease-out',
-        'scale-in': 'scaleIn 0.3s ease-out',
-        'glow': 'glow 2s ease-in-out infinite',
-        'shimmer': 'shimmer 2s linear infinite',
-        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'gradient': 'gradient 8s linear infinite',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        fadeDown: {
-          '0%': { opacity: '0', transform: 'translateY(-10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        slideIn: {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(0)' },
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(100%)' },
-          '100%': { transform: 'translateY(0)' },
-        },
-        scaleIn: {
-          '0%': { transform: 'scale(0.9)', opacity: '0' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        },
-        glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(212, 175, 55, 0.5)' },
-          '50%': { boxShadow: '0 0 40px rgba(212, 175, 55, 0.8)' },
-        },
-        shimmer: {
-          '0%': { backgroundPosition: '-200% 0' },
-          '100%': { backgroundPosition: '200% 0' },
-        },
-        pulseGlow: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.5' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        gradient: {
-          '0%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-          '100%': { backgroundPosition: '0% 50%' },
-        },
-      },
+      // Animations removed for performance optimization
+      // See ANIMATIONS-BACKUP.md for the full list of removed animations
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
@@ -207,7 +159,41 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    fluidType({
+      // Fluid type settings - smooth scaling from mobile to desktop
+      settings: {
+        fontSizeMin: 1,        // 16px base on mobile
+        fontSizeMax: 1.25,     // 20px base on desktop
+        ratioMin: 1.125,       // Minor second scale on mobile
+        ratioMax: 1.25,        // Major third scale on desktop
+        screenMin: 20,         // 320px - small mobile
+        screenMax: 96,         // 1536px - large desktop
+        unit: 'rem',
+        prefix: 'fluid-',      // Use prefix to coexist with default sizes
+        extendValues: true,
+      },
+      // Typography scale with line heights
+      values: {
+        // Small text
+        'xs': [-2, 1.5],       // ~12-14px
+        'sm': [-1, 1.5],       // ~14-16px
+        // Body text
+        'base': [0, 1.65],     // 16-20px
+        'lg': [1, 1.6],        // ~18-25px
+        'xl': [2, 1.5],        // ~20-31px
+        // Headings
+        '2xl': [3, 1.3],       // ~23-39px
+        '3xl': [4, 1.25],      // ~26-49px
+        '4xl': [5, 1.2],       // ~29-61px
+        '5xl': [6, 1.15],      // ~33-76px
+        '6xl': [7, 1.1],       // ~37-95px
+        '7xl': [8, 1.05],      // ~41-119px
+        '8xl': [9, 1],         // ~47-149px
+        '9xl': [10, 1],        // ~52-186px
+      },
+    }),
+  ],
 }
 
 export default config

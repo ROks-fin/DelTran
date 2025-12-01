@@ -42,81 +42,75 @@ export function PlatformPageClient() {
 
           <div className="grid md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
             {/* Mission */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <div>
               <Card variant="gradient" size="lg" className="h-full group">
                 <div className={cn(
                   "w-14 h-14 sm:w-16 sm:h-16 rounded-2xl",
                   "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center mb-5 sm:mb-6",
-                  "group-hover:bg-gold/15 group-hover:border-gold/30",
-                  "transition-colors duration-300"
+                  "flex items-center justify-center mb-5 sm:mb-6"
                 )}>
                   <Target className="w-7 h-7 sm:w-8 sm:h-8 text-gold" />
                 </div>
 
                 <h3 className={cn(
-                  "text-[10px] sm:text-xs font-semibold uppercase",
+                  "fluid-text-xs font-semibold uppercase",
                   "tracking-[0.15em] text-gold/80",
                   "mb-3 sm:mb-4"
                 )}>
                   {t('mission.missionLabel')}
                 </h3>
 
-                <p className="text-white/70 text-base sm:text-lg leading-relaxed">
+                <p className="text-white/70 fluid-text-lg leading-relaxed">
                   {t('mission.mission')}
                 </p>
               </Card>
             </div>
 
             {/* Vision */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <div>
               <Card variant="gradient" size="lg" className="h-full group">
                 <div className={cn(
                   "w-14 h-14 sm:w-16 sm:h-16 rounded-2xl",
                   "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center mb-5 sm:mb-6",
-                  "group-hover:bg-gold/15 group-hover:border-gold/30",
-                  "transition-colors duration-300"
+                  "flex items-center justify-center mb-5 sm:mb-6"
                 )}>
                   <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 text-gold" />
                 </div>
 
                 <h3 className={cn(
-                  "text-[10px] sm:text-xs font-semibold uppercase",
+                  "fluid-text-xs font-semibold uppercase",
                   "tracking-[0.15em] text-gold/80",
                   "mb-3 sm:mb-4"
                 )}>
                   {t('mission.visionLabel')}
                 </h3>
 
-                <p className="text-white/70 text-base sm:text-lg leading-relaxed">
+                <p className="text-white/70 fluid-text-lg leading-relaxed">
                   {t('mission.vision')}
                 </p>
               </Card>
             </div>
 
             {/* Values */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+            <div>
               <Card variant="gradient" size="lg" className="h-full group">
                 <div className={cn(
                   "w-14 h-14 sm:w-16 sm:h-16 rounded-2xl",
                   "bg-gold/10 border border-gold/20",
-                  "flex items-center justify-center mb-5 sm:mb-6",
-                  "group-hover:bg-gold/15 group-hover:border-gold/30",
-                  "transition-colors duration-300"
+                  "flex items-center justify-center mb-5 sm:mb-6"
                 )}>
                   <Shield className="w-7 h-7 sm:w-8 sm:h-8 text-gold" />
                 </div>
 
                 <h3 className={cn(
-                  "text-[10px] sm:text-xs font-semibold uppercase",
+                  "fluid-text-xs font-semibold uppercase",
                   "tracking-[0.15em] text-gold/80",
                   "mb-3 sm:mb-4"
                 )}>
                   {t('mission.valuesLabel')}
                 </h3>
 
-                <p className="text-white/70 text-base sm:text-lg leading-relaxed">
+                <p className="text-white/70 fluid-text-lg leading-relaxed">
                   {t('mission.values')}
                 </p>
               </Card>
@@ -144,16 +138,16 @@ export function PlatformPageClient() {
               aria-hidden="true"
             />
 
-            <div className="relative space-y-6 sm:space-y-8 animate-fade-in">
+            <div className="relative space-y-6 sm:space-y-8">
               <h2 className={cn(
-                "font-display font-bold text-fluid-2xl text-balance",
+                "font-display font-bold fluid-text-4xl text-balance",
                 "text-white"
               )}>
                 {t('cta.title')}
               </h2>
 
               <p className={cn(
-                "text-white/60 text-fluid-body-xl leading-relaxed text-balance",
+                "text-white/60 fluid-text-xl leading-relaxed text-balance",
                 "max-w-3xl mx-auto"
               )}>
                 {t('cta.subtitle')}
@@ -167,11 +161,8 @@ export function PlatformPageClient() {
                       "px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6",
                       "rounded-full",
                       "bg-gradient-to-r from-gold to-gold-light text-black",
-                      "font-semibold text-base sm:text-lg lg:text-xl",
-                      "shadow-[0_8px_32px_-8px_rgba(212,175,55,0.5)]",
-                      "hover:shadow-[0_12px_40px_-8px_rgba(212,175,55,0.6)]",
-                      "hover:scale-[1.02] active:scale-[0.98]",
-                      "transition-all duration-300"
+                      "font-semibold fluid-text-lg",
+                      "shadow-[0_8px_32px_-8px_rgba(212,175,55,0.5)]"
                     )}
                   >
                     {t('cta.button')}
