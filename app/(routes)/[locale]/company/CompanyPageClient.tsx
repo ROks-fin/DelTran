@@ -13,7 +13,7 @@
  * 6. Final CTA
  */
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   Target, Heart, Shield, Zap, Briefcase, ArrowRight, ArrowLeft,
   CheckCircle2, Clock, Users, Lightbulb, Rocket
@@ -26,6 +26,7 @@ import { cn } from '@/lib/utils';
 
 export function CompanyPageClient() {
   const t = useTranslations('company');
+  const locale = useLocale();
   const { isRTL } = useTextDirection();
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
 
@@ -416,7 +417,7 @@ export function CompanyPageClient() {
               </p>
 
               <div className="pt-4 sm:pt-6">
-                <Link href="/contact">
+                <Link href={`/${locale}/contact`}>
                   <button
                     className={cn(
                       "group relative inline-flex items-center gap-3",

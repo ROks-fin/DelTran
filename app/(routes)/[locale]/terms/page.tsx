@@ -5,7 +5,7 @@
 export const revalidate = 3600;
 
 import type { Metadata } from 'next';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generatePageMetadata, LocaleKey } from '@/lib/seo/config';
 
 export async function generateMetadata({
@@ -29,7 +29,7 @@ export default async function TermsPage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   const t = await getTranslations('terms');
 
   const sections = [

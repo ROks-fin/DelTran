@@ -7,7 +7,7 @@
  * Shows: ISO 20022 → DelTran → Settled payment
  */
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { ArrowRight, ArrowLeft, Target, Sparkles, Shield } from 'lucide-react';
 import { Card } from '@/app/components/Card';
 import { SectionHeading } from '@/app/components/SectionHeading';
@@ -19,6 +19,7 @@ import { PlatformSummary } from './components/PlatformSummary';
 
 export function PlatformPageClient() {
   const t = useTranslations('platform');
+  const locale = useLocale();
   const { isRTL } = useTextDirection();
 
   return (
@@ -159,7 +160,7 @@ export function PlatformPageClient() {
               </p>
 
               <div className="pt-4 sm:pt-6">
-                <Link href="/contact">
+                <Link href={`/${locale}/contact`}>
                   <button
                     className={cn(
                       "inline-flex items-center gap-3",

@@ -1,13 +1,11 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { ThemeProvider } from '@/app/components/ThemeProvider';
 import { ResponsiveProvider } from '@/app/lib/contexts/ResponsiveContext';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { DM_Serif_Display, Inter, Noto_Sans_Hebrew, Noto_Sans_Arabic } from 'next/font/google';
 import '@/app/globals.css';
@@ -18,8 +16,16 @@ import {
   generateWebSiteSchema,
   generateServiceSchema
 } from '@/lib/seo/schemas';
-import { WebVitals } from '@/app/components/seo/WebVitals';
-import { AllAnalytics } from '@/app/components/seo/Analytics';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+import { PreloadResources } from '@/app/components/PreloadResources';
+
+// PERFORMANCE: Lazy load analytics and non-critical components
+// These are loaded after hydration to reduce initial bundle size
+const WebVitals = dynamic(() => import('@/app/components/seo/WebVitals').then(m => m.WebVitals));
+const AllAnalytics = dynamic(() => import('@/app/components/seo/Analytics').then(m => m.AllAnalytics));
+const SpeedInsights = dynamic(() => import('@vercel/speed-insights/next').then(m => m.SpeedInsights));
+const Analytics = dynamic(() => import('@vercel/analytics/react').then(m => m.Analytics));
 
 // DM Serif Display - for headings (28px+)
 const dmSerif = DM_Serif_Display({
@@ -31,12 +37,13 @@ const dmSerif = DM_Serif_Display({
 });
 
 // Inter - for body text and UI elements
+// PERFORMANCE: Reduced weight variants to minimize font load time
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   preload: true,
   variable: '--font-body',
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '600'],  // Only essential weights - 500/700 can use font-weight synthesis
 });
 
 // RTL fonts - loaded via next/font for better performance (no render-blocking)
@@ -86,7 +93,7 @@ export default async function LocaleLayout({
   }
 
   // Enable static rendering
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   // Providing all messages to the client
   // side is the easiest way to get started
@@ -132,6 +139,8 @@ export default async function LocaleLayout({
         className={`${dmSerif.variable} ${inter.variable} ${locale === 'he' ? notoHebrew.variable : ''} ${locale === 'ar' ? notoArabic.variable : ''} font-sans`}
         suppressHydrationWarning
       >
+        {/* PERFORMANCE: Preconnect hints via React 19 APIs */}
+        <PreloadResources />
         <ResponsiveProvider>
           <ThemeProvider>
             <NextIntlClientProvider messages={messages}>
@@ -143,10 +152,13 @@ export default async function LocaleLayout({
             </NextIntlClientProvider>
           </ThemeProvider>
         </ResponsiveProvider>
-        <WebVitals />
-        <AllAnalytics />
-        <SpeedInsights />
-        <Analytics />
+        {/* PERFORMANCE: Wrap non-critical analytics in Suspense */}
+        <Suspense fallback={null}>
+          <WebVitals />
+          <AllAnalytics />
+          <SpeedInsights />
+          <Analytics />
+        </Suspense>
       </body>
     </html>
   );

@@ -12,7 +12,7 @@
  * 5. Final CTA
  */
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
 import {
   Network, TrendingUp, Zap, ArrowRight, ArrowLeft,
@@ -28,6 +28,7 @@ import { cn } from '@/lib/utils';
 
 export function NetworkPageClient() {
   const t = useTranslations('network');
+  const locale = useLocale();
   const { isRTL } = useTextDirection();
   const [showTimeline, setShowTimeline] = useState(false);
   const [expandedDetails, setExpandedDetails] = useState<string | null>(null);
@@ -253,7 +254,7 @@ export function NetworkPageClient() {
               <p className="text-white/70 text-base sm:text-lg mb-5">
                 {t('networkEffect.cta')}
               </p>
-              <Link href="/contact">
+              <Link href={`/${locale}/contact`}>
                 <button className={cn(
                   "inline-flex items-center gap-2",
                   "px-6 py-3 rounded-full",
@@ -598,7 +599,7 @@ export function NetworkPageClient() {
               </p>
 
               <div className="pt-4 sm:pt-6">
-                <Link href="/contact">
+                <Link href={`/${locale}/contact`}>
                   <button
                     className={cn(
                       "group relative inline-flex items-center gap-3",

@@ -7,9 +7,10 @@
  * Performance:
  * - CSS-only animations (no Framer Motion)
  * - Optimized scroll handler with RAF throttling
+ * - startTransition for non-urgent state updates (reduces TBT)
  */
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, startTransition } from 'react';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -43,26 +44,50 @@ export function Header() {
 
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
 
-  // Optimized scroll handler with throttling
+  // PERFORMANCE: Defer scroll handler until after hydration with idle callback
   useEffect(() => {
     let ticking = false;
 
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
+          // PERFORMANCE: Use startTransition for non-urgent UI update
+          startTransition(() => {
+            setIsScrolled(window.scrollY > 20);
+          });
           ticking = false;
         });
         ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Check initial scroll position
+    if (window.scrollY > 20) setIsScrolled(true);
+
+    // Defer adding scroll listener to reduce TBT
+    const timeoutId = typeof requestIdleCallback !== 'undefined'
+      ? requestIdleCallback(() => window.addEventListener('scroll', handleScroll, { passive: true }))
+      : setTimeout(() => window.addEventListener('scroll', handleScroll, { passive: true }), 50);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (typeof timeoutId === 'number') {
+        if (typeof cancelIdleCallback !== 'undefined') {
+          cancelIdleCallback(timeoutId);
+        } else {
+          clearTimeout(timeoutId);
+        }
+      }
+    };
   }, []);
 
-  // Close menus on escape key
+  // Close menus on escape key - only attach when needed
   useEffect(() => {
+    if (!isMobileMenuOpen) {
+      document.body.style.overflow = '';
+      return;
+    }
+
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setIsMobileMenuOpen(false);
@@ -70,12 +95,8 @@ export function Header() {
       }
     };
 
-    if (isMobileMenuOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.addEventListener('keydown', handleEscape);
+    document.body.style.overflow = 'hidden';
 
     return () => {
       document.removeEventListener('keydown', handleEscape);
@@ -83,8 +104,10 @@ export function Header() {
     };
   }, [isMobileMenuOpen]);
 
-  // Close language dropdown on outside click
+  // Close language dropdown on outside click - only attach when needed
   useEffect(() => {
+    if (!isLangOpen) return;
+
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (!target.closest('[data-lang-dropdown]')) {
@@ -92,10 +115,7 @@ export function Header() {
       }
     };
 
-    if (isLangOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
+    document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isLangOpen]);
 

@@ -13,12 +13,13 @@
  * - Single observer instance per section
  */
 
-import { useRef, useEffect, useState, memo } from 'react';
+import { useRef, useEffect, useState, memo, lazy, Suspense, startTransition } from 'react';
 import { Shield, Zap, TrendingUp, ArrowRight, CheckCircle2 } from 'lucide-react';
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
+import { cn } from '@/lib/utils';
 import { Card } from '@/app/components/Card';
 import { SectionHeading } from '@/app/components/SectionHeading';
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
 
 interface AnimatedSectionsProps {
   translations: {
@@ -61,6 +62,7 @@ interface AnimatedSectionsProps {
 }
 
 // Hook for intersection observer with reduced motion support
+// PERFORMANCE: Uses startTransition for non-urgent updates
 function useInView(options = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
@@ -88,7 +90,10 @@ function useInView(options = {}) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsInView(true);
+          // PERFORMANCE: Use startTransition for non-urgent animation triggers
+          startTransition(() => {
+            setIsInView(true);
+          });
           observer.unobserve(element);
         }
       },
@@ -158,6 +163,8 @@ const SectionDivider = () => (
 );
 
 export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
+  const locale = useLocale();
+
   const features = [
     { key: 'instant', icon: Zap, ...t.valueProps.instant },
     { key: 'capital', icon: TrendingUp, ...t.valueProps.capital },
@@ -356,7 +363,7 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
             />
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6 max-w-6xl mx-auto">
             {metrics.map((metric, index) => (
               <AnimatedSection key={metric.key} delay={index * 100}>
                 <Card
@@ -364,6 +371,7 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                   size="md"
                   className={cn(
                     "h-full text-center group/metric",
+                    "!p-4 sm:!p-6 lg:!p-8",
                     "!bg-gradient-to-br !from-gold/[0.04] !via-gold/[0.02] !to-transparent",
                     "!border-gold/[0.1] hover:!border-gold/[0.25]",
                     "hover:!shadow-[0_8px_40px_-8px_rgba(212,175,55,0.2)]",
@@ -372,23 +380,24 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                 >
                   {/* Label */}
                   <div className={cn(
-                    "text-[10px] sm:text-xs font-semibold uppercase",
-                    "tracking-[0.15em] text-gold/60",
+                    "text-[9px] sm:text-[10px] lg:text-xs font-semibold uppercase",
+                    "tracking-[0.1em] sm:tracking-[0.15em] text-gold/60",
                     "group-hover/metric:text-gold/80",
-                    "mb-3 sm:mb-4",
-                    "transition-colors duration-300"
+                    "mb-2 sm:mb-3 lg:mb-4",
+                    "transition-colors duration-300",
+                    "line-clamp-2 min-h-[2em]"
                   )}>
                     {metric.label}
                   </div>
 
                   {/* Value - Enhanced visual weight */}
                   <div className={cn(
-                    "flex items-baseline justify-center gap-1 mb-2 sm:mb-3",
+                    "flex items-baseline justify-center gap-0.5 sm:gap-1 mb-1.5 sm:mb-2 lg:mb-3",
                     "group-hover/metric:scale-[1.03]",
                     "transition-transform duration-300 ease-out"
                   )}>
                     <span className={cn(
-                      "text-4xl sm:text-5xl lg:text-6xl font-bold",
+                      "text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold",
                       "bg-gradient-to-r from-gold via-gold-light to-gold",
                       "bg-clip-text text-transparent",
                       "drop-shadow-[0_0_20px_rgba(212,175,55,0.15)]"
@@ -396,7 +405,7 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                       {metric.value}
                     </span>
                     <span className={cn(
-                      "text-xl sm:text-2xl lg:text-3xl font-bold",
+                      "text-sm sm:text-xl lg:text-2xl xl:text-3xl font-bold",
                       "bg-gradient-to-r from-gold via-gold-light to-gold",
                       "bg-clip-text text-transparent"
                     )}>
@@ -406,9 +415,10 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
 
                   {/* Detail */}
                   <p className={cn(
-                    "text-white/35 text-[11px] sm:text-xs leading-relaxed",
+                    "text-white/35 text-[10px] sm:text-[11px] lg:text-xs leading-relaxed",
                     "group-hover/metric:text-white/50",
-                    "transition-colors duration-300"
+                    "transition-colors duration-300",
+                    "line-clamp-3"
                   )}>
                     {metric.detail}
                   </p>
@@ -531,7 +541,7 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                 <div className="flex flex-col items-center gap-6 sm:gap-8 pt-4 sm:pt-6">
                   {/* Primary CTA - Softer styling */}
                   <Link
-                    href="/contact"
+                    href={`/${locale}/contact`}
                     className={cn(
                       "inline-flex items-center gap-3",
                       "px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6",

@@ -1,8 +1,8 @@
-'use client';
-
 /**
  * Premium Fintech Footer Component
  * Bank-grade minimal design with refined spacing
+ *
+ * PERFORMANCE: Server Component for faster initial render
  *
  * Features:
  * - 4-column grid with brand emphasis
@@ -12,8 +12,8 @@
  */
 
 import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
-import { ArrowUpRight, Linkedin, Twitter } from 'lucide-react';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { ArrowUpRight, Linkedin } from 'lucide-react';
 import { Logo } from './Logo';
 import { cn } from '@/lib/utils';
 
@@ -30,9 +30,9 @@ const columnTitleStyles = cn(
   "text-white/30 mb-4"
 );
 
-export function Footer() {
-  const locale = useLocale();
-  const t = useTranslations('footer');
+export async function Footer() {
+  const locale = await getLocale();
+  const t = await getTranslations('footer');
   const currentYear = new Date().getFullYear();
 
   // Products column
@@ -90,7 +90,7 @@ export function Footer() {
             {/* Social Icons - Moved to brand column */}
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://linkedin.com/company/deltran"
+                href="https://linkedin.com/company/deltran-global"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -102,20 +102,6 @@ export function Footer() {
                 )}
               >
                 <Linkedin className="w-4 h-4" />
-              </a>
-              <a
-                href="https://twitter.com/deltran"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Twitter"
-                className={cn(
-                  "p-2 rounded-lg",
-                  "text-white/30 hover:text-white",
-                  "hover:bg-white/[0.04]",
-                  "transition-all duration-200"
-                )}
-              >
-                <Twitter className="w-4 h-4" />
               </a>
             </div>
           </div>

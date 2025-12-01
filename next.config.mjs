@@ -33,7 +33,17 @@ const nextConfig = {
       'class-variance-authority',
       'clsx',
       'tailwind-merge',
+      'next-intl',
+      'next-themes',
+      '@vercel/analytics',
+      '@vercel/speed-insights',
+      'react-dom',
     ],
+    // Enable optimistic client cache for faster navigation
+    staleTimes: {
+      dynamic: 30,
+      static: 180,
+    },
   },
 
   // Modularize imports for better tree-shaking

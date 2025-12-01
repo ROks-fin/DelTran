@@ -1,13 +1,14 @@
 /**
  * Responsive Context Provider
  * Provides device information and responsive utilities throughout the app
+ *
+ * PERFORMANCE OPTIMIZED: Lazy initialization to reduce TBT
  */
 
 'use client';
 
-import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
+import React, { createContext, useContext, useEffect, useState, useMemo, useCallback } from 'react';
 import type { DeviceInfo, OptimalSettings } from '../device/types';
-import { deviceDetector } from '../device/detector';
 
 export interface ResponsiveContextValue {
   // Device information
@@ -88,44 +89,105 @@ export function ResponsiveProvider({ children }: ResponsiveProviderProps) {
   const [device, setDevice] = useState<DeviceInfo | null>(null);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
 
-  // Initialize device detection
+  // PERFORMANCE: Lazy load device detector to reduce TBT
+  // Initialize with lightweight detection first, full detection deferred
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    try {
-      // Get initial device info
-      const deviceInfo = deviceDetector.getDeviceInfo();
-      setDevice(deviceInfo);
-      setViewport({
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
-      setIsInitialized(true);
+    // Immediate lightweight initialization
+    setViewport({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+    setIsInitialized(true);
 
-      // Subscribe to device changes
-      const unsubscribe = deviceDetector.subscribe((newDeviceInfo) => {
-        setDevice(newDeviceInfo);
-      });
+    // Defer heavy device detection to after first paint
+    const timeoutId = requestIdleCallback ?
+      requestIdleCallback(() => initFullDetection()) :
+      setTimeout(() => initFullDetection(), 100);
 
-      // Handle viewport resize
-      const handleResize = () => {
+    async function initFullDetection() {
+      try {
+        // Dynamic import to reduce initial bundle
+        const { deviceDetector } = await import('../device/detector');
+        const deviceInfo = deviceDetector.getDeviceInfo();
+        setDevice(deviceInfo);
+
+        // Subscribe to device changes
+        const unsubscribe = deviceDetector.subscribe((newDeviceInfo) => {
+          setDevice(newDeviceInfo);
+        });
+
+        return () => unsubscribe();
+      } catch (error) {
+        console.error('Failed to initialize device detection:', error);
+      }
+    }
+
+    // Handle viewport resize with throttling
+    let resizeTimeout: number;
+    const handleResize = () => {
+      if (resizeTimeout) cancelAnimationFrame(resizeTimeout);
+      resizeTimeout = requestAnimationFrame(() => {
         setViewport({
           width: window.innerWidth,
           height: window.innerHeight
         });
-      };
+      });
+    };
 
-      window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
-      return () => {
-        unsubscribe();
-        window.removeEventListener('resize', handleResize);
-      };
-    } catch (error) {
-      console.error('Failed to initialize device detection:', error);
-      setIsInitialized(true); // Set to true to avoid infinite loading
-    }
+    return () => {
+      if (typeof timeoutId === 'number') {
+        clearTimeout(timeoutId);
+      } else if (timeoutId && typeof cancelIdleCallback !== 'undefined') {
+        cancelIdleCallback(timeoutId as unknown as number);
+      }
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
+
+  // Get optimal settings lazily
+  const getOptimalSettingsLazy = useCallback((): OptimalSettings | null => {
+    if (!device) return null;
+    try {
+      // This will use the already-imported detector
+      return {
+        animations: {
+          enabled: !device.preferences.reducedMotion,
+          reducedMotion: device.preferences.reducedMotion,
+          quality: 'high' as const,
+          fps: 60 as const
+        },
+        images: {
+          format: 'webp' as const,
+          quality: 85,
+          lazyLoading: true,
+          preloadDistance: 500,
+          maxWidth: device.screen.width * device.screen.pixelRatio
+        },
+        video: {
+          codec: 'h264' as const,
+          quality: '1080p' as const,
+          autoplay: true,
+          preload: 'metadata' as const
+        },
+        fonts: {
+          strategy: 'swap' as const,
+          preload: true,
+          subsetting: false
+        },
+        layout: {
+          columns: device.screen.width < 768 ? 1 : device.screen.width < 1024 ? 2 : 4,
+          spacing: 'normal' as const,
+          density: 'medium' as const
+        }
+      };
+    } catch {
+      return null;
+    }
+  }, [device]);
 
   // Memoize context value to prevent unnecessary re-renders
   const contextValue = useMemo<ResponsiveContextValue>(() => {
@@ -137,7 +199,7 @@ export function ResponsiveProvider({ children }: ResponsiveProviderProps) {
       };
     }
 
-    const optimalSettings = deviceDetector.getOptimalSettings();
+    const optimalSettings = getOptimalSettingsLazy();
 
     return {
       device,
@@ -159,12 +221,12 @@ export function ResponsiveProvider({ children }: ResponsiveProviderProps) {
       isWatch: device.type === 'watch',
       isCar: device.type === 'car',
       isVR: device.type === 'vr' || device.type === 'ar',
-      optimalImageFormat: optimalSettings.images.format,
-      optimalVideoCodec: optimalSettings.video.codec,
+      optimalImageFormat: optimalSettings?.images.format || 'webp',
+      optimalVideoCodec: optimalSettings?.video.codec || 'h264',
       optimalSettings,
       isInitialized
     };
-  }, [device, viewport, isInitialized]);
+  }, [device, viewport, isInitialized, getOptimalSettingsLazy]);
 
   return (
     <ResponsiveContext.Provider value={contextValue}>

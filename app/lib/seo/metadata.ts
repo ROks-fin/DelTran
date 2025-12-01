@@ -219,9 +219,7 @@ export function generateOrganizationSchema(): OrganizationSchema {
     url: seoConfig.siteUrl,
     logo: `${seoConfig.siteUrl}/images/logo.png`,
     sameAs: [
-      `https://twitter.com/${seoConfig.twitterHandle.replace('@', '')}`,
-      `https://linkedin.com/company/${seoConfig.linkedinHandle}`,
-      'https://github.com/deltran-ai',
+      'https://linkedin.com/company/deltran-global',
     ],
     contactPoint: {
       '@type': 'ContactPoint',

@@ -47,9 +47,20 @@ export class DeviceDetector {
     if (this.isInitialized) return;
 
     this.deviceInfo = this.detectDevice();
-    this.setupListeners();
-    this.runPerformanceBenchmark();
     this.isInitialized = true;
+
+    // PERFORMANCE: Defer heavy operations to reduce TBT
+    if (typeof requestIdleCallback !== 'undefined') {
+      requestIdleCallback(() => {
+        this.setupListeners();
+        this.runPerformanceBenchmark();
+      });
+    } else {
+      setTimeout(() => {
+        this.setupListeners();
+        this.runPerformanceBenchmark();
+      }, 100);
+    }
   }
 
   /**

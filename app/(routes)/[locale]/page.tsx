@@ -14,7 +14,7 @@
 export const revalidate = 3600;
 
 import { getTranslations } from 'next-intl/server';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { ArrowRight, ArrowLeft, Sparkles, Play } from 'lucide-react';
 import { Card } from '@/app/components/Card';
 import { TrustBar } from '@/app/components/TrustBar';
@@ -39,7 +39,7 @@ export default async function HomePage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   const t = await getTranslations('home');
   const isRTL = locale === 'ar' || locale === 'he';
@@ -141,7 +141,7 @@ export default async function HomePage({
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5 pt-4 sm:pt-6">
               {/* Primary CTA */}
               <Link
-                href="/contact"
+                href={`/${locale}/contact`}
                 className={cn(
                   "group inline-flex items-center gap-3",
                   "px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6",
@@ -163,7 +163,7 @@ export default async function HomePage({
 
               {/* Secondary CTA */}
               <Link
-                href="/platform"
+                href={`/${locale}/platform`}
                 className={cn(
                   "group inline-flex items-center gap-3",
                   "px-7 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6",

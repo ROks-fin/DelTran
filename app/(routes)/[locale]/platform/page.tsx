@@ -7,7 +7,7 @@
 export const revalidate = 3600;
 
 import type { Metadata } from 'next';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generatePageMetadata, LocaleKey } from '@/lib/seo/config';
 import { Sparkles, ArrowRight, ArrowLeft } from 'lucide-react';
 
@@ -44,7 +44,7 @@ export default async function PlatformPage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   const t = await getTranslations('platform');
   const isRTL = locale === 'ar' || locale === 'he';
@@ -114,7 +114,7 @@ export default async function PlatformPage({
 
             {/* CTA Button - Premium with extra spacing */}
             <div className="pt-6 sm:pt-8 lg:pt-10">
-              <Link href="/contact">
+              <Link href={`/${locale}/contact`}>
                 <button
                   className={cn(
                     "group relative inline-flex items-center gap-3",
