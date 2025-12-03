@@ -113,6 +113,7 @@ export function generatePageMetadata({
       canonical: url,
       languages: {
         'en': `${SITE_CONFIG.url}/en${path}`,
+        'en-US': `${SITE_CONFIG.url}/en${path}`,
         'ar': `${SITE_CONFIG.url}/ar${path}`,
         'he': `${SITE_CONFIG.url}/he${path}`,
       },

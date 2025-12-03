@@ -13,6 +13,8 @@
 // ISR: Revalidate every hour (3600 seconds)
 export const revalidate = 3600;
 
+import type { Metadata } from 'next';
+import { generatePageMetadata, LocaleKey } from '@/lib/seo/config';
 import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
 import { ArrowRight, ArrowLeft, Sparkles, Play } from 'lucide-react';
@@ -33,6 +35,38 @@ const AnimatedSections = dynamic(
   }
 );
 
+// Hero animation components - GPU optimized
+const HeroAnimated = dynamic(
+  () => import('./components/HeroAnimated').then(mod => mod.HeroAnimated),
+  { loading: () => null }
+);
+const HeroItem = dynamic(
+  () => import('./components/HeroAnimated').then(mod => mod.HeroItem),
+  { loading: () => null }
+);
+const FloatingOrb = dynamic(
+  () => import('./components/HeroAnimated').then(mod => mod.FloatingOrb),
+  { loading: () => null }
+);
+const ScrollIndicator = dynamic(
+  () => import('./components/HeroAnimated').then(mod => mod.ScrollIndicator),
+  { loading: () => null }
+);
+const GlowingBackground = dynamic(
+  () => import('./components/HeroAnimated').then(mod => mod.GlowingBackground),
+  { loading: () => null }
+);
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generatePageMetadata({
+    locale: locale as LocaleKey,
+  });
+}
 
 export default async function HomePage({
   params,
@@ -53,19 +87,23 @@ export default async function HomePage({
         {/* Static background */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-[#050505] to-black" />
 
-        {/* Radial gradient overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212,175,55,0.08) 0%, transparent 60%)'
-          }}
-        />
+        {/* Animated radial gradient glow - smooth pulsing effect */}
+        <GlowingBackground />
 
-        {/* Static background orbs - animations removed for performance */}
+        {/* GPU-optimized floating orbs - DelTran Motion v2 */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-gold/[0.04] rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-gold/[0.04] rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-gold/[0.02] rounded-full blur-3xl" />
+          <FloatingOrb
+            className="absolute top-1/4 left-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-gold/[0.04] rounded-full blur-3xl"
+            delay={0}
+          />
+          <FloatingOrb
+            className="absolute bottom-1/4 right-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-gold/[0.04] rounded-full blur-3xl"
+            delay={2}
+          />
+          <FloatingOrb
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-gold/[0.02] rounded-full blur-3xl"
+            delay={1}
+          />
         </div>
 
         {/* Subtle grid pattern */}
@@ -78,113 +116,117 @@ export default async function HomePage({
           aria-hidden="true"
         />
 
-        {/* Hero Content */}
+        {/* Hero Content - Animated with stagger */}
         <div className="relative container-premium py-24 sm:py-32 lg:py-40 text-center">
-          <div className="space-y-6 sm:space-y-8 max-w-5xl mx-auto">
+          <HeroAnimated className="space-y-6 sm:space-y-8 max-w-5xl mx-auto">
             {/* Premium Badge */}
-            <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gold/[0.08] border border-gold/20 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-gold" />
-              <span className={cn(
-                "text-gold font-medium",
-                "fluid-text-xs",
-                "uppercase tracking-[0.15em]"
-              )}>
-                {t('hero.badge')}
-              </span>
-            </div>
+            <HeroItem>
+              <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gold/[0.08] border border-gold/20 backdrop-blur-sm">
+                <Sparkles className="w-4 h-4 text-gold" />
+                <span className={cn(
+                  "text-gold font-medium",
+                  "fluid-text-xs",
+                  "uppercase tracking-[0.15em]"
+                )}>
+                  {t('hero.badge')}
+                </span>
+              </div>
+            </HeroItem>
 
             {/* Main Heading */}
-            <h1 className="font-display font-bold fluid-text-6xl">
-              <span className={cn(
-                "block",
-                "bg-gradient-to-r from-white via-white/95 to-white/85",
-                "bg-clip-text text-transparent"
-              )}>
-                {t('hero.title')}
-              </span>
-              <span className={cn(
-                "block mt-2 sm:mt-3",
-                "bg-gradient-to-r from-gold via-gold-light to-gold",
-                "bg-clip-text text-transparent"
-              )}>
-                {t('hero.titleAccent')}
-              </span>
-            </h1>
+            <HeroItem>
+              <h1 className="font-display font-bold fluid-text-6xl">
+                <span className={cn(
+                  "block",
+                  "bg-gradient-to-r from-white via-white/95 to-white/85",
+                  "bg-clip-text text-transparent"
+                )}>
+                  {t('hero.title')}
+                </span>
+                <span className={cn(
+                  "block mt-2 sm:mt-3",
+                  "bg-gradient-to-r from-gold via-gold-light to-gold",
+                  "bg-clip-text text-transparent"
+                )}>
+                  {t('hero.titleAccent')}
+                </span>
+              </h1>
+            </HeroItem>
 
             {/* Tagline - Three Key Effects Mantra */}
-            <p className={cn(
-              "fluid-text-xs",
-              "uppercase tracking-[0.2em] sm:tracking-[0.25em]",
-              "text-gold/60",
-              "font-medium"
-            )}>
-              {t('hero.tagline')}
-            </p>
+            <HeroItem>
+              <p className={cn(
+                "fluid-text-xs",
+                "uppercase tracking-[0.2em] sm:tracking-[0.25em]",
+                "text-gold/60",
+                "font-medium"
+              )}>
+                {t('hero.tagline')}
+              </p>
+            </HeroItem>
 
             {/* Subtitle */}
-            <p className={cn(
-              "font-sans font-medium fluid-text-xl text-balance",
-              "text-white/85",
-              "max-w-4xl mx-auto"
-            )}>
-              {t('hero.subtitle')}
-            </p>
+            <HeroItem>
+              <p className={cn(
+                "font-sans font-medium fluid-text-xl text-balance",
+                "text-white/85",
+                "max-w-4xl mx-auto"
+              )}>
+                {t('hero.subtitle')}
+              </p>
+            </HeroItem>
 
             {/* Description */}
-            <p className={cn(
-              "text-white/75 fluid-text-lg leading-relaxed text-balance",
-              "max-w-3xl mx-auto"
-            )}>
-              {t('hero.description')}
-            </p>
+            <HeroItem>
+              <p className={cn(
+                "text-white/75 fluid-text-lg leading-relaxed text-balance",
+                "max-w-3xl mx-auto"
+              )}>
+                {t('hero.description')}
+              </p>
+            </HeroItem>
 
             {/* Dual CTA Buttons */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5 pt-4 sm:pt-6">
-              {/* Primary CTA */}
-              <Link
-                href={`/${locale}/contact`}
-                className={cn(
-                  "inline-flex items-center gap-3",
-                  "px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6",
-                  "rounded-full",
-                  "bg-gradient-to-r from-gold to-gold-light text-black",
-                  "font-semibold fluid-text-lg",
-                  "shadow-[0_8px_32px_-8px_rgba(212,175,55,0.4)]"
-                )}
-              >
-                <span>{t('hero.cta')}</span>
-                <Arrow className="w-5 h-5 sm:w-6 sm:h-6" />
-              </Link>
+            <HeroItem>
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5 pt-4 sm:pt-6">
+                {/* Primary CTA */}
+                <Link
+                  href={`/${locale}/contact`}
+                  className={cn(
+                    "inline-flex items-center gap-3",
+                    "px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6",
+                    "rounded-full",
+                    "bg-gradient-to-r from-gold to-gold-light text-black",
+                    "font-semibold fluid-text-lg",
+                    "shadow-[0_8px_32px_-8px_rgba(212,175,55,0.4)]"
+                  )}
+                >
+                  <span>{t('hero.cta')}</span>
+                  <Arrow className="w-5 h-5 sm:w-6 sm:h-6" />
+                </Link>
 
-              {/* Secondary CTA */}
-              <Link
-                href={`/${locale}/platform`}
-                className={cn(
-                  "inline-flex items-center gap-3",
-                  "px-7 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6",
-                  "rounded-full",
-                  "border border-white/15",
-                  "text-white/80",
-                  "font-medium fluid-text-base"
-                )}
-              >
-                <Play className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
-                <span>{t('hero.ctaSecondary')}</span>
-              </Link>
-            </div>
-          </div>
+                {/* Secondary CTA */}
+                <Link
+                  href={`/${locale}/platform`}
+                  className={cn(
+                    "inline-flex items-center gap-3",
+                    "px-7 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6",
+                    "rounded-full",
+                    "border border-white/15",
+                    "text-white/80",
+                    "font-medium fluid-text-base"
+                  )}
+                >
+                  <Play className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
+                  <span>{t('hero.ctaSecondary')}</span>
+                </Link>
+              </div>
+            </HeroItem>
+          </HeroAnimated>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2">
-          <div className={cn(
-            "w-6 h-10 rounded-full",
-            "border border-white/15",
-            "flex justify-center pt-2"
-          )}>
-            <div className="w-1 h-2 bg-gold/60 rounded-full" />
-          </div>
-        </div>
+        {/* Animated scroll indicator */}
+        <ScrollIndicator className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 w-6 h-10 rounded-full border border-white/15 flex justify-center pt-2" />
       </section>
 
       {/* Key Outcomes - Three core value propositions */}

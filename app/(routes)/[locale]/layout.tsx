@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/app/components/ThemeProvider';
 import type { Metadata } from 'next';
 import { DM_Serif_Display, Inter, Noto_Sans_Hebrew, Noto_Sans_Arabic } from 'next/font/google';
 import '@/app/globals.css';
+import '@/styles/motion.css';
 import { generatePageMetadata, LocaleKey } from '@/lib/seo/config';
 import {
   SchemaScript,

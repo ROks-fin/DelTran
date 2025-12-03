@@ -44,9 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency,
         priority,
         alternates: {
-          languages: Object.fromEntries(
-            locales.map((loc) => [loc, `${SITE_CONFIG.url}/${loc}${page}`])
-          ),
+          languages: {
+            ...Object.fromEntries(
+              locales.map((loc) => [loc, `${SITE_CONFIG.url}/${loc}${page}`])
+            ),
+            'en-US': `${SITE_CONFIG.url}/en${page}`,
+          },
         },
       });
     }
@@ -57,7 +60,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     '/privacy',
     '/terms',
-    '/cookies',
   ];
 
   for (const locale of locales) {
@@ -68,9 +70,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: 'monthly',
         priority: 0.5,
         alternates: {
-          languages: Object.fromEntries(
-            locales.map((loc) => [loc, `${SITE_CONFIG.url}/${loc}${page}`])
-          ),
+          languages: {
+            ...Object.fromEntries(
+              locales.map((loc) => [loc, `${SITE_CONFIG.url}/${loc}${page}`])
+            ),
+            'en-US': `${SITE_CONFIG.url}/en${page}`,
+          },
         },
       });
     }
