@@ -5,15 +5,17 @@
  * Premium fintech sections with scroll-triggered animations
  *
  * Design: Smooth transitions, soft edges, no harsh boundaries
+ * Animation: DelTran Motion v2 - GPU-optimized
  *
  * Performance optimizations:
- * - Intersection Observer (not scroll events)
- * - CSS-only animations where possible
+ * - Intersection Observer via Framer Motion useInView
+ * - GPU-only animations (transform, opacity)
  * - Reduced motion support
- * - Single observer instance per section
+ * - Staggered reveals for visual impact
  */
 
-import { memo } from 'react';
+import { memo, useRef } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { Shield, Zap, TrendingUp, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
@@ -61,20 +63,60 @@ interface AnimatedSectionsProps {
   };
 }
 
-// Static section wrapper - animations removed for performance
+// Animated section wrapper with scroll-triggered reveal
 const AnimatedSection = memo(function AnimatedSection({
   children,
   className = '',
+  delay = 0,
+  direction = 'up',
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   direction?: 'up' | 'down' | 'left' | 'right' | 'none';
 }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const prefersReducedMotion = useReducedMotion();
+
+  const getInitialState = () => {
+    if (prefersReducedMotion) return { opacity: 0 };
+    switch (direction) {
+      case 'up': return { opacity: 0, y: 20 };
+      case 'down': return { opacity: 0, y: -20 };
+      case 'left': return { opacity: 0, x: 30 };
+      case 'right': return { opacity: 0, x: -30 };
+      case 'none': return { opacity: 0 };
+      default: return { opacity: 0, y: 20 };
+    }
+  };
+
+  const getFinalState = () => {
+    switch (direction) {
+      case 'up':
+      case 'down': return { opacity: 1, y: 0 };
+      case 'left':
+      case 'right': return { opacity: 1, x: 0 };
+      case 'none': return { opacity: 1 };
+      default: return { opacity: 1, y: 0 };
+    }
+  };
+
   return (
-    <div className={className}>
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={getInitialState()}
+      animate={isInView ? getFinalState() : getInitialState()}
+      transition={{
+        duration: prefersReducedMotion ? 0 : 0.6,
+        delay: prefersReducedMotion ? 0 : delay / 1000,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      style={{ transform: 'translateZ(0)' }}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 });
 

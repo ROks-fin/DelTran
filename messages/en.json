@@ -189,7 +189,7 @@
           "title": "On-demand liquidity",
           "description": "Settlement capital stays on your balance sheet until a payment actually settles.",
           "impactLabel": "Pre-funded settlement balances on DelTran corridors",
-          "impact": "0"
+          "impact": "Zero"
         },
         "compliance": {
           "title": "Built-in compliance",
@@ -314,306 +314,306 @@
     }
   },
   "network": {
-    "meta": {
-      "title": "Network - DelTran | Global Settlement Network",
-      "description": "Regulated settlement network for banks, EMIs and PSPs. Releases trapped settlement capital on supported corridors, improves multilateral netting and delivers seconds-level finality over a shared rail."
+  "meta": {
+    "title": "Network - DelTran | Global Settlement Network",
+    "description": "Regulated settlement network for banks, EMIs and PSPs. Releases trapped settlement capital on supported corridors, improves multilateral netting and delivers seconds-level finality over a shared rail."
+  },
+  "hero": {
+    "badge": "Banking Settlement Network",
+    "title": "One network.",
+    "titleAccent": "For regulated institutions.",
+    "subtitle": "DelTran is a banking-grade settlement network designed for licensed banks, EMIs and PSPs. Participants connect once and gain access to on-demand settlement, multilateral netting and built-in compliance across supported corridors."
+  },
+  "networkEffect": {
+    "title": "Network effect designed for banks",
+    "subtitle": "As the network grows, capital and liquidity benefits compound.",
+    "stage1": {
+      "number": "5",
+      "title": "Initial participants",
+      "description": "A focused group of regulated institutions on priority corridors validating operations, reporting and settlement mechanics."
     },
-    "hero": {
-      "badge": "Banking Settlement Network",
-      "title": "One network.",
-      "titleAccent": "For regulated institutions.",
-      "subtitle": "DelTran is a banking-grade settlement network designed for licensed banks, EMIs and PSPs. Participants connect once and gain access to on-demand settlement, multilateral netting and built-in compliance across supported corridors."
+    "stage2": {
+      "number": "20",
+      "title": "Regional network",
+      "description": "Multiple corridors within and across regions, higher netting ratios and visible reductions in pre-funded settlement balances."
     },
-    "networkEffect": {
-      "title": "Network effect designed for banks",
-      "subtitle": "As the network grows, capital and liquidity benefits compound.",
-      "stage1": {
-        "number": "5",
-        "title": "Initial participants",
-        "description": "A focused group of regulated institutions on priority corridors validating operations, reporting and settlement mechanics."
-      },
-      "stage2": {
-        "number": "20",
-        "title": "Regional network",
-        "description": "Multiple corridors within and across regions, higher netting ratios and visible reductions in pre-funded settlement balances."
-      },
-      "stage3": {
-        "number": "100+",
-        "title": "Global fabric",
-        "description": "A dense network of banks and payment institutions where cross-border and domestic flows settle on-demand over a shared rail."
-      },
-      "exponential": {
-        "title": "Compounding value",
-        "description": "Each new participant brings additional corridors and offsetting flows. The aggregate capital and liquidity benefit grows faster than the number of members."
-      },
-      "netting": {
-        "title": "Improved netting efficiency",
-        "description": "More participants and corridors mean more offsetting flows that can be netted multilaterally, reducing gross settlement volumes and intraday funding needs."
-      },
-      "exponentialValue": {
-        "title": "Compounding value",
-        "description": "Network design focuses on corridors where incremental participants create outsized improvements in netting, liquidity and reach for all existing members."
-      },
-      "nettingEfficiency": {
-        "title": "Structured around netting",
-        "description": "DelTran prioritises corridors and counterparties that maximise multilateral netting potential, so network growth directly translates into capital and liquidity gains."
-      },
-      "cta": "Early participants capture a larger share of capital release, netting improvements and data visibility as the network expands.",
-      "button": "Explore joining the network"
+    "stage3": {
+      "number": "100+",
+      "title": "Global fabric",
+      "description": "A dense network of banks and payment institutions where cross-border and domestic flows settle on-demand over a shared rail."
     },
-    "expansion": {
-      "title": "Global institutional expansion",
-      "subtitle": "A staged, regulatory-led rollout across corridors and regions.",
-      "description": "The network begins with a limited number of high-value corridors and expands in phases. Each phase is anchored by regulated institutions, clear use cases and measurable capital and liquidity benefits.",
-      "labels": {
-        "target": "Primary regulatory focus:",
-        "markets": "Indicative markets:"
-      },
-      "parallel": {
-        "title": "Coordinated multi-market approach",
-        "description": "Work with regulators and partners progresses in several priority jurisdictions in parallel, while launches remain sequenced and aligned with risk appetite and operational readiness."
-      },
-      "mena": {
-        "number": "1",
-        "title": "MENA launch hub",
-        "target": "ADGM-focused path (2025+)",
-        "markets": "UAE and wider GCC corridors",
-        "status": "Regulatory engagement and partner discussions",
-        "description": "Using ADGM as the initial hub for Gulf corridors where intraday liquidity, remittances and corporate flows create strong demand for on-demand settlement."
-      },
-      "europe": {
-        "number": "2",
-        "title": "European connectivity",
-        "target": "EU EMI and UK permissions",
-        "focus": "SEPA-linked corridors and PSP flows",
-        "timeline": "Target 2025–2026+",
-        "markets": "Eurozone, UK",
-        "description": "Bringing European EMIs, banks and payment institutions onto the rail, with a focus on SEPA corridors and cross-border PSP flows."
-      },
-      "asia": {
-        "number": "3",
-        "title": "Asia-Pacific corridors",
-        "target": "MAS, HKMA and other key regulators",
-        "focus": "Trade, remittance and treasury flows",
-        "timeline": "Target 2026+",
-        "markets": "Singapore, Hong Kong and selected Asia-Pacific markets",
-        "description": "Connecting Asian financial hubs and regional banks into the network to support trade and treasury flows across time zones."
-      },
-      "future": {
-        "phase4": {
-          "label": "Phase 4:",
-          "description": "North America — US and Canada, subject to regulatory and commercial conditions."
-        },
-        "phase5": {
-          "label": "Phase 5:",
-          "description": "Latin America — Brazil, Mexico and selected regional hubs for remittances and B2B flows."
-        },
-        "phase6": {
-          "label": "Phase 6:",
-          "description": "Africa — selected markets where cross-border trade and worker remittances are material."
-        },
-        "phase7": {
-          "label": "Phase 7:",
-          "description": "Additional high-growth corridors, including India and Southeast Asia, prioritised based on demand and network impact."
-        }
-      },
-      "phase4": "Phase 4: North America — US and Canada, subject to regulatory and commercial conditions.",
-      "phase5": "Phase 5: Latin America — Brazil, Mexico and selected regional hubs.",
-      "phase6": "Phase 6: Africa — selected markets with material cross-border flows.",
-      "phase7": "Phase 7: Additional high-growth corridors, including India and Southeast Asia.",
-      "regulatoryFirst": {
-        "title": "Regulatory-first by design",
-        "description": "Each region is approached with local counsel, clear licensing objectives and conservative assumptions on timelines and scope. The network only goes live where regulatory expectations are clearly understood."
-      },
-      "partnerships": {
-        "title": "Strategic institutional partnerships",
-        "description": "DelTran focuses on growth-oriented banks, EMIs and PSPs prepared to act as early anchors on key corridors, co-designing operational playbooks, reporting and governance."
-      }
+    "exponential": {
+      "title": "Compounding value",
+      "description": "Each new participant brings additional corridors and offsetting flows. The aggregate capital and liquidity benefit grows faster than the number of members."
     },
-    "regulatory": {
-      "title": "Regulatory roadmap for the network",
-      "subtitle": "Multi-jurisdiction licensing plan, executed step by step.",
-      "description": "DelTran is structuring its settlement network to operate only within clearly defined regulatory frameworks. Licensing and approvals are pursued in parallel where appropriate, with a conservative approach to scope and go-live dates.",
-      "intro": "The network will expand only where licensing, supervision and reporting expectations are well understood. All launch plans remain subject to regulatory engagement and approval.",
-      "approach": {
-        "title": "Parallel, but disciplined licensing",
-        "description": "Regulatory work advances in several priority jurisdictions at once, while launch criteria remain strict and aligned with risk appetite, local regulation and operational readiness."
-      },
-      "licenses": [
-        {
-          "region": "ADGM (UAE)",
-          "license": "Regulatory sandbox and money services permissions",
-          "coverage": "MENA corridors through ADGM and partner banks in the Gulf region.",
-          "priority": "Initial launch foundation",
-          "timeline": "Target 2025+ (subject to regulatory approval)",
-          "details": "Using ADGM frameworks to validate technology, risk and compliance under supervisory oversight before broader scaling."
-        },
-        {
-          "region": "CBUAE / VARA (Mainland UAE)",
-          "license": "RPSCS / SVF / virtual assets permissions",
-          "coverage": "Domestic UAE settlement and corridors with Asia, India and Africa.",
-          "priority": "UAE expansion",
-          "timeline": "Target 2025–2026+",
-          "details": "Comprehensive UAE licensing to support domestic and cross-border operations in coordination with local institutions."
-        },
-        {
-          "region": "European Union",
-          "license": "Electronic Money Institution and related permissions",
-          "coverage": "EU-based EMIs, PSPs and banks with SEPA connectivity.",
-          "priority": "Early expansion phase",
-          "timeline": "Target 2025–2026+",
-          "details": "EMI licensing with passporting rights, aligned with MiCA and other applicable regulation, to support EU-wide corridors."
-        },
-        {
-          "region": "United Kingdom",
-          "license": "Permissions under UK payments and e-money regulation",
-          "coverage": "UK-based banks and PSPs with cross-border flows.",
-          "priority": "In parallel with EU work",
-          "timeline": "Target 2025–2026+",
-          "details": "UK authorisations aligned with FCA expectations for payments and e-money activities."
-        },
-        {
-          "region": "United States",
-          "license": "FinCEN registration and state-level money transmitter licences",
-          "coverage": "US domestic and cross-border corridors.",
-          "priority": "Later phase after initial launches",
-          "timeline": "Target 2026–2027+",
-          "details": "Combination of federal registration and state licences, sequenced based on corridors and partner readiness."
-        },
-        {
-          "region": "Singapore",
-          "license": "MAS Major Payment Institution",
-          "coverage": "Singapore and selected Southeast Asia corridors.",
-          "priority": "Asia entry",
-          "timeline": "Target 2026–2027+",
-          "details": "Licensing as a foundation for regional expansion across remittance and trade corridors."
-        },
-        {
-          "region": "Hong Kong",
-          "license": "HKMA payments and stored value permissions",
-          "coverage": "Hong Kong and selected Greater China corridors.",
-          "priority": "Asia entry",
-          "timeline": "Target 2026–2027+",
-          "details": "Authorisations to support corridors through Hong Kong as a regional financial hub."
-        },
-        {
-          "region": "GCC (Saudi, Bahrain, Qatar and others)",
-          "license": "Local PSP and payment operator licences",
-          "coverage": "Gulf Cooperation Council member states.",
-          "priority": "MENA expansion",
-          "timeline": "Target 2026–2027+",
-          "details": "Country-specific payment permissions to deepen coverage beyond the initial launch hub."
-        },
-        {
-          "region": "Latin America",
-          "license": "Local payment institution licences",
-          "coverage": "Key regional hubs such as Brazil and Mexico.",
-          "priority": "LatAm entry",
-          "timeline": "Target 2027–2028+",
-          "details": "Licensing in selected markets where remittances and B2B flows justify network expansion."
-        }
-      ],
-      "phase1": {
-        "year": "2025",
-        "title": "Foundation: launch hub and first corridors",
-        "description": "Initial work with regulators and a small group of institutions to validate operations, reporting and liquidity management.",
-        "items": [
-          "Work within ADGM's regulatory framework and sandbox structures",
-          "Define operating playbooks with early banking and EMI partners",
-          "Establish reporting, monitoring and audit artefacts for the rail",
-          "Prove settlement, reconciliation and capital-release mechanics",
-          "Prepare documentation for additional priority jurisdictions"
-        ]
-      },
-      "phase2": {
-        "year": "2025–2026",
-        "title": "Early multi-market expansion",
-        "description": "Progress EU, UK and selected MENA/Asia pathways in parallel, while keeping launch criteria conservative.",
-        "items": [
-          "Advance UAE mainland licensing for domestic and cross-border flows",
-          "Progress EU EMI authorisation covering multiple member states",
-          "Align UK authorisations with existing and planned corridors",
-          "Begin structured work on US and Asia-Pacific licensing",
-          "Refine risk, compliance and governance frameworks as scope grows"
-        ]
-      },
-      "phase3": {
-        "year": "2026–2027",
-        "title": "Broader network activation",
-        "description": "Activate licences across additional financial hubs and onboard more institutions to the network.",
-        "items": [
-          "Onboard banks and PSPs under new licences as they are granted",
-          "Launch live corridors in each active region",
-          "Expand monitoring, reporting and analytics to reflect wider coverage",
-          "Calibrate netting and liquidity models across more participants",
-          "Coordinate with local partners on onboarding and supervision"
-        ]
-      },
+    "netting": {
+      "title": "Improved netting efficiency",
+      "description": "More participants and corridors mean more offsetting flows that can be netted multilaterally, reducing gross settlement volumes and intraday funding needs."
+    },
+    "exponentialValue": {
+      "title": "Compounding value",
+      "description": "Network design focuses on corridors where incremental participants create outsized improvements in netting, liquidity and reach for all existing members."
+    },
+    "nettingEfficiency": {
+      "title": "Structured around netting",
+      "description": "DelTran prioritises corridors and counterparties that maximise multilateral netting potential, so network growth directly translates into capital and liquidity gains."
+    },
+    "cta": "Early participants capture a larger share of capital release, netting improvements and data visibility as the network expands.",
+    "button": "Explore joining the network"
+  },
+  "expansion": {
+    "title": "Global institutional expansion",
+    "subtitle": "A staged, regulatory-led rollout across corridors and regions.",
+    "description": "The network begins with a limited number of high-value corridors and expands in phases. Each phase is anchored by regulated institutions, clear use cases and measurable capital and liquidity benefits.",
+    "labels": {
+      "target": "Primary regulatory focus:",
+      "markets": "Indicative markets:"
+    },
+    "parallel": {
+      "title": "Coordinated multi-market approach",
+      "description": "Work with regulators and partners progresses in several priority jurisdictions in parallel, while launches remain sequenced and aligned with risk appetite and operational readiness."
+    },
+    "mena": {
+      "number": "1",
+      "title": "MENA launch hub",
+      "target": "ADGM-focused path (2025+)",
+      "markets": "UAE and wider GCC corridors",
+      "status": "Regulatory engagement and partner discussions",
+      "description": "Using ADGM as the initial hub for Gulf corridors where intraday liquidity, remittances and corporate flows create strong demand for on-demand settlement."
+    },
+    "europe": {
+      "number": "2",
+      "title": "European connectivity",
+      "target": "EU payment / e-money institution and UK payment permissions",
+      "focus": "SEPA-linked corridors and PSP flows",
+      "timeline": "Target 2025–2026+",
+      "markets": "Eurozone, UK",
+      "description": "Bringing European EMIs, banks and payment institutions onto the rail, with a focus on SEPA corridors and cross-border PSP flows."
+    },
+    "asia": {
+      "number": "3",
+      "title": "Asia-Pacific corridors",
+      "target": "MAS, HKMA and other key regulators",
+      "focus": "Trade, remittance and treasury flows",
+      "timeline": "Target 2026+",
+      "markets": "Singapore, Hong Kong and selected Asia-Pacific markets",
+      "description": "Connecting Asian financial hubs and regional banks into the network to support trade and treasury flows across time zones."
+    },
+    "future": {
       "phase4": {
-        "year": "2027+",
-        "title": "Emerging markets and optimisation",
-        "description": "Add high-growth emerging markets and optimise the network as it scales.",
-        "items": [
-          "Evaluate and enter selected Latin American markets",
-          "Expand into African and South Asian corridors where appropriate",
-          "Refine global governance and risk frameworks as coverage deepens",
-          "Optimise capital, liquidity and netting across regions",
-          "Adapt to evolving regulatory expectations in each jurisdiction"
-        ]
+        "label": "Phase 4:",
+        "description": "North America — US and Canada, subject to regulatory and commercial conditions."
       },
-      "disclaimer": "All jurisdictions, timelines and licensing pathways described here are indicative only and will evolve with regulatory feedback, internal risk assessments and client demand.",
-      "disclaimerCard": {
-        "title": "Pre-launch and subject to approval",
-        "content": "DelTran is currently in a pre-launch phase. Nothing on this page should be interpreted as an offer to provide regulated services or as confirmation that any specific licence has been granted. All plans remain subject to regulatory engagement and approval, and timelines may change."
+      "phase5": {
+        "label": "Phase 5:",
+        "description": "Latin America — Brazil, Mexico and selected regional hubs for remittances and B2B flows."
       },
-      "timeline": {
-        "badge": "Regulatory roadmap",
-        "title": "Building for",
-        "titleAccent": "regulatory resilience",
-        "subtitle": "An illustrative view of how work with regulators in different jurisdictions may progress over time.",
-        "inProgress": "In progress",
-        "jurisdiction": "Jurisdiction",
-        "jurisdictions": "Jurisdictions",
-        "countries": "countries",
-        "showDetails": "Show details",
-        "showLess": "Show less",
-        "phases": {
-          "2025": {
-            "title": "Foundation phase",
-            "description": "Launch hub work and preparation for applications in other priority jurisdictions."
-          },
-          "2026": {
-            "title": "Early multi-market expansion",
-            "description": "Progress on EU, UK, MENA and selected Asia-Pacific licensing pathways."
-          },
-          "2027": {
-            "title": "Broader network activation",
-            "description": "Licences coming online across multiple hubs and activation of additional corridors."
-          },
-          "2028": {
-            "title": "Scale and optimisation",
-            "description": "Deepening coverage in existing regions and refining network governance and optimisation."
-          }
-        },
-        "summary": {
-          "title": "Disciplined parallel licensing",
-          "description": "Regulatory work is sequenced to balance client demand, jurisdictional priorities and internal risk appetite, rather than maximising the number of countries in the shortest time.",
-          "stats": {
-            "jurisdictions": "Jurisdictions",
-            "countries": "Countries",
-            "years": "Years",
-            "compliant": "Compliant"
-          }
-        }
+      "phase6": {
+        "label": "Phase 6:",
+        "description": "Africa — selected markets where cross-border trade and worker remittances are material."
+      },
+      "phase7": {
+        "label": "Phase 7:",
+        "description": "Additional high-growth corridors, including India and Southeast Asia, prioritised based on demand and network impact."
       }
     },
-    "cta": {
-      "title": "Explore joining the network as an early participant",
-      "subtitle": "We are speaking with banks, EMIs and PSPs that see strategic value in freeing settlement capital, improving netting and gaining better visibility across corridors.",
-      "description": "Share a high-level view of your corridors, volumes and regulatory footprint. We will map how DelTran could integrate into your stack, what capital and liquidity benefits may be achievable, and what a phased rollout could look like.",
-      "button": "Talk to our team"
+    "phase4": "Phase 4: North America — US and Canada, subject to regulatory and commercial conditions.",
+    "phase5": "Phase 5: Latin America — Brazil, Mexico and selected regional hubs.",
+    "phase6": "Phase 6: Africa — selected markets with material cross-border flows.",
+    "phase7": "Phase 7: Additional high-growth corridors, including India and Southeast Asia.",
+    "regulatoryFirst": {
+      "title": "Regulatory-first by design",
+      "description": "Each region is approached with local counsel, clear licensing objectives and conservative assumptions on timelines and scope. The network only goes live where regulatory expectations are clearly understood."
+    },
+    "partnerships": {
+      "title": "Strategic institutional partnerships",
+      "description": "DelTran focuses on growth-oriented banks, EMIs and PSPs prepared to act as early anchors on key corridors, co-designing operational playbooks, reporting and governance."
     }
   },
+  "regulatory": {
+    "title": "Regulatory roadmap for the network",
+    "subtitle": "Multi-jurisdiction licensing plan, executed step by step.",
+    "description": "DelTran is structuring its settlement network to operate only within clearly defined regulatory frameworks. Licensing and approvals are pursued in parallel where appropriate, with a conservative approach to scope and go-live dates.",
+    "intro": "The network will expand only where licensing, supervision and reporting expectations are well understood. All launch plans remain subject to regulatory engagement and approval.",
+    "approach": {
+      "title": "Parallel, but disciplined licensing",
+      "description": "Regulatory work advances in several priority jurisdictions at once, while launch criteria remain strict and aligned with risk appetite, local regulation and operational readiness."
+    },
+    "licenses": [
+      {
+        "region": "ADGM (UAE)",
+        "license": "Regulatory sandbox and money services permissions",
+        "coverage": "MENA corridors through ADGM and partner banks in the Gulf region.",
+        "priority": "Initial launch foundation",
+        "timeline": "Target 2025+ (subject to regulatory approval)",
+        "details": "Using ADGM frameworks (including sandbox structures) to validate technology, risk and compliance under supervisory oversight and ultimately seek a full Financial Services Permission for Providing Money Services."
+      },
+      {
+        "region": "CBUAE (Mainland UAE)",
+        "license": "RPSCS payment services licence (PSP)",
+        "coverage": "Domestic UAE settlement and corridors with Asia, India and Africa.",
+        "priority": "UAE expansion",
+        "timeline": "Target 2025–2026+",
+        "details": "Retail Payment Services licensing to support domestic and cross-border operations with UAE institutions. Stored-value or virtual asset permissions would only be considered if future products require them."
+      },
+      {
+        "region": "European Union",
+        "license": "Payment Institution and/or Electronic Money Institution authorisation",
+        "coverage": "EU-based EMIs, PSPs and banks with SEPA connectivity.",
+        "priority": "Early expansion phase",
+        "timeline": "Target 2025–2026+",
+        "details": "PI/EMI authorisation with passporting rights, aligned with PSD2/EMD2 and other applicable regulation, to support EU-wide corridors."
+      },
+      {
+        "region": "United Kingdom",
+        "license": "Authorised Payment Institution and/or Electronic Money Institution permissions",
+        "coverage": "UK-based banks and PSPs with cross-border flows.",
+        "priority": "In parallel with EU work",
+        "timeline": "Target 2025–2026+",
+        "details": "UK authorisations aligned with FCA expectations for payments and e-money activities, supporting participation in the network as a payment and settlement rail."
+      },
+      {
+        "region": "United States",
+        "license": "FinCEN registration and state-level money transmitter licences",
+        "coverage": "US domestic and cross-border corridors.",
+        "priority": "Later phase after initial launches",
+        "timeline": "Target 2026–2027+",
+        "details": "Combination of federal MSB registration and state money transmitter licences, sequenced based on target corridors and partner readiness."
+      },
+      {
+        "region": "Singapore",
+        "license": "MAS Major Payment Institution",
+        "coverage": "Singapore and selected Southeast Asia corridors.",
+        "priority": "Asia entry",
+        "timeline": "Target 2026–2027+",
+        "details": "Licensing under the Payment Services Act as a foundation for regional expansion across remittance, trade and treasury corridors."
+      },
+      {
+        "region": "Hong Kong",
+        "license": "HKMA retail payment system and, where required, stored value permissions",
+        "coverage": "Hong Kong and selected Greater China corridors.",
+        "priority": "Asia entry",
+        "timeline": "Target 2026–2027+",
+        "details": "Authorisations to operate as a regulated retail payment system and support corridors through Hong Kong as a regional financial hub. Stored value permissions would only be sought if future products require them."
+      },
+      {
+        "region": "GCC (Saudi, Bahrain, Qatar and others)",
+        "license": "Local PSP and payment system operator licences",
+        "coverage": "Gulf Cooperation Council member states.",
+        "priority": "MENA expansion",
+        "timeline": "Target 2026–2027+",
+        "details": "Country-specific payment services and payment system operator permissions to deepen coverage beyond the initial launch hub."
+      },
+      {
+        "region": "Latin America",
+        "license": "Local payment institution licences (e.g. Brazil payment institution, Mexico IFPE)",
+        "coverage": "Key regional hubs such as Brazil and Mexico.",
+        "priority": "LatAm entry",
+        "timeline": "Target 2027–2028+",
+        "details": "Licensing in selected markets, such as Brazil and Mexico, where remittances and B2B flows justify network expansion."
+      }
+    ],
+    "phase1": {
+      "year": "2025",
+      "title": "Foundation: launch hub and first corridors",
+      "description": "Initial work with regulators and a small group of institutions to validate operations, reporting and liquidity management.",
+      "items": [
+        "Work within ADGM's regulatory framework and sandbox structures",
+        "Define operating playbooks with early banking and EMI partners",
+        "Establish reporting, monitoring and audit artefacts for the rail",
+        "Prove settlement, reconciliation and capital-release mechanics",
+        "Prepare documentation for additional priority jurisdictions"
+      ]
+    },
+    "phase2": {
+      "year": "2025–2026",
+      "title": "Early multi-market expansion",
+      "description": "Progress EU, UK and selected MENA/Asia pathways in parallel, while keeping launch criteria conservative.",
+      "items": [
+        "Advance UAE mainland licensing for domestic and cross-border flows",
+        "Progress EU Payment Institution / EMI authorisation covering multiple member states",
+        "Align UK authorisations with existing and planned corridors",
+        "Begin structured work on US and Asia-Pacific licensing",
+        "Refine risk, compliance and governance frameworks as scope grows"
+      ]
+    },
+    "phase3": {
+      "year": "2026–2027",
+      "title": "Broader network activation",
+      "description": "Activate licences across additional financial hubs and onboard more institutions to the network.",
+      "items": [
+        "Onboard banks and PSPs under new licences as they are granted",
+        "Launch live corridors in each active region",
+        "Expand monitoring, reporting and analytics to reflect wider coverage",
+        "Calibrate netting and liquidity models across more participants",
+        "Coordinate with local partners on onboarding and supervision"
+      ]
+    },
+    "phase4": {
+      "year": "2027+",
+      "title": "Emerging markets and optimisation",
+      "description": "Add high-growth emerging markets and optimise the network as it scales.",
+      "items": [
+        "Evaluate and enter selected Latin American markets",
+        "Expand into African and South Asian corridors where appropriate",
+        "Refine global governance and risk frameworks as coverage deepens",
+        "Optimise capital, liquidity and netting across regions",
+        "Adapt to evolving regulatory expectations in each jurisdiction"
+      ]
+    },
+    "disclaimer": "All jurisdictions, timelines and licensing pathways described here are indicative only and will evolve with regulatory feedback, internal risk assessments and client demand.",
+    "disclaimerCard": {
+      "title": "Pre-launch and subject to approval",
+      "content": "DelTran is currently in a pre-launch phase. Nothing on this page should be interpreted as an offer to provide regulated services or as confirmation that any specific licence has been granted. All plans remain subject to regulatory engagement and approval, and timelines may change."
+    },
+    "timeline": {
+      "badge": "Regulatory roadmap",
+      "title": "Building for",
+      "titleAccent": "regulatory resilience",
+      "subtitle": "An illustrative view of how work with regulators in different jurisdictions may progress over time.",
+      "inProgress": "In progress",
+      "jurisdiction": "Jurisdiction",
+      "jurisdictions": "Jurisdictions",
+      "countries": "countries",
+      "showDetails": "Show details",
+      "showLess": "Show less",
+      "phases": {
+        "2025": {
+          "title": "Foundation phase",
+          "description": "Launch hub work and preparation for applications in other priority jurisdictions."
+        },
+        "2026": {
+          "title": "Early multi-market expansion",
+          "description": "Progress on EU, UK, MENA and selected Asia-Pacific licensing pathways."
+        },
+        "2027": {
+          "title": "Broader network activation",
+          "description": "Licences coming online across multiple hubs and activation of additional corridors."
+        },
+        "2028": {
+          "title": "Scale and optimisation",
+          "description": "Deepening coverage in existing regions and refining network governance and optimisation."
+        }
+      },
+      "summary": {
+        "title": "Disciplined parallel licensing",
+        "description": "Regulatory work is sequenced to balance client demand, jurisdictional priorities and internal risk appetite, rather than maximising the number of countries in the shortest time.",
+        "stats": {
+          "jurisdictions": "Jurisdictions",
+          "countries": "Countries",
+          "years": "Years",
+          "compliant": "Compliant"
+        }
+      }
+    }
+  },
+  "cta": {
+    "title": "Explore joining the network as an early participant",
+    "subtitle": "We are speaking with banks, EMIs and PSPs that see strategic value in freeing settlement capital, improving netting and gaining better visibility across corridors.",
+    "description": "Share a high-level view of your corridors, volumes and regulatory footprint. We will map how DelTran could integrate into your stack, what capital and liquidity benefits may be achievable, and what a phased rollout could look like.",
+    "button": "Talk to our team"
+  }
+},
   "company": {
     "meta": {
       "title": "Company - DelTran",

@@ -25,6 +25,7 @@ import Link from 'next/link';
 import { useTextDirection } from '@/app/lib/hooks/useTextDirection';
 import { RegulatoryTimeline } from '@/app/components/network/RegulatoryTimeline';
 import { cn } from '@/lib/utils';
+import { AnimatedWrapper, AnimatedCard, AnimatedSection } from '@/app/components/motion/AnimatedWrapper';
 
 export function NetworkPageClient() {
   const t = useTranslations('network');
@@ -49,17 +50,19 @@ export function NetworkPageClient() {
         />
 
         <div className="container-premium relative">
-          <SectionHeading
-            title={t('networkEffect.title')}
-            subtitle={t('networkEffect.subtitle')}
-            size="lg"
-            className="mb-12 sm:mb-16"
-          />
+          <AnimatedWrapper animation="fadeUp">
+            <SectionHeading
+              title={t('networkEffect.title')}
+              subtitle={t('networkEffect.subtitle')}
+              size="lg"
+              className="mb-12 sm:mb-16"
+            />
+          </AnimatedWrapper>
 
           {/* 4 Benefit Cards - reusing existing translation keys */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 max-w-7xl mx-auto">
             {/* Capital Efficiency */}
-            <div>
+            <AnimatedCard index={0}>
               <Card variant="gradient" size="md" className="h-full">
                 <div className="flex items-start gap-4 sm:block">
                   <div className={cn(
@@ -80,10 +83,10 @@ export function NetworkPageClient() {
                   </div>
                 </div>
               </Card>
-            </div>
+            </AnimatedCard>
 
             {/* Netting Benefits */}
-            <div>
+            <AnimatedCard index={1}>
               <Card variant="gradient" size="md" className="h-full">
                 <div className="flex items-start gap-4 sm:block">
                   <div className={cn(
@@ -104,10 +107,10 @@ export function NetworkPageClient() {
                   </div>
                 </div>
               </Card>
-            </div>
+            </AnimatedCard>
 
             {/* Regulatory First */}
-            <div>
+            <AnimatedCard index={2}>
               <Card variant="gradient" size="md" className="h-full">
                 <div className="flex items-start gap-4 sm:block">
                   <div className={cn(
@@ -128,10 +131,10 @@ export function NetworkPageClient() {
                   </div>
                 </div>
               </Card>
-            </div>
+            </AnimatedCard>
 
             {/* Partnership Network */}
-            <div>
+            <AnimatedCard index={3}>
               <Card variant="gradient" size="md" className="h-full">
                 <div className="flex items-start gap-4 sm:block">
                   <div className={cn(
@@ -152,7 +155,7 @@ export function NetworkPageClient() {
                   </div>
                 </div>
               </Card>
-            </div>
+            </AnimatedCard>
           </div>
         </div>
       </section>
@@ -164,8 +167,9 @@ export function NetworkPageClient() {
       <section className="section-premium relative bg-gradient-to-b from-black to-[#050505]">
         <div className="container-premium">
           {/* Visual Network Growth */}
-          <div className="max-w-5xl mx-auto">
-            <Card
+          <AnimatedWrapper animation="scale" delay={100}>
+            <div className="max-w-5xl mx-auto">
+              <Card
               variant="bordered"
               size="lg"
               className="relative overflow-visible"
@@ -261,9 +265,12 @@ export function NetworkPageClient() {
                 )}
               </div>
             </Card>
+            </div>
+          </AnimatedWrapper>
 
             {/* Secondary CTA */}
-            <div className="text-center mt-10 sm:mt-12">
+            <AnimatedWrapper animation="fadeUp" delay={200}>
+            <div className="text-center mt-10 sm:mt-12 max-w-5xl mx-auto">
               <p className="text-white/70 text-base sm:text-lg mb-5">
                 {t('networkEffect.cta')}
               </p>
@@ -283,7 +290,7 @@ export function NetworkPageClient() {
                 </button>
               </Link>
             </div>
-          </div>
+            </AnimatedWrapper>
         </div>
       </section>
 
@@ -293,15 +300,18 @@ export function NetworkPageClient() {
           ======================================== */}
       <section className="section-premium relative">
         <div className="container-premium">
-          <SectionHeading
-            title={t('expansion.title')}
-            subtitle={t('expansion.subtitle')}
-            size="lg"
-            className="mb-12 sm:mb-16"
-          />
+          <AnimatedWrapper animation="fadeUp">
+            <SectionHeading
+              title={t('expansion.title')}
+              subtitle={t('expansion.subtitle')}
+              size="lg"
+              className="mb-12 sm:mb-16"
+            />
+          </AnimatedWrapper>
 
           <div className="max-w-6xl mx-auto">
             {/* Parallel Expansion Intro */}
+            <AnimatedWrapper animation="fade" delay={100}>
             <div className="text-center mb-10 sm:mb-12">
               <div className={cn(
                 "inline-flex items-center gap-3 px-5 py-3",
@@ -316,11 +326,12 @@ export function NetworkPageClient() {
                 {t('expansion.description')}
               </p>
             </div>
+            </AnimatedWrapper>
 
             {/* 3 Main Phases */}
             <div className="grid md:grid-cols-3 gap-5 sm:gap-6 mb-8">
               {/* Phase 1: MENA */}
-              <div>
+              <AnimatedCard index={0}>
                 <Card
                   variant="bordered"
                   size="md"
@@ -350,10 +361,10 @@ export function NetworkPageClient() {
                     <p className="pt-2 text-white/50">{t('expansion.mena.description')}</p>
                   </div>
                 </Card>
-              </div>
+              </AnimatedCard>
 
               {/* Phase 2: Europe */}
-              <div>
+              <AnimatedCard index={1}>
                 <Card variant="gradient" size="md" className="h-full">
                   <div className="flex items-center gap-3 mb-4">
                     <div className={cn(
@@ -379,10 +390,10 @@ export function NetworkPageClient() {
                     <p className="pt-2 text-white/50">{t('expansion.europe.description')}</p>
                   </div>
                 </Card>
-              </div>
+              </AnimatedCard>
 
               {/* Phase 3: Asia */}
-              <div>
+              <AnimatedCard index={2}>
                 <Card variant="gradient" size="md" className="h-full">
                   <div className="flex items-center gap-3 mb-4">
                     <div className={cn(
@@ -408,7 +419,7 @@ export function NetworkPageClient() {
                     <p className="pt-2 text-white/50">{t('expansion.asia.description')}</p>
                   </div>
                 </Card>
-              </div>
+              </AnimatedCard>
             </div>
 
             {/* Future Phases - Collapsible */}
@@ -572,6 +583,7 @@ export function NetworkPageClient() {
           ======================================== */}
       <section className="section-premium relative">
         <div className="container-premium">
+          <AnimatedWrapper animation="scale" delay={100}>
           <Card
             variant="bordered"
             size="xl"
@@ -630,6 +642,7 @@ export function NetworkPageClient() {
               </div>
             </div>
           </Card>
+          </AnimatedWrapper>
         </div>
       </section>
     </>

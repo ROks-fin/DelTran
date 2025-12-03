@@ -11,6 +11,7 @@ import { useTranslations } from 'next-intl';
 import { Mail, Send } from 'lucide-react';
 import { Card } from '@/app/components/Card';
 import { cn } from '@/lib/utils';
+import { AnimatedWrapper, AnimatedCard } from '@/app/components/motion/AnimatedWrapper';
 
 export function ContactForm() {
   const t = useTranslations('contact');
@@ -90,7 +91,7 @@ export function ContactForm() {
       <div className="container-premium">
         <div className="grid lg:grid-cols-3 gap-8 sm:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <div className="lg:col-span-2">
+          <AnimatedWrapper animation="fadeUp" className="lg:col-span-2">
             <Card variant="soft" size="xl">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
@@ -214,7 +215,7 @@ export function ContactForm() {
                 </button>
               </form>
             </Card>
-          </div>
+          </AnimatedWrapper>
 
           {/* Contact Information */}
           <div className="space-y-6">

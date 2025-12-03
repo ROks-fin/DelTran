@@ -140,8 +140,80 @@ const config: Config = {
         'luxury': '0.15em',
         'display': '0.25em',
       },
-      // Animations removed for performance optimization
-      // See ANIMATIONS-BACKUP.md for the full list of removed animations
+      // ============================================
+      // DELTRAN MOTION v2 — GPU-Optimized Animations
+      // ============================================
+      animation: {
+        // Core animations
+        'dt-fade': 'dt-fade 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards',
+        'dt-fade-up': 'dt-fade-up 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards',
+        'dt-fade-down': 'dt-fade-down 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards',
+        'dt-scale-in': 'dt-scale-in 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards',
+        'dt-microfloat': 'dt-microfloat 4s ease-in-out infinite',
+        'dt-pulse-subtle': 'dt-pulse-subtle 3s ease-in-out infinite',
+        // Gold effects
+        'dt-shimmer-gold': 'dt-shimmer-gold 3s linear infinite',
+        'dt-glow-pulse': 'dt-glow-pulse 3s ease-in-out infinite',
+        // Flow animations
+        'dt-flow': 'dt-flow 2s ease-in-out infinite',
+        'dt-flow-rtl': 'dt-flow-rtl 2s ease-in-out infinite',
+        // Loading states
+        'dt-spin': 'dt-spin 1s linear infinite',
+        'dt-skeleton': 'dt-skeleton 1.5s ease-in-out infinite',
+      },
+      keyframes: {
+        'dt-fade': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        'dt-fade-up': {
+          from: { opacity: '0', transform: 'translateY(10px) translateZ(0)' },
+          to: { opacity: '1', transform: 'translateY(0) translateZ(0)' },
+        },
+        'dt-fade-down': {
+          from: { opacity: '0', transform: 'translateY(-10px) translateZ(0)' },
+          to: { opacity: '1', transform: 'translateY(0) translateZ(0)' },
+        },
+        'dt-scale-in': {
+          from: { opacity: '0', transform: 'scale(0.985) translateZ(0)' },
+          to: { opacity: '1', transform: 'scale(1) translateZ(0)' },
+        },
+        'dt-microfloat': {
+          '0%, 100%': { transform: 'translateY(0) translateZ(0)' },
+          '50%': { transform: 'translateY(-3px) translateZ(0)' },
+        },
+        'dt-pulse-subtle': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.85' },
+        },
+        'dt-shimmer-gold': {
+          from: { backgroundPosition: '-200% center' },
+          to: { backgroundPosition: '200% center' },
+        },
+        'dt-glow-pulse': {
+          '0%, 100%': { transform: 'scale(1) translateZ(0)', opacity: '0.6' },
+          '50%': { transform: 'scale(1.02) translateZ(0)', opacity: '1' },
+        },
+        'dt-flow': {
+          '0%': { opacity: '0', transform: 'translateX(0) translateZ(0)' },
+          '20%': { opacity: '1' },
+          '80%': { opacity: '1' },
+          '100%': { opacity: '0', transform: 'translateX(100%) translateZ(0)' },
+        },
+        'dt-flow-rtl': {
+          '0%': { opacity: '0', transform: 'translateX(0) translateZ(0)' },
+          '20%': { opacity: '1' },
+          '80%': { opacity: '1' },
+          '100%': { opacity: '0', transform: 'translateX(-100%) translateZ(0)' },
+        },
+        'dt-spin': {
+          to: { transform: 'rotate(360deg) translateZ(0)' },
+        },
+        'dt-skeleton': {
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '0.7' },
+        },
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',

@@ -23,6 +23,7 @@ import { SectionHeading } from '@/app/components/SectionHeading';
 import Link from 'next/link';
 import { useTextDirection } from '@/app/lib/hooks/useTextDirection';
 import { cn } from '@/lib/utils';
+import { AnimatedWrapper, AnimatedCard, AnimatedSection } from '@/app/components/motion/AnimatedWrapper';
 
 export function CompanyPageClient() {
   const t = useTranslations('company');
@@ -48,6 +49,7 @@ export function CompanyPageClient() {
         <div className="container-premium relative">
           <div className="max-w-4xl mx-auto">
             {/* Status chips row */}
+            <AnimatedWrapper stagger staggerDelay={0.08}>
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
               {/* MVP Ready */}
               <div className={cn(
@@ -94,6 +96,7 @@ export function CompanyPageClient() {
                 <span>{t('status.partners')}</span>
               </div>
             </div>
+            </AnimatedWrapper>
           </div>
         </div>
       </section>
@@ -104,16 +107,18 @@ export function CompanyPageClient() {
           ======================================== */}
       <section className="section-premium relative">
         <div className="container-premium">
-          <SectionHeading
-            title={t('mission.title')}
-            subtitle={t('story.subtitle')}
-            size="lg"
-            className="mb-12 sm:mb-16"
-          />
+          <AnimatedWrapper animation="fadeUp">
+            <SectionHeading
+              title={t('mission.title')}
+              subtitle={t('story.subtitle')}
+              size="lg"
+              className="mb-12 sm:mb-16"
+            />
+          </AnimatedWrapper>
 
           <div className="grid md:grid-cols-2 gap-5 sm:gap-6 max-w-5xl mx-auto">
             {/* Mission */}
-            <div>
+            <AnimatedCard index={0}>
               <Card variant="gradient" size="lg" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
@@ -133,10 +138,10 @@ export function CompanyPageClient() {
                   {t('mission.content')}
                 </p>
               </Card>
-            </div>
+            </AnimatedCard>
 
             {/* Vision */}
-            <div>
+            <AnimatedCard index={1}>
               <Card variant="gradient" size="lg" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
@@ -156,7 +161,7 @@ export function CompanyPageClient() {
                   {t('vision.content')}
                 </p>
               </Card>
-            </div>
+            </AnimatedCard>
           </div>
         </div>
       </section>
@@ -168,7 +173,7 @@ export function CompanyPageClient() {
       <section className="section-premium relative bg-gradient-to-b from-black to-[#050505]">
         <div className="container-premium">
           <div className="max-w-3xl mx-auto">
-            <div>
+            <AnimatedWrapper animation="scale" delay={100}>
               <Card variant="bordered" size="lg" className="border-gold/20">
                 {/* Story Header */}
                 <div className="flex items-center gap-3 mb-6">
@@ -203,7 +208,7 @@ export function CompanyPageClient() {
                   <p className="whitespace-pre-line">{t('story.content')}</p>
                 </div>
               </Card>
-            </div>
+            </AnimatedWrapper>
           </div>
         </div>
       </section>
@@ -214,16 +219,18 @@ export function CompanyPageClient() {
           ======================================== */}
       <section className="section-premium relative">
         <div className="container-premium">
-          <SectionHeading
-            title={t('values.title')}
-            subtitle={t('values.subtitle')}
-            size="lg"
-            className="mb-12 sm:mb-16"
-          />
+          <AnimatedWrapper animation="fadeUp">
+            <SectionHeading
+              title={t('values.title')}
+              subtitle={t('values.subtitle')}
+              size="lg"
+              className="mb-12 sm:mb-16"
+            />
+          </AnimatedWrapper>
 
           <div className="grid sm:grid-cols-2 gap-5 sm:gap-6 max-w-5xl mx-auto">
             {/* Security / Compliance First */}
-            <div>
+            <AnimatedCard index={0}>
               <Card variant="gradient" size="md" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
@@ -243,10 +250,10 @@ export function CompanyPageClient() {
                   {t('values.security.description')}
                 </p>
               </Card>
-            </div>
+            </AnimatedCard>
 
             {/* Efficiency */}
-            <div>
+            <AnimatedCard index={1}>
               <Card variant="gradient" size="md" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
@@ -266,10 +273,10 @@ export function CompanyPageClient() {
                   {t('values.efficiency.description')}
                 </p>
               </Card>
-            </div>
+            </AnimatedCard>
 
             {/* Transparency */}
-            <div>
+            <AnimatedCard index={2}>
               <Card variant="gradient" size="md" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
@@ -289,10 +296,10 @@ export function CompanyPageClient() {
                   {t('values.transparency.description')}
                 </p>
               </Card>
-            </div>
+            </AnimatedCard>
 
             {/* Innovation - 4th value */}
-            <div>
+            <AnimatedCard index={3}>
               <Card variant="gradient" size="md" className="h-full group">
                 <div className={cn(
                   "w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-5",
@@ -312,7 +319,7 @@ export function CompanyPageClient() {
                   {t('values.innovation.description')}
                 </p>
               </Card>
-            </div>
+            </AnimatedCard>
           </div>
         </div>
       </section>
@@ -324,7 +331,7 @@ export function CompanyPageClient() {
       <section className="py-20 sm:py-24 lg:py-28 relative bg-gradient-to-b from-[#050505] to-black">
         <div className="container-premium">
           <div className="max-w-3xl mx-auto text-center">
-            <div>
+            <AnimatedWrapper animation="fadeUp">
               <Card variant="soft" size="xl">
                 <div className={cn(
                   "w-14 h-14 sm:w-16 sm:h-16 rounded-2xl",
@@ -363,7 +370,7 @@ export function CompanyPageClient() {
                   </a>
                 </div>
               </Card>
-            </div>
+            </AnimatedWrapper>
           </div>
         </div>
       </section>
@@ -374,16 +381,17 @@ export function CompanyPageClient() {
           ======================================== */}
       <section className="section-premium relative">
         <div className="container-premium">
-          <Card
-            variant="bordered"
-            size="xl"
-            className={cn(
-              "text-center",
-              "bg-gradient-to-br from-gold/15 via-gold/8 to-gold/3",
-              "border-gold/30",
-              "max-w-4xl mx-auto"
-            )}
-          >
+          <AnimatedWrapper animation="scale" delay={100}>
+            <Card
+              variant="bordered"
+              size="xl"
+              className={cn(
+                "text-center",
+                "bg-gradient-to-br from-gold/15 via-gold/8 to-gold/3",
+                "border-gold/30",
+                "max-w-4xl mx-auto"
+              )}
+            >
             {/* Decorative glow */}
             <div
               className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] pointer-events-none"
@@ -445,6 +453,7 @@ export function CompanyPageClient() {
               </div>
             </div>
           </Card>
+          </AnimatedWrapper>
         </div>
       </section>
     </>
