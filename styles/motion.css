@@ -1,0 +1,500 @@
+/* ============================================
+   DELTRAN MOTION v2 — PREMIUM GPU-OPTIMIZED ANIMATION SYSTEM
+   ============================================
+
+   MOTION LANGUAGE:
+   - Micro-float: 3-5px subtle movement
+   - Fade: opacity 0 → 1
+   - Scale-in: 0.985 → 1 (subtle)
+   - Gold shimmer: gradient position animation (no blur)
+   - Soft stagger: 0ms / 80ms / 140ms / 200ms
+   - GPU-only: transform, opacity only
+   - No reflow, no layout thrashing
+
+   COLORS (strictly enforced):
+   - Black: #000000
+   - Gold: #D4AF37 / #FFD700
+   - White: #FFFFFF
+
+   ============================================ */
+
+/* ============================================
+   CSS CUSTOM PROPERTIES — Motion Tokens
+   ============================================ */
+:root {
+  /* Timing Functions - Premium easing */
+  --dt-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dt-ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --dt-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Duration Scale */
+  --dt-duration-fast: 200ms;
+  --dt-duration-normal: 400ms;
+  --dt-duration-slow: 600ms;
+  --dt-duration-slower: 800ms;
+
+  /* Stagger Delays */
+  --dt-stagger-0: 0ms;
+  --dt-stagger-1: 80ms;
+  --dt-stagger-2: 140ms;
+  --dt-stagger-3: 200ms;
+  --dt-stagger-4: 260ms;
+  --dt-stagger-5: 320ms;
+
+  /* Movement Scale */
+  --dt-move-micro: 3px;
+  --dt-move-small: 5px;
+  --dt-move-medium: 10px;
+  --dt-move-large: 20px;
+
+  /* Scale Values */
+  --dt-scale-subtle: 0.985;
+  --dt-scale-normal: 0.95;
+  --dt-scale-emphasis: 0.9;
+
+  /* Gold Colors */
+  --dt-gold: #D4AF37;
+  --dt-gold-light: #FFD700;
+  --dt-gold-glow: rgba(212, 175, 55, 0.3);
+}
+
+/* ============================================
+   KEYFRAMES — GPU-Optimized Only
+   Using only transform and opacity
+   ============================================ */
+
+/* dt-fade: Simple opacity fade */
+@keyframes dt-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* dt-fade-up: Fade with subtle upward movement */
+@keyframes dt-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--dt-move-medium)) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* dt-fade-down: Fade with subtle downward movement */
+@keyframes dt-fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--dt-move-medium))) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* dt-scale-in: Subtle scale with fade */
+@keyframes dt-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(var(--dt-scale-subtle)) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+/* dt-microfloat: Gentle floating animation (3-5px) */
+@keyframes dt-microfloat {
+  0%, 100% {
+    transform: translateY(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(calc(-1 * var(--dt-move-micro))) translateZ(0);
+  }
+}
+
+/* dt-shimmer-gold: Gold gradient shimmer (no blur) */
+@keyframes dt-shimmer-gold {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* dt-pulse-subtle: Very subtle opacity pulse */
+@keyframes dt-pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* dt-glow-pulse: Gold glow pulsing (GPU-friendly with transform) */
+@keyframes dt-glow-pulse {
+  0%, 100% {
+    transform: scale(1) translateZ(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.02) translateZ(0);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   ANIMATION CLASSES — Ready to Use
+   ============================================ */
+
+/* Base animations */
+.dt-fade {
+  animation: dt-fade var(--dt-duration-normal) var(--dt-ease-out) forwards;
+}
+
+.dt-fade-up {
+  animation: dt-fade-up var(--dt-duration-normal) var(--dt-ease-out) forwards;
+}
+
+.dt-fade-down {
+  animation: dt-fade-down var(--dt-duration-normal) var(--dt-ease-out) forwards;
+}
+
+.dt-scale-in {
+  animation: dt-scale-in var(--dt-duration-normal) var(--dt-ease-out) forwards;
+}
+
+.dt-microfloat {
+  animation: dt-microfloat 4s var(--dt-ease-in-out) infinite;
+}
+
+.dt-pulse-subtle {
+  animation: dt-pulse-subtle 3s var(--dt-ease-in-out) infinite;
+}
+
+/* Slower variants */
+.dt-fade-slow {
+  animation: dt-fade var(--dt-duration-slow) var(--dt-ease-out) forwards;
+}
+
+.dt-fade-up-slow {
+  animation: dt-fade-up var(--dt-duration-slow) var(--dt-ease-out) forwards;
+}
+
+.dt-scale-in-slow {
+  animation: dt-scale-in var(--dt-duration-slow) var(--dt-ease-out) forwards;
+}
+
+/* Fast variants */
+.dt-fade-fast {
+  animation: dt-fade var(--dt-duration-fast) var(--dt-ease-out) forwards;
+}
+
+.dt-fade-up-fast {
+  animation: dt-fade-up var(--dt-duration-fast) var(--dt-ease-out) forwards;
+}
+
+/* ============================================
+   STAGGER DELAY UTILITIES
+   ============================================ */
+
+.dt-stagger-0 { animation-delay: var(--dt-stagger-0); }
+.dt-stagger-1 { animation-delay: var(--dt-stagger-1); }
+.dt-stagger-2 { animation-delay: var(--dt-stagger-2); }
+.dt-stagger-3 { animation-delay: var(--dt-stagger-3); }
+.dt-stagger-4 { animation-delay: var(--dt-stagger-4); }
+.dt-stagger-5 { animation-delay: var(--dt-stagger-5); }
+
+/* Initial state for staggered animations */
+.dt-stagger-init {
+  opacity: 0;
+}
+
+/* ============================================
+   GOLD SHIMMER EFFECT — Premium Text Effect
+   ============================================ */
+
+.dt-shimmer-gold {
+  background: linear-gradient(
+    90deg,
+    var(--dt-gold) 0%,
+    var(--dt-gold-light) 25%,
+    #FFFFFF 50%,
+    var(--dt-gold-light) 75%,
+    var(--dt-gold) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: dt-shimmer-gold 3s linear infinite;
+}
+
+/* Static gold gradient (no animation) */
+.dt-gold-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--dt-gold) 0%,
+    var(--dt-gold-light) 50%,
+    var(--dt-gold) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gold glow box */
+.dt-gold-glow {
+  box-shadow: 0 0 30px var(--dt-gold-glow);
+}
+
+.dt-gold-glow-sm {
+  box-shadow: 0 0 15px var(--dt-gold-glow);
+}
+
+.dt-gold-glow-lg {
+  box-shadow: 0 0 50px var(--dt-gold-glow);
+}
+
+/* Animated gold glow */
+.dt-gold-glow-pulse {
+  animation: dt-glow-pulse 3s var(--dt-ease-in-out) infinite;
+}
+
+/* ============================================
+   GPU OPTIMIZATION UTILITIES
+   ============================================ */
+
+/* Force GPU acceleration */
+.dt-gpu {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Remove will-change after animation (cleanup) */
+.dt-gpu-cleanup {
+  will-change: auto;
+}
+
+/* ============================================
+   INTERSECTION OBSERVER STATES
+   Use with JavaScript IntersectionObserver
+   ============================================ */
+
+/* Pre-animation state */
+.dt-reveal {
+  opacity: 0;
+  transform: translateY(var(--dt-move-medium)) translateZ(0);
+}
+
+/* Revealed state (add via JS) */
+.dt-reveal.dt-visible {
+  opacity: 1;
+  transform: translateY(0) translateZ(0);
+  transition:
+    opacity var(--dt-duration-normal) var(--dt-ease-out),
+    transform var(--dt-duration-normal) var(--dt-ease-out);
+}
+
+/* Scale reveal variant */
+.dt-reveal-scale {
+  opacity: 0;
+  transform: scale(var(--dt-scale-subtle)) translateZ(0);
+}
+
+.dt-reveal-scale.dt-visible {
+  opacity: 1;
+  transform: scale(1) translateZ(0);
+  transition:
+    opacity var(--dt-duration-normal) var(--dt-ease-out),
+    transform var(--dt-duration-normal) var(--dt-ease-out);
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   Respects user preferences
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .dt-reveal,
+  .dt-reveal-scale {
+    opacity: 1;
+    transform: none;
+  }
+
+  .dt-microfloat,
+  .dt-shimmer-gold,
+  .dt-pulse-subtle,
+  .dt-gold-glow-pulse {
+    animation: none;
+  }
+}
+
+/* ============================================
+   CONTAINER FOR STAGGERED SECTIONS
+   ============================================ */
+
+.dt-section-stagger > * {
+  opacity: 0;
+  transform: translateY(var(--dt-move-small)) translateZ(0);
+}
+
+.dt-section-stagger.dt-visible > *:nth-child(1) {
+  animation: dt-fade-up var(--dt-duration-normal) var(--dt-ease-out) forwards;
+  animation-delay: var(--dt-stagger-0);
+}
+
+.dt-section-stagger.dt-visible > *:nth-child(2) {
+  animation: dt-fade-up var(--dt-duration-normal) var(--dt-ease-out) forwards;
+  animation-delay: var(--dt-stagger-1);
+}
+
+.dt-section-stagger.dt-visible > *:nth-child(3) {
+  animation: dt-fade-up var(--dt-duration-normal) var(--dt-ease-out) forwards;
+  animation-delay: var(--dt-stagger-2);
+}
+
+.dt-section-stagger.dt-visible > *:nth-child(4) {
+  animation: dt-fade-up var(--dt-duration-normal) var(--dt-ease-out) forwards;
+  animation-delay: var(--dt-stagger-3);
+}
+
+.dt-section-stagger.dt-visible > *:nth-child(5) {
+  animation: dt-fade-up var(--dt-duration-normal) var(--dt-ease-out) forwards;
+  animation-delay: var(--dt-stagger-4);
+}
+
+.dt-section-stagger.dt-visible > *:nth-child(6) {
+  animation: dt-fade-up var(--dt-duration-normal) var(--dt-ease-out) forwards;
+  animation-delay: var(--dt-stagger-5);
+}
+
+/* ============================================
+   HOVER STATES — GPU-Optimized
+   ============================================ */
+
+.dt-hover-lift {
+  transition: transform var(--dt-duration-fast) var(--dt-ease-out);
+}
+
+.dt-hover-lift:hover {
+  transform: translateY(-2px) translateZ(0);
+}
+
+.dt-hover-scale {
+  transition: transform var(--dt-duration-fast) var(--dt-ease-out);
+}
+
+.dt-hover-scale:hover {
+  transform: scale(1.02) translateZ(0);
+}
+
+.dt-hover-glow {
+  transition: box-shadow var(--dt-duration-fast) var(--dt-ease-out);
+}
+
+.dt-hover-glow:hover {
+  box-shadow: 0 0 30px var(--dt-gold-glow);
+}
+
+/* Disable hover on touch devices */
+@media (hover: none) {
+  .dt-hover-lift:hover,
+  .dt-hover-scale:hover,
+  .dt-hover-glow:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ============================================
+   FLOW ANIMATION — For Network Visualizations
+   ============================================ */
+
+@keyframes dt-flow {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateZ(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%) translateZ(0);
+  }
+}
+
+@keyframes dt-flow-rtl {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateZ(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%) translateZ(0);
+  }
+}
+
+.dt-flow {
+  animation: dt-flow 2s var(--dt-ease-in-out) infinite;
+}
+
+.dt-flow-rtl {
+  animation: dt-flow-rtl 2s var(--dt-ease-in-out) infinite;
+}
+
+/* ============================================
+   LOADING STATES — Essential Only
+   ============================================ */
+
+@keyframes dt-spin {
+  to {
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+.dt-spin {
+  animation: dt-spin 1s linear infinite;
+}
+
+/* Pulse for skeleton loaders */
+@keyframes dt-skeleton {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.dt-skeleton {
+  animation: dt-skeleton 1.5s var(--dt-ease-in-out) infinite;
+  background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+}
