@@ -13,9 +13,9 @@
       "badge": "Settlement Technology",
       "title": "One rail.",
       "titleAccent": "Infinite reach.",
-      "tagline": "Zero trapped capital · Built-in compliance · 6-second settlement",
+      "tagline": "Zero trapped capital · Embedded compliance · ~6-second finality",
       "subtitle": "Settlement infrastructure for regulated financial institutions",
-      "description": "DelTran provides banks with on-demand settlement, multilateral netting and automated compliance reporting. Cross-border and domestic flows, retail and wholesale, all orchestrated through a single API.",
+      "description": "DelTran provides banks with on-demand settlement, multilateral netting and automated compliance reporting. Cross-border and domestic payment flows—retail and wholesale—orchestrated through a single API.",
       "cta": "Let's Talk",
       "ctaSecondary": "How It Works"
     },
@@ -120,7 +120,7 @@
       "reasons": [
         {
           "title": "API-first integration",
-          "description": "Banks connect via REST or gRPC APIs and can adopt the rail corridor by corridor, without disrupting existing payment infrastructure."
+          "description": "Banks connect via REST or gRPC APIs and can adopt the rail corridor by corridor, without disrupting existing payment infrastructure. Legacy SWIFT MT messages are supported through our MT Adapter for institutions not yet migrated to ISO 20022."
         },
         {
           "title": "Proven performance characteristics",
@@ -164,12 +164,12 @@
       "cta": "Let's Talk"
     },
     "isoFlow": {
-      "title": "From ISO 20022 message to final settlement",
-      "subtitle": "You send a standard ISO 20022 payment message. DelTran handles liquidity, compliance and netting under the hood and returns a fully settled payment.",
+      "title": "From payment message to final settlement",
+      "subtitle": "Send ISO 20022 messages natively, or legacy SWIFT MT formats via our MT Adapter. DelTran handles liquidity, compliance and netting under the hood and returns a fully settled payment.",
       "steps": {
         "input": {
-          "title": "Standard ISO 20022 message in",
-          "description": "Your existing systems send a payment instruction, such as a pacs.008, without changing core banking workflows."
+          "title": "Payment message in",
+          "description": "Your existing systems send a payment instruction—ISO 20022 natively or legacy SWIFT MT via our MT Adapter—without changing core banking workflows."
         },
         "process": {
           "title": "DelTran rail processes and settles",
@@ -227,7 +227,7 @@
       "subtitle": "What the platform provides",
       "settlement": {
         "title": "Settlement Processing",
-        "description": "6-second finality with cryptographic certainty",
+        "description": "~6-second finality with cryptographic assurance",
         "items": [
           "3,000+ TPS capacity",
           "75ms latency (p95)",
@@ -258,9 +258,10 @@
       },
       "integration": {
         "title": "API Integration",
-        "description": "REST and gRPC endpoints",
+        "description": "REST and gRPC endpoints with MT Adapter support",
         "items": [
           "REST and gRPC APIs",
+          "MT Adapter for legacy SWIFT message ingestion",
           "Real-time webhooks",
           "Monitoring dashboard",
           "Incremental adoption by corridor"
@@ -723,7 +724,7 @@
     "allRightsReserved": "All rights reserved.",
     "disclaimer": {
       "important": "Important:",
-      "text": "DelTran is currently in pre-launch phase. We are not yet licensed as an Electronic Money Institution or Clearing & Settlement facility. Our technology is designed to meet regulatory standards, and we are preparing to apply for necessary licenses. Services shown are planned capabilities subject to regulatory approval."
+      "text": "DelTran is currently in pre-launch phase. We are not yet authorised as an Electronic Money Institution, Payment Institution or Clearing & Settlement facility. Our technology is designed to meet regulatory standards, and we are preparing to apply for necessary authorisations. Services shown are planned capabilities subject to regulatory approval."
     },
     "cta": {
       "title": "Get Started",
