@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     const resend = getResendClient();
     const data = await resend.emails.send({
       from: 'DelTran Contact Form <noreply@deltran.ai>',
-      to: ['contact@deltran.ai'],
+      to: ['partnerships@deltran.ai'],
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: `

@@ -148,7 +148,7 @@
         "submit": "Send Message"
       },
       "directContact": "Or contact us directly:",
-      "email": "contact@deltran.ai"
+      "email": "partnerships@deltran.ai"
     }
   },
   "platform": {
@@ -677,7 +677,7 @@
       "title": "Want to talk about settlement infrastructure?",
       "subtitle": "If you are responsible for liquidity, treasury, payments or infrastructure in a regulated institution and want to explore what DelTran could mean for your corridors, we would be glad to speak.",
       "button": "Contact Us",
-      "email": "contact@deltran.ai",
+      "email": "partnerships@deltran.ai",
       "emailLabel": "Email us:"
     }
   },
@@ -700,7 +700,7 @@
     "info": {
       "title": "Get in Touch",
       "emailLabel": "Email",
-      "email": "contact@deltran.ai"
+      "email": "partnerships@deltran.ai"
     },
     "sidebar": {
       "mvpStatus": "Pre-Production MVP Ready",
@@ -812,7 +812,7 @@
       },
       "contact": {
         "title": "10. Contact Us",
-        "content": "If you have any questions about this Privacy Policy, please contact us at: contact@deltran.ai"
+        "content": "If you have any questions about this Privacy Policy, please contact us at: partnerships@deltran.ai"
       }
     }
   },
@@ -873,7 +873,7 @@
       },
       "contact": {
         "title": "12. Contact Us",
-        "content": "If you have any questions about these Terms of Service, please contact us at: contact@deltran.ai"
+        "content": "If you have any questions about these Terms of Service, please contact us at: partnerships@deltran.ai"
       }
     }
   }

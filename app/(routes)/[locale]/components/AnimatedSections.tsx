@@ -524,7 +524,7 @@ export function AnimatedSections({ translations: t }: AnimatedSectionsProps) {
                       {t.contact.directContact}
                     </p>
                     <a
-                      href="mailto:contact@deltran.ai"
+                      href="mailto:partnerships@deltran.ai"
                       className={cn(
                         "text-gold/80",
                         "fluid-text-2xl font-semibold"

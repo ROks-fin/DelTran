@@ -148,7 +148,7 @@
         "submit": "שליחת הודעה"
       },
       "directContact": "או צרו קשר ישירות:",
-      "email": "contact@deltran.ai"
+      "email": "partnerships@deltran.ai"
     }
   },
   "platform": {
@@ -677,7 +677,7 @@
       "title": "רוצים לדבר על תשתית סליקה?",
       "subtitle": "אם אתם אחראים על נזילות, טרז'רי, תשלומים או תשתית במוסד מפוקח ורוצים לחקור מה DelTran יכולה להציע לקורידורים שלכם, נשמח לדבר.",
       "button": "צרו קשר",
-      "email": "contact@deltran.ai",
+      "email": "partnerships@deltran.ai",
       "emailLabel": "שלחו לנו אימייל:"
     }
   },
@@ -700,7 +700,7 @@
     "info": {
       "title": "צרו קשר",
       "emailLabel": "אימייל",
-      "email": "contact@deltran.ai"
+      "email": "partnerships@deltran.ai"
     },
     "sidebar": {
       "mvpStatus": "MVP פרה-פרודקשן מוכן",
@@ -812,7 +812,7 @@
       },
       "contact": {
         "title": "10. צרו קשר",
-        "content": "אם יש לכם שאלות לגבי מדיניות פרטיות זו, צרו קשר: contact@deltran.ai"
+        "content": "אם יש לכם שאלות לגבי מדיניות פרטיות זו, צרו קשר: partnerships@deltran.ai"
       }
     }
   },
@@ -873,7 +873,7 @@
       },
       "contact": {
         "title": "12. צרו קשר",
-        "content": "אם יש לכם שאלות לגבי תנאי שימוש אלה, צרו קשר: contact@deltran.ai"
+        "content": "אם יש לכם שאלות לגבי תנאי שימוש אלה, צרו קשר: partnerships@deltran.ai"
       }
     }
   }

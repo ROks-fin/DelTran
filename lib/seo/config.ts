@@ -38,7 +38,7 @@ export const SITE_CONFIG = {
     linkedin: 'company/deltran',
   },
   contact: {
-    email: 'contact@deltran.ai',
+    email: 'partnerships@deltran.ai',
   },
 };
 

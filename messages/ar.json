@@ -148,7 +148,7 @@
         "submit": "إرسال الرسالة"
       },
       "directContact": "أو تواصل معنا مباشرة:",
-      "email": "contact@deltran.ai"
+      "email": "partnerships@deltran.ai"
     }
   },
   "platform": {
@@ -677,7 +677,7 @@
       "title": "تريد التحدث عن بنية التسوية؟",
       "subtitle": "إذا كنت مسؤولاً عن السيولة أو الخزينة أو المدفوعات أو البنية التحتية في مؤسسة مرخّصة وتريد استكشاف ما يمكن أن تعنيه دلتران لممراتكم، يسعدنا التحدث.",
       "button": "تواصل معنا",
-      "email": "contact@deltran.ai",
+      "email": "partnerships@deltran.ai",
       "emailLabel": "راسلنا:"
     }
   },
@@ -700,7 +700,7 @@
     "info": {
       "title": "تواصل معنا",
       "emailLabel": "البريد الإلكتروني",
-      "email": "contact@deltran.ai"
+      "email": "partnerships@deltran.ai"
     },
     "sidebar": {
       "mvpStatus": "MVP ما قبل الإنتاج جاهز",
@@ -812,7 +812,7 @@
       },
       "contact": {
         "title": "10. تواصل معنا",
-        "content": "إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه، يرجى التواصل معنا على: contact@deltran.ai"
+        "content": "إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه، يرجى التواصل معنا على: partnerships@deltran.ai"
       }
     }
   },
@@ -873,7 +873,7 @@
       },
       "contact": {
         "title": "12. تواصل معنا",
-        "content": "إذا كانت لديك أي أسئلة حول شروط الخدمة هذه، يرجى التواصل معنا على: contact@deltran.ai"
+        "content": "إذا كانت لديك أي أسئلة حول شروط الخدمة هذه، يرجى التواصل معنا على: partnerships@deltran.ai"
       }
     }
   }
