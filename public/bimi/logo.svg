@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" viewBox="0 0 32 32">
+  <title>DelTran</title>
+  <!-- BIMI-compliant: No gradients, no defs, no masks, no filters -->
+
+  <!-- Background -->
+  <rect width="32" height="32" fill="#000000"/>
+
+  <!-- Main symbol - flat gold #FFD700 -->
+  <g fill="none" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Diamond -->
+    <path d="M 16 12 L 20 16 L 16 20 L 12 16 L 16 12"/>
+    <!-- Top crown/arrow -->
+    <path d="M 11 12 L 16 8 L 21 12"/>
+  </g>
+</svg>
