@@ -385,43 +385,43 @@
     "europe": {
       "number": "2",
       "title": "European connectivity",
-      "target": "EU payment / e-money institution and UK payment permissions",
+      "target": "EU Payment Institution (Lithuania) + UK Authorised PI",
       "focus": "SEPA-linked corridors and PSP flows",
-      "timeline": "Target 2025–2026+",
-      "markets": "Eurozone, UK",
-      "description": "Bringing European EMIs, banks and payment institutions onto the rail, with a focus on SEPA corridors and cross-border PSP flows."
+      "timeline": "Target 2026",
+      "markets": "27 EEA countries + UK",
+      "description": "Payment Institution licences with passporting rights for 35 European countries. SEPA corridors and cross-border PSP flows."
     },
     "asia": {
       "number": "3",
       "title": "Asia-Pacific corridors",
-      "target": "MAS, HKMA and other key regulators",
+      "target": "MAS Major Payment Institution",
       "focus": "Trade, remittance and treasury flows",
-      "timeline": "Target 2026+",
-      "markets": "Singapore, Hong Kong and selected Asia-Pacific markets",
-      "description": "Connecting Asian financial hubs and regional banks into the network to support trade and treasury flows across time zones."
+      "timeline": "Target 2027+",
+      "markets": "Singapore and Southeast Asia",
+      "description": "Singapore MPI licence as foundation for Asia-Pacific expansion through correspondent banking relationships for trade and treasury flows."
     },
     "future": {
       "phase4": {
-        "label": "Phase 4:",
-        "description": "North America — US and Canada, subject to regulatory and commercial conditions."
+        "label": "Phase 4 (2027):",
+        "description": "UAE Mainland — CBUAE Retail Payment Services for domestic settlement."
       },
       "phase5": {
-        "label": "Phase 5:",
-        "description": "Latin America — Brazil, Mexico and selected regional hubs for remittances and B2B flows."
+        "label": "Phase 5 (2028):",
+        "description": "United States — FinCEN MSB + state Money Transmitter Licenses."
       },
       "phase6": {
-        "label": "Phase 6:",
-        "description": "Africa — selected markets where cross-border trade and worker remittances are material."
+        "label": "Phase 6 (2028+):",
+        "description": "Latin America — Brazil Payment Institution and Mexico IFPE for regional corridors."
       },
       "phase7": {
-        "label": "Phase 7:",
-        "description": "Additional high-growth corridors, including India and Southeast Asia, prioritised based on demand and network impact."
+        "label": "Future:",
+        "description": "Additional markets evaluated based on demand, regulatory conditions and network impact."
       }
     },
-    "phase4": "Phase 4: North America — US and Canada, subject to regulatory and commercial conditions.",
-    "phase5": "Phase 5: Latin America — Brazil, Mexico and selected regional hubs.",
-    "phase6": "Phase 6: Africa — selected markets with material cross-border flows.",
-    "phase7": "Phase 7: Additional high-growth corridors, including India and Southeast Asia.",
+    "phase4": "Phase 4 (2027): UAE Mainland — CBUAE Retail Payment Services.",
+    "phase5": "Phase 5 (2028): United States — FinCEN MSB + state MTLs.",
+    "phase6": "Phase 6 (2028+): Latin America — Brazil PI and Mexico IFPE.",
+    "phase7": "Future: Additional markets based on demand and network impact.",
     "regulatoryFirst": {
       "title": "Regulatory-first by design",
       "description": "Each region is approached with local counsel, clear licensing objectives and conservative assumptions on timelines and scope. The network only goes live where regulatory expectations are clearly understood."
@@ -443,123 +443,107 @@
     "licenses": [
       {
         "region": "ADGM (UAE)",
-        "license": "Regulatory sandbox and money services permissions",
-        "coverage": "MENA corridors through ADGM and partner banks in the Gulf region.",
-        "priority": "Initial launch foundation",
-        "timeline": "Target 2025+ (subject to regulatory approval)",
-        "details": "Using ADGM frameworks (including sandbox structures) to validate technology, risk and compliance under supervisory oversight and ultimately seek a full Financial Services Permission for Providing Money Services."
+        "license": "Money Services Permission",
+        "coverage": "UAE and GCC through partner banks in the Gulf region.",
+        "priority": "Foundation (2025)",
+        "timeline": "2025",
+        "details": "Financial Services Permission for Providing Money Services under ADGM FSRA. Foundation hub for Gulf corridors covering UAE and GCC region through established banking partnerships."
       },
       {
-        "region": "CBUAE (Mainland UAE)",
-        "license": "RPSCS payment services licence (PSP)",
-        "coverage": "Domestic UAE settlement and corridors with Asia, India and Africa.",
-        "priority": "UAE expansion",
-        "timeline": "Target 2025–2026+",
-        "details": "Retail Payment Services licensing to support domestic and cross-border operations with UAE institutions. Stored-value or virtual asset permissions would only be considered if future products require them."
-      },
-      {
-        "region": "European Union",
-        "license": "Payment Institution and/or Electronic Money Institution authorisation",
-        "coverage": "EU-based EMIs, PSPs and banks with SEPA connectivity.",
-        "priority": "Early expansion phase",
-        "timeline": "Target 2025–2026+",
-        "details": "PI/EMI authorisation with passporting rights, aligned with PSD2/EMD2 and other applicable regulation, to support EU-wide corridors."
+        "region": "European Union (Lithuania)",
+        "license": "Payment Institution (PI)",
+        "coverage": "All 27 EEA member states via passporting.",
+        "priority": "Parallel expansion",
+        "timeline": "2026",
+        "details": "Payment Institution licence with passporting rights across the entire European Economic Area. PSD2-compliant payment services. No e-money issuance required."
       },
       {
         "region": "United Kingdom",
-        "license": "Authorised Payment Institution and/or Electronic Money Institution permissions",
-        "coverage": "UK-based banks and PSPs with cross-border flows.",
-        "priority": "In parallel with EU work",
-        "timeline": "Target 2025–2026+",
-        "details": "UK authorisations aligned with FCA expectations for payments and e-money activities, supporting participation in the network as a payment and settlement rail."
+        "license": "Payment Institution (Authorised)",
+        "coverage": "UK and dependent territories.",
+        "priority": "Parallel expansion",
+        "timeline": "2026",
+        "details": "FCA Authorised Payment Institution under Payment Services Regulations. Coverage includes UK mainland and Crown dependencies."
       },
       {
-        "region": "United States",
-        "license": "FinCEN registration and state-level money transmitter licences",
-        "coverage": "US domestic and cross-border corridors.",
-        "priority": "Later phase after initial launches",
-        "timeline": "Target 2026–2027+",
-        "details": "Combination of federal MSB registration and state money transmitter licences, sequenced based on target corridors and partner readiness."
+        "region": "UAE Mainland",
+        "license": "CBUAE Retail Payment Services",
+        "coverage": "UAE domestic settlement.",
+        "priority": "Regional expansion",
+        "timeline": "2027",
+        "details": "Retail Payment Services and Card Schemes (RPSCS) licence for comprehensive UAE domestic operations and local settlement."
       },
       {
         "region": "Singapore",
-        "license": "MAS Major Payment Institution",
-        "coverage": "Singapore and selected Southeast Asia corridors.",
-        "priority": "Asia entry",
-        "timeline": "Target 2026–2027+",
-        "details": "Licensing under the Payment Services Act as a foundation for regional expansion across remittance, trade and treasury corridors."
+        "license": "MPI (Major Payment Institution)",
+        "coverage": "Singapore and APAC corridors.",
+        "priority": "Asia-Pacific entry",
+        "timeline": "2027",
+        "details": "Major Payment Institution licence under the Payment Services Act. Foundation for Asia-Pacific expansion through correspondent banking relationships."
       },
       {
-        "region": "Hong Kong",
-        "license": "HKMA retail payment system and, where required, stored value permissions",
-        "coverage": "Hong Kong and selected Greater China corridors.",
-        "priority": "Asia entry",
-        "timeline": "Target 2026–2027+",
-        "details": "Authorisations to operate as a regulated retail payment system and support corridors through Hong Kong as a regional financial hub. Stored value permissions would only be sought if future products require them."
-      },
-      {
-        "region": "GCC (Saudi, Bahrain, Qatar and others)",
-        "license": "Local PSP and payment system operator licences",
-        "coverage": "Gulf Cooperation Council member states.",
-        "priority": "MENA expansion",
-        "timeline": "Target 2026–2027+",
-        "details": "Country-specific payment services and payment system operator permissions to deepen coverage beyond the initial launch hub."
+        "region": "United States",
+        "license": "FinCEN MSB + State MTLs",
+        "coverage": "50 states and US territories.",
+        "priority": "Americas expansion",
+        "timeline": "2028",
+        "details": "Federal FinCEN Money Services Business registration plus state-by-state Money Transmitter Licenses. Phased rollout based on corridor priority."
       },
       {
         "region": "Latin America",
-        "license": "Local payment institution licences (e.g. Brazil payment institution, Mexico IFPE)",
-        "coverage": "Key regional hubs such as Brazil and Mexico.",
-        "priority": "LatAm entry",
-        "timeline": "Target 2027–2028+",
-        "details": "Licensing in selected markets, such as Brazil and Mexico, where remittances and B2B flows justify network expansion."
+        "license": "Brazil PI + Mexico IFPE",
+        "coverage": "Key regional hubs: Brazil and Mexico.",
+        "priority": "Emerging markets",
+        "timeline": "2028+",
+        "details": "Payment Institution (Brazil) and IFPE (Mexico) licences anchor Latin American expansion for remittances and B2B flows."
       }
     ],
     "phase1": {
       "year": "2025",
-      "title": "Foundation: launch hub and first corridors",
-      "description": "Initial work with regulators and a small group of institutions to validate operations, reporting and liquidity management.",
+      "title": "Foundation: ADGM launch hub",
+      "description": "Obtain ADGM Money Services permission and validate operations with initial partner institutions.",
       "items": [
-        "Work within ADGM's regulatory framework and sandbox structures",
-        "Define operating playbooks with early banking and EMI partners",
-        "Establish reporting, monitoring and audit artefacts for the rail",
+        "Obtain ADGM Money Services Permission",
+        "Establish GCC coverage through partner bank network",
+        "Define operating playbooks with early banking partners",
         "Prove settlement, reconciliation and capital-release mechanics",
-        "Prepare documentation for additional priority jurisdictions"
+        "Prepare documentation for EU and UK applications"
       ]
     },
     "phase2": {
-      "year": "2025–2026",
-      "title": "Early multi-market expansion",
-      "description": "Progress EU, UK and selected MENA/Asia pathways in parallel, while keeping launch criteria conservative.",
+      "year": "2026",
+      "title": "European expansion: EU + UK",
+      "description": "Obtain Payment Institution licences in EU (Lithuania) and UK for access to 35 European countries.",
       "items": [
-        "Advance UAE mainland licensing for domestic and cross-border flows",
-        "Progress EU Payment Institution / EMI authorisation covering multiple member states",
-        "Align UK authorisations with existing and planned corridors",
-        "Begin structured work on US and Asia-Pacific licensing",
-        "Refine risk, compliance and governance frameworks as scope grows"
+        "Obtain EU Payment Institution licence in Lithuania",
+        "Passport PI licence to all 27 EEA member states",
+        "Obtain UK Authorised Payment Institution",
+        "Launch SEPA-linked corridors and cross-border PSP flows",
+        "Refine risk, compliance and governance frameworks"
       ]
     },
     "phase3": {
-      "year": "2026–2027",
-      "title": "Broader network activation",
-      "description": "Activate licences across additional financial hubs and onboard more institutions to the network.",
+      "year": "2027",
+      "title": "Regional expansion: UAE + APAC",
+      "description": "Expand with CBUAE domestic licence and Singapore MPI for Asia-Pacific coverage.",
       "items": [
-        "Onboard banks and PSPs under new licences as they are granted",
-        "Launch live corridors in each active region",
-        "Expand monitoring, reporting and analytics to reflect wider coverage",
-        "Calibrate netting and liquidity models across more participants",
+        "Obtain CBUAE Retail Payment Services licence",
+        "Obtain Singapore Major Payment Institution",
+        "Launch UAE domestic settlement corridors",
+        "Expand APAC coverage through correspondent banking",
         "Coordinate with local partners on onboarding and supervision"
       ]
     },
     "phase4": {
-      "year": "2027+",
-      "title": "Emerging markets and optimisation",
-      "description": "Add high-growth emerging markets and optimise the network as it scales.",
+      "year": "2028+",
+      "title": "Americas: US + Latin America",
+      "description": "Enter US market with FinCEN MSB and state MTLs, followed by Brazil and Mexico.",
       "items": [
-        "Evaluate and enter selected Latin American markets",
-        "Expand into African and South Asian corridors where appropriate",
-        "Refine global governance and risk frameworks as coverage deepens",
-        "Optimise capital, liquidity and netting across regions",
-        "Adapt to evolving regulatory expectations in each jurisdiction"
+        "Register as FinCEN Money Services Business",
+        "Obtain state Money Transmitter Licenses (~$1–5M bonds)",
+        "Phased rollout across priority US states",
+        "Obtain Brazil Payment Institution and Mexico IFPE licences",
+        "Expand Latin American corridors for remittances and B2B flows"
       ]
     },
     "disclaimer": "All jurisdictions, timelines and licensing pathways described here are indicative only and will evolve with regulatory feedback, internal risk assessments and client demand.",
@@ -580,20 +564,20 @@
       "showLess": "Show less",
       "phases": {
         "2025": {
-          "title": "Foundation phase",
-          "description": "Launch hub work and preparation for applications in other priority jurisdictions."
+          "title": "Foundation: ADGM",
+          "description": "ADGM Money Services permission. GCC coverage through partner banks."
         },
         "2026": {
-          "title": "Early multi-market expansion",
-          "description": "Progress on EU, UK, MENA and selected Asia-Pacific licensing pathways."
+          "title": "Europe: EU + UK",
+          "description": "Payment Institution licences for 35 European countries via passporting."
         },
         "2027": {
-          "title": "Broader network activation",
-          "description": "Licences coming online across multiple hubs and activation of additional corridors."
+          "title": "MENA + APAC",
+          "description": "CBUAE domestic licence and Singapore MPI for Asia-Pacific expansion."
         },
         "2028": {
-          "title": "Scale and optimisation",
-          "description": "Deepening coverage in existing regions and refining network governance and optimisation."
+          "title": "Americas",
+          "description": "US FinCEN MSB + state MTLs, followed by Brazil and Mexico."
         }
       },
       "summary": {

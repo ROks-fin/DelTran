@@ -18,90 +18,101 @@ export const licenses: License[] = [
   {
     id: 'adgm',
     region: 'ADGM (UAE)',
-    license: 'FSRA (Providing Money Services + FRT)',
+    license: 'Money Services',
     jurisdiction: 'Abu Dhabi Global Market Financial Services Regulatory Authority',
-    coverage: '20+ countries through MENA and partner banks',
-    countries: 20,
+    coverage: 'UAE and GCC through partner banks',
+    countries: 7,
     priority: 'foundation',
     timeline: '2025',
     year: '2025',
     status: 'active',
-    details: 'Starting with ADGM RegBox regulatory sandbox. Covers UAE, Saudi Arabia, Bahrain, Qatar, Kuwait, Egypt, Jordan, Morocco, Turkey and more through MENA network.',
+    details: 'Financial Services Permission for Providing Money Services. Foundation hub for Gulf corridors covering UAE and GCC region through established banking partnerships.',
     specificCountries: [
-      'UAE', 'Saudi Arabia', 'Bahrain', 'Qatar', 'Kuwait',
-      'Egypt', 'Jordan', 'Morocco', 'Turkey', 'Oman',
-      'Lebanon', 'Tunisia', 'Algeria', 'Iraq', 'Yemen',
-      'Libya', 'Sudan', 'Syria', 'Palestine', 'Mauritania'
+      'UAE', 'Saudi Arabia', 'Bahrain', 'Qatar', 'Kuwait', 'Oman', 'Jordan'
     ]
   },
   {
-    id: 'cbuae',
-    region: 'CBUAE / VARA (Mainland UAE)',
-    license: 'RPSCS / SVF / VA',
-    jurisdiction: 'Central Bank of UAE / Virtual Assets Regulatory Authority',
-    coverage: 'Full UAE domestic settlement and Asia/India/Africa corridors',
-    countries: 15,
-    priority: 'foundation',
-    timeline: '2025-2026',
-    year: '2025-2026',
-    status: 'planned',
-    details: 'Comprehensive UAE mainland licensing for domestic and cross-border operations. Retail Payment Services and Card Schemes, Stored Value Facilities, Virtual Assets.',
-    specificCountries: [
-      'UAE', 'India', 'Pakistan', 'Bangladesh', 'Philippines',
-      'Indonesia', 'Vietnam', 'Thailand', 'Kenya', 'Nigeria',
-      'South Africa', 'Ethiopia', 'Tanzania', 'Uganda', 'Ghana'
-    ]
-  },
-  {
-    id: 'eu-emi',
-    region: 'European Union',
-    license: 'EMI + MiCA',
+    id: 'eu-pi',
+    region: 'European Union (Lithuania)',
+    license: 'Payment Institution (PI)',
     jurisdiction: 'European Banking Authority (EBA passporting)',
-    coverage: 'All EEA member states',
-    countries: 30,
+    coverage: 'All 27 EEA member states',
+    countries: 27,
     priority: 'parallel',
     timeline: '2026',
     year: '2026',
     status: 'planned',
-    details: 'Electronic Money Institution license with MiCA (Markets in Crypto-Assets) compliance enables passporting across entire European Economic Area.',
+    details: 'Payment Institution licence with passporting rights across entire European Economic Area. PSD2-compliant payment services without e-money issuance.',
     specificCountries: [
       'Germany', 'France', 'Italy', 'Spain', 'Netherlands',
       'Belgium', 'Austria', 'Portugal', 'Greece', 'Poland',
       'Czech Republic', 'Hungary', 'Romania', 'Sweden', 'Denmark',
       'Finland', 'Ireland', 'Luxembourg', 'Slovenia', 'Slovakia',
       'Croatia', 'Bulgaria', 'Lithuania', 'Latvia', 'Estonia',
-      'Cyprus', 'Malta', 'Iceland', 'Norway', 'Liechtenstein'
+      'Cyprus', 'Malta'
     ]
   },
   {
     id: 'uk-fca',
     region: 'United Kingdom',
-    license: 'FCA (EMR + PSR)',
+    license: 'Payment Institution (Authorized)',
     jurisdiction: 'Financial Conduct Authority',
     coverage: 'UK and dependent territories',
-    countries: 8,
+    countries: 5,
     priority: 'parallel',
     timeline: '2026',
     year: '2026',
     status: 'planned',
-    details: 'FCA Electronic Money Regulations and Payment Services Regulations authorization. Coverage includes UK mainland and Crown dependencies.',
+    details: 'FCA Authorised Payment Institution under Payment Services Regulations. Coverage includes UK mainland and Crown dependencies.',
     specificCountries: [
-      'England', 'Scotland', 'Wales', 'Northern Ireland',
-      'Gibraltar', 'Jersey', 'Isle of Man', 'Guernsey'
+      'England', 'Scotland', 'Wales', 'Northern Ireland', 'Gibraltar'
+    ]
+  },
+  {
+    id: 'cbuae',
+    region: 'UAE Mainland',
+    license: 'CBUAE Retail Payment Services',
+    jurisdiction: 'Central Bank of UAE',
+    coverage: 'UAE domestic settlement',
+    countries: 1,
+    priority: 'expansion',
+    timeline: '2027',
+    year: '2027',
+    status: 'planned',
+    details: 'Retail Payment Services and Card Schemes (RPSCS) licence for comprehensive UAE domestic operations and local settlement.',
+    specificCountries: [
+      'UAE'
+    ]
+  },
+  {
+    id: 'singapore',
+    region: 'Singapore',
+    license: 'MPI (Major Payment Institution)',
+    jurisdiction: 'Monetary Authority of Singapore',
+    coverage: 'Singapore and APAC corridors',
+    countries: 11,
+    priority: 'expansion',
+    timeline: '2027',
+    year: '2027',
+    status: 'planned',
+    details: 'Major Payment Institution licence under the Payment Services Act. Foundation for Asia-Pacific expansion through correspondent banking relationships.',
+    specificCountries: [
+      'Singapore', 'Indonesia', 'Malaysia', 'Philippines', 'Thailand',
+      'Vietnam', 'Cambodia', 'Myanmar', 'Laos', 'Brunei', 'Timor-Leste'
     ]
   },
   {
     id: 'usa',
     region: 'United States',
-    license: 'FinCEN + MTL + BitLicense',
+    license: 'FinCEN MSB + State MTLs',
     jurisdiction: 'Federal (FinCEN) + State-level Money Transmitter Licenses',
     coverage: '50 states and US territories',
     countries: 55,
-    priority: 'parallel',
-    timeline: '2026-2027',
-    year: '2026-2027',
-    status: 'planned',
-    details: 'Federal FinCEN registration plus state-by-state Money Transmitter Licenses. Includes New York BitLicense for digital asset operations.',
+    priority: 'expansion',
+    timeline: '2028',
+    year: '2028',
+    status: 'future',
+    details: 'Federal FinCEN Money Services Business registration plus state-by-state Money Transmitter Licenses. Phased rollout based on corridor priority.',
     specificCountries: [
       'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
       'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia',
@@ -117,55 +128,6 @@ export const licenses: License[] = [
     ]
   },
   {
-    id: 'singapore',
-    region: 'Singapore',
-    license: 'MAS MPI',
-    jurisdiction: 'Monetary Authority of Singapore',
-    coverage: 'Southeast Asia through correspondent network',
-    countries: 11,
-    priority: 'expansion',
-    timeline: '2026-2027',
-    year: '2026-2027',
-    status: 'planned',
-    details: 'Major Payment Institution license provides foundation for Southeast Asian expansion through correspondent banking relationships.',
-    specificCountries: [
-      'Singapore', 'Indonesia', 'Malaysia', 'Philippines', 'Thailand',
-      'Vietnam', 'Cambodia', 'Myanmar', 'Laos', 'Brunei', 'Timor-Leste'
-    ]
-  },
-  {
-    id: 'hongkong',
-    region: 'Hong Kong',
-    license: 'HKMA SVF + Stablecoin Issuer',
-    jurisdiction: 'Hong Kong Monetary Authority',
-    coverage: 'Greater China and Taiwan',
-    countries: 3,
-    priority: 'expansion',
-    timeline: '2026-2027',
-    year: '2026-2027',
-    status: 'planned',
-    details: 'Stored Value Facility and Stablecoin Issuer licenses enable access to Greater China market through UnionPay/Alipay corridors.',
-    specificCountries: [
-      'Hong Kong', 'Mainland China (via corridors)', 'Taiwan'
-    ]
-  },
-  {
-    id: 'gcc',
-    region: 'GCC (Saudi, Bahrain, Qatar)',
-    license: 'SAMA PSP/PSO + CBB PSP + QCB',
-    jurisdiction: 'Saudi Arabian Monetary Authority, Central Bank of Bahrain, Qatar Central Bank',
-    coverage: 'All Gulf Cooperation Council states',
-    countries: 6,
-    priority: 'expansion',
-    timeline: '2026-2027',
-    year: '2026-2027',
-    status: 'planned',
-    details: 'Payment Service Provider and Payment Service Operator licenses across GCC member states for comprehensive Gulf coverage.',
-    specificCountries: [
-      'Saudi Arabia', 'Bahrain', 'Qatar', 'Oman', 'Kuwait', 'UAE'
-    ]
-  },
-  {
     id: 'latam',
     region: 'Latin America',
     license: 'Brazil PI + Mexico IFPE',
@@ -173,10 +135,10 @@ export const licenses: License[] = [
     coverage: 'Latin American corridors',
     countries: 20,
     priority: 'emerging',
-    timeline: '2027-2028',
-    year: '2027-2028',
+    timeline: '2028+',
+    year: '2028+',
     status: 'future',
-    details: 'Payment Institution (Brazil) and IFPE (Mexico) licenses anchor Latin American expansion with correspondent corridors.',
+    details: 'Payment Institution (Brazil) and IFPE (Mexico) licenses anchor Latin American expansion with correspondent corridors for remittances and B2B flows.',
     specificCountries: [
       'Brazil', 'Mexico', 'Argentina', 'Chile', 'Colombia',
       'Peru', 'Venezuela', 'Ecuador', 'Bolivia', 'Paraguay',
@@ -190,14 +152,14 @@ export const licenses: License[] = [
 export const regions = {
   mena: {
     name: 'MENA Hub',
-    licenses: ['adgm', 'cbuae', 'gcc'],
-    totalCountries: 41,
+    licenses: ['adgm', 'cbuae'],
+    totalCountries: 8,
     color: '#D4AF37' // gold
   },
   europe: {
     name: 'European Corridor',
-    licenses: ['eu-emi', 'uk-fca'],
-    totalCountries: 38,
+    licenses: ['eu-pi', 'uk-fca'],
+    totalCountries: 32,
     color: '#4169E1' // royal blue
   },
   americas: {
@@ -208,8 +170,8 @@ export const regions = {
   },
   asia: {
     name: 'Asia-Pacific',
-    licenses: ['singapore', 'hongkong'],
-    totalCountries: 14,
+    licenses: ['singapore'],
+    totalCountries: 11,
     color: '#FF6347' // tomato
   }
 };
